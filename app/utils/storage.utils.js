@@ -1,7 +1,8 @@
 import AsyncStorage from '@react-native-community/async-storage';
-import objectMap from './helper.utils';
 
-const keys = {};
+const keys = {
+	'LANGUAGE': 'language'
+};
 
 const set = async (storageKey, data) => {
 	try {

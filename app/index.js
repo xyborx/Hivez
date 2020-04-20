@@ -7,11 +7,11 @@ import App from './App.container';
 const store = initStore();
 
 export default class Hivez extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <App/>
-      </Provider>
-    );
-  }
+	render() {
+		return (
+			<Provider store={store}>
+				<App/>
+			</Provider>
+		);
+	}
 }

@@ -1,19 +1,17 @@
-import React, {Component} from 'react';
-import {Text, TouchableHighlight} from 'react-native';
+import React from 'react';
+import {Text, TouchableOpacity} from 'react-native';
 import styles from './Button.component.style';
 
-class TextField extends Component {
-	constructor(props) {
-		super(props);
-	}
-
-	render() {
-		return (
-			<TouchableHighlight style={[styles.default, this.props.style]} underlayColor="white">
-				<Text style={styles.text}>{this.props.text}</Text>
-			</TouchableHighlight>
-		);
-	}
+const Button = (props) => {
+	return (
+		<TouchableOpacity
+			style={[props.accessability ? styles.default : styles.disabled, props.style]}
+			disabled={!props.accessability}
+			onPress={props.onPress}
+			underlayColor="white">
+			<Text style={styles.text}>{props.text}</Text>
+		</TouchableOpacity>
+	); 
 }
 
-export default TextField;
+export default Button;

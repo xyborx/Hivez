@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import theme from '../../styles/theme.style';
-import {iconInline, inputText, inputTextInvalid, textError} from '../../styles/common.style';
+import {iconInline, inputText, inputTextDisabled, inputTextInvalid, textError, textHighlight} from '../../styles/common.style';
 
 export default StyleSheet.create({
 	container: {
@@ -8,6 +8,11 @@ export default StyleSheet.create({
 		flexDirection: 'row',
 		flexWrap: 'wrap',
 		justifyContent: 'center'
+	},
+	containerDisabled: {
+		...inputTextDisabled,
+		...textHighlight,
+		marginBottom: theme.MARGIN_NARROW
 	},
 	errorMessage: {
 		...textError,
@@ -17,11 +22,14 @@ export default StyleSheet.create({
 	hidden: {
 		display: 'none'
 	},
+	inputTextDisabled: {
+		...textHighlight
+	},
 	inputText: {
 		...inputText
 	},
 	inputTextInvalid: {
-		...inputTextInvalid
+		...inputTextInvalid	
 	},
 	textInput: {
 		flex: 1,
@@ -29,7 +37,7 @@ export default StyleSheet.create({
 	},
 	toggleButton: {
 		alignItems: 'center',
-		flexBasis: 24,
+		flexBasis: 20,
 		justifyContent: 'center',
 		margin: 2,
 		textAlign: 'center'

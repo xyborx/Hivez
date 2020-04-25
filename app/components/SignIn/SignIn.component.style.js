@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
-import {textAlignLeft, textAlignRight, textHeader, textHighlight, textLink} from '../../styles/common.style';
+import theme from '../../styles/theme.style';
+import {boxContainer, lightPageContainer, pageContent, rootContainer, rowComponent, textAlignLeft, textAlignRight, textHeader, textHighlight, textLink} from '../../styles/common.style';
 
 export default StyleSheet.create({
 	alignLeft: {
@@ -9,27 +10,53 @@ export default StyleSheet.create({
 		...textAlignRight
 	},
 	button: {
-		marginVertical: 8
+		marginTop: theme.PADDING_DEFAULT
 	},
-	container: {
-		flex: 1
+	boxContainer: {
+		...boxContainer,
+		flex: 1,
+		maxWidth: theme.CONTAINER_WIDTH,
+	},
+	centerContainer: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'center'
+	},
+	rootContainer: {
+		...rootContainer,
+		backgroundColor: theme.COLOR_LIGHT_GREY
 	},
 	header: {
 		...textHeader,
-		letterSpacing: 16
+		letterSpacing: theme.LETTER_SPACING_WIDE
+	},
+	headerContainer: {
+		margin: theme.MARGIN_EXTRA_WIDE
 	},
 	link: {
 		...textLink,
 		alignSelf: 'flex-start',
-		paddingHorizontal: 8
+		flex: 1,
+		textAlign: 'center'
 	},
-	textField: {
-		marginVertical: 8,
-		paddingHorizontal: 16
+	linkContainer: {
+		...rowComponent,
+		marginTop: theme.PADDING_WIDE
 	},
+	pageContainer: {
+		...lightPageContainer
+	},
+	pageContentView: {
+		...pageContent
+	},
+	policyContainer: {
+		...rowComponent,
+		padding: theme.PADDING_WIDE
+	},
+	textField: {},
 	title: {
 		...textHighlight,
-		marginVertical: 32,
+		marginBottom: theme.PADDING_WIDE,
 		textAlign: 'center'
 	}
 });

@@ -1,8 +1,18 @@
 import {StyleSheet} from 'react-native';
-import {inputText} from '../../styles/common.style';
+import {inputText, inputTextInvalid, textError} from '../../styles/common.style';
 
 export default StyleSheet.create({
-	default: {
+	container: {
 		...inputText
+	},
+	containerInvalid: {
+		...inputTextInvalid	
+	},
+	errorMessage: {
+		...textError,
+		textAlign: 'center'
+	},
+	hidden: {
+		display: 'none'
 	}
 });

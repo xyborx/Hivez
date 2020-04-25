@@ -1,46 +1,79 @@
-import React, {useContext} from 'react';
-import {Text, View} from 'react-native';
+import React from 'react';
+import {Text, ScrollView, View} from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
-import {LocalizationContext} from '../../utils/language.utils';
-
-import styles from './SignIn.component.style';
 import Button from '../Button/Button.component';
-import TextField from '../TextField/TextField.component';
+import EmailField from '../EmailField/EmailField.component';
 import PasswordField from '../PasswordField/PasswordField.component';
+import DropdownLanguage from '../DropdownLanguage/DropdownLanguage.component';
+import styles from './SignIn.component.style';
 
 const SignIn = (props) => {
-	// const {setEmail, email, setPassword, password} = props;
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	initializeAppLanguage();
-
-	const setEmail = function(){};
-	const email = '';
-	const setPassword = function(){};
-	const password = '';
-
 	return (
-		<SafeAreaView style={styles.container}>
-			<View style={{backgroundColor: '#F8F8F8', flex: 1, paddingHorizontal: 24}}>
-				<View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-					<Text style={styles.header}>{translations['SignIn']['APP_NAME']}</Text>
-				</View>
-				<View style={{backgroundColor: '#FFFFFF', borderRadius: 16, paddingHorizontal: 24, paddingVertical: 8, shadowColor: "#000"}}>
-					<Text style={styles.title}>{translations['SignIn']['PAGE_HEADER']}</Text>
-					<TextField value={email} onChangeText={setEmail} style={styles.textField} placeholder={translations['SignIn']['EMAIL_PLACEHOLDER']} />
-					<PasswordField value={password} onChangeText={setPassword} style={styles.textField} isHidden={true} placeholder={translations['SignIn']['PASSWORD_PLACEHOLDER']} />
-					<Button style={styles.button} text={translations['SignIn']['NEXT']} />
-					<View style={{flex:1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginVertical: 32, width: '100%'}}>
-						<Text style={styles.link}>{translations['SignIn']['FORGOT_PASSWORD']}</Text>
-						<Text style={styles.link}>{translations['SignIn']['SIGN_UP']}</Text>
+		<SafeAreaView style={styles.rootContainer}>
+			<ScrollView style={styles.pageContainer} contentContainerStyle={styles.pageContentView}>
+				<View style={{alignSelf: 'stretch', padding: 24}}>
+					<View style={styles.headerContainer}>
+						<Text style={styles.header}>
+							{props.contentText['SignIn']['APP_NAME']}
+						</Text>
 					</View>
-				</View>
-				<View style={{flex: 1}}>
-					<View style={{flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'flex-start', marginVertical: 24}}>
-						<Text style={[styles.link, styles.alignRight]}>{translations['SignIn']['PRIVACY_POLICY']}</Text>
-						<Text style={[styles.link, styles.alignLeft]}>{translations['SignIn']['TERM_OF_USE']}</Text>
+					<View style={styles.centerContainer}>
+						<View style={styles.boxContainer}>
+							<Text style={styles.title}>
+								{props.contentText['SignIn']['PAGE_HEADER']}
+							</Text>
+							<EmailField
+								value={props.email}
+								editable={props.emailEditability}
+								onChangeText={props.setEmail}
+								style={styles.textField}
+								validity={props.emailValidity}
+								errorMessage={props.contentText['EmailValidation']['INVALID_EMAIL_FORMAT']}
+								onPressPasswordToggle={props.togglePasswordAccessbility}
+								placeholder={props.contentText['SignIn']['EMAIL_PLACEHOLDER']} />
+							<PasswordField
+								value={props.password}
+								onChangeText={props.setPassword}
+								accessbility={props.passwordAccessbility}
+								visibility={props.passwordVisibility}
+								validity={props.passwordValidity}
+								onPressPasswordToggle={props.togglePasswordVisibility}
+								errorMessage={props.contentText['EmailValidation']['INVALID_EMAIL_FORMAT']}
+								style={styles.textField}
+								placeholder={props.contentText['SignIn']['PASSWORD_PLACEHOLDER']} />
+							<Button
+								style={styles.button}
+								accessability={props.nextButtonAccessbility} 
+								text={props.contentText['SignIn']['NEXT']}
+								onPress={props.onPressNextButton}/>
+							<View style={styles.linkContainer}>
+								<Text style={styles.link}>
+									{props.contentText['SignIn']['FORGOT_PASSWORD']}
+								</Text>
+								<Text style={styles.link}>
+									{props.contentText['SignIn']['SIGN_UP']}
+								</Text>
+							</View>
+						</View>
 					</View>
+					<View style={styles.policyContainer}>
+						<Text style={styles.link}>
+							{props.contentText['SignIn']['PRIVACY_POLICY']}
+						</Text>
+						<Text style={styles.link}>
+							{props.contentText['SignIn']['TERM_OF_USE']}
+						</Text>
+					</View>
+					<DropdownLanguage
+						title={props.contentText['DropdownLanguage']['SELECT_LANGUAGE']}
+						currentValue={props.currentLanguage}
+						dataList={props.availableLanguage}
+						dataListContext={props.availableLanguageContext}
+						langaugeIcons={props.langaugeIcons}
+						cancelText={props.contentText['DropdownLanguage']['CANCEL_SELECT']}
+						onChange={props.setLanguage} />
 				</View>
-			</View>
+			</ScrollView>
 		</SafeAreaView>
 	);
 }

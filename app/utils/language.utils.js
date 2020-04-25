@@ -1,9 +1,10 @@
 import React, {createContext, useState} from 'react';
-import {Storage} from './storage.utils';
+import Storage from './storage.utils';
 import * as RNLocalize from "react-native-localize";
 import LocalizedStrings from 'react-native-localization';
 import en from '../config/language/en/index';
 import id from '../config/language/id/index';
+import langaugeIcons from '../config/map/FlagIcon.map.json';
 
 const DEFAULT_LANGUAGE = 'en';
 
@@ -27,18 +28,11 @@ export const LocalizationProvider = ({children}) => {
 	const setLanguage = language => {
 		translations.setLanguage(language);
 		setAppLanguage(language);
-		// Storage.set(Storage.keys.LANGUAGES, language);
+		Storage.set(Storage.keys.LANGUAGES, language);
 	};
 
 	const initializeAppLanguage = async () => {
-		// try {
-		// 	const currLang = await Storage.get(Storage.keys.LANGUAGES);
-		// 	console.log(`currLang: ${currLang}`)
-		// } catch (e) {
-		// 	console.log(e);
-		// }
-
-		const currentLanguage = 'en';
+		const currentLanguage = await Storage.get(Storage.keys.LANGUAGES);
 
 		if (currentLanguage) {
 			setLanguage(currentLanguage);
@@ -65,6 +59,7 @@ export const LocalizationProvider = ({children}) => {
 				setAppLanguage: setLanguage,
 				appLanguage,
 				initializeAppLanguage,
+				langaugeIcons
 			}}>
 			{children}
 		</LocalizationContext.Provider>

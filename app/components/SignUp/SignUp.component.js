@@ -5,9 +5,10 @@ import Button from '../Button/Button.component';
 import DropdownLanguage from '../DropdownLanguage/DropdownLanguage.component';
 import EmailField from '../TextField/EmailField.component';
 import PasswordField from '../TextField/PasswordField.component';
-import styles from './SignIn.component.style';
+import TextField from '../TextField/TextField.component';
+import styles from './SignUp.component.style';
 
-const SignIn = (props) => {
+const SignUp = (props) => {
 	return (
 		<SafeAreaView style={styles.rootContainer}>
 			<ScrollView keyboardShouldPersistTaps={'handled'} style={styles.pageContainer} contentContainerStyle={styles.pageContentView}>
@@ -30,23 +31,42 @@ const SignIn = (props) => {
 								placeholder={props.contentText['EMAIL_PLACEHOLDER']}
 								validateInput={true}
 								value={props.email} />
+							<TextField
+								accessbility={props.secondPhase}
+								contentText={props.fullNameContext}
+								customValidateInput={props.validateFullName}
+								onChangeText={props.setFullName}
+								placeholder={props.contentText['FULL_NAME_PLACEHOLDER']}
+								style={styles.textField}
+								validateInput={true}
+								value={props.fullName} />
 							<PasswordField
 								accessbility={props.secondPhase}
 								contentText={props.passwordContext}
 								onChangeText={props.setPassword}
 								placeholder={props.contentText['PASSWORD_PLACEHOLDER']}
+								style={styles.textField}
+								validateInput={true}
 								value={props.password} />
+							<PasswordField
+								accessbility={props.secondPhase}
+								contentText={props.passwordContext}
+								customValidateInput={props.checkConfirmPassword}
+								onChangeText={props.setConfirmPassword}
+								placeholder={props.contentText['CONFIRM_PASSWORD_PLACEHOLDER']}
+								validateInput={true}
+								value={props.confirmPassword} />
 							<Button
 								accessability={props.nextButtonAccessbility} 
 								onPress={props.onPressNextButton}
 								style={styles.button}
-								text={props.secondPhase? props.contentText['SIGN_IN'] : props.contentText['NEXT']} />
+								text={props.secondPhase? props.contentText['SIGN_UP'] : props.contentText['NEXT']} />
 							<View style={styles.linkContainer}>
 								<Text style={[styles.link, styles.alignLeft]}>
 									{props.contentText['FORGOT_PASSWORD']}
 								</Text>
-								<Text style={[styles.link, styles.alignRight]} onPress={props.signUp}>
-									{props.contentText['SIGN_UP']}
+								<Text style={[styles.link, styles.alignRight]} onPress={props.signIn}>
+									{props.contentText['SIGN_IN']}
 								</Text>
 							</View>
 						</View>
@@ -72,4 +92,4 @@ const SignIn = (props) => {
 	);
 }
 
-export default SignIn;
+export default SignUp;

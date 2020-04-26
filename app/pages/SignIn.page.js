@@ -1,76 +1,65 @@
 import React, {useContext, useState} from 'react';
-import {isEmailValid, isPasswordValid} from '../utils/helper.utils';
+import {isEmailValid} from '../utils/helper.utils';
 import {LocalizationContext} from '../utils/language.utils';
 import SignIn from '../components/SignIn/SignIn.component';
 
-const SignInPage = () => {
+const SignInPage = ({navigation}) => {
 	const {translations, appLanguage, setAppLanguage, initializeAppLanguage, langaugeIcons} = useContext(LocalizationContext);
 	initializeAppLanguage();
-	
+
 	const [email, setEmail] = useState('');
-	const [emailEditability, setEmailEditability] = useState(true);
-	const [emailValidity, setEmailValidity] = useState(true);
+	const [secondPhase, setSecondPhase] = useState(false);
 	const [password, setPassword] = useState('');
-	const [passwordAccessbility, setPasswordAccessbility] = useState(false);
-	const [passwordVisibility, setPasswordVisibility] = useState(false);
-	const [passwordValidity, setPasswordValidity] = useState(true);
-	const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
 	const [nextButtonAccessbility, setNextButtonAccessbility] = useState(false);
 
 	const onChangeEmail = (email) => {
 		setEmail(email);
-		const result = isEmailValid(email);
-		setEmailValidity(result);
-		setNextButtonAccessbility(result);
+		setNextButtonAccessbility(isEmailValid(email));
 	}
 
-	const togglePasswordAccessbility = () => {
-		setNextButtonAccessbility(passwordAccessbility ? emailValidity : false);
-		setEmailEditability(!emailEditability)
-		setPasswordAccessbility(!passwordAccessbility);
-		setPasswordValidity(true);
+	const togglePhase = () => {
+		setNextButtonAccessbility(secondPhase);
+		setSecondPhase(!secondPhase);
 		setPassword('');
-	}
-
-	const togglePasswordVisibility = () => {
-		setPasswordVisibility(!passwordVisibility);
 	}
 
 	const onChangePassword = (password) => {
 		setPassword(password);
-		const result = isPasswordValid(password);
-		setPasswordValidity(result.isValid);
-		setPasswordErrorMessage(result.message);
-		setNextButtonAccessbility(result.isValid);
+		if (password.length > 0) setNextButtonAccessbility(true);
+		else setNextButtonAccessbility(false);
 	}
 
+	const signIn = () => {}
+
 	const onPressNextButton = () => {
-		if(emailEditability) togglePasswordAccessbility();
-		// submit
+		if(!secondPhase) togglePhase();
+		else signIn();
+	}
+
+	const signUp = () => {
+		navigation.navigate('SignUp');
 	}
 
 	return (
 		<SignIn
-			contentText={translations}
+			contentText={translations['SignIn']}
+			emailContext={translations['EmailValidation']}
+			passwordContext={translations['PasswordValidation']}
+			dropdownContext={translations['DropdownLanguage']}
+			languageList={translations.getAvailableLanguages()}
+			languageContext={translations['Language']}
 			email={email}
 			setEmail={onChangeEmail}
-			emailEditability={emailEditability}
-			emailValidity={emailValidity}
-			passwordAccessbility={passwordAccessbility}
+			secondPhase={secondPhase}
+			togglePhase={togglePhase}
 			password={password}
 			setPassword={onChangePassword}
-			passwordVisibility={passwordVisibility}
-			togglePasswordAccessbility={togglePasswordAccessbility}
-			togglePasswordVisibility={togglePasswordVisibility}
-			passwordValidity={passwordValidity}
-			passwordErrorMessage={passwordErrorMessage}
 			nextButtonAccessbility={nextButtonAccessbility}
 			onPressNextButton={onPressNextButton}
 			currentLanguage={appLanguage}
-			availableLanguage={translations.getAvailableLanguages()}
-			availableLanguageContext={translations['Language']}
 			langaugeIcons={langaugeIcons}
-			setLanguage={setAppLanguage} />
+			setLanguage={setAppLanguage}
+			signUp={signUp} />
 	);
 };
 

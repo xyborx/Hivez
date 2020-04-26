@@ -3,11 +3,11 @@ import {Text, View} from 'react-native';
 import ModalSelector from 'react-native-modal-selector'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {Flag} from 'react-native-svg-flagkit'
-import styles from './DropdownLanguage.component.style';
+import styles from '../DropdownLanguage/DropdownLanguage.component.style';
 
 const DropdownLanguage = (props) => {
     const data = [
-        { key: -1, section: true, label: props.title},
+        { key: -1, section: true, label: props.contentText['SELECT_LANGUAGE']},
         ...props.dataList.map((value, i) => ({
             key: i,
             label: value,
@@ -25,7 +25,7 @@ const DropdownLanguage = (props) => {
             backdropPressToClose={true}
             cancelContainerStyle={styles.modalCancelContainer}
             cancelStyle={styles.modalCancelButton}
-            cancelText={props.cancelText}
+            cancelText={props.contentText['CANCEL_SELECT']}
             cancelTextStyle={styles.modalCancelText}
             data={data}
             onChange={(option) => {props.onChange(option.label)}}

@@ -1,0 +1,4 @@
+{
+    "INVALID_MINIMUM_FULL_NAME_LENGTH": "Full name must be at least 3 characters",
+    "INVALID_FULL_NAME_FORMAT": "Full name cannot contain special chatacter or number"
+}

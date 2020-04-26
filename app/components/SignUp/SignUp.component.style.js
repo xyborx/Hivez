@@ -57,7 +57,9 @@ export default StyleSheet.create({
 		alignSelf: 'stretch',
 		padding: 24
 	},
-	textField: {},
+	textField: {
+		marginBottom: theme.MARGIN_NARROW
+	},
 	title: {
 		...textHighlight,
 		marginBottom: theme.PADDING_WIDE,

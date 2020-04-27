@@ -52,6 +52,10 @@ const SignUpPage = ({navigation}) => {
 		else signUp();
 	}
 
+	const forgotPassword = () => {
+		navigation.navigate('ForgotPassword');
+	}
+
 	const signIn = () => {
 		navigation.navigate('SignIn');
 	}
@@ -82,7 +86,8 @@ const SignUpPage = ({navigation}) => {
 			currentLanguage={appLanguage}
 			langaugeIcons={langaugeIcons}
 			setLanguage={setAppLanguage}
-			signIn={signIn} />
+			signIn={signIn}
+			forgotPassword={forgotPassword} />
 	);
 };
 

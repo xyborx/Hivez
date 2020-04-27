@@ -5,6 +5,7 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {LocalizationProvider} from '../utils/language.utils';
 import SignInPage from '../pages/SignIn.page';
 import SignUpPage from '../pages/SignUp.page';
+import ForgotPasswordPage from '../pages/ForgotPassword.page';
 
 const AppNavigation = createStackNavigator();
 
@@ -16,6 +17,7 @@ export default function Router() {
 					<AppNavigation.Navigator initialRouteName='SignIn' headerMode='none'>
 						<AppNavigation.Screen name='SignIn' component={SignInPage}/>
 						<AppNavigation.Screen name='SignUp' component={SignUpPage}/>
+						<AppNavigation.Screen name='ForgotPassword' component={ForgotPasswordPage}/>
 					</AppNavigation.Navigator>
 				</LocalizationProvider>
 			</SafeAreaProvider>

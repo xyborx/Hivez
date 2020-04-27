@@ -9,7 +9,7 @@ const PasswordField = (props) => {
 	const [validity, setValidity] = useState(true);
 	const [errorMessage, setErrorMessage] = useState('');
 	return (
-		<View style={[props.accessbility ? {} : styles.hidden, props.style]}>
+		<View style={props.style}>
 			<View style={[validity ? styles.inputText : styles.inputTextInvalid, styles.container]}>
 				<TextInput
 					autoCapitalize={'none'}

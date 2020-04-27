@@ -16,6 +16,7 @@ export default StyleSheet.create({
 		...boxContainer,
 		flex: 1,
 		maxWidth: theme.CONTAINER_WIDTH,
+		overflow: 'hidden'
 	},
 	centerContainer: {
 		flexDirection: 'row',
@@ -23,8 +24,7 @@ export default StyleSheet.create({
 		justifyContent: 'center'
 	},
 	rootContainer: {
-		...rootContainer,
-		backgroundColor: theme.COLOR_LIGHT_GREY
+		...rootContainer
 	},
 	header: {
 		...textHeader,
@@ -32,6 +32,9 @@ export default StyleSheet.create({
 	},
 	headerContainer: {
 		margin: theme.MARGIN_EXTRA_WIDE
+	},
+	hidden: {
+		display: 'none'
 	},
 	link: {
 		...textLink,

@@ -6,7 +6,7 @@ const TextField = (props) => {
 	const [validity, setValidity] = useState(true);
 	const [errorMessage, setErrorMessage] = useState('');
 	return (
-		<View style={[props.accessbility ? {} : styles.hidden, props.style]}>
+		<View style={props.style}>
 			<View style={validity ? styles.container : styles.containerInvalid}>
 				<TextInput
 					autoCapitalize={'words'}

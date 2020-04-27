@@ -16,7 +16,6 @@ export default StyleSheet.create({
 		...boxContainer,
 		flex: 1,
 		maxWidth: theme.CONTAINER_WIDTH,
-		overflow: 'hidden'
 	},
 	centerContainer: {
 		flexDirection: 'row',

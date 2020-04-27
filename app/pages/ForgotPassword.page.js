@@ -1,15 +1,14 @@
 import React, {useContext, useState} from 'react';
 import {isEmailValid} from '../utils/helper.utils';
 import {LocalizationContext} from '../utils/language.utils';
-import SignIn from '../components/SignIn/SignIn.component';
+import ForgotPassword from '../components/ForgotPassword/ForgotPassword.component';
 
-const SignInPage = ({navigation}) => {
+const ForgotPasswordPage = ({navigation}) => {
 	const {translations, appLanguage, setAppLanguage, initializeAppLanguage, langaugeIcons} = useContext(LocalizationContext);
 	initializeAppLanguage();
 
 	const [email, setEmail] = useState('');
 	const [secondPhase, setSecondPhase] = useState(false);
-	const [password, setPassword] = useState('');
 	const [nextButtonAccessbility, setNextButtonAccessbility] = useState(false);
 
 	const onChangeEmail = (email) => {
@@ -20,24 +19,17 @@ const SignInPage = ({navigation}) => {
 	const togglePhase = () => {
 		setNextButtonAccessbility(secondPhase);
 		setSecondPhase(!secondPhase);
-		setPassword('');
 	}
 
-	const onChangePassword = (password) => {
-		setPassword(password);
-		if (password.length > 0) setNextButtonAccessbility(true);
-		else setNextButtonAccessbility(false);
-	}
-
-	const signIn = () => {}
+	const forgotPassword = () => {}
 
 	const onPressNextButton = () => {
 		if(!secondPhase) togglePhase();
-		else signIn();
+		else forgotPassword();
 	}
 
-	const forgotPassword = () => {
-		navigation.navigate('ForgotPassword');
+	const signIn = () => {
+		navigation.navigate('SignIn');
 	}
 
 	const signUp = () => {
@@ -45,10 +37,9 @@ const SignInPage = ({navigation}) => {
 	}
 
 	return (
-		<SignIn
-			contentText={translations['SignIn']}
+		<ForgotPassword
+			contentText={translations['ForgotPassword']}
 			emailContext={translations['EmailValidation']}
-			passwordContext={translations['PasswordValidation']}
 			dropdownContext={translations['DropdownLanguage']}
 			languageList={translations.getAvailableLanguages()}
 			languageContext={translations['Language']}
@@ -56,16 +47,14 @@ const SignInPage = ({navigation}) => {
 			setEmail={onChangeEmail}
 			secondPhase={secondPhase}
 			togglePhase={togglePhase}
-			password={password}
-			setPassword={onChangePassword}
 			nextButtonAccessbility={nextButtonAccessbility}
 			onPressNextButton={onPressNextButton}
 			currentLanguage={appLanguage}
 			langaugeIcons={langaugeIcons}
 			setLanguage={setAppLanguage}
-			signUp={signUp}
-			forgotPassword={forgotPassword} />
+			signIn={signIn}
+			signUp={signUp} />
 	);
 };
 
-export default SignInPage;
+export default ForgotPasswordPage;

@@ -33,10 +33,10 @@ const SignIn = (props) => {
 								validateInput={true}
 								value={props.email} />
 							<PasswordField
-								accessbility={props.secondPhase}
 								contentText={props.passwordContext}
 								onChangeText={props.setPassword}
 								placeholder={props.contentText['PASSWORD_PLACEHOLDER']}
+								style={props.secondPhase ? {} : styles.hidden}
 								value={props.password} />
 							<Button
 								accessability={props.nextButtonAccessbility} 
@@ -44,7 +44,7 @@ const SignIn = (props) => {
 								style={styles.button}
 								text={props.secondPhase? props.contentText['SIGN_IN'] : props.contentText['NEXT']} />
 							<View style={styles.linkContainer}>
-								<Text style={[styles.link, styles.alignLeft]}>
+								<Text style={[styles.link, styles.alignLeft]} onPress={props.forgotPassword}>
 									{props.contentText['FORGOT_PASSWORD']}
 								</Text>
 								<Text style={[styles.link, styles.alignRight]} onPress={props.signUp}>

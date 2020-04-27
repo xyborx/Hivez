@@ -7,10 +7,9 @@ import EmailField from '../TextField/EmailField.component';
 import PasswordField from '../TextField/PasswordField.component';
 import PrivacyPolicyModal from '../Modal/PrivacyPolicy.component';
 import TermsAndConditionsModal from '../Modal/TermsAndConditions.component';
-import TextField from '../TextField/TextField.component';
-import styles from './SignUp.component.style';
+import styles from './ForgotPassword.component.style';
 
-const SignUp = (props) => {
+const ForgotPassword = (props) => {
 	return (
 		<SafeAreaView style={styles.rootContainer}>
 			<ScrollView keyboardShouldPersistTaps={'handled'} style={styles.pageContainer} contentContainerStyle={styles.pageContentView}>
@@ -27,47 +26,27 @@ const SignUp = (props) => {
 							</Text>
 							<EmailField
 								contentText={props.emailContext}
-								editable={!props.secondPhase}
+								editable={true}
 								onChangeText={props.setEmail}
 								onPressPasswordToggle={props.togglePhase}
 								placeholder={props.contentText['EMAIL_PLACEHOLDER']}
+								style={props.secondPhase ? styles.hidden : {}}
 								validateInput={true}
 								value={props.email} />
-							<TextField
-								accessbility={props.secondPhase}
-								contentText={props.fullNameContext}
-								customValidateInput={props.validateFullName}
-								onChangeText={props.setFullName}
-								placeholder={props.contentText['FULL_NAME_PLACEHOLDER']}
-								style={props.secondPhase ? styles.textField : styles.hidden}
-								validateInput={true}
-								value={props.fullName} />
-							<PasswordField
-								contentText={props.passwordContext}
-								onChangeText={props.setPassword}
-								placeholder={props.contentText['PASSWORD_PLACEHOLDER']}
-								style={props.secondPhase ? styles.textField : styles.hidden}
-								validateInput={true}
-								value={props.password} />
-							<PasswordField
-								contentText={props.passwordContext}
-								customValidateInput={props.checkConfirmPassword}
-								onChangeText={props.setConfirmPassword}
-								placeholder={props.contentText['CONFIRM_PASSWORD_PLACEHOLDER']}
-								style={props.secondPhase ? {} : styles.hidden}
-								validateInput={true}
-								value={props.confirmPassword} />
+							<Text style={props.secondPhase ? {textAlign: 'center'} : styles.hidden}>
+								{props.contentText['RESET_PASSWORD_TEXT'].replace("{email}", props.email)}
+							</Text>
 							<Button
 								accessability={props.nextButtonAccessbility} 
 								onPress={props.onPressNextButton}
-								style={styles.button}
-								text={props.secondPhase? props.contentText['SIGN_UP'] : props.contentText['NEXT']} />
+								style={props.secondPhase ? styles.hidden : styles.button}
+								text={props.contentText['RESET_PASSWORD']} />
 							<View style={styles.linkContainer}>
-								<Text style={[styles.link, styles.alignLeft]} onPress={props.forgotPassword}>
-									{props.contentText['FORGOT_PASSWORD']}
-								</Text>
-								<Text style={[styles.link, styles.alignRight]} onPress={props.signIn}>
+								<Text style={[styles.link, styles.alignLeft]} onPress={props.signIn}>
 									{props.contentText['SIGN_IN']}
+								</Text>
+								<Text style={[styles.link, styles.alignRight]} onPress={props.signUp}>
+									{props.contentText['SIGN_UP']}
 								</Text>
 							</View>
 						</View>
@@ -97,4 +76,4 @@ const SignUp = (props) => {
 	);
 }
 
-export default SignUp;
+export default ForgotPassword;

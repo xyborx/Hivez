@@ -70,6 +70,32 @@ export const inputTextInvalid = {
 	borderColor: theme.COLOR_LIGHT_RED
 }
 
+export const modalContainer = {
+	alignItems: 'center',
+	justifyContent: 'center',
+}
+
+export const modalContentContainer = {
+	alignSelf: 'center',
+	alignItems: 'center',
+	justifyContent: 'center',
+	padding: theme.PADDING_WIDE,
+	paddingBottom: theme.PADDING_NARROW
+}
+
+export const modalScrollViewContainer = {
+	alignSelf: 'center',
+	borderRadius: theme.ROUNDNESS_MINIMUM
+}
+
+export const modalWrapper = {
+	backgroundColor: theme.COLOR_WHITE,
+	borderRadius: theme.ROUNDNESS_MINIMUM,
+	flex: 1,
+	maxHeight: theme.CONTAINER_WIDTH,
+	maxWidth: theme.CONTAINER_WIDTH
+}
+
 export const pageContainer = {
 	flex: 1,
 }

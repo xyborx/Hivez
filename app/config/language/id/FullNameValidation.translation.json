@@ -1,4 +1,4 @@
 {
-    "INVALID_MINIMUM_FULL_NAME_LENGTH": "Panjang nama lengkap minimal 3 karakter",
-    "INVALID_FULL_NAME_FORMAT": "Nama lengkap tidak boleh mengandung karakter spesial atau angka"
+	"INVALID_MINIMUM_FULL_NAME_LENGTH": "Panjang nama lengkap minimal 3 karakter",
+	"INVALID_FULL_NAME_FORMAT": "Nama lengkap tidak boleh mengandung karakter spesial atau angka"
 }

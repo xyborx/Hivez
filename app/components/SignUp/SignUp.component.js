@@ -5,6 +5,8 @@ import Button from '../Button/Button.component';
 import DropdownLanguage from '../DropdownLanguage/DropdownLanguage.component';
 import EmailField from '../TextField/EmailField.component';
 import PasswordField from '../TextField/PasswordField.component';
+import PrivacyPolicyModal from '../Modal/PrivacyPolicy.component';
+import TermsAndConditionsModal from '../Modal/TermsAndConditions.component';
 import TextField from '../TextField/TextField.component';
 import styles from './SignUp.component.style';
 
@@ -72,12 +74,16 @@ const SignUp = (props) => {
 						</View>
 					</View>
 					<View style={styles.policyContainer}>
-						<Text style={styles.link}>
-							{props.contentText['PRIVACY_POLICY']}
-						</Text>
-						<Text style={styles.link}>
-							{props.contentText['TERM_OF_USE']}
-						</Text>
+						<PrivacyPolicyModal style={styles.modalLink} toggleContainerStyle={styles.modalLinkContainer}>
+							<Text style={styles.link}>
+								{props.contentText['PRIVACY_POLICY']}
+							</Text>
+						</PrivacyPolicyModal>
+						<TermsAndConditionsModal style={styles.modalLink} toggleContainerStyle={styles.modalLinkContainer}>
+							<Text style={styles.link}>
+								{props.contentText['TERM_OF_USE']}
+							</Text>
+						</TermsAndConditionsModal>
 					</View>
 					<DropdownLanguage
 						contentText={props.dropdownContext}

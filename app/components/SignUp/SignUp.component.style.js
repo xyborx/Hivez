@@ -35,13 +35,18 @@ export default StyleSheet.create({
 	},
 	link: {
 		...textLink,
-		alignSelf: 'flex-start',
 		flex: 1,
 		textAlign: 'center'
 	},
 	linkContainer: {
 		...rowComponent,
 		marginTop: theme.PADDING_WIDE
+	},
+	modalLink: {
+		flex: 1
+	},
+	modalLinkContainer: {
+		alignSelf: 'center'
 	},
 	pageContainer: {
 		...lightPageContainer

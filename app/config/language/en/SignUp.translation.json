@@ -1,14 +1,14 @@
 {
-    "APP_NAME": "HIVEZ",
-    "PAGE_HEADER": "Sign up for new account",
-    "EMAIL_PLACEHOLDER": "Please type your email address",
-    "FULL_NAME_PLACEHOLDER": "Please enter your full name",
-    "PASSWORD_PLACEHOLDER": "Please enter your password",
-    "CONFIRM_PASSWORD_PLACEHOLDER": "Please confirm your password",
-    "NEXT": "Next",
-    "SIGN_UP": "Sign up",
-    "SIGN_IN": "Already have a Hivez account?",
-    "FORGOT_PASSWORD": "Forgot password?",
-    "PRIVACY_POLICY": "Privacy policy",
-    "TERM_OF_USE": "Term of use"
+	"APP_NAME": "HIVEZ",
+	"PAGE_HEADER": "Sign up for new account",
+	"EMAIL_PLACEHOLDER": "Please type your email address",
+	"FULL_NAME_PLACEHOLDER": "Please enter your full name",
+	"PASSWORD_PLACEHOLDER": "Please enter your password",
+	"CONFIRM_PASSWORD_PLACEHOLDER": "Please confirm your password",
+	"NEXT": "Next",
+	"SIGN_UP": "Sign up",
+	"SIGN_IN": "Already have a Hivez account?",
+	"FORGOT_PASSWORD": "Forgot password?",
+	"PRIVACY_POLICY": "Privacy policy",
+	"TERM_OF_USE": "Term of use"
 }

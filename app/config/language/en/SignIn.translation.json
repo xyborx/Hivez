@@ -1,12 +1,12 @@
 {
-    "APP_NAME": "HIVEZ",
-    "PAGE_HEADER": "Sign in to continue",
-    "EMAIL_PLACEHOLDER": "Please enter your email address",
-    "PASSWORD_PLACEHOLDER": "Please enter your password",
-    "NEXT": "Next",
-    "SIGN_IN": "Sign In",
-    "FORGOT_PASSWORD": "Forgot password?",
-    "SIGN_UP": "Sign up for new account",
-    "PRIVACY_POLICY": "Privacy policy",
-    "TERM_OF_USE": "Term of use"
+	"APP_NAME": "HIVEZ",
+	"PAGE_HEADER": "Sign in to continue",
+	"EMAIL_PLACEHOLDER": "Please enter your email address",
+	"PASSWORD_PLACEHOLDER": "Please enter your password",
+	"NEXT": "Next",
+	"SIGN_IN": "Sign In",
+	"FORGOT_PASSWORD": "Forgot password?",
+	"SIGN_UP": "Sign up for new account",
+	"PRIVACY_POLICY": "Privacy policy",
+	"TERM_OF_USE": "Term of use"
 }

@@ -21,7 +21,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         alignSelf: 'center',
         backgroundColor: theme.COLOR_PRIMARY,
-        borderRadius: theme.ROUNDNESS_MINIMUM,
+        borderRadius: theme.ROUNDNESS_EXTRA_MINIMUM,
         flexDirection: 'row',
         justifyContent: 'center',
         height: 40,

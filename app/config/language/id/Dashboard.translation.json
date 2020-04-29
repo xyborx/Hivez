@@ -1,0 +1,19 @@
+{
+    "HEADER": "Hai, {user_name}",
+    "SUB_HEADER": "Selamat datang di aplikasi Hivez!",
+    "YOUR_FAVOURITE_GROUPS": "Grup favoritmu",
+    "NO_FAVOURITE_GROUP": "Tidak ada grup favorit",
+    "EDIT_LIST": "Ubah daftar ini",
+    "REQUEST": "Permintaan",
+    "PAY_BILL": "Bayar Tagihan",
+    "VIEW_REPORT": "Lihat Laporan",
+    "VIEW_GROUP": "Lihat Grup",
+    "RECENT_TRANSACTIONS": "Transaksi Terkini",
+    "LAST_FIVE_TRANSACTIONS": "5 transaksi terkahir",
+    "SEE_ALL_TRANSACTIONS": "Lihat semua transaksi",
+    "ALL_TRANSACTIONS": "Semua",
+    "APPROVED_TRANSACTIONS": "Disetujui",
+    "ON_PROGRESS_TRANSACTIONS": "Sedang Berlangsung",
+    "DECLINED_TRANSACTIONS": "Ditolak",
+    "NO_RECENT_TRANSACTION": "Tidak ada transaksi terkini"
+}

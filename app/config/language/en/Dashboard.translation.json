@@ -1,0 +1,19 @@
+{
+    "HEADER": "Hi, {user_name}",
+    "SUB_HEADER": "Welcome to Hivez app!",
+    "YOUR_FAVOURITE_GROUPS": "Your favourite groups",
+    "NO_FAVOURITE_GROUP": "No favourite group",
+    "EDIT_LIST": "Edit this list",
+    "REQUEST": "Request",
+    "PAY_BILL": "Pay Bill",
+    "VIEW_REPORT": "View Report",
+    "VIEW_GROUP": "View Report",
+    "RECENT_TRANSACTIONS": "Recent Transactions",
+    "LAST_FIVE_TRANSACTIONS": "Last 5 transactions",
+    "SEE_ALL_TRANSACTIONS": "See all transactions",
+    "ALL_TRANSACTIONS": "All",
+    "APPROVED_TRANSACTIONS": "Approved",
+    "ON_PROGRESS_TRANSACTIONS": "On Progress",
+    "DECLINED_TRANSACTIONS": "Declined",
+    "NO_RECENT_TRANSACTION": "No recent transaction"
+}

@@ -1,8 +1,8 @@
 {
 	"APP_NAME": "HIVEZ",
 	"PAGE_HEADER": "Silahkan masuk untuk melanjutkan",
-	"EMAIL_PLACEHOLDER": "Masukkan email Anda",
-	"PASSWORD_PLACEHOLDER": "Masukkan kata sandi Anda",
+	"EMAIL_PLACEHOLDER": "Masukkan alamat emailmu",
+	"PASSWORD_PLACEHOLDER": "Masukkan kata sandimu",
 	"NEXT": "Lanjut",
 	"SIGN_IN": "Masuk",
 	"FORGOT_PASSWORD": "Lupa kata sandi?",

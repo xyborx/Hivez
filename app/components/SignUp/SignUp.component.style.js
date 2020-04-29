@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import theme from '../../styles/theme.style';
-import {boxContainer, lightPageContainer, pageContent, rootContainer, rowComponent, textAlignLeft, textAlignRight, textHeader, textHighlight, textLink} from '../../styles/common.style';
+import {boxContainer, lightPageContainer, pageContent, rootContainer, rowComponent, textAlignLeft, textAlignRight, textAppTitle, textHighlight, textLink} from '../../styles/common.style';
 
 export default StyleSheet.create({
 	alignLeft: {
@@ -27,7 +27,7 @@ export default StyleSheet.create({
 		...rootContainer
 	},
 	header: {
-		...textHeader,
+		...textAppTitle,
 		letterSpacing: theme.LETTER_SPACING_WIDE
 	},
 	headerContainer: {

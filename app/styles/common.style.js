@@ -3,7 +3,7 @@ import theme from './theme.style';
 export const buttonDefault = {
 	alignItems: 'center',
 	backgroundColor: theme.COLOR_PRIMARY,
-	borderRadius: theme.ROUNDNESS_MINIMUM,
+	borderRadius: theme.ROUNDNESS_EXTRA_MINIMUM,
 	height: theme.HEIGHT_DEFAULT,
 	justifyContent: 'center'
 }
@@ -33,7 +33,7 @@ export const centerContainer = {
 export const dropdown = {
 	backgroundColor: theme.COLOR_LIGHT_GREY,
 	borderColor: theme.COLOR_GREY,
-	borderRadius: theme.ROUNDNESS_MINIMUM,
+	borderRadius: theme.ROUNDNESS_EXTRA_MINIMUM,
 	borderWidth: theme.BORDER_MEDIUM,
 	height: theme.HEIGHT_DEFAULT,
 	justifyContent: 'center'
@@ -53,7 +53,7 @@ export const inputText = {
 	backgroundColor: theme.COLOR_LIGHT_GREY,
 	borderColor: theme.COLOR_GREY,
 	borderWidth: theme.BORDER_MEDIUM,
-	borderRadius: theme.ROUNDNESS_MINIMUM,
+	borderRadius: theme.ROUNDNESS_EXTRA_MINIMUM,
 	fontSize: theme.FONT_SIZE_MEDIUM,
 	height: theme.HEIGHT_DEFAULT,
 	paddingHorizontal: theme.PADDING_NARROW
@@ -85,12 +85,12 @@ export const modalContentContainer = {
 
 export const modalScrollViewContainer = {
 	alignSelf: 'center',
-	borderRadius: theme.ROUNDNESS_MINIMUM
+	borderRadius: theme.ROUNDNESS_EXTRA_MINIMUM
 }
 
 export const modalWrapper = {
 	backgroundColor: theme.COLOR_WHITE,
-	borderRadius: theme.ROUNDNESS_MINIMUM,
+	borderRadius: theme.ROUNDNESS_EXTRA_MINIMUM,
 	flex: 1,
 	maxHeight: theme.CONTAINER_WIDTH,
 	maxWidth: theme.CONTAINER_WIDTH
@@ -131,18 +131,30 @@ export const textAlignRight = {
 	textAlign: 'right'
 };
 
+export const textAppTitle = {
+	color: theme.COLOR_PRIMARY,
+	fontSize: theme.FONT_SIZE_TITLE,
+	fontWeight: theme.FONT_WEIGHT_BOLD,
+	textAlign: 'center'
+};
+
 export const textContent = {
 	color: theme.COLOR_BLACK,
 	fontSize: theme.FONT_SIZE_MEDIUM,
 	fontWeight: theme.FONT_WEIGHT_MEDIUM
 };
 
-export const textHeader = {
-	color: theme.COLOR_PRIMARY,
+export const textPageHeader = {
+	color: theme.COLOR_BLACK,
 	fontSize: theme.FONT_SIZE_HEADER,
-	fontWeight: theme.FONT_WEIGHT_BOLD,
-	textAlign: 'center'
-};
+	fontWeight: theme.FONT_WEIGHT_BOLD
+}
+
+export const textPageSubHeader = {
+	color: theme.COLOR_LIGHT_BLACK,
+	fontSize: theme.FONT_SIZE_MEDIUM,
+	fontWeight: theme.FONT_WEIGHT_MEDIUM
+}
 
 export const textHighlight = {
 	color: theme.COLOR_BLACK,
@@ -157,7 +169,7 @@ export const textLink = {
 };
 
 export const textError = {
-	color: theme.COLOR_RED,
+	color: theme.COLOR_DARK_RED,
 	fontSize: theme.FONT_SIZE_MEDIUM,
 	fontWeight: theme.FONT_WEIGHT_BOLD
 };

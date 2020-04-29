@@ -1,3 +1,4 @@
+import Dashboard from './Dashboard.translation.json';
 import DropdownLanguage from './DropdownLanguage.translation.json';
 import EmailValidation from './EmailValidation.translation.json';
 import ForgotPassword from './ForgotPassword.translation.json';
@@ -11,6 +12,7 @@ import SignUp from './SignUp.translation.json';
 import TermsAndConditions from './TermsAndConditions.translation.json';
 
 module.exports = {
+	Dashboard,
 	DropdownLanguage,
 	EmailValidation,
 	ForgotPassword,

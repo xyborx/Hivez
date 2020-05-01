@@ -27,6 +27,7 @@ const EventList = (props) => {
 			</ScrollView>
 			<FloatingButton
 				buttonIcon={'plus'}
+				buttonIconOnFocus={'times'}
 				leftButtonIcon={'search'}
 				leftButtonAction={props.findEvent}
 				topButtonIcon={'user-plus'}

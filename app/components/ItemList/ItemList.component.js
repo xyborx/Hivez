@@ -8,23 +8,23 @@ const ItemList = (props) => {
 		<FlatList
 			data={props.dataList}
 			keyboardShouldPersistTaps={'handled'}
-			keyExtractor={item => item.groupID}
+			keyExtractor={item => item.id}
 			showsVerticalScrollIndicator={false}
 			contentContainerStyle={styles.flatList}
 			renderItem={({item}) => (
-				<View key={item.groupID}>
+				<View key={item.id}>
 					<TouchableHighlight
 						accessibilityRole={'button'}
 						activeOpacity={1}
 						underlayColor={'rgba(0,0,0,0.05)'}
-						onPress={() => {props.onItemClick(item.groupID)}}
-						style={styles.groupItemButton} >
-						<View style={styles.groupItem}>
+						onPress={() => {props.onItemClick(item.id)}}
+						style={styles.listItemButton} >
+						<View style={styles.listItem}>
 							<Image
-								source={item.groupImage === '' ? require('../../assets/images/DefaultGroupImage.png') : {uri: `data:image/jpeg;base64,${item.groupImage}`}}
-								style={styles.groupImage}/>
-							<Text style={styles.groupDetail}>{`${item.groupName} (${item.groupMemberCount})`}</Text>
-							<FontAwesome5 name={'angle-right'} style={styles.groupDetailIcon} />
+								source={item.image === '' ? require('../../assets/images/DefaultGroupImage.png') : {uri: `data:image/jpeg;base64,${item.image}`}}
+								style={styles.listImage}/>
+							<Text style={styles.listDetail}>{`${item.name} (${item.memberCount})`}</Text>
+							<FontAwesome5 name={'angle-right'} style={styles.listDetailIcon} />
 						</View>
 					</TouchableHighlight>
 				</View>

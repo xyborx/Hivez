@@ -1,6 +1,7 @@
 import Dashboard from './Dashboard.translation.json';
 import DropdownLanguage from './DropdownLanguage.translation.json';
 import EmailValidation from './EmailValidation.translation.json';
+import EventList from './EventList.translation.json';
 import ForgotPassword from './ForgotPassword.translation.json';
 import FullNameValidation from './FullNameValidation.translation.json';
 import GroupList from './GroupList.translation.json';
@@ -16,6 +17,7 @@ module.exports = {
 	Dashboard,
 	DropdownLanguage,
 	EmailValidation,
+	EventList,
 	ForgotPassword,
 	FullNameValidation,
 	GroupList,

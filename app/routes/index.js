@@ -5,6 +5,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {LocalizationProvider} from '../utils/language.utils';
 import DashboardPage from '../pages/Dashboard.page';
+import EventListPage from '../pages/EventList.page';
 import GroupListPage from '../pages/GroupList.page';
 import SignInPage from '../pages/SignIn.page';
 import SignUpPage from '../pages/SignUp.page';
@@ -18,10 +19,10 @@ function MyTabs() {
 	return (
 		<TabNavigation.Navigator
 			backBehavior='history'
-			initialRouteName='GroupList' >
+			initialRouteName='EventList' >
 			<TabNavigation.Screen name="Dashboard" component={DashboardPage} />
 			<TabNavigation.Screen name="GroupList" component={GroupListPage} />
-			<TabNavigation.Screen name="SignIn" component={SignInPage} />
+			<TabNavigation.Screen name="EventList" component={EventListPage} />
 			<TabNavigation.Screen name="SignUp" component={SignUpPage} />
 			<TabNavigation.Screen name="ForgotPassword" component={ForgotPasswordPage} />
 		</TabNavigation.Navigator>

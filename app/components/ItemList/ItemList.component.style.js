@@ -15,22 +15,22 @@ export default StyleSheet.create({
 		fontSize: theme.FONT_SIZE_MEDIUM,
 		color: theme.COLOR_SOFT_GREY
 	},
-	groupDetail: {
+	listDetail: {
 		...textHighlight,
 		color: theme.COLOR_SOFT_GREY,
 		flexGrow: 1
 	},
-	groupDetailIcon: {
+	listDetailIcon: {
 		color: theme.COLOR_SOFT_GREY,
 		fontSize: theme.FONT_SIZE_MEDIUM
 	},
-	groupImage: {
+	listImage: {
 		borderRadius: 48/2,
 		height: 48,
 		marginRight: theme.MARGIN_DEFAULT,
 		width: 48
 	},
-	groupItem: {
+	listItem: {
 		alignItems:'center',
 		flexDirection: 'row',
 		paddingHorizontal: theme.PADDING_WIDE,

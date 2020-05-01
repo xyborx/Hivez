@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import theme from '../../styles/theme.style';
-import {} from '../../styles/common.style';
+import {boxShadow} from '../../styles/common.style';
 
 export default StyleSheet.create({
 	actionContainer:{
@@ -28,9 +28,11 @@ export default StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'center'
 	},
+	groupDataButton: {
+		flexGrow: 1,
+	},
 	groupDataContainer: {
 		alignItems: 'center',
-		flexGrow: 1,
 		flexDirection: 'row',
 		justifyContent: 'flex-start',
 		padding: theme.PADDING_WIDE
@@ -65,7 +67,10 @@ export default StyleSheet.create({
         marginVertical: theme.MARGIN_DEFAULT
     },
 	itemCard: {
+		...boxShadow,
 		borderRadius: theme.ROUNDNESS_DEFAULT,
-		overflow: 'hidden'
+		overflow: 'hidden',
+		marginHorizontal: theme.MARGIN_NARROW,
+		marginVertical: theme.MARGIN_EXTRA_NARROW
 	}
 });

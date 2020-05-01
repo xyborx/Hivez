@@ -185,17 +185,27 @@ const DashboardPage = ({navigation}) => {
 	const [transactionList, setTransactionList] = useState(transactionListDummy);
 
 	const navigateToGroup = (groupID) => {
-		navigation.navigate('GroupDetails', {
-			groupID: groupID
-		});
+		// navigation.navigate('GroupDetails', {
+		// 	groupID: groupID
+		// });
+		alert(groupID);
 	};
+
+	const viewTransactionDetail = (transactionID) => {
+		// navigation.navigate('TransactionDetails', {
+		// 	transactionID: transactionID
+		// });
+		alert(transactionID);
+	}
 
 	return (
 		<Dashboard
 			contentText={translations['Dashboard']}
 			userName={userName}
 			groupList={groupList}
-			transactionList={transactionList} />
+			onGroupClick={navigateToGroup}
+			transactionList={transactionList}
+			onTransactionClick={viewTransactionDetail} />
 	);
 };
 

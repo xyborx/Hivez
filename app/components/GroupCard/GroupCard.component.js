@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, Text, TouchableOpacity, View} from 'react-native';
+import {Image, Text, TouchableHighlight, TouchableOpacity, View} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import IconButton from '../Button/IconButton.component';
 import styles from './GroupCard.component.style';
@@ -8,17 +8,23 @@ const GroupCard = (props) => {
 	return (
 		<View key={props.groupData.groupID} style={styles.itemCard}> 
 			<View style={styles.groupContainer}>
-				<TouchableOpacity style={styles.groupDataContainer}>
-					<Image
-						source={props.groupData.groupImage === '' ? require('../../assets/images/DefaultGroupImage.png') : {uri: `data:image/jpeg;base64,${props.groupData.groupImage}`}}
-						style={styles.groupImage} />
-					<View style={styles.groupDetails}>
-						<View style={{flexDirection: 'column'}}>
-							<Text style={styles.groupName}>{props.groupData.groupName}</Text>
-							<Text style={styles.groupDescription}>{props.groupData.groupDescription}</Text>
+				<TouchableHighlight
+					activeOpacity={0.8}
+					style={styles.groupDataButton}
+					underlayColor={'#FFC60B'}
+					onPress={() => {props.onItemClick(props.groupData.groupID)}}>
+					<View style={styles.groupDataContainer}>
+						<Image
+							source={props.groupData.groupImage === '' ? require('../../assets/images/DefaultGroupImage.png') : {uri: `data:image/jpeg;base64,${props.groupData.groupImage}`}}
+							style={styles.groupImage} />
+						<View style={styles.groupDetails}>
+							<View style={{flexDirection: 'column'}}>
+								<Text style={styles.groupName}>{props.groupData.groupName}</Text>
+								<Text style={styles.groupDescription}>{props.groupData.groupDescription}</Text>
+							</View>
 						</View>
 					</View>
-				</TouchableOpacity>
+				</TouchableHighlight>
 				<TouchableOpacity
 					style={props.expandable ? styles.expandButton : styles.hidden}
 					onPress={() => {props.setDisplayDetails(!props.displayDetails)}}>

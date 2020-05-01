@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Image, Text, TouchableOpacity, View} from 'react-native';
+import {Image, Text, TouchableHighlight, TouchableOpacity, View} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import styles from './RecentTransaction.component.style';
 
@@ -14,7 +14,7 @@ const RecentTransaction = (props) => {
 	}
 
 	return (
-		<View style={styles.container}>
+		<View style={[styles.container, props.style]}>
 			<View style={styles.headerSecion}>
 				<View style={styles.headerTextContainer}>
 					<Text style={styles.headerText}>{props.contentText['RECENT_TRANSACTIONS']}</Text>
@@ -56,24 +56,30 @@ const RecentTransaction = (props) => {
 				{transactionList.map(({transactionID, transactionName, transactionGroupName, transactionType, transactionValue, transactionStatus, groupImage }, index) => {
 					return (
 						<View key={transactionID}>
-							<TouchableOpacity accessibilityRole={'button'} style={styles.transactionItem}> 
-								<Image
-									source={groupImage === '' ? require('../../assets/images/DefaultGroupImage.png') : {uri: `data:image/jpeg;base64,${groupImage}`}}
-									style={styles.transactionImage}/>
-								<View style={styles.transactionDescriptionContainer}>
-									<View style={styles.transactionTitleContainer}>
-										<Text style={styles.transactionName}>{transactionName}</Text>
-										<Text style={styles.transactionGroupName}>
-											{`${transactionGroupName} - ${props.contentText[`${transactionStatus.toUpperCase().replace(' ', '_')}_TRANSACTIONS`]}`}
-											</Text>
-									</View>
-									<View style={styles.transactionValueContainer}>
-										<Text style={[transactionType === 'Credit' ? styles.credit : styles.debit, styles.transactionValue]}>{`Rp ${transactionValue}`}</Text>
-										<FontAwesome5 name={'angle-right'} style={styles.transactionDetailIcon} />
+							<TouchableHighlight
+								accessibilityRole={'button'}
+								activeOpacity={1}
+								underlayColor={'rgba(0,0,0,0.05)'}
+								onPress={() => {props.onItemClick(transactionID)}}
+								style={styles.transactionItem}>
+								<View style={styles.transactionItem}>
+									<Image
+										source={groupImage === '' ? require('../../assets/images/DefaultGroupImage.png') : {uri: `data:image/jpeg;base64,${groupImage}`}}
+										style={styles.transactionImage}/>
+									<View style={styles.transactionDescriptionContainer}>
+										<View style={styles.transactionTitleContainer}>
+											<Text style={styles.transactionName}>{transactionName}</Text>
+											<Text style={styles.transactionGroupName}>
+												{`${transactionGroupName} - ${props.contentText[`${transactionStatus.toUpperCase().replace(' ', '_')}_TRANSACTIONS`]}`}
+												</Text>
+										</View>
+										<View style={styles.transactionValueContainer}>
+											<Text style={[transactionType === 'Credit' ? styles.credit : styles.debit, styles.transactionValue]}>{`Rp ${transactionValue}`}</Text>
+											<FontAwesome5 name={'angle-right'} style={styles.transactionDetailIcon} />
+										</View>
 									</View>
 								</View>
-							</TouchableOpacity>
-							<View style={index == transactionList.length -1 ? styles.hidden : styles.separator}/>
+							</TouchableHighlight>
 						</View>
 					);
 				})}

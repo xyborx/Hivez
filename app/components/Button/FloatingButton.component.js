@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {TouchableOpacity, View} from 'react-native';
+import {TouchableHighlight, View} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import styles from './FloatingButton.component.style';
 
@@ -7,17 +7,23 @@ const Button = (props) => {
 	const [onFocus, setOnFocus] = useState(false);
 	return (
 		<View>
-			<TouchableOpacity
+			<TouchableHighlight
+				activeOpacity={0.25}
 				style={[styles.floatingButtonContainer, onFocus ? styles.floatingButtonFocused : {}]}
+				underlayColor={'#FFC60B'}
 				onPress={() => {
 					setOnFocus(!onFocus);
 				}}>
-				<View >
-					<FontAwesome5 name={props.buttonIcon} style={[styles.floatingButtonIcon, onFocus ? styles.floatingButtonFocusedIcon : {}]} />
+				<View>
+					<FontAwesome5
+						name={onFocus ? props.buttonIconOnFocus : props.buttonIcon}
+						style={[styles.floatingButtonIcon, onFocus ? styles.floatingButtonFocusedIcon : {}]} />
 				</View>
-			</TouchableOpacity>
-			<TouchableOpacity
+			</TouchableHighlight>
+			<TouchableHighlight
+				activeOpacity={0.25}
 				style={onFocus ? [styles.floatingButtonContainer, styles.floatingButtonTopChild] : styles.hidden}
+				underlayColor={'#FFC60B'}
 				onPress={() => {
 					setOnFocus(false);
 					props.topButtonAction();
@@ -25,9 +31,11 @@ const Button = (props) => {
 				<View>
 					<FontAwesome5 name={props.topButtonIcon} style={styles.floatingButtonIcon} />
 				</View>
-			</TouchableOpacity>
-			<TouchableOpacity
+			</TouchableHighlight>
+			<TouchableHighlight
+				activeOpacity={0.25}
 				style={onFocus ? [styles.floatingButtonContainer, styles.floatingButtonLeftChild] : styles.hidden}
+				underlayColor={'#FFC60B'}
 				onPress={() => {
 					setOnFocus(false);
 					props.leftButtonAction();
@@ -35,7 +43,7 @@ const Button = (props) => {
 				<View >
 					<FontAwesome5 name={props.leftButtonIcon} style={styles.floatingButtonIcon} />
 				</View>
-			</TouchableOpacity>
+			</TouchableHighlight>
 		</View>
 	); 
 }

@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import theme from '../../styles/theme.style';
-import {boxContainer, lightPageContainer, pageContent, rootContainer, rowComponent, textAlignLeft, textAlignRight, textAppTitle, textHighlight, textLink} from '../../styles/common.style';
+import {boxContainer, boxShadow, pageContainer, pageContent, rootContainer, rowComponent, textAlignLeft, textAlignRight, textAppTitle, textHighlight, textLink} from '../../styles/common.style';
 
 export default StyleSheet.create({
 	alignLeft: {
@@ -14,6 +14,7 @@ export default StyleSheet.create({
 	},
 	boxContainer: {
 		...boxContainer,
+		...boxShadow,
 		flex: 1,
 		maxWidth: theme.CONTAINER_WIDTH,
 		overflow: 'hidden'
@@ -38,8 +39,10 @@ export default StyleSheet.create({
 	},
 	link: {
 		...textLink,
-		flex: 1,
 		textAlign: 'center'
+	},
+	linkButton: {
+		flex: 1,
 	},
 	linkContainer: {
 		...rowComponent,
@@ -52,7 +55,7 @@ export default StyleSheet.create({
 		alignSelf: 'center'
 	},
 	pageContainer: {
-		...lightPageContainer
+		...pageContainer
 	},
 	pageContentView: {
 		...pageContent
@@ -70,6 +73,7 @@ export default StyleSheet.create({
 	},
 	title: {
 		...textHighlight,
+		color: theme.COLOR_SOFT_GREY,
 		marginBottom: theme.PADDING_WIDE,
 		textAlign: 'center'
 	}

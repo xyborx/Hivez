@@ -31,6 +31,7 @@ const DropdownLanguage = (props) => {
             onChange={(option) => {props.onChange(option.label)}}
             optionContainerStyle={styles.modal}
             overlayStyle={styles.modalOverlay}
+            sectionTextStyle={styles.sectionTextStyle}
             style={styles.container} >
             <View style={styles.wrapper}>
                 <Flag id={props.langaugeIcons[props.currentValue]} size={0.075} style={styles.flag} />

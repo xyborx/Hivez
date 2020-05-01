@@ -8,6 +8,7 @@ export default StyleSheet.create({
 		flexDirection: 'row'
 	},
 	allTransactionIcon: {
+		color: theme.COLOR_PRIMARY,
 		marginLeft: theme.MARGIN_NARROW
 	},
 	allTransactionText: {
@@ -17,12 +18,12 @@ export default StyleSheet.create({
 		backgroundColor: theme.COLOR_WHITE,
 		borderRadius: theme.ROUNDNESS_DEFAULT,
 		marginHorizontal: theme.MARGIN_WIDE,
-		padding: theme.PADDING_DEFAULT
+		overflow: 'hidden'
 	},
 	filterList: {
 		flexDirection: 'row',
 		justifyContent: 'flex-start',
-		marginTop: theme.MARGIN_DEFAULT
+		marginHorizontal: theme.MARGIN_DEFAULT
 	},
 	filterButton: {
 		alignSelf: 'center',
@@ -46,7 +47,8 @@ export default StyleSheet.create({
 	},
 	headerSecion: {
 		flexDirection: 'row',
-		justifyContent: 'space-between'
+		justifyContent: 'space-between',
+		margin: theme.MARGIN_DEFAULT
 	},
 	headerTextContainer: {
 		flexDirection: 'column'
@@ -82,22 +84,24 @@ export default StyleSheet.create({
 		marginTop: theme.MARGIN_EXTRA_NARROW
 	},
 	transactionImage: {
-		borderRadius: 40/2,
+		borderRadius: 48/2,
 		flexGrow: 0,
-		height: 40,
+		height: 48,
 		marginRight: theme.MARGIN_DEFAULT,
-		width: 40
+		width: 48
 	},
 	transactionItem: {
 		alignItems: 'center',
 		flexDirection: 'row',
-		marginBottom: theme.MARGIN_NARROW
+		paddingHorizontal: theme.PADDING_NARROW,
+		paddingVertical: theme.PADDING_EXTRA_NARROW
 	},
 	transactionListContainer: {
 		marginTop: theme.MARGIN_DEFAULT
 	},
 	transactionName: {
-		...textHighlight
+		...textHighlight,
+		color: theme.COLOR_SOFT_GREY,
 	},
 	transactionTitleContainer: {
 		flexDirection: 'column'

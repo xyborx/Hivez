@@ -1,10 +1,9 @@
 import React from 'react';
-import {Text, ScrollView, View} from 'react-native';
+import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import Button from '../Button/Button.component';
 import DropdownLanguage from '../DropdownLanguage/DropdownLanguage.component';
 import EmailField from '../TextField/EmailField.component';
-import PasswordField from '../TextField/PasswordField.component';
 import PrivacyPolicyModal from '../Modal/PrivacyPolicy.component';
 import TermsAndConditionsModal from '../Modal/TermsAndConditions.component';
 import styles from './ForgotPassword.component.style';
@@ -42,12 +41,16 @@ const ForgotPassword = (props) => {
 								style={props.secondPhase ? styles.hidden : styles.button}
 								text={props.contentText['RESET_PASSWORD']} />
 							<View style={styles.linkContainer}>
-								<Text style={[styles.link, styles.alignLeft]} onPress={props.signIn}>
-									{props.contentText['SIGN_IN']}
-								</Text>
-								<Text style={[styles.link, styles.alignRight]} onPress={props.signUp}>
-									{props.contentText['SIGN_UP']}
-								</Text>
+								<TouchableOpacity style={styles.linkButton} onPress={props.signIn}>
+									<Text style={[styles.link, styles.alignLeft]}>
+										{props.contentText['SIGN_IN']}
+									</Text>
+								</TouchableOpacity>
+								<TouchableOpacity style={styles.linkButton} onPress={props.signUp}>
+									<Text style={[styles.link, styles.alignRight]}>
+										{props.contentText['SIGN_UP']}
+									</Text>
+								</TouchableOpacity>
 							</View>
 						</View>
 					</View>

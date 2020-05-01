@@ -8,6 +8,7 @@ export default StyleSheet.create({
 	},
 	header: {
 		...textHighlight,
+		color: theme.COLOR_SOFT_GREY,
 		marginBottom: theme.MARGIN_NARROW,
 		textAlign: 'center'
 	},

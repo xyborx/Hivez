@@ -24,6 +24,17 @@ export const boxContainer = {
 	shadowColor: theme.COLOR_BLACK
 }
 
+export const boxShadow = {
+	shadowColor: theme.COLOR_BLACK,
+	shadowOffset: {
+		width: 0,
+		height: 1,
+	},
+	shadowOpacity: 0.22,
+	shadowRadius: 2.22,
+	elevation: 1.5,
+}
+
 export const centerContainer = {
 	...basicContainer,
 	justifyContent: 'center',
@@ -97,7 +108,7 @@ export const modalWrapper = {
 }
 
 export const pageContainer = {
-	flex: 1,
+	flex: 1
 }
 
 export const pageContent = {
@@ -106,14 +117,10 @@ export const pageContent = {
 	justifyContent: 'center'
 }
 
-export const lightPageContainer = {
-	...pageContainer,
-	backgroundColor: theme.COLOR_LIGHT_GREY
-}
-
 export const rootContainer = {
 	flex: 1,
-	flexGrow: 1
+	flexGrow: 1,
+	backgroundColor: theme.PAGE_BACKGROUND_LIGHT
 }
 
 export const rowComponent = {
@@ -145,7 +152,7 @@ export const textContent = {
 };
 
 export const textPageHeader = {
-	color: theme.COLOR_BLACK,
+	color: theme.COLOR_PRIMARY,
 	fontSize: theme.FONT_SIZE_HEADER,
 	fontWeight: theme.FONT_WEIGHT_BOLD
 }
@@ -157,7 +164,7 @@ export const textPageSubHeader = {
 }
 
 export const textHighlight = {
-	color: theme.COLOR_BLACK,
+	color: theme.COLOR_PRIMARY,
 	fontSize: theme.FONT_SIZE_MEDIUM,
 	fontWeight: theme.FONT_WEIGHT_BOLD
 };

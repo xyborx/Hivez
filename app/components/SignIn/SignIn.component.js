@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, ScrollView, View} from 'react-native';
+import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import Button from '../Button/Button.component';
 import DropdownLanguage from '../DropdownLanguage/DropdownLanguage.component';
@@ -44,12 +44,16 @@ const SignIn = (props) => {
 								style={styles.button}
 								text={props.secondPhase? props.contentText['SIGN_IN'] : props.contentText['NEXT']} />
 							<View style={styles.linkContainer}>
-								<Text style={[styles.link, styles.alignLeft]} onPress={props.forgotPassword}>
-									{props.contentText['FORGOT_PASSWORD']}
-								</Text>
-								<Text style={[styles.link, styles.alignRight]} onPress={props.signUp}>
-									{props.contentText['SIGN_UP']}
-								</Text>
+								<TouchableOpacity style={styles.linkButton} onPress={props.forgotPassword}>
+									<Text style={[styles.link, styles.alignLeft]}>
+										{props.contentText['FORGOT_PASSWORD']}
+									</Text>
+								</TouchableOpacity>
+								<TouchableOpacity style={styles.linkButton} onPress={props.signUp}>
+									<Text style={[styles.link, styles.alignRight]}>
+										{props.contentText['SIGN_UP']}
+									</Text>
+								</TouchableOpacity>
 							</View>
 						</View>
 					</View>

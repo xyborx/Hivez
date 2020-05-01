@@ -27,6 +27,7 @@ const GroupList = (props) => {
 			</ScrollView>
 			<FloatingButton
 				buttonIcon={'plus'}
+				buttonIconOnFocus={'times'}
 				leftButtonIcon={'search'}
 				leftButtonAction={props.findGroup}
 				topButtonIcon={'user-plus'}

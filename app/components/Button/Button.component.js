@@ -9,7 +9,7 @@ const Button = (props) => {
 			disabled={!props.accessability}
 			onPress={props.onPress}
 			underlayColor="white">
-			<Text style={styles.text}>{props.text}</Text>
+			<Text style={[styles.text, props.accessability ? {} : styles.textDisabled]}>{props.text}</Text>
 		</TouchableOpacity>
 	); 
 }

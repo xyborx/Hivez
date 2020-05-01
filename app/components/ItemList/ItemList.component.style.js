@@ -21,7 +21,7 @@ export default StyleSheet.create({
 		flexGrow: 1
 	},
 	listDetailIcon: {
-		color: theme.COLOR_SOFT_GREY,
+		color: theme.COLOR_GREY,
 		fontSize: theme.FONT_SIZE_MEDIUM
 	},
 	listImage: {
@@ -33,7 +33,7 @@ export default StyleSheet.create({
 	listItem: {
 		alignItems:'center',
 		flexDirection: 'row',
-		paddingHorizontal: theme.PADDING_WIDE,
+		paddingHorizontal: theme.PADDING_DEFAULT,
 		paddingVertical: theme.PADDING_NARROW
 	}
 });

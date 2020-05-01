@@ -1,13 +1,15 @@
 import {StyleSheet} from 'react-native';
 import theme from '../../styles/theme.style';
-import {rootContainer, textPageHeader, textHighlight} from '../../styles/common.style';
+import {boxShadow, rootContainer, textPageHeader} from '../../styles/common.style';
 
 export default StyleSheet.create({
 	groupListContainer: {
+		...boxShadow,
 		backgroundColor: theme.COLOR_WHITE,
 		borderRadius: theme.ROUNDNESS_DEFAULT,
 		flex: 1,
-		flexGrow: 1
+		flexGrow: 1,
+		margin: theme.MARGIN_NARROW
 	},
 	header: {
 		...textPageHeader,
@@ -26,6 +28,6 @@ export default StyleSheet.create({
 		...rootContainer
 	},
 	searchField: {
-		margin: theme.MARGIN_WIDE
+		margin: theme.MARGIN_DEFAULT
 	}
 });

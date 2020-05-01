@@ -16,21 +16,23 @@ const FavouriteGroup = (props) => {
 		<View style={props.style}>
 			<Text style={props.groupList.length ? styles.hidden : styles.noFavouriteGroup}>{props.contentText['NO_FAVOURITE_GROUP']}</Text>
 			<Carousel
-			data={props.groupList}
-			itemWidth={width - (theme.MARGIN_WIDE * 2)}
-			onSnapToItem={SetCurrentIndex}
-			ref={setCarousel}
-			sliderWidth={width}
-			renderItem={({item}) => {
-				return (
-					<GroupCard
-						contentText={props.contentText}
-						displayDetails={displayDetails}
-						expandable={true}
-						groupData={item}
-						setDisplayDetails={setDisplayDetails} />
-				);
-			}} />
+				data={props.groupList}
+				inactiveSlideScale={0.75}
+				itemWidth={width - (theme.MARGIN_DEFAULT * 2)}
+				onSnapToItem={SetCurrentIndex}
+				ref={setCarousel}
+				sliderWidth={width}
+				renderItem={({item}) => {
+					return (
+						<GroupCard
+							contentText={props.contentText}
+							displayDetails={displayDetails}
+							expandable={true}
+							groupData={item}
+							onItemClick={props.onItemClick}
+							setDisplayDetails={setDisplayDetails} />
+					);
+				}} />
             <Pagination
 				activeDotIndex={currentIndex}
 				carouselRef={carousel}

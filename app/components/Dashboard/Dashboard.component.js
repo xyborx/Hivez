@@ -33,9 +33,12 @@ const Dashboard = (props) => {
 					<FavouriteGroup
 						contentText={props.contentText}
 						groupList={props.groupList}
+						onItemClick={props.onGroupClick}
 						style={styles.favouriteGroup}/>
 					<RecentTransaction
 						contentText={props.contentText}
+						style={styles.boxShadow}
+						onItemClick={props.onTransactionClick}
 						transactionList={props.transactionList} />
 				</View>
 			</ScrollView>

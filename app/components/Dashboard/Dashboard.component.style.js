@@ -1,9 +1,13 @@
 import {StyleSheet} from 'react-native';
 import theme from '../../styles/theme.style';
-import {lightPageContainer, pageContent, rootContainer, textHighlight, textPageHeader, textPageSubHeader} from '../../styles/common.style';
+import {boxShadow, pageContainer, rootContainer, textHighlight, textPageHeader, textPageSubHeader} from '../../styles/common.style';
 
 export default StyleSheet.create({
+	boxShadow: {
+		...boxShadow,
+	},
 	editIcon: {
+		color: theme.COLOR_PRIMARY,
 		marginLeft: theme.MARGIN_NARROW
 	},
 	editListButton: {
@@ -30,7 +34,7 @@ export default StyleSheet.create({
 		...textHighlight
 	},
 	pageContainer: {
-		...lightPageContainer
+		...pageContainer
 	},
 	pageContentView: {
 		// ...pageContent
@@ -39,7 +43,6 @@ export default StyleSheet.create({
 		...rootContainer
 	},
 	scrollViewWrapper: {
-		// backgroundColor: 'red',
 		paddingVertical: theme.PADDING_EXTRA_WIDE
 	},
 	subHeader: {

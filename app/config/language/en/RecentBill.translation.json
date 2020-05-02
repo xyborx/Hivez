@@ -1,0 +1,11 @@
+{
+	"TITLE": "Bills",
+	"LAST_FIVE_TRANSACTIONS": "Last 5 transactions",
+	"SEE_ALL_TRANSACTIONS": "See all transactions",
+	"ALL_TRANSACTIONS": "All",
+	"APPROVED_TRANSACTIONS": "Approved",
+	"ON_PROGRESS_TRANSACTIONS": "On Progress",
+	"DECLINED_TRANSACTIONS": "Declined",
+	"NO_RECENT_TRANSACTION": "No recent transaction",
+	"BY": "by"
+}

@@ -1,0 +1,11 @@
+{
+	"TITLE": "Transaksi Terkini",
+	"LAST_FIVE_TRANSACTIONS": "5 transaksi terkahir",
+	"SEE_ALL_TRANSACTIONS": "Lihat semua transaksi",
+	"ALL_TRANSACTIONS": "Semua",
+	"APPROVED_TRANSACTIONS": "Disetujui",
+	"ON_PROGRESS_TRANSACTIONS": "Sedang Berlangsung",
+	"DECLINED_TRANSACTIONS": "Ditolak",
+	"NO_RECENT_TRANSACTION": "Tidak ada transaksi terkini",
+	"BY": "oleh"
+}

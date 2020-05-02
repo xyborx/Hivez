@@ -4,44 +4,64 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {LocalizationProvider} from '../utils/language.utils';
-import DashboardPage from '../pages/Dashboard.page';
-import EventListPage from '../pages/EventList.page';
-import GroupListPage from '../pages/GroupList.page';
-import NotificationPage from '../pages/Notification.page';
-import MyProfilePage from '../pages/MyProfile.page';
+
 import SignInPage from '../pages/SignIn.page';
 import SignUpPage from '../pages/SignUp.page';
 import ForgotPasswordPage from '../pages/ForgotPassword.page';
 
-const AppNavigation = createStackNavigator();
+import GroupListPage from '../pages/GroupList.page';
+import GroupDetailPage from '../pages/GroupDetail.page';
+
+import DashboardPage from '../pages/Dashboard.page';
+import EventListPage from '../pages/EventList.page';
+import NotificationPage from '../pages/Notification.page';
+import MyProfilePage from '../pages/MyProfile.page';
+
+const PreSignInNavigation = createStackNavigator();
+
+const PreSignInStack = () => {
+	return (
+		<PreSignInNavigation.Navigator initialRouteName='SignIn' headerMode='none'>
+			<PreSignInNavigation.Screen name='SignIn' component={SignInPage}/>
+			<PreSignInNavigation.Screen name='SignUp' component={SignUpPage}/>
+			<PreSignInNavigation.Screen name='ForgotPassword' component={ForgotPasswordPage}/>
+		</PreSignInNavigation.Navigator>
+	);
+};
+
+const GroupNavigation = createStackNavigator();
+
+const GroupStack = () => {
+	return (
+		<GroupNavigation.Navigator initialRouteName='GroupDetail' headerMode='none'>
+			<GroupNavigation.Screen name='Group' component={GroupListPage} />
+			<GroupNavigation.Screen name='GroupDetail' component={GroupDetailPage} />
+		</GroupNavigation.Navigator>
+	);
+};
 
 const TabNavigation = createBottomTabNavigator();
 
-function MyTabs() {
+const AppTabs = () => {
 	return (
 		<TabNavigation.Navigator
 			backBehavior='history'
-			initialRouteName='Dashboard' >
+			initialRouteName='Group'>
 			<TabNavigation.Screen name='Dashboard' component={DashboardPage} />
-			<TabNavigation.Screen name='Group' component={GroupListPage} />
+			<TabNavigation.Screen name='Group' component={GroupStack} />
 			<TabNavigation.Screen name='Event' component={EventListPage} />
 			<TabNavigation.Screen name='Notification' component={NotificationPage} />
 			<TabNavigation.Screen name='Profile' component={MyProfilePage} />
 		</TabNavigation.Navigator>
 	);
-}
+};
 
 export default function Router() {
     return (
         <NavigationContainer>
 			<SafeAreaProvider>
 				<LocalizationProvider>
-					<MyTabs />
-					{/* <AppNavigation.Navigator initialRouteName='SignIn' headerMode='none'>
-						<AppNavigation.Screen name='SignIn' component={SignInPage}/>
-						<AppNavigation.Screen name='SignUp' component={SignUpPage}/>
-						<AppNavigation.Screen name='ForgotPassword' component={ForgotPasswordPage}/>
-					</AppNavigation.Navigator> */}
+					<AppTabs />
 				</LocalizationProvider>
 			</SafeAreaProvider>
         </NavigationContainer>

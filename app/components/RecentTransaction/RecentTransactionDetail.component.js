@@ -1,28 +1,27 @@
 import React, {useState} from 'react';
-import {Image, Text, TouchableHighlight, TouchableOpacity, View} from 'react-native';
+import {Text, TouchableHighlight, TouchableOpacity, View} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import {getRelativeDate} from '../../utils/date.utils';
 import {padArray, rupiahFormatting} from '../../utils/helper.utils';
-import styles from './RecentTransaction.component.style';
+import styles from './RecentTransactionDetail.component.style';
 
 const TransactionItem = (props) => {
-	const {id, name, groupName, type, value, status, image} = props.item;
+	const {id, name, date, approver, type, value, status} = props.item;
+	const details = props.contentText[`${status.toUpperCase().replace(' ', '_')}_TRANSACTIONS`]
+		+ (status === 'On Progress' ? '' : ` ${props.contentText['BY']} ${approver}`);
 	return (
 		<TouchableHighlight
 			accessibilityRole={'button'}
 			activeOpacity={1}
+			onPress={() => {props.onPress(id)}}
 			underlayColor={'rgba(0,0,0,0.05)'}
-			onPress={() => {props.onItemClick(id)}}
 			style={styles.transactionItem}>
 			<View style={styles.transactionItem}>
-				<Image
-					source={image === '' ? require('../../assets/images/DefaultGroupImage.png') : {uri: `data:image/jpeg;base64,${image}`}}
-					style={styles.transactionImage}/>
 				<View style={styles.transactionDescriptionContainer}>
 					<View style={styles.transactionTitleContainer}>
 						<Text style={styles.transactionName}>{name}</Text>
-						<Text style={styles.transactionGroupName}>
-							{`${groupName} - ${props.contentText[`${status.toUpperCase().replace(' ', '_')}_TRANSACTIONS`]}`}
-						</Text>
+						<Text style={styles.transactionDetail}>{details}</Text>
+						<Text style={styles.transactionDate}>{getRelativeDate(date)}</Text>
 					</View>
 					<View style={styles.transactionValueContainer}>
 						<Text style={[type === 'Credit' ? styles.credit : styles.debit, styles.transactionValue]}>{rupiahFormatting(value)}</Text>
@@ -38,14 +37,13 @@ const EmptyItem = () => {
 	return (
 		<TouchableHighlight style={styles.transactionItem}>
 			<View style={styles.transactionItem}>
-				<Image style={styles.transactionImage}/>
 				<View style={styles.transactionDescriptionContainer}>
 					<View style={styles.transactionTitleContainer}>
 						<Text style={styles.transactionName}></Text>
-						<Text style={styles.transactionGroupName}></Text>
+						<Text style={styles.transactionDetail}></Text>
+						<Text style={styles.transactionDate}></Text>
 					</View>
 					<View style={styles.transactionValueContainer}>
-						<Text style={styles.transactionValue}></Text>
 					</View>
 				</View>
 			</View>
@@ -53,7 +51,7 @@ const EmptyItem = () => {
 	);
 }
 
-const RecentTransaction = (props) => {
+const RecentTransactionDetail = (props) => {
 	const [filterType, setFilterType] = useState('All');
 	const [transactionList, setTransactionList] = useState(padArray(props.transactionList, 5, null));
 
@@ -118,4 +116,4 @@ const RecentTransaction = (props) => {
 	);
 }
 
-export default RecentTransaction;
+export default RecentTransactionDetail;

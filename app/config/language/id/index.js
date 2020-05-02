@@ -16,6 +16,8 @@ import MyProfile from './MyProfile.translation.json';
 import NotificationList from './NotificationList.translation.json';
 import PasswordValidation from './PasswordValidation.translation.json';
 import PrivacyPolicy from './PrivacyPolicy.translation.json';
+import RecentBill from './RecentBill.translation.json';
+import RecentTransaction from './RecentTransaction.translation.json';
 import SignIn from './SignIn.translation.json';
 import SignUp from './SignUp.translation.json';
 import TermsAndConditions from './TermsAndConditions.translation.json';
@@ -40,6 +42,8 @@ module.exports = {
 	NotificationList,
 	PasswordValidation,
 	PrivacyPolicy,
+	RecentBill,
+	RecentTransaction,
 	SignIn,
 	SignUp,
 	TermsAndConditions,

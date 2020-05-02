@@ -41,7 +41,7 @@ const Dashboard = (props) => {
 						pendingApprovalList={props.pendingApprovalList}
 						style={props.pendingApprovalList.length === 0 ? styles.hidden : styles.groupApprovalCard} />
 					<RecentTransaction
-						contentText={props.contentText}
+						contentText={props.recentTransactionText}
 						style={styles.boxShadow}
 						onItemClick={props.onTransactionClick}
 						transactionList={props.transactionList} />

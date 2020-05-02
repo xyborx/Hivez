@@ -42,7 +42,8 @@ export default StyleSheet.create({
 		fontSize: theme.FONT_SIZE_MEDIUM
 	},
 	profileSectionItemText: {
-		...textHighlight
+		...textHighlight,
+		color: theme.COLOR_SOFT_GREY
 	},
 	profileSectionItemValue: {
 		color: theme.COLOR_SOFT_GREY
@@ -52,7 +53,6 @@ export default StyleSheet.create({
 	},
 	sectionHeader: {
 		...textHighlight,
-		color: theme.COLOR_SOFT_GREY,
 		marginVertical: theme.MARGIN_DEFAULT,
 		textAlign: 'center'
 	},

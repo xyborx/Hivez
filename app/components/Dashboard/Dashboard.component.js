@@ -3,6 +3,7 @@ import {Text, TouchableOpacity, ScrollView, View} from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import FavouriteGroup from '../FavouriteGroup/FavouriteGroup.component';
+import PendingApprovalCard from '../PendingApprovalCard/PendingApprovalCard.component';
 import RecentTransaction from '../RecentTransaction/RecentTransaction.component';
 import styles from './Dashboard.component.style';
 
@@ -34,7 +35,11 @@ const Dashboard = (props) => {
 						contentText={props.contentText}
 						groupList={props.groupList}
 						onItemClick={props.onGroupClick}
-						style={styles.favouriteGroup}/>
+						style={styles.favouriteGroup} />
+					<PendingApprovalCard
+						contentText={props.contentText}
+						pendingApprovalList={props.pendingApprovalList}
+						style={props.pendingApprovalList.length === 0 ? styles.hidden : styles.groupApprovalCard} />
 					<RecentTransaction
 						contentText={props.contentText}
 						style={styles.boxShadow}

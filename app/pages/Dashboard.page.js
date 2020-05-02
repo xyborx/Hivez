@@ -180,22 +180,57 @@ const DashboardPage = ({navigation}) => {
 		groupImage: ''
 	}];
 
+	const pendingApprovalListDummy = [{
+		type: 'JOIN_GROUP',
+		count: 69,
+		icon: 'user-plus',
+		action: () => viewPendingApprovalList('JOIN_GROUP')
+	}, {
+		type: 'JOIN_EVENT',
+		count: 21,
+		icon: 'calendar-plus',
+		action: () => viewPendingApprovalList('JOIN_EVENT')
+	}, {
+		type: 'TRANSACTION',
+		count: 420,
+		icon: 'tasks',
+		action: () => viewPendingApprovalList('TRANSACTION')
+	}, {
+		type: 'BILL_PAYMENT',
+		count: 13,
+		icon: 'vote-yea',
+		action: () => viewPendingApprovalList('BILL_PAYMENT')
+	}, {
+		type: 'BILL_CREATION',
+		count: 99,
+		icon: 'receipt',
+		action: () => viewPendingApprovalList('BILL_CREATION')
+	}];
+
 	const [userName, setUserName] = useState(userNameDummy);
 	const [groupList, setGroupList] = useState(groupListDummy);
 	const [transactionList, setTransactionList] = useState(transactionListDummy);
+	const [pendingApprovalList, setPendingApprovalList] = useState(pendingApprovalListDummy);
 
 	const navigateToGroup = (groupID) => {
 		// navigation.navigate('GroupDetails', {
 		// 	groupID: groupID
 		// });
-		alert(groupID);
+		alert(`Navigate to group ${groupID}`);
 	};
 
 	const viewTransactionDetail = (transactionID) => {
 		// navigation.navigate('TransactionDetails', {
 		// 	transactionID: transactionID
 		// });
-		alert(transactionID);
+		alert(`Navigate to transaction detail ${transactionID}`);
+	}
+
+	const viewPendingApprovalList = (type) => {
+		// navigation.navigate('PendingApprovalList', {
+		// 	type: type
+		// });
+		alert(`Navigate to pending list ${type}`);
 	}
 
 	return (
@@ -205,6 +240,7 @@ const DashboardPage = ({navigation}) => {
 			groupList={groupList}
 			onGroupClick={navigateToGroup}
 			transactionList={transactionList}
+			pendingApprovalList={pendingApprovalList}
 			onTransactionClick={viewTransactionDetail} />
 	);
 };

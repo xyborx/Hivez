@@ -17,5 +17,6 @@
 	"REMOVED": "You have been removed from {source_name}",
 	"TODAY": "Today",
 	"LAST_SEVEN_DAYS": "Last 7 Days",
-	"LAST_THIRTY_DAYS": "Last 30 Days"
+	"LAST_THIRTY_DAYS": "Last 30 Days",
+	"EMPTY_NOTIFICATION": "No new notification for you"
 }

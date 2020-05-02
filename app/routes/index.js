@@ -21,12 +21,12 @@ function MyTabs() {
 	return (
 		<TabNavigation.Navigator
 			backBehavior='history'
-			initialRouteName='Notification' >
+			initialRouteName='Dashboard' >
 			<TabNavigation.Screen name='Dashboard' component={DashboardPage} />
-			<TabNavigation.Screen name='GroupList' component={GroupListPage} />
-			<TabNavigation.Screen name='EventList' component={EventListPage} />
+			<TabNavigation.Screen name='Group' component={GroupListPage} />
+			<TabNavigation.Screen name='Event' component={EventListPage} />
 			<TabNavigation.Screen name='Notification' component={NotificationPage} />
-			<TabNavigation.Screen name='MyProfile' component={MyProfilePage} />
+			<TabNavigation.Screen name='Profile' component={MyProfilePage} />
 		</TabNavigation.Navigator>
 	);
 }

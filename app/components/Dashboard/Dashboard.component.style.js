@@ -23,10 +23,18 @@ export default StyleSheet.create({
 		justifyContent: 'space-between',
 		marginTop: theme.MARGIN_DEFAULT,
 	},
+	groupApprovalCard: {
+		marginHorizontal: theme.MARGIN_WIDE,
+		marginTop: 0,
+		marginBottom: theme.MARGIN_EXTRA_WIDE
+	},
 	header: {
 		...textPageHeader,
 		marginTop: theme.MARGIN_EXTRA_WIDTH,
 		marginBottom: theme.MARGIN_EXTRA_NARROW
+	},
+	hidden: {
+		display: 'none'
 	},
 	indentSection: {
 		paddingHorizontal: theme.PADDING_WIDE

@@ -3,6 +3,15 @@ import theme from '../../styles/theme.style';
 import {textHighlight, textPageSubHeader} from '../../styles/common.style';
 
 export default StyleSheet.create({
+	emptyList: {
+		alignItems: 'center',
+		flexGrow: 1,
+		justifyContent: 'center'
+	},
+	emptyListText: {
+		fontSize: theme.FONT_SIZE_MEDIUM,
+		color: theme.COLOR_SOFT_GREY
+	},
 	flatList: {
 		overflow: 'hidden'
 	},
@@ -53,5 +62,8 @@ export default StyleSheet.create({
 	listTitle: {
 		...textHighlight,
 		color: theme.COLOR_SOFT_GREY
+	},
+	sectionList: {
+		flexGrow: 1
 	}
 });

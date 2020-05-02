@@ -31,15 +31,16 @@ const NotificationItem = (props) => {
 const NotificationList = (props) => {
 	return (
 		<SectionList
+			contentContainerStyle={styles.sectionList}
 			keyboardShouldPersistTaps={'handled'}
 			keyExtractor={item => item.id}
 			showsVerticalScrollIndicator={false}
 			sections={props.notificationList}
 			stickySectionHeadersEnabled={true}
 			style={[styles.flatList, props.style]}
-			renderSectionHeader={({ section: { title } }) => (
-				<View style={styles.headerContainer}>
-					<Text style={styles.header}>{props.contentText[title]}</Text>
+			renderSectionHeader={({section}) => (
+				<View style={section.data.length === 0 ? styles.hidden : styles.headerContainer}>
+					<Text style={styles.header}>{props.contentText[section.title]}</Text>
 				</View>
 			)}
 			renderItem={({item}) => {
@@ -63,7 +64,11 @@ const NotificationList = (props) => {
 						onPress={onPress}
 						title={title}/>
 				);
-			}} />
+			}}
+			ListEmptyComponent={
+				<View style={styles.emptyList}>
+					<Text style={styles.emptyListText}>{props.contentText['EMPTY_NOTIFICATION']}</Text>
+				</View>} />
 	);
 }
 

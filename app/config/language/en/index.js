@@ -13,6 +13,7 @@ import GroupList from './GroupList.translation.json';
 import Language from './Language.translation.json';
 import Modal from './Modal.translation.json';
 import MyProfile from './MyProfile.translation.json';
+import NotificationList from './NotificationList.translation.json';
 import PasswordValidation from './PasswordValidation.translation.json';
 import PrivacyPolicy from './PrivacyPolicy.translation.json';
 import SignIn from './SignIn.translation.json';
@@ -36,6 +37,7 @@ module.exports = {
 	Language,
 	Modal,
 	MyProfile,
+	NotificationList,
 	PasswordValidation,
 	PrivacyPolicy,
 	SignIn,

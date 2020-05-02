@@ -25,6 +25,7 @@ export default StyleSheet.create({
 	},
 	header: {
 		...textPageHeader,
+		marginTop: theme.MARGIN_EXTRA_WIDTH,
 		marginBottom: theme.MARGIN_EXTRA_NARROW
 	},
 	indentSection: {

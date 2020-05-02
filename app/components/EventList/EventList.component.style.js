@@ -9,17 +9,19 @@ export default StyleSheet.create({
 		borderRadius: theme.ROUNDNESS_DEFAULT,
 		flex: 1,
 		flexGrow: 1,
-		margin: theme.MARGIN_NARROW
+		margin: theme.MARGIN_NARROW,
+		marginTop: 0
 	},
 	header: {
 		...textPageHeader,
-		marginVertical: theme.MARGIN_WIDE,
+		marginVertical: theme.MARGIN_EXTRA_WIDE,
 		textAlign: 'center'
 	},
 	pageContainer: {
 		flexDirection: 'row',
 		overflow: 'hidden',
-		padding: theme.PADDING_DEFAULT
+		padding: theme.PADDING_DEFAULT,
+		paddingTop: 0
 	},
 	pageContentView: {
 		flexGrow: 1

@@ -2,9 +2,11 @@ import React, {createContext, useState} from 'react';
 import Storage from './storage.utils';
 import * as RNLocalize from "react-native-localize";
 import LocalizedStrings from 'react-native-localization';
+import moment from "moment";
 import en from '../config/language/en/index';
 import id from '../config/language/id/index';
 import languageIcons from '../config/map/FlagIcon.map.json';
+import momentLocalization from '../config/moment/index';;
 
 const DEFAULT_LANGUAGE = 'en';
 
@@ -28,6 +30,7 @@ export const LocalizationProvider = ({children}) => {
 	const setLanguage = language => {
 		translations.setLanguage(language);
 		setAppLanguage(language);
+		moment.updateLocale(language, momentLocalization[language]);
 		Storage.set(Storage.keys.LANGUAGES, language);
 	};
 
@@ -36,6 +39,7 @@ export const LocalizationProvider = ({children}) => {
 
 		if (currentLanguage) {
 			setLanguage(currentLanguage);
+			moment.updateLocale(currentLanguage, momentLocalization[currentLanguage]);
 		} else {
 			let localeCode = DEFAULT_LANGUAGE;
 			const supportedLocaleCodes = translations.getAvailableLanguages();
@@ -49,6 +53,7 @@ export const LocalizationProvider = ({children}) => {
 				}
 			});
 			setLanguage(localeCode);
+			moment.updateLocale(localeCode, momentLocalization[localeCode]);
 		}
 	};
 

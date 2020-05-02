@@ -1,0 +1,21 @@
+{
+	"PAGE_TITLE": "Notifikasi",
+	"JOIN_APPROVED": "Kamu telah disetujui untuk bergabung di {source_name}",
+	"JOIN_REJECTED": "Kamu telah ditolak untuk bergabung di {source_name}",
+	"REQUEST_APPROVED": "Permintaanmu telah disetujui",
+	"REQUEST_REJECTED": "Permintaanmu telah ditolak",
+	"BILL_CREATION_APPROVED": "Pembuatan tagihan barumu telah disetujui",
+	"BILL_CREATION_REJECTED": "Pembuatan tagihan barumu telah ditolak",
+	"BILL_PAYMENT_APPROVED": "Pembayaran tagihanmu telah disetujui",
+	"BILL_PAYMENT_REJECTED": "Pembayaran tagihanmu telah ditolak",
+	"ROLE_CHANGED": "Peranmu telah dirubah menjadi {status}",
+	"LEADER": "Ketua",
+	"TREASURER": "Bendahara",
+	"MONEY_HOLDER": "Pemegang uang",
+	"MEMBER": "Anggota",
+	"LEFT": "Kamu keluar dari {source_name}",
+	"REMOVED": "Kamu telah dikeluarkan dari {source_name}",
+	"TODAY": "Hari Ini",
+	"LAST_SEVEN_DAYS": "7 Hari Sebelumnya",
+	"LAST_THIRTY_DAYS": "30 Hari Sebelumnya"
+}

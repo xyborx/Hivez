@@ -6,7 +6,7 @@ export default StyleSheet.create({
 	header: {
 		...textPageHeader,
 		textAlign: 'center',
-		marginBottom: theme.MARGIN_WIDE,
+		marginVertical: theme.MARGIN_EXTRA_WIDE,
 	},
 	profileImage: {
 		alignSelf: 'center',
@@ -58,7 +58,7 @@ export default StyleSheet.create({
 	},
 	scrollViewWrapper: {
 		alignSelf: 'stretch',
-		padding: theme.PADDING_WIDE
+		paddingHorizontal: theme.PADDING_WIDE
 	},
 	versionText: {
 		...textHighlight,

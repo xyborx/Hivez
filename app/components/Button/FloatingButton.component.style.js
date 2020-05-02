@@ -1,8 +1,10 @@
 import {StyleSheet} from 'react-native';
 import theme from '../../styles/theme.style';
+import {boxShadow} from '../../styles/common.style';
 
 export default StyleSheet.create({
 	floatingButtonContainer: {
+		...boxShadow,
 		alignItems: 'center',
 		justifyContent: 'center',
 		position: 'absolute',

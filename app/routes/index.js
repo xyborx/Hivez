@@ -7,6 +7,7 @@ import {LocalizationProvider} from '../utils/language.utils';
 import DashboardPage from '../pages/Dashboard.page';
 import EventListPage from '../pages/EventList.page';
 import GroupListPage from '../pages/GroupList.page';
+import NotificationPage from '../pages/Notification.page';
 import MyProfilePage from '../pages/MyProfile.page';
 import SignInPage from '../pages/SignIn.page';
 import SignUpPage from '../pages/SignUp.page';
@@ -20,11 +21,11 @@ function MyTabs() {
 	return (
 		<TabNavigation.Navigator
 			backBehavior='history'
-			initialRouteName='Dashboard' >
+			initialRouteName='Notification' >
 			<TabNavigation.Screen name='Dashboard' component={DashboardPage} />
 			<TabNavigation.Screen name='GroupList' component={GroupListPage} />
 			<TabNavigation.Screen name='EventList' component={EventListPage} />
-			<TabNavigation.Screen name='Notification' component={SignUpPage} />
+			<TabNavigation.Screen name='Notification' component={NotificationPage} />
 			<TabNavigation.Screen name='MyProfile' component={MyProfilePage} />
 		</TabNavigation.Navigator>
 	);

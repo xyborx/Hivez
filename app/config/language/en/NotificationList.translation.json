@@ -1,0 +1,21 @@
+{
+	"PAGE_TITLE": "Notification",
+	"JOIN_APPROVED": "You have been approved to join {source_name}",
+	"JOIN_REJECTED": "You have been reected to join {source_name}",
+	"REQUEST_APPROVED": "Your request has been approved",
+	"REQUEST_REJECTED": "Your request has been rejected",
+	"BILL_CREATION_APPROVED": "Your new bill creation has been approved",
+	"BILL_CREATION_REJECTED": "Your new bill creation has been rejected",
+	"BILL_PAYMENT_APPROVED": "Your bill payment has been approved",
+	"BILL_PAYMENT_REJECTED": "Your bill payment has been rejected",
+	"ROLE_CHANGED": "Your role has been changed to {status}",
+	"LEADER": "Leader",
+	"TREASURER": "Treasurer",
+	"MONEY_HOLDER": "Money holder",
+	"MEMBER": "Member",
+	"LEFT": "You left {source_name}",
+	"REMOVED": "You have been removed from {source_name}",
+	"TODAY": "Today",
+	"LAST_SEVEN_DAYS": "Last 7 Days",
+	"LAST_THIRTY_DAYS": "Last 30 Days"
+}

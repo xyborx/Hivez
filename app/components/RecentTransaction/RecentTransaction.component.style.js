@@ -81,7 +81,7 @@ export default StyleSheet.create({
 	transactionGroupName: {
 		...textPageSubHeader,
 		fontSize: theme.FONT_SIZE_SMALL,
-		marginTop: theme.MARGIN_EXTRA_NARROW
+		marginTop: theme.MARGIN_TINY
 	},
 	transactionImage: {
 		borderRadius: 48/2,

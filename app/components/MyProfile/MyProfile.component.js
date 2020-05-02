@@ -53,7 +53,7 @@ const ViewWithValue = (props) => {
 const SignIn = (props) => {
 	return (
 		<SafeAreaView style={styles.rootContainer}>
-			<ScrollView keyboardShouldPersistTaps={'handled'} style={styles.pageContainer} contentContainerStyle={styles.pageContentView}>
+			<ScrollView keyboardShouldPersistTaps={'handled'} showsVerticalScrollIndicator={false} style={styles.pageContainer} contentContainerStyle={styles.pageContentView}>
 				<View style={styles.scrollViewWrapper}>
 					<Text style={styles.header}>{props.contentText['PAGE_TITLE']}</Text>
 					<View style={styles.profileSection}>

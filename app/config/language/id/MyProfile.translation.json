@@ -1,0 +1,20 @@
+{
+	"PAGE_TITLE": "Profilku",
+	"PROFILE_PICTURE": "Foto Profil",
+    "EDIT_PROFILE_PICTURE": "Ubah foto profil",
+	"PERSONAL_DATA": "Data Pribadi",
+	"DISPLAY_NAME": "Nama lengkap",
+	"EMAIL_ADDRESS": "Alamat email",
+	"USERNAME": "Username",
+	"ALLOW_OTHERS_ADD_BY_USERNAME": "Perbolehkan penambahan dengan username",
+    "EDIT_PROFILE": "Ubah profil",
+	"APPLICATION_SETTINGS": "Pengaturan Aplikasi",
+	"DARK_MODE": "Mode gelap",
+	"CHANGE_LANGUAGE": "Pilih bahasa",
+	"PRIVACY_POLICY": "Kebijakan privasi",
+	"TERM_OF_USE": "Syarat penggunaan",
+	"ACCOUNT_SETTINGS": "Pengaturan Akun",
+	"CHANGE_PASSWORD": "Ubah kata sandi",
+    "SIGN_OUT": "Keluar",
+    "DELETE_ACCOUNT": "Hapus akun"
+}

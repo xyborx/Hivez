@@ -1,0 +1,6 @@
+{
+	"INVALID_MINIMUM_USERNAME_LENGTH": "Username must be at least 6 characters",
+	"INVALID_MAXIMUM_USERNAME_LENGTH": "Username must be less than 20 characters long",
+	"INVALID_USERNAME_FORMAT": "Username cannot contain special chatacter or space",
+	"INVALID_USERNAME_DUPLICATE": "Username already used"
+}

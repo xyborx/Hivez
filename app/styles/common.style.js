@@ -3,7 +3,7 @@ import theme from './theme.style';
 export const buttonDefault = {
 	alignItems: 'center',
 	backgroundColor: theme.COLOR_PRIMARY,
-	borderRadius: theme.ROUNDNESS_EXTRA_MINIMUM,
+	borderRadius: theme.ROUNDNESS_DEFAULT,
 	height: theme.HEIGHT_DEFAULT,
 	justifyContent: 'center'
 }
@@ -20,7 +20,7 @@ export const basicContainer = {
 export const boxContainer = {
 	backgroundColor: theme.COLOR_WHITE,
 	borderRadius: theme.ROUNDNESS_DEFAULT,
-	padding: theme.PADDING_WIDE,
+	padding: theme.PADDING_DEFAULT,
 	shadowColor: theme.COLOR_BLACK
 }
 
@@ -42,7 +42,7 @@ export const centerContainer = {
 }
 
 export const dropdown = {
-	backgroundColor: theme.COLOR_LIGHT_GREY,
+	backgroundColor: theme.COLOR_WHITE,
 	borderColor: theme.COLOR_GREY,
 	borderRadius: theme.ROUNDNESS_EXTRA_MINIMUM,
 	borderWidth: theme.BORDER_MEDIUM,
@@ -57,17 +57,18 @@ export const iconButton = {
 
 export const iconInline = {
 	color: theme.COLOR_GREY,
-	fontSize: theme.ICON_SIZE_MEDIUM
+	fontSize: theme.ICON_SIZE_MEDIUM,
+	textAlign: 'center'
 }
 
 export const inputText = {
 	backgroundColor: theme.COLOR_LIGHT_GREY,
 	borderColor: theme.COLOR_GREY,
 	borderWidth: theme.BORDER_MEDIUM,
-	borderRadius: theme.ROUNDNESS_EXTRA_MINIMUM,
+	borderRadius: theme.ROUNDNESS_DEFAULT,
 	fontSize: theme.FONT_SIZE_MEDIUM,
 	height: theme.HEIGHT_DEFAULT,
-	paddingHorizontal: theme.PADDING_NARROW
+	paddingHorizontal: theme.PADDING_DEFAULT
 }
 
 export const inputTextDisabled = {

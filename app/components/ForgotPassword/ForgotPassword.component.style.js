@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import theme from '../../styles/theme.style';
-import {boxContainer, boxShadow, pageContainer, pageContent, rootContainer, rowComponent, textAlignLeft, textAlignRight, textAppTitle, textHighlight, textLink} from '../../styles/common.style';
+import {boxContainer, boxShadow, dropdown, pageContainer, pageContent, rootContainer, rowComponent, textAlignLeft, textAlignRight, textAppTitle, textHighlight, textLink} from '../../styles/common.style';
 
 export default StyleSheet.create({
 	alignLeft: {
@@ -23,6 +23,26 @@ export default StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
+	dropdown: {
+		alignItems: 'center',
+		flexDirection: 'column',
+		justifyContent: 'center'
+	},
+	dropdownWrapper: {
+		...dropdown,
+		alignItems: 'center',
+		flexDirection: 'row',
+		height: 36,
+		paddingHorizontal: theme.PADDING_NARROW
+	},
+	dropdownIcon: {
+		color: theme.COLOR_GREY
+	},
+	dropdownText: {
+		color: theme.COLOR_SOFT_GREY,
+		fontSize: theme.FONT_SIZE_MEDIUM,
+		paddingHorizontal: theme.PADDING_NARROW
+	},
 	rootContainer: {
 		...rootContainer
 	},
@@ -37,21 +57,12 @@ export default StyleSheet.create({
 		display: 'none'
 	},
 	link: {
-		...textLink,
-		textAlign: 'center'
-	},
-	linkButton: {
-		flex: 1,
+		...textLink
 	},
 	linkContainer: {
 		...rowComponent,
+		justifyContent: 'space-between',
 		marginTop: theme.PADDING_WIDE
-	},
-	modalLink: {
-		flex: 1
-	},
-	modalLinkContainer: {
-		alignSelf: 'center'
 	},
 	pageContainer: {
 		...pageContainer
@@ -61,6 +72,7 @@ export default StyleSheet.create({
 	},
 	policyContainer: {
 		...rowComponent,
+		justifyContent: 'space-around',
 		padding: theme.PADDING_WIDE
 	},
 	scrollViewWrapper: {
@@ -71,7 +83,10 @@ export default StyleSheet.create({
 	title: {
 		...textHighlight,
 		color: theme.COLOR_SOFT_GREY,
-		marginBottom: theme.PADDING_WIDE,
+		marginBottom: theme.PADDING_DEFAULT,
 		textAlign: 'center'
+	},
+	titleReducedMargin: {
+		marginBottom: theme.PADDING_NARROW,
 	}
 });

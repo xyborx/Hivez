@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Text, TextInput, View} from 'react-native';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import styles from './TextField.component.style';
 
 const TextField = (props) => {
@@ -7,7 +8,10 @@ const TextField = (props) => {
 	const [errorMessage, setErrorMessage] = useState('');
 	return (
 		<View style={props.style}>
-			<View style={validity ? styles.container : styles.containerInvalid}>
+			<View style={[validity ? styles.inputText : styles.containerInvalid, styles.container]}>
+				<View style={styles.iconContainer}>
+					<FontAwesome5 name={props.textIcon} style={styles.inputIcon} />
+				</View>
 				<TextInput
 					autoCapitalize={'words'}
 					editable={props.editable}
@@ -20,6 +24,7 @@ const TextField = (props) => {
 						}
 					}}
 					placeholder={props.placeholder}
+					style={styles.textInput}
 					value={props.value} />
 			</View>
 			<Text style={!validity ? styles.errorMessage : styles.hidden}>{props.contentText[errorMessage]}</Text>

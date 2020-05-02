@@ -1,14 +1,15 @@
 import React, {useContext, useState} from 'react';
-import {isEmailValid, isFullNameValid, isPasswordValid, isConfirmPasswordMatch} from '../utils/helper.utils';
+import {isEmailValid, isFullNameValid, isUsernameValid, isPasswordValid, isConfirmPasswordMatch} from '../utils/helper.utils';
 import {LocalizationContext} from '../utils/language.utils';
 import SignUp from '../components/SignUp/SignUp.component';
 
 const SignUpPage = ({navigation}) => {
-	const {translations, appLanguage, setAppLanguage, initializeAppLanguage, langaugeIcons} = useContext(LocalizationContext);
+	const {translations, appLanguage, setAppLanguage, initializeAppLanguage, languageIcons} = useContext(LocalizationContext);
 	initializeAppLanguage();
 	
 	const [email, setEmail] = useState('');
 	const [secondPhase, setSecondPhase] = useState(false);
+	const [username, setUsername] = useState('');
 	const [fullName, setFullName] = useState('');
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
@@ -18,6 +19,7 @@ const SignUpPage = ({navigation}) => {
 		setEmail(email);
 		setNextButtonAccessbility(isEmailValid(email).isValid);
 	}
+
 	const togglePhase = () => {
 		setNextButtonAccessbility(secondPhase);
 		setSecondPhase(!secondPhase);
@@ -29,20 +31,31 @@ const SignUpPage = ({navigation}) => {
 		return isConfirmPasswordMatch(password, confirmPassword);
 	}
 
-	const validateNextButton = (fullName, password, confirmPassword) => {
-		setNextButtonAccessbility(isFullNameValid(fullName).isValid &&
+	const validateNextButton = (username, fullName, password, confirmPassword) => {
+		setNextButtonAccessbility(isUsernameValid(username).isValid &&
+			isFullNameValid(fullName).isValid &&
 			isPasswordValid(password).isValid &&
 			isConfirmPasswordMatch(password, confirmPassword).isValid);
 	}
 
+	const onChangeUsername = (username) => {
+		setUsername(username);
+		validateNextButton(username, fullName, password, confirmPassword);
+	}
+
+	const onChangeFullName = (fullName) => {
+		setFullName(fullName);
+		validateNextButton(username, fullName, password, confirmPassword);
+	}
+
 	const onChangePassword = (password) => {
 		setPassword(password);
-		validateNextButton(fullName, password, confirmPassword);
+		validateNextButton(username, fullName, password, confirmPassword);
 	}
 
 	const onChangeConfirmPassword = (confirmPassword) => {
 		setConfirmPassword(confirmPassword);
-		validateNextButton(fullName, password, confirmPassword);
+		validateNextButton(username, fullName, password, confirmPassword);
 	}
 	
 	const signUp = () => {}
@@ -64,6 +77,7 @@ const SignUpPage = ({navigation}) => {
 		<SignUp
 			contentText={translations['SignUp']}
 			emailContext={translations['EmailValidation']}
+			usernameContext={translations['UsernameValidation']}
 			fullNameContext={translations['FullNameValidation']}
 			passwordContext={translations['PasswordValidation']}
 			dropdownContext={translations['DropdownLanguage']}
@@ -73,8 +87,11 @@ const SignUpPage = ({navigation}) => {
 			setEmail={onChangeEmail}
 			secondPhase={secondPhase}
 			togglePhase={togglePhase}
+			username={username}
+			setUsername={onChangeUsername}
+			validateUsername={isUsernameValid}
 			fullName={fullName}
-			setFullName={setFullName}
+			setFullName={onChangeFullName}
 			validateFullName={isFullNameValid}
 			password={password}
 			setPassword={onChangePassword}
@@ -84,7 +101,7 @@ const SignUpPage = ({navigation}) => {
 			nextButtonAccessbility={nextButtonAccessbility}
 			onPressNextButton={onPressNextButton}
 			currentLanguage={appLanguage}
-			langaugeIcons={langaugeIcons}
+			languageIcons={languageIcons}
 			setLanguage={setAppLanguage}
 			signIn={signIn}
 			forgotPassword={forgotPassword} />

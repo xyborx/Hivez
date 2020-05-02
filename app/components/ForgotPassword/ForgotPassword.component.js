@@ -1,8 +1,10 @@
 import React from 'react';
 import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import {Flag} from 'react-native-svg-flagkit';
 import Button from '../Button/Button.component';
-import DropdownLanguage from '../DropdownLanguage/DropdownLanguage.component';
+import DropdownLanguage from '../Dropdown/DropdownLanguage.component';
 import EmailField from '../TextField/EmailField.component';
 import PrivacyPolicyModal from '../Modal/PrivacyPolicy.component';
 import TermsAndConditionsModal from '../Modal/TermsAndConditions.component';
@@ -41,12 +43,12 @@ const ForgotPassword = (props) => {
 								style={props.secondPhase ? styles.hidden : styles.button}
 								text={props.contentText['RESET_PASSWORD']} />
 							<View style={styles.linkContainer}>
-								<TouchableOpacity style={styles.linkButton} onPress={props.signIn}>
+								<TouchableOpacity onPress={props.signIn}>
 									<Text style={[styles.link, styles.alignLeft]}>
 										{props.contentText['SIGN_IN']}
 									</Text>
 								</TouchableOpacity>
-								<TouchableOpacity style={styles.linkButton} onPress={props.signUp}>
+								<TouchableOpacity onPress={props.signUp}>
 									<Text style={[styles.link, styles.alignRight]}>
 										{props.contentText['SIGN_UP']}
 									</Text>
@@ -55,12 +57,12 @@ const ForgotPassword = (props) => {
 						</View>
 					</View>
 					<View style={styles.policyContainer}>
-						<PrivacyPolicyModal style={styles.modalLink} toggleContainerStyle={styles.modalLinkContainer}>
+						<PrivacyPolicyModal>
 							<Text style={styles.link}>
 								{props.contentText['PRIVACY_POLICY']}
 							</Text>
 						</PrivacyPolicyModal>
-						<TermsAndConditionsModal style={styles.modalLink} toggleContainerStyle={styles.modalLinkContainer}>
+						<TermsAndConditionsModal>
 							<Text style={styles.link}>
 								{props.contentText['TERM_OF_USE']}
 							</Text>
@@ -71,8 +73,15 @@ const ForgotPassword = (props) => {
 						currentValue={props.currentLanguage}
 						dataList={props.languageList}
 						dataListContext={props.languageContext}
-						langaugeIcons={props.langaugeIcons}
-						onChange={props.setLanguage} />
+						languageIcons={props.languageIcons}
+						onChange={props.setLanguage}
+						style={styles.dropdown}>
+						<View style={styles.dropdownWrapper}>
+							<Flag id={props.languageIcons[props.currentLanguage]} size={0.075} />
+							<Text style={styles.dropdownText}>{props.languageContext[props.currentLanguage]}</Text>
+							<FontAwesome5 name={'caret-down'} style={styles.dropdownIcon} />
+						</View>
+					</DropdownLanguage>
 				</View>
 			</ScrollView>
 		</SafeAreaView>

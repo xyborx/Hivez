@@ -1,0 +1,8 @@
+{
+	"PAGE_TITLE": "Are you sure you want to delete your account?",
+	"PAGE_DETAILS": "This action cannot be undone. After you perform this action, you will be signed out and all of your data will be erased in current device and our server. You cannot sign in again after this. Please process with caution.",
+	"PAGE_INSTRUCTIONS": "If you still want to proceed, please type in your password to confirm your action.",
+	"PASSWORD_PLACEHOLDER": "Please enter your password",
+	"NO": "Cancel",
+	"YES": "Delete Account"
+}

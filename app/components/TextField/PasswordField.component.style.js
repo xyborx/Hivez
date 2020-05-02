@@ -17,6 +17,17 @@ export default StyleSheet.create({
 	hidden: {
 		display: 'none'
 	},
+	iconContainerLeft: {
+		width: 18,
+		marginRight: theme.MARGIN_NARROW
+	},
+	iconContainerRight: {
+		width: 18,
+		marginLeft: theme.MARGIN_NARROW
+	},
+	inputIcon: {
+		...iconInline
+	},
 	inputText: {
 		...inputText
 	},
@@ -26,15 +37,5 @@ export default StyleSheet.create({
 	textInput: {
 		flex: 1,
 		flexGrow: 1
-	},
-	toggleButton: {
-		alignItems: 'center',
-		flexBasis: 24,
-		justifyContent: 'center',
-		margin: 2,
-		textAlign: 'center'
-	},
-	toggleIcon: {
-		...iconInline
 	}
 });

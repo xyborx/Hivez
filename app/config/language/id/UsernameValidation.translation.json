@@ -1,0 +1,6 @@
+{
+	"INVALID_MINIMUM_USERNAME_LENGTH": "Panjang username minimal 6 karakter",
+	"INVALID_MAXIMUM_USERNAME_LENGTH": "Panjang username maksimal 20 karakter",
+	"INVALID_USERNAME_FORMAT": "Username tidak boleh mengandung karakter spesial atau spasi",
+	"INVALID_USERNAME_DUPLICATE": "Username sudah terpakai"
+}

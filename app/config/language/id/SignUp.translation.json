@@ -2,6 +2,7 @@
 	"APP_NAME": "HIVEZ",
 	"PAGE_HEADER": "Daftar akun baru",
 	"EMAIL_PLACEHOLDER": "Masukkan alamat emailmu",
+	"USERNAME_PLACEHOLDER": "Masukkan usernamemu",
 	"FULL_NAME_PLACEHOLDER": "Masukkan nama lengkapmu",
 	"PASSWORD_PLACEHOLDER": "Masukkan kata sandimu",
 	"CONFIRM_PASSWORD_PLACEHOLDER": "Masukkan ulang kata sandimu",
@@ -10,5 +11,5 @@
 	"SIGN_IN": "Sudah punya akun Hivez?",
 	"FORGOT_PASSWORD": "Lupa kata sandi?",
 	"PRIVACY_POLICY": "Kebijakan privasi",
-	"TERM_OF_USE": "Syarat dan ketentuan"
+	"TERM_OF_USE": "Syarat penggunaan"
 }

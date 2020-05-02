@@ -4,7 +4,7 @@ import * as RNLocalize from "react-native-localize";
 import LocalizedStrings from 'react-native-localization';
 import en from '../config/language/en/index';
 import id from '../config/language/id/index';
-import langaugeIcons from '../config/map/FlagIcon.map.json';
+import languageIcons from '../config/map/FlagIcon.map.json';
 
 const DEFAULT_LANGUAGE = 'en';
 
@@ -59,7 +59,7 @@ export const LocalizationProvider = ({children}) => {
 				setAppLanguage: setLanguage,
 				appLanguage,
 				initializeAppLanguage,
-				langaugeIcons
+				languageIcons
 			}}>
 			{children}
 		</LocalizationContext.Provider>

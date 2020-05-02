@@ -1,16 +1,11 @@
 import {StyleSheet} from 'react-native';
 import theme from '../../styles/theme.style';
-import {dropdown, iconButton, textHighlight} from '../../styles/common.style';
+import {iconButton, textHighlight} from '../../styles/common.style';
 
 export default StyleSheet.create({
-	container: {
-		alignItems: 'center',
-		flexDirection: 'column',
-		justifyContent: 'center'
-	},
 	icon: {
 		...iconButton,
-		fontSize: 12
+		fontSize: theme.FONT_SIZE_SMALL
 	},
 	modal: {
 		backgroundColor: theme.COLOR_WHITE,
@@ -63,16 +58,5 @@ export default StyleSheet.create({
 	sectionTextStyle: {
 		...textHighlight,
 		color: theme.COLOR_SOFT_GREY
-	},
-	text: {
-		fontSize: theme.FONT_SIZE_MEDIUM,
-		paddingHorizontal: theme.PADDING_NARROW
-	},
-	wrapper: {
-		...dropdown,
-		alignItems: 'center',
-		flexDirection: 'row',
-		height: 36,
-		paddingHorizontal: theme.PADDING_NARROW
 	}
 })

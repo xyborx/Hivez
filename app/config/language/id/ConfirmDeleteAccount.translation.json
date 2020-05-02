@@ -1,0 +1,8 @@
+{
+	"PAGE_TITLE": "Apakah kamu yakin ingin menghapus akunmu?",
+	"PAGE_DETAILS": "Setelah dilaukan, aktivitas ini tidak dapat dibatalkan. setelah kamu melakukan aktivitas ini, kamu akunmu akan dikeluarkan dari perangkat ini dan semua datamu pada perangkat ini dan server kami akan dihapus. Kamu juga tidak dapat masuk lagi ke akun ini. Mohon dilanjutkan secara hati-hati.",
+	"PAGE_INSTRUCTIONS": "Jika kamu masih ingin melanjutkan, mohon masukkan passwordmu untuk mengkonfirmasi aktivitas ini.",
+	"PASSWORD_PLACEHOLDER": "Masukkan kata sandimu",
+	"NO": "Batal",
+	"YES": "Hapus Akun"
+}

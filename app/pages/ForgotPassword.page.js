@@ -4,7 +4,7 @@ import {LocalizationContext} from '../utils/language.utils';
 import ForgotPassword from '../components/ForgotPassword/ForgotPassword.component';
 
 const ForgotPasswordPage = ({navigation}) => {
-	const {translations, appLanguage, setAppLanguage, initializeAppLanguage, langaugeIcons} = useContext(LocalizationContext);
+	const {translations, appLanguage, setAppLanguage, initializeAppLanguage, languageIcons} = useContext(LocalizationContext);
 	initializeAppLanguage();
 
 	const [email, setEmail] = useState('');
@@ -50,7 +50,7 @@ const ForgotPasswordPage = ({navigation}) => {
 			nextButtonAccessbility={nextButtonAccessbility}
 			onPressNextButton={onPressNextButton}
 			currentLanguage={appLanguage}
-			langaugeIcons={langaugeIcons}
+			languageIcons={languageIcons}
 			setLanguage={setAppLanguage}
 			signIn={signIn}
 			signUp={signUp} />

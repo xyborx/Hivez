@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {Text, View} from 'react-native';
 import {LocalizationContext} from '../../utils/language.utils';
 import Modal from './Modal.component';
@@ -7,8 +7,17 @@ import styles from './TermsAndConditions.component.style';
 const TermsAndConditionsModal = (props) => {
 	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
 	initializeAppLanguage();
+
+	const [visibility, setVisibility] = useState(false);
+	const toggleModal = () => {setVisibility(!visibility)};
 	return (
-		<Modal element={props.children} style={props.style}>
+		<Modal
+			element={props.children}
+			fixedCloseButton={true}
+			touchableType={props.touchableType}
+			style={props.style}
+			visibility={visibility}
+			toggleModal={toggleModal}>
 			<View style={styles.section}>
 				<Text style={styles.header}>{translations['TermsAndConditions']['TERMS_AND_CONDITIONS']}</Text>
 				{translations['TermsAndConditions']['TERMS_AND_CONDITIONS_TEXT'].map((value, key) => {

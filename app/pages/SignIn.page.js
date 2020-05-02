@@ -4,7 +4,7 @@ import {LocalizationContext} from '../utils/language.utils';
 import SignIn from '../components/SignIn/SignIn.component';
 
 const SignInPage = ({navigation}) => {
-	const {translations, appLanguage, setAppLanguage, initializeAppLanguage, langaugeIcons} = useContext(LocalizationContext);
+	const {translations, appLanguage, setAppLanguage, initializeAppLanguage, languageIcons} = useContext(LocalizationContext);
 	initializeAppLanguage();
 
 	const [email, setEmail] = useState('');
@@ -61,7 +61,7 @@ const SignInPage = ({navigation}) => {
 			nextButtonAccessbility={nextButtonAccessbility}
 			onPressNextButton={onPressNextButton}
 			currentLanguage={appLanguage}
-			langaugeIcons={langaugeIcons}
+			languageIcons={languageIcons}
 			setLanguage={setAppLanguage}
 			signUp={signUp}
 			forgotPassword={forgotPassword} />

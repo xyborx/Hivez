@@ -1,37 +1,52 @@
 import React, {useContext, useState} from 'react';
-import {ScrollView, TouchableOpacity, View} from 'react-native';
+import {Modal, ScrollView, TouchableHighlight, TouchableOpacity, View} from 'react-native';
+import SafeAreaView from 'react-native-safe-area-view';
 import {LocalizationContext} from '../../utils/language.utils';
 import Button from '../Button/Button.component';
-import Modal from 'react-native-modal';
-import theme from '../../styles/theme.style';
 import styles from './Modal.component.style';
 
 const BasicModal = (props) => {
 	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
 	initializeAppLanguage();
-	const [visibility, setVisibility] = useState(false);
-	const toggleModal = () => {setVisibility(!visibility)};
 	return (
-		<View style={props.style}>
-			<TouchableOpacity style={props.toggleContainerStyle} onPress={toggleModal}>
-                {props.element}
-			</TouchableOpacity>
+		<View>
+			{props.touchableType === 'highlight' ? (
+				<TouchableHighlight
+					activeOpacity={1}
+					onPress={props.toggleModal}
+					style={props.style}
+					underlayColor={'rgba(0,0,0,0.05)'}>
+					{props.element}
+				</TouchableHighlight>
+			) : (
+				<TouchableOpacity
+					style={props.style}
+					onPress={props.toggleModal}>
+					{props.element}
+				</TouchableOpacity>
+			)}
 			<Modal
-				backdropOpacity={theme.OVERLAY_OPACITY}
-				isVisible={visibility}
-				onBackButtonPress={toggleModal}
-				onBackdropPress={toggleModal}
-				style={styles.modalContainer} >
-				<View style={styles.modalWrapper}>
-					<ScrollView style={styles.modalScrollViewContainer} contentContainerStyle={styles.modalContentContainer} >
-						{props.children}
+				animationType={'slide'}
+				onRequestClose={props.toggleModal}
+				style={styles.modalContainer}
+				transparent={true}
+				visible={props.visibility}>
+				<SafeAreaView style={styles.rootContainer}>
+					<ScrollView keyboardShouldPersistTaps={'handled'} style={styles.pageContainer} contentContainerStyle={styles.pageContentView}>
+						<View style={styles.centerContainer}>
+							<View style={styles.boxContainer}>
+								<ScrollView keyboardShouldPersistTaps={'handled'} contentContainerStyle={styles.elementStyle}>
+									{props.children}
+								</ScrollView>
+								<Button
+									accessability={true} 
+									onPress={props.toggleModal}
+									style={props.fixedCloseButton ? styles.buttonFixed : styles.hidden}
+									text={translations["Modal"]["CLOSE_BUTTON"]} />
+							</View>
+						</View>
 					</ScrollView>
-					<Button
-						accessability={true} 
-						onPress={toggleModal}
-						style={styles.button}
-						text={translations["Modal"]["CLOSE_BUTTON"]} />
-				</View>
+				</SafeAreaView>
 			</Modal>
 		</View>
 	);

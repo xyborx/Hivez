@@ -11,6 +11,9 @@ const PasswordField = (props) => {
 	return (
 		<View style={props.style}>
 			<View style={[validity ? styles.inputText : styles.inputTextInvalid, styles.container]}>
+				<View style={styles.iconContainerLeft}>
+					<FontAwesome5 name={'lock'} style={styles.inputIcon} />
+				</View>
 				<TextInput
 					autoCapitalize={'none'}
 					onChangeText={(value) => {
@@ -25,10 +28,8 @@ const PasswordField = (props) => {
 					style={styles.textInput}
 					value={props.value}
 					secureTextEntry={!visibility} />
-				<TouchableOpacity
-					style={styles.toggleButton}
-					onPress={() => {setVisibility(!visibility)}} >
-					<FontAwesome5 name={visibility ? 'eye-slash' : 'eye'} style={styles.toggleIcon} />
+				<TouchableOpacity onPress={() => {setVisibility(!visibility)}} style={styles.iconContainerRight} >
+					<FontAwesome5 name={visibility ? 'eye-slash' : 'eye'} style={styles.inputIcon} />
 				</TouchableOpacity>
 			</View>
 			<Text style={validity ? styles.hidden : styles.errorMessage}>{props.contentText[errorMessage]}</Text>

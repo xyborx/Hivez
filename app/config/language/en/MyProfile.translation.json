@@ -1,0 +1,20 @@
+{
+	"PAGE_TITLE": "My Profile",
+	"PROFILE_PICTURE": "Profile Picture",
+	"EDIT_PROFILE_PICTURE": "Edit profile picture",
+	"PERSONAL_DATA": "Personal Data",
+	"DISPLAY_NAME": "Full name",
+	"EMAIL_ADDRESS": "Email address",
+	"USERNAME": "Username",
+	"ALLOW_OTHERS_ADD_BY_USERNAME": "Allow others to add by username",
+	"EDIT_PROFILE": "Edit profile",
+	"APPLICATION_SETTINGS": "Application Settings",
+	"DARK_MODE": "Dark mode",
+	"CHANGE_LANGUAGE": "Change Language",
+	"PRIVACY_POLICY": "Privacy policy",
+	"TERM_OF_USE": "Term of use",
+	"ACCOUNT_SETTINGS": "Account Settings",
+	"CHANGE_PASSWORD": "Change password",
+	"SIGN_OUT": "Sign out",
+	"DELETE_ACCOUNT": "Delete account"
+}

@@ -1,16 +1,17 @@
 import React from 'react';
-import {Text, TouchableOpacity} from 'react-native';
+import {Text, TouchableHighlight} from 'react-native';
 import styles from './Button.component.style';
 
 const Button = (props) => {
 	return (
-		<TouchableOpacity
-			style={[props.accessability ? styles.default : styles.disabled, props.style]}
+		<TouchableHighlight
+			activeOpacity={0.25}
 			disabled={!props.accessability}
 			onPress={props.onPress}
-			underlayColor="white">
+			style={[props.accessability ? styles.default : styles.disabled, props.style]}
+			underlayColor={props.customUnderlayColor ? props.customUnderlayColor : '#FFC60B'}>
 			<Text style={[styles.text, props.accessability ? {} : styles.textDisabled]}>{props.text}</Text>
-		</TouchableOpacity>
+		</TouchableHighlight>
 	); 
 }
 

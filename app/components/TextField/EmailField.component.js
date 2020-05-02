@@ -11,6 +11,9 @@ const EmailField = (props) => {
 		<View style={props.style}>
 			<View style={ props.editable ? [validity ? styles.inputText : styles.inputTextInvalid, styles.container] :
 				[styles.containerDisabled, styles.container, props.style]}>
+				<View style={styles.iconContainerLeft}>
+					<FontAwesome5 name={'envelope'} style={styles.inputIcon} />
+				</View>
 				<TextInput
 					autoCapitalize={'none'}
 					editable={props.editable}
@@ -26,9 +29,9 @@ const EmailField = (props) => {
 					style={[props.editable ? {} : styles.inputTextDisabled, styles.textInput]}
 					value={props.value} />
 				<TouchableOpacity
-					style={props.editable ? styles.hidden : styles.toggleButton}
+					style={props.editable ? styles.hidden : styles.iconContainerRight}
 					onPress={props.onPressPasswordToggle} >
-					<FontAwesome5 name={'edit'} style={styles.toggleIcon} />
+					<FontAwesome5 name={'edit'} style={styles.inputIcon} />
 				</TouchableOpacity>
 			</View>
 			<Text style={props.editable && !validity ? styles.errorMessage : styles.hidden}>{props.contentText[errorMessage]}</Text>

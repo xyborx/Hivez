@@ -1,24 +1,21 @@
 import React from 'react';
-import {TouchableHighlight, View} from 'react-native';
+import {TouchableOpacity, View} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import styles from './FloatingBurgerButton.component.style';
 
 const FloatingBurgerButton = (props) => {
 	return (
 		<View>
-			<TouchableHighlight
+			<TouchableOpacity
 				activeOpacity={0.25}
-				style={styles.floatingButtonContainer}
-				underlayColor={'#FFC60B'}
-				onPress={() => {
-					// setOnFocus(!onFocus);
-				}}>
+				onPress={props.action}
+				style={styles.floatingButtonContainer}>
 				<View>
 					<FontAwesome5
 						name={'bars'}
 						style={styles.floatingButtonIcon} />
 				</View>
-			</TouchableHighlight>
+			</TouchableOpacity>
 		</View>
 	); 
 }

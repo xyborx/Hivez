@@ -9,7 +9,7 @@ export default StyleSheet.create({
 		position: 'absolute',
 		top: theme.MARGIN_WIDE,
 		right: theme.MARGIN_WIDE,
-		backgroundColor: theme.COLOR_LIGHT_GREY,
+		backgroundColor: 'transparent',
 		zIndex: 1
 	},
 	floatingActionText: {

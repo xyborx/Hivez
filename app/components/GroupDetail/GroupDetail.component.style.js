@@ -8,7 +8,7 @@ export default StyleSheet.create({
 		borderRadius: 160/ 2,
 		height: 160,
 		marginBottom: theme.MARGIN_DEFAULT,
-		marginTop: theme.MARGIN_EXTRA_WIDE,
+		marginTop: theme.MARGIN_EXTRA_WIDE_EXPANDED,
 		width: 160
 	},
 	groupName: {

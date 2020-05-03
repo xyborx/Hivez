@@ -2,6 +2,7 @@ import React from 'react';
 import {Image, Text, ScrollView, View} from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import RecentTransactionDetail from '../RecentTransaction/RecentTransactionDetail.component';
+import FloatingBackButton from '../Button/FloatingBackButton.component';
 import FloatingBurgerButton from '../Button/FloatingBurgerButton.component';
 import styles from './GroupDetail.component.style';
 
@@ -11,6 +12,7 @@ const GroupDetail = (props) => {
 		<SafeAreaView style={styles.rootContainer}>
 			<ScrollView keyboardShouldPersistTaps={'handled'} showsVerticalScrollIndicator={false} style={styles.pageContainer} contentContainerStyle={styles.pageContentView}>
 				<View>
+					<FloatingBackButton action={props.goBack} backText={props.contentText['BACK']} />
 					<FloatingBurgerButton />
 					<Image
 						source={image === '' ? require('../../assets/images/DefaultGroupImage.png') : {uri: `data:image/jpeg;base64,${image}`}}

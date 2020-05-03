@@ -7,8 +7,8 @@ const FloatingBackButton = (props) => {
 		<View>
 			<TouchableOpacity
 				activeOpacity={0.25}
-				style={styles.floatingButtonContainer}
-				onPress={props.action}>
+				onPress={props.action}
+				style={styles.floatingButtonContainer}>
 				<Text style={styles.floatingActionText}>{props.backText}</Text>
 			</TouchableOpacity>
 		</View>

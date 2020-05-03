@@ -156,15 +156,25 @@ const GroupDetailPage = ({route, navigation}) => {
 		alert(`Navigate to transaction detail ${transactionID}`);
 	}
 
+	const goBack = () => {
+		// if(navigation.isFirstRouteInParent()) {
+			navigation.replace('GroupList');
+		// } else {
+		// 	navigation.goBack();
+		// }
+	}
+
 	return (
 		<GroupDetail
+			contentText={translations['GroupDetail']}
 			recentBillText={translations['RecentBill']}
 			recentTransactionText={translations['RecentTransaction']}
 			groupDetail={groupDetail}
 			billList={billList}
 			transactionList={transactionList}
 			onBillClick={viewBillDetail}
-			onTransactionClick={viewTransactionDetail} />
+			onTransactionClick={viewTransactionDetail}
+			goBack={goBack} />
 	);
 };
 

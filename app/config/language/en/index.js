@@ -12,6 +12,7 @@ import EventList from './EventList.translation.json';
 import FindGroup from './FindGroup.translation.json';
 import ForgotPassword from './ForgotPassword.translation.json';
 import FullNameValidation from './FullNameValidation.translation.json';
+import GroupDetail from './GroupDetail.translation.json';
 import GroupList from './GroupList.translation.json';
 import Language from './Language.translation.json';
 import Modal from './Modal.translation.json';
@@ -41,6 +42,7 @@ module.exports = {
 	FindGroup,
 	ForgotPassword,
 	FullNameValidation,
+	GroupDetail,
 	GroupList,
 	Language,
 	Modal,

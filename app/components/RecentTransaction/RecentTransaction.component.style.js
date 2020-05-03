@@ -18,7 +18,8 @@ export default StyleSheet.create({
 		backgroundColor: theme.COLOR_WHITE,
 		borderRadius: theme.ROUNDNESS_DEFAULT,
 		marginHorizontal: theme.MARGIN_WIDE,
-		overflow: 'hidden'
+		overflow: 'hidden',
+		paddingBottom: theme.PADDING_DEFAULT
 	},
 	filterList: {
 		flexDirection: 'row',

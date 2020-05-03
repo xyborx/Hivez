@@ -110,7 +110,7 @@ const RecentTransaction = (props) => {
 							contentText={props.contentText}
 							item={item}
 							key={index}
-							onPress={props.onItemClick} />
+							onItemClick={props.onItemClick} />
 					);
 				})}
 			</View>

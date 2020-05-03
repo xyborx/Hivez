@@ -15,7 +15,8 @@ export default StyleSheet.create({
 	},
 	header: {
 		...textPageHeader,
-		marginVertical: theme.MARGIN_EXTRA_WIDE,
+		marginBottom: theme.MARGIN_EXTRA_WIDE,
+		marginTop: theme.MARGIN_EXTRA_WIDE_EXPANDED,
 		textAlign: 'center'
 	},
 	pageContainer: {

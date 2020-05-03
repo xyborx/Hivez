@@ -1,6 +1,6 @@
 {
-	"PAGE_TITLE": "Are you sure you want to sign out?",
-	"PAGE_DETAILS": "All of your data in current device will be deleted after you sign out. But don't worry, we've already save your data in our server.",
+	"MODAL_TITLE": "Are you sure you want to sign out?",
+	"MODAL_DETAILS": "All of your data in current device will be deleted after you sign out. But don't worry, we've already save your data in our server.",
 	"NO": "Cancel",
 	"YES": "Sign Out"
 }

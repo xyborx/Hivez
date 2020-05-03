@@ -36,7 +36,8 @@ export default StyleSheet.create({
 		margin: theme.MARGIN_WIDE,
 		marginTop: 0,
 		overflow: 'hidden',
-		paddingTop: theme.PADDING_NARROW
+		paddingTop: theme.PADDING_NARROW,
+		paddingBottom: theme.PADDING_DEFAULT
 	},
 	hidden: {
 		display: 'none'

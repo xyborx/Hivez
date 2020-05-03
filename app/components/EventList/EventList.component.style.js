@@ -10,7 +10,8 @@ export default StyleSheet.create({
 		flex: 1,
 		flexGrow: 1,
 		margin: theme.MARGIN_WIDE,
-		marginTop: 0
+		marginTop: 0,
+		paddingBottom: theme.PADDING_DEFAULT
 	},
 	header: {
 		...textPageHeader,

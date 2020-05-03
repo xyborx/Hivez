@@ -36,7 +36,8 @@ export default StyleSheet.create({
 		...boxShadow,
 		backgroundColor: theme.COLOR_WHITE,
 		borderRadius: theme.ROUNDNESS_DEFAULT,
-		overflow: 'hidden'
+		overflow: 'hidden',
+		paddingBottom: theme.PADDING_DEFAULT
 	},
 	header: {
 		...textHighlight,

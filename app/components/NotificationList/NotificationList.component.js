@@ -71,7 +71,15 @@ const NotificationList = (props) => {
 	return (
 		props.notificationList.map((item, index) => {
 			return (
-				<NotificationSection contentText={props.contentText} data={item.data} key={index} title={item.title} />
+				<NotificationSection
+					contentText={props.contentText}
+					data={item.data}
+					key={index}
+					onGroupClick={props.onGroupClick}
+					onEventClick={props.onEventClick}
+					onTransactionClick={props.onTransactionClick}
+					onBillClick={props.onBillClick}
+					title={item.title} />
 			);
 		})
 	);

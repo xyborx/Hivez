@@ -56,11 +56,11 @@ const SignIn = (props) => {
 			<ScrollView keyboardShouldPersistTaps={'handled'} showsVerticalScrollIndicator={false} style={styles.pageContainer} contentContainerStyle={styles.pageContentView}>
 				<View style={styles.scrollViewWrapper}>
 					<Text style={styles.header}>{props.contentText['PAGE_TITLE']}</Text>
+					<Image
+						source={props.profileData.image === '' ? require('../../assets/images/DefaultProfileImage.png') : {uri: `data:image/jpeg;base64,${props.profileData.image}`}}
+						style={styles.profileImage} />
 					<View style={styles.profileSection}>
 						<Text style={styles.sectionHeader}>{props.contentText['PROFILE_PICTURE']}</Text>
-						<Image
-							source={props.profileData.image === '' ? require('../../assets/images/DefaultProfileImage.png') : {uri: `data:image/jpeg;base64,${props.profileData.image}`}}
-							style={styles.profileImage} />
 						<DropdownChangePicture
 							contentText={props.dropdownChangePictureContext}
 							onChange={props.onChangeProfilePictureDropdown}>

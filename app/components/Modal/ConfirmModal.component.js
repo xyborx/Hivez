@@ -16,8 +16,8 @@ const ConfirmModal = (props) => {
 			touchableType={'highlight'}
 			visibility={visibility}
 			toggleModal={toggleModal}>
-				<Text style={styles.header}>{props.contentText['PAGE_TITLE']}</Text>
-				<Text style={styles.content}>{props.contentText['PAGE_DETAILS']}</Text>
+				<Text style={styles.header}>{props.contentText['MODAL_TITLE']}</Text>
+				<Text style={styles.content}>{props.contentText['MODAL_DETAILS']}</Text>
 				<View style={styles.buttonContainer}>
 					<Button
 						accessability={true}

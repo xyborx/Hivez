@@ -1,6 +1,6 @@
 {
-	"PAGE_TITLE": "Apakah kamu yakin ingin keluar?",
-	"PAGE_DETAILS": "Semua data yang ada pada perangkat ini akan dihapus setelah kamu keluar. Tapi jangan kawatir, kami sudah menyimpan semua datamu di server kami.",
+	"MODAL_TITLE": "Apakah kamu yakin ingin keluar?",
+	"MODAL_DETAILS": "Semua data yang ada pada perangkat ini akan dihapus setelah kamu keluar. Tapi jangan kawatir, kami sudah menyimpan semua datamu di server kami.",
 	"NO": "Batalkan",
 	"YES": "Keluar"
 }

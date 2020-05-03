@@ -16,14 +16,29 @@ export default StyleSheet.create({
 		fontSize: theme.FONT_SIZE_MEDIUM,
 		color: theme.COLOR_GREY
 	},
-	listDetail: {
-		...textHighlight,
+	listActionContainer: {
+		textAlign: 'center'
+	},
+	listActionIcon: {
+		color: theme.COLOR_GREY,
+		fontSize: theme.FONT_SIZE_MEDIUM,
+		textAlign: 'center'
+	},
+	listActionText: {
+		color: theme.COLOR_GREY,
+		fontSize: theme.FONT_SIZE_SMALL,
+		textAlign: 'center'
+	},
+	listDescription: {
 		color: theme.COLOR_SOFT_GREY,
+		fontStyle: 'italic'
+	},
+	listDescriptionContainer: {
 		flexGrow: 1
 	},
-	listDetailIcon: {
-		color: theme.COLOR_GREY,
-		fontSize: theme.FONT_SIZE_MEDIUM
+	listTitle: {
+		...textHighlight,
+		color: theme.COLOR_SOFT_GREY
 	},
 	listImage: {
 		borderRadius: 48/2,

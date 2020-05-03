@@ -12,7 +12,7 @@ export default StyleSheet.create({
 		alignSelf: 'center',
 		borderRadius: 160/ 2,
 		height: 160,
-		marginBottom: theme.MARGIN_DEFAULT,
+		marginBottom: theme.MARGIN_WIDE,
 		width: 160
 	},
 	pageContainer: {
@@ -26,7 +26,8 @@ export default StyleSheet.create({
 		backgroundColor: theme.COLOR_WHITE,
 		borderRadius: theme.ROUNDNESS_DEFAULT,
 		marginBottom: theme.MARGIN_WIDE,
-		overflow: 'hidden'
+		overflow: 'hidden',
+		paddingBottom: theme.PADDING_DEFAULT
 	},
 	profileSectionItem: {
 		alignSelf: 'stretch',
@@ -53,8 +54,9 @@ export default StyleSheet.create({
 	},
 	sectionHeader: {
 		...textHighlight,
-		marginVertical: theme.MARGIN_DEFAULT,
-		textAlign: 'center'
+		fontSize: theme.FONT_SIZE_SUB_HEADER,
+		margin: theme.MARGIN_DEFAULT,
+		marginBottom: theme.MARGIN_NARROW
 	},
 	scrollViewWrapper: {
 		alignSelf: 'stretch',

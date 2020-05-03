@@ -2,25 +2,25 @@ import React from 'react';
 import {Image, Text, TouchableHighlight, TouchableOpacity, View} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import IconButton from '../Button/IconButton.component';
-import styles from './GroupCard.component.style';
+import styles from './ItemCard.component.style';
 
-const GroupCard = (props) => {
+const ItemCard = (props) => {
 	return (
-		<View key={props.groupData.groupID} style={styles.itemCard}> 
-			<View style={styles.groupContainer}>
+		<View style={styles.itemCard}> 
+			<View style={styles.itemContainer}>
 				<TouchableHighlight
 					activeOpacity={0.8}
-					style={styles.groupDataButton}
+					style={styles.itemDataButton}
 					underlayColor={'#FFC60B'}
-					onPress={() => {props.onItemClick(props.groupData.groupID)}}>
-					<View style={styles.groupDataContainer}>
+					onPress={() => {props.itemData.onClick(props.itemData.id)}}>
+					<View style={styles.itemDataContainer}>
 						<Image
-							source={props.groupData.groupImage === '' ? require('../../assets/images/DefaultGroupImage.png') : {uri: `data:image/jpeg;base64,${props.groupData.groupImage}`}}
-							style={styles.groupImage} />
-						<View style={styles.groupDetails}>
+							source={props.itemData.image === '' ? require('../../assets/images/DefaultGroupImage.png') : {uri: `data:image/jpeg;base64,${props.itemData.image}`}}
+							style={styles.itemImage} />
+						<View style={styles.itemDetails}>
 							<View style={{flexDirection: 'column'}}>
-								<Text style={styles.groupName}>{props.groupData.groupName}</Text>
-								<Text style={styles.groupDescription}>{props.groupData.groupDescription}</Text>
+								<Text style={styles.itemName}>{props.itemData.name}</Text>
+								<Text style={styles.itemDescription}>{props.itemData.description}</Text>
 							</View>
 						</View>
 					</View>
@@ -34,14 +34,14 @@ const GroupCard = (props) => {
 				</TouchableOpacity>
 			</View>
 			<View style={props.displayDetails ? styles.actionContainer : styles.hidden}>
-				{props.groupData.groupAction.map((item, index) => {
+				{props.itemData.action.map((item, index) => {
 					return(
 						<IconButton
-							icon={item.actionIcon}
+							icon={item.icon}
 							key={index}
 							onPress={item.action}
 							style={styles.iconButton}
-							text={props.contentText[item.actionName]} />
+							text={props.contentText[item.name]} />
 					);
 				})}
 			</View>
@@ -49,4 +49,4 @@ const GroupCard = (props) => {
 	);
 };
 
-export default GroupCard;
+export default ItemCard;

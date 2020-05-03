@@ -1,0 +1,4 @@
+{
+	"INVALID_MINIMUM_GROUP_NAME_LENGTH": "Group name must be at least 3 characters",
+	"INVALID_GROUP_NAME_FORMAT": "Group name cannot contain special chatacter or number"
+}

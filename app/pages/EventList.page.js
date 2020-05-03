@@ -1,10 +1,14 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useRef, useState} from 'react';
+import {useScrollToTop} from '@react-navigation/native';
 import {LocalizationContext} from '../utils/language.utils';
 import EventList from '../components/EventList/EventList.component';
 
 const EventListPage = ({navigation}) => {
 	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
 	initializeAppLanguage();
+
+	const scrollRef = useRef(null);
+	useScrollToTop(scrollRef);
 
 	const imageDummy = [
 		'',
@@ -170,6 +174,7 @@ const EventListPage = ({navigation}) => {
 
 	return (
 		<EventList
+			scrollRef={scrollRef}
 			contentText={translations['EventList']}
 			eventList={eventList}
 			searchValue={searchValue}

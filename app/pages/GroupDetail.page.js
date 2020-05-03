@@ -157,11 +157,7 @@ const GroupDetailPage = ({route, navigation}) => {
 	}
 
 	const goBack = () => {
-		// if(navigation.isFirstRouteInParent()) {
-			navigation.replace('GroupList');
-		// } else {
-		// 	navigation.goBack();
-		// }
+		navigation.replace('GroupList');
 	}
 
 	return (

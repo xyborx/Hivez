@@ -1,10 +1,14 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useRef, useState} from 'react';
+import {useScrollToTop} from '@react-navigation/native';
 import {LocalizationContext} from '../utils/language.utils';
 import GroupList from '../components/GroupList/GroupList.component';
 
 const GroupListPage = ({navigation}) => {
 	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
 	initializeAppLanguage();
+
+	const scrollRef = useRef(null);
+	useScrollToTop(scrollRef);
 
 	const imageDummy = [
 		'',
@@ -160,7 +164,7 @@ const GroupListPage = ({navigation}) => {
 	};
 
 	const createGroup = () => {
-		alert('Create group');
+		navigation.navigate('CreateGroup');
 	}
 
 	const findGroup = () => {
@@ -169,6 +173,7 @@ const GroupListPage = ({navigation}) => {
 
 	return (
 		<GroupList
+			scrollRef={scrollRef}
 			contentText={translations['GroupList']}
 			groupList={groupList}
 			searchValue={searchValue}

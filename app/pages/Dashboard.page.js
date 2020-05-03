@@ -1,10 +1,14 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useRef, useState} from 'react';
+import {useScrollToTop} from '@react-navigation/native';
 import {LocalizationContext} from '../utils/language.utils';
 import Dashboard from '../components/Dashboard/Dashboard.component';
 
 const DashboardPage = ({navigation}) => {
 	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
 	initializeAppLanguage();
+
+	const scrollRef = useRef(null);
+	useScrollToTop(scrollRef);
 
 	const imageDummy = [
 		'',
@@ -25,6 +29,7 @@ const DashboardPage = ({navigation}) => {
 	const navigateToGroup = (groupID) => {
 		navigation.navigate('GroupTab', {
 			screen: 'GroupDetail',
+			initial: true,
 			params: {groupID: groupID}
 		});
 	};
@@ -249,6 +254,7 @@ const DashboardPage = ({navigation}) => {
 
 	return (
 		<Dashboard
+			scrollRef={scrollRef}
 			contentText={translations['Dashboard']}
 			recentTransactionText={translations['RecentTransaction']}
 			userName={userName}

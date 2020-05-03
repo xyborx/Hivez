@@ -1,4 +1,5 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useRef, useState} from 'react';
+import {useScrollToTop} from '@react-navigation/native';
 import ImagePicker from 'react-native-image-crop-picker';
 import {LocalizationContext} from '../utils/language.utils';
 import MyProfile from '../components/MyProfile/MyProfile.component';
@@ -6,6 +7,9 @@ import MyProfile from '../components/MyProfile/MyProfile.component';
 const MyProfilePage = ({navigation}) => {
 	const {translations, appLanguage, setAppLanguage, initializeAppLanguage, languageIcons} = useContext(LocalizationContext);
 	initializeAppLanguage();
+
+	const scrollRef = useRef(null);
+	useScrollToTop(scrollRef);
 
 	const profileDataDummy = {
 		id: 'PROFILE0001',
@@ -103,19 +107,19 @@ const MyProfilePage = ({navigation}) => {
 		alert(`Toggle allow others add by ID: ${profileData.allowOthersAddByID}`);
 	};
 
-	const appSettingsDummy = {
-		darkMode: false
-	};
+	// const appSettingsDummy = {
+	// 	darkMode: false
+	// };
 
-	const [appSettings, setAppSettings] = useState(appSettingsDummy);
+	// const [appSettings, setAppSettings] = useState(appSettingsDummy);
 
-	const toggleDarkMode = () => {
-		setAppSettings({
-			...appSettings,
-			darkMode: !appSettings.darkMode
-		});
-		alert(`Toggle dark mode: ${appSettings.darkMode}`);
-	};
+	// const toggleDarkMode = () => {
+	// 	setAppSettings({
+	// 		...appSettings,
+	// 		darkMode: !appSettings.darkMode
+	// 	});
+	// 	alert(`Toggle dark mode: ${appSettings.darkMode}`);
+	// };
 
 	const changePassword = (currentPassword, newPassword) => {
 		alert(`Change password, current password: ${currentPassword} ; new password: ${newPassword}`);
@@ -131,14 +135,15 @@ const MyProfilePage = ({navigation}) => {
 
 	return (
 		<MyProfile
+			scrollRef={scrollRef}
 			contentText={translations['MyProfile']}
 			confirmSignOutText={translations['ConfirmSignOut']}
 			confirmDeleteAccountText={translations['ConfirmDeleteAccount']}
 			profileData={profileData}
 			changeProfileData={changeProfileData}
 			toggleAllowOthersAddByID={toggleAllowOthersAddByID}
-			toggleDarkMode={toggleDarkMode}
-			appSettings={appSettings}
+			// toggleDarkMode={toggleDarkMode}
+			// appSettings={appSettings}
 			languageList={translations.getAvailableLanguages()}
 			languageContext={translations['Language']}
 			dropdownLanguageContext={translations['DropdownLanguage']}

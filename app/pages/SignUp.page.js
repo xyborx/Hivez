@@ -18,60 +18,62 @@ const SignUpPage = ({navigation}) => {
 	const onChangeEmail = (email) => {
 		setEmail(email);
 		setNextButtonAccessbility(isEmailValid(email).isValid);
-	}
+	};
 
 	const togglePhase = () => {
 		setNextButtonAccessbility(secondPhase);
 		setSecondPhase(!secondPhase);
 		setPassword('');
 		setConfirmPassword('');
-	}
+	};
 
 	const checkConfirmPassword = (confirmPassword) => {
 		return isConfirmPasswordMatch(password, confirmPassword);
-	}
+	};
 
 	const validateNextButton = (username, fullName, password, confirmPassword) => {
 		setNextButtonAccessbility(isUsernameValid(username).isValid &&
 			isFullNameValid(fullName).isValid &&
 			isPasswordValid(password).isValid &&
 			isConfirmPasswordMatch(password, confirmPassword).isValid);
-	}
+	};
 
 	const onChangeUsername = (username) => {
 		setUsername(username);
 		validateNextButton(username, fullName, password, confirmPassword);
-	}
+	};
 
 	const onChangeFullName = (fullName) => {
 		setFullName(fullName);
 		validateNextButton(username, fullName, password, confirmPassword);
-	}
+	};
 
 	const onChangePassword = (password) => {
 		setPassword(password);
 		validateNextButton(username, fullName, password, confirmPassword);
-	}
+	};
 
 	const onChangeConfirmPassword = (confirmPassword) => {
 		setConfirmPassword(confirmPassword);
 		validateNextButton(username, fullName, password, confirmPassword);
-	}
+	};
 	
-	const signUp = () => {}
+	const signUp = (email, username, fullName, password) => {
+		alert(`Sign up!`);
+	};
 
 	const onPressNextButton = () => {
 		if(!secondPhase) togglePhase();
-		else signUp();
-	}
+		else signUp(email, username, fullName, password);
+	};
 
 	const forgotPassword = () => {
 		navigation.navigate('ForgotPassword');
-	}
+	};
 
 	const signIn = () => {
 		navigation.navigate('SignIn');
-	}
+	};
 
 	return (
 		<SignUp

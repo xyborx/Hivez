@@ -9,7 +9,7 @@ import styles from './EventList.component.style';
 const EventList = (props) => {
 	return (
 		<SafeAreaView style={styles.rootContainer}>
-			<ScrollView keyboardShouldPersistTaps={'handled'} showsVerticalScrollIndicator={false} style={styles.pageContainer} contentContainerStyle={styles.pageContentView}>
+			<ScrollView ref={props.scrollRef} keyboardShouldPersistTaps={'handled'} showsVerticalScrollIndicator={false} style={styles.pageContainer} contentContainerStyle={styles.pageContentView}>
 				<View style={styles.pageContentView}>
 					<Text style={styles.header}>{props.contentText['PAGE_TITLE']}</Text>
 					<View style={styles.eventListContainer}>

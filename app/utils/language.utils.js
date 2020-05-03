@@ -3,8 +3,8 @@ import Storage from './storage.utils';
 import * as RNLocalize from "react-native-localize";
 import LocalizedStrings from 'react-native-localization';
 import moment from "moment";
-import en from '../config/language/en/index';
-import id from '../config/language/id/index';
+import en from '../config/language/en.language';
+import id from '../config/language/id.language';
 import languageIcons from '../config/map/FlagIcon.map.json';
 import momentLocalization from '../config/moment/index';;
 

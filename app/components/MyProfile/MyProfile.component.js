@@ -53,7 +53,7 @@ const ViewWithValue = (props) => {
 const SignIn = (props) => {
 	return (
 		<SafeAreaView style={styles.rootContainer}>
-			<ScrollView keyboardShouldPersistTaps={'handled'} showsVerticalScrollIndicator={false} style={styles.pageContainer} contentContainerStyle={styles.pageContentView}>
+			<ScrollView ref={props.scrollRef} keyboardShouldPersistTaps={'handled'} showsVerticalScrollIndicator={false} style={styles.pageContainer} contentContainerStyle={styles.pageContentView}>
 				<View style={styles.scrollViewWrapper}>
 					<Text style={styles.header}>{props.contentText['PAGE_TITLE']}</Text>
 					<Image
@@ -93,10 +93,10 @@ const SignIn = (props) => {
 					</View>
 					<View style={styles.profileSection}>
 						<Text style={styles.sectionHeader}>{props.contentText['APPLICATION_SETTINGS']}</Text>
-						<ButtonWithSwitch
+						{/* <ButtonWithSwitch
 							switchOnChange={props.toggleDarkMode}
 							switchValue={props.appSettings.darkMode}
-							title={props.contentText['DARK_MODE']} />
+							title={props.contentText['DARK_MODE']} /> */}
 						<DropdownLanguage
 							contentText={props.dropdownLanguageContext}
 							currentValue={props.currentLanguage}

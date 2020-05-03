@@ -1,4 +1,5 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useRef, useState} from 'react';
+import {useScrollToTop} from '@react-navigation/native';
 import {LocalizationContext} from '../utils/language.utils';
 import {isToday, isBetweenLastWeek} from '../utils/date.utils';
 import {leftExcludingJoin, where} from '../utils/query.utils';
@@ -7,6 +8,9 @@ import Notification from '../components/Notification/Notification.component';
 const NotificationPage = ({navigation}) => {
 	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
 	initializeAppLanguage();
+
+	const scrollRef = useRef(null);
+	useScrollToTop(scrollRef);
 
 	const imageDummy = [
 		'',
@@ -266,6 +270,7 @@ const NotificationPage = ({navigation}) => {
 
 	return (
 		<Notification
+			scrollRef={scrollRef}
 			contentText={translations['NotificationList']}
 			notificationList={notificationList}
 			onGroupClick={navigateToGroup}

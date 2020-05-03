@@ -10,7 +10,7 @@ import styles from './Dashboard.component.style';
 const Dashboard = (props) => {
 	return (
 		<SafeAreaView style={styles.rootContainer}>
-			<ScrollView keyboardShouldPersistTaps={'handled'} style={styles.pageContainer} contentContainerStyle={styles.pageContentView}>
+			<ScrollView ref={props.scrollRef} keyboardShouldPersistTaps={'handled'} style={styles.pageContainer} contentContainerStyle={styles.pageContentView}>
 				<View style={styles.scrollViewWrapper}>
 					<View style={styles.indentSection}>
 						<Text style={styles.header}>

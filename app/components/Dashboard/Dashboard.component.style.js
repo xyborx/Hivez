@@ -21,7 +21,7 @@ export default StyleSheet.create({
 	favouriteGroupWrapper: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-		marginTop: theme.MARGIN_DEFAULT,
+		marginTop: theme.MARGIN_EXTRA_WIDE,
 	},
 	groupApprovalCard: {
 		marginHorizontal: theme.MARGIN_WIDE,
@@ -30,7 +30,7 @@ export default StyleSheet.create({
 	},
 	header: {
 		...textPageHeader,
-		marginTop: theme.MARGIN_EXTRA_WIDTH,
+		marginTop: theme.MARGIN_EXTRA_WIDE,
 		marginBottom: theme.MARGIN_EXTRA_NARROW
 	},
 	hidden: {
@@ -48,11 +48,12 @@ export default StyleSheet.create({
 	pageContentView: {
 		// ...pageContent
 	},
+	recentTransaction: {
+		...boxShadow,
+		marginBottom: theme.MARGIN_WIDE
+	},
 	rootContainer: {
 		...rootContainer
-	},
-	scrollViewWrapper: {
-		paddingVertical: theme.PADDING_EXTRA_WIDE
 	},
 	subHeader: {
 		...textPageSubHeader

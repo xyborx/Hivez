@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import theme from '../../styles/theme.style';
-import {boxShadow, rootContainer, textPageHeader} from '../../styles/common.style';
+import {boxShadow, pageContainer, rootContainer, textPageHeader} from '../../styles/common.style';
 
 export default StyleSheet.create({
 	groupListContainer: {
@@ -9,7 +9,7 @@ export default StyleSheet.create({
 		borderRadius: theme.ROUNDNESS_DEFAULT,
 		flex: 1,
 		flexGrow: 1,
-		margin: theme.MARGIN_NARROW,
+		margin: theme.MARGIN_WIDE,
 		marginTop: 0
 	},
 	header: {
@@ -18,13 +18,10 @@ export default StyleSheet.create({
 		textAlign: 'center'
 	},
 	pageContainer: {
-		flexDirection: 'row',
-		overflow: 'hidden',
-		padding: theme.PADDING_DEFAULT,
-		paddingTop: 0
+		...pageContainer
 	},
 	pageContentView: {
-		flexGrow: 1
+		// ...pageContent
 	},
 	rootContainer: {
 		...rootContainer

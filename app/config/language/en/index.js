@@ -1,3 +1,4 @@
+import BottomTabNavigator from './BottomTabNavigator.translation.json';
 import ChangePasswordModal from './ChangePasswordModal.translation.json';
 import ChangeProfileModal from './ChangeProfileModal.translation.json';
 import ConfirmDeleteAccount from './ConfirmDeleteAccount.translation.json';
@@ -24,6 +25,7 @@ import TermsAndConditions from './TermsAndConditions.translation.json';
 import UsernameValidation from './UsernameValidation.translation.json';
 
 module.exports = {
+	BottomTabNavigator,
 	ChangePasswordModal,
 	ChangeProfileModal,
 	ConfirmDeleteAccount,

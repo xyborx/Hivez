@@ -7,19 +7,19 @@ import styles from './Notification.component.style';
 const Notification = (props) => {
 	return (
 		<SafeAreaView style={styles.rootContainer}>
-			<View style={styles.pageContainer}>
+		<ScrollView keyboardShouldPersistTaps={'handled'} showsVerticalScrollIndicator={false} style={styles.pageContainer} contentContainerStyle={styles.pageContentView}>
+			<View style={styles.pageContentView}>
 				<Text style={styles.header}>{props.contentText['PAGE_TITLE']}</Text>
-				<View style={styles.notificationListContainer} >
-					<NotificationList
-						contentText={props.contentText}
-						notificationList={props.notificationList} 
-						onGroupClick={props.onGroupClick}
-						onEventClick={props.onEventClick}
-						onTransactionClick={props.onTransactionClick}
-						onBillClick={props.onBillClick}
-						/>
-				</View>
+				<NotificationList
+					contentText={props.contentText}
+					notificationList={props.notificationList} 
+					onGroupClick={props.onGroupClick}
+					onEventClick={props.onEventClick}
+					onTransactionClick={props.onTransactionClick}
+					onBillClick={props.onBillClick}
+					/>
 			</View>
+		</ScrollView>
 		</SafeAreaView>
 	);
 }

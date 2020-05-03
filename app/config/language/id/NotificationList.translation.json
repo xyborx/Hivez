@@ -16,7 +16,7 @@
 	"LEFT": "Kamu keluar dari {source_name}",
 	"REMOVED": "Kamu telah dikeluarkan dari {source_name}",
 	"TODAY": "Hari Ini",
-	"LAST_SEVEN_DAYS": "7 Hari Sebelumnya",
-	"LAST_THIRTY_DAYS": "30 Hari Sebelumnya",
+	"LAST_SEVEN_DAYS": "7 Hari Terakhir",
+	"LAST_THIRTY_DAYS": "30 Hari Terakhir",
 	"EMPTY_NOTIFICATION": "Belum ada notifikasi baru untukmu"
 }

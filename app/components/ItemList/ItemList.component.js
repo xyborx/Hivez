@@ -1,17 +1,19 @@
 import React from 'react';
-import {FlatList, Image, Text, TouchableHighlight, View} from 'react-native';
+import {Image, Text, TouchableHighlight, View} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import styles from './ItemList.component.style';
 
 const ItemList = (props) => {
+	if (props.dataList.length === 0) {
+		return (
+			<View style={styles.emptyList}>
+				<Text style={styles.emptyListText}>{props.emptyText}</Text>
+			</View>
+		);
+	};
 	return (
-		<FlatList
-			data={props.dataList}
-			keyboardShouldPersistTaps={'handled'}
-			keyExtractor={item => item.id}
-			showsVerticalScrollIndicator={false}
-			contentContainerStyle={styles.flatList}
-			renderItem={({item}) => (
+		props.dataList.map((item) => {
+			return (
 				<View key={item.id}>
 					<TouchableHighlight
 						accessibilityRole={'button'}
@@ -28,12 +30,8 @@ const ItemList = (props) => {
 						</View>
 					</TouchableHighlight>
 				</View>
-			)}
-			ListEmptyComponent={
-				<View style={styles.emptyList}>
-					<Text style={styles.emptyListText}>{props.emptyText}</Text>
-				</View>} />
-	);
+			);
+		}));
 }
 
 export default ItemList;

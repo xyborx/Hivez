@@ -2,7 +2,10 @@ import React, {useContext, useState} from 'react';
 import {LocalizationContext} from '../utils/language.utils';
 import GroupDetail from '../components/GroupDetail/GroupDetail.component';
 
-const GroupDetailPage = ({navigation}) => {
+const GroupDetailPage = ({route, navigation}) => {
+	const { groupID } = route.params;
+	console.log(groupID);
+
 	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
 	initializeAppLanguage();
 

@@ -1,7 +1,7 @@
 {
-    "HOME": "Home",
+    "HOME": "Dashboard",
     "GROUP": "Group",
     "EVENT": "Event",
     "NOTIFICATION": "Notification",
-    "PROFILE": "Profile"
+    "PROFILE": "My Profile"
 }

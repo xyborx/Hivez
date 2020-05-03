@@ -1,28 +1,42 @@
 import {StyleSheet} from 'react-native';
 import theme from '../../styles/theme.style';
-import {textHighlight, textPageSubHeader} from '../../styles/common.style';
+import {boxShadow, textHighlight, textPageSubHeader} from '../../styles/common.style';
 
 export default StyleSheet.create({
 	emptyList: {
+		...boxShadow,
 		alignItems: 'center',
-		flexGrow: 1,
-		justifyContent: 'center'
+		backgroundColor: theme.COLOR_WHITE,
+		borderRadius: theme.ROUNDNESS_DEFAULT,
+		justifyContent: 'center',
+		margin: theme.MARGIN_WIDE,
+		marginTop: 0,
+		padding: theme.PADDING_WIDE
 	},
 	emptyListText: {
+		...textHighlight,
 		fontSize: theme.FONT_SIZE_MEDIUM,
-		color: theme.COLOR_SOFT_GREY
+		color: theme.COLOR_GREY
 	},
 	flatList: {
 		overflow: 'hidden'
 	},
 	header: {
 		...textHighlight,
-		fontSize: theme.FONT_SIZE_LARGE,
+		fontSize: theme.FONT_SIZE_SUB_HEADER,
 		marginHorizontal: theme.MARGIN_DEFAULT,
 		marginVertical: theme.MARGIN_NARROW
 	},
 	headerContainer: {
-		backgroundColor: theme.COLOR_WHITE
+		...boxShadow,
+		backgroundColor: theme.COLOR_WHITE,
+		borderRadius: theme.ROUNDNESS_DEFAULT,
+		flex: 1,
+		flexGrow: 1,
+		margin: theme.MARGIN_WIDE,
+		marginTop: 0,
+		overflow: 'hidden',
+		paddingTop: theme.PADDING_NARROW
 	},
 	hidden: {
 		display: 'none'

@@ -8,12 +8,14 @@ export default StyleSheet.create({
 	},
 	emptyList: {
 		alignItems: 'center',
-		flexGrow: 1,
-		justifyContent: 'center'
+		justifyContent: 'center',
+		margin: theme.MARGIN_WIDE,
+		marginTop: theme.MARGIN_NARROW
 	},
 	emptyListText: {
+		...textHighlight,
 		fontSize: theme.FONT_SIZE_MEDIUM,
-		color: theme.COLOR_SOFT_GREY
+		color: theme.COLOR_GREY
 	},
 	listDetail: {
 		...textHighlight,

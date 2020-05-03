@@ -5,6 +5,8 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {LocalizationProvider} from '../utils/language.utils';
 
+import TabBar from '../components/TabBar/TabBar.component';
+
 import SignInPage from '../pages/SignIn.page';
 import SignUpPage from '../pages/SignUp.page';
 import ForgotPasswordPage from '../pages/ForgotPassword.page';
@@ -33,8 +35,8 @@ const GroupNavigation = createStackNavigator();
 
 const GroupStack = () => {
 	return (
-		<GroupNavigation.Navigator initialRouteName='GroupDetail' headerMode='none'>
-			<GroupNavigation.Screen name='Group' component={GroupListPage} />
+		<GroupNavigation.Navigator initialRouteName='GroupList' headerMode='none'>
+			<GroupNavigation.Screen name='GroupList' component={GroupListPage} />
 			<GroupNavigation.Screen name='GroupDetail' component={GroupDetailPage} />
 		</GroupNavigation.Navigator>
 	);
@@ -46,12 +48,28 @@ const AppTabs = () => {
 	return (
 		<TabNavigation.Navigator
 			backBehavior='history'
-			initialRouteName='Group'>
-			<TabNavigation.Screen name='Dashboard' component={DashboardPage} />
-			<TabNavigation.Screen name='Group' component={GroupStack} />
-			<TabNavigation.Screen name='Event' component={EventListPage} />
-			<TabNavigation.Screen name='Notification' component={NotificationPage} />
-			<TabNavigation.Screen name='Profile' component={MyProfilePage} />
+			initialRouteName='Dashboard'
+			tabBar={props => <TabBar {...props} />}>
+			<TabNavigation.Screen component={DashboardPage} name='Dashboard' options={{
+				icon: 'home',
+				text: 'HOME'
+			}} />
+			<TabNavigation.Screen component={GroupStack} name='GroupTab' options={{
+				icon: 'users',
+				text: 'GROUP'
+			}} />
+			<TabNavigation.Screen component={EventListPage} name='Event' options={{
+				icon: 'calendar-alt',
+				text: 'EVENT'
+			}} />
+			<TabNavigation.Screen component={NotificationPage} name='Notification' options={{
+				icon: 'bell',
+				text: 'NOTIFICATION'
+			}} />
+			<TabNavigation.Screen component={MyProfilePage} name='Profile' options={{
+				icon: 'user-alt',
+				text: 'PROFILE'
+			}} />
 		</TabNavigation.Navigator>
 	);
 };

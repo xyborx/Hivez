@@ -145,10 +145,9 @@ const GroupListPage = ({navigation}) => {
 	}
 
 	const navigateToGroup = (groupID) => {
-		// navigation.navigate('GroupDetails', {
-		// 	groupID: groupID
-		// });
-		alert(groupID);
+		navigation.navigate('GroupDetail', {
+			groupID: groupID
+		});
 	};
 
 	const createGroup = () => {

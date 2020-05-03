@@ -28,22 +28,11 @@ const NotificationItem = (props) => {
 	);
 };
 
-const NotificationList = (props) => {
+const NotificationSection = (props) => {
 	return (
-		<SectionList
-			contentContainerStyle={styles.sectionList}
-			keyboardShouldPersistTaps={'handled'}
-			keyExtractor={item => item.id}
-			showsVerticalScrollIndicator={false}
-			sections={props.notificationList}
-			stickySectionHeadersEnabled={true}
-			style={[styles.flatList, props.style]}
-			renderSectionHeader={({section}) => (
-				<View style={section.data.length === 0 ? styles.hidden : styles.headerContainer}>
-					<Text style={styles.header}>{props.contentText[section.title]}</Text>
-				</View>
-			)}
-			renderItem={({item}) => {
+		<View style={props.data.length === 0 ? styles.hidden : styles.headerContainer}>
+			<Text style={styles.header}>{props.contentText[props.title]}</Text>
+			{props.data.map((item) => {
 				const date = getRelativeDate(item.date);
 				const detail = (item.title.indexOf('REQUEST') >= 0 || item.title.indexOf('BILL') >= 0) ? `${item.sourceName} - ${item.detail}` : item.sourceName;
 				const title = props.contentText[item.title].replace('{source_name}', item.sourceName).replace('{status}', props.contentText[item.detail]);
@@ -64,11 +53,27 @@ const NotificationList = (props) => {
 						onPress={onPress}
 						title={title}/>
 				);
-			}}
-			ListEmptyComponent={
-				<View style={styles.emptyList}>
-					<Text style={styles.emptyListText}>{props.contentText['EMPTY_NOTIFICATION']}</Text>
-				</View>} />
+			})}
+		</View>
+	);
+};
+
+const NotificationList = (props) => {
+	let isEmpty = true;
+	props.notificationList.map(item => {if(item.data.length > 0) isEmpty = false});
+	if (isEmpty) {
+		return (
+			<View style={styles.emptyList}>
+				<Text style={styles.emptyListText}>{props.contentText['EMPTY_NOTIFICATION']}</Text>
+			</View>
+		);
+	};
+	return (
+		props.notificationList.map((item, index) => {
+			return (
+				<NotificationSection contentText={props.contentText} data={item.data} key={index} title={item.title} />
+			);
+		})
 	);
 }
 

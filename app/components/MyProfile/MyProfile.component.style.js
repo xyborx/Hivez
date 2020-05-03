@@ -63,6 +63,7 @@ export default StyleSheet.create({
 	versionText: {
 		...textHighlight,
 		color: theme.COLOR_GREY,
-		textAlign: 'center'
+		textAlign: 'center',
+		marginBottom: theme.MARGIN_DEFAULT
 	}
 });

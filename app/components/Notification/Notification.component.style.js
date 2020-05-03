@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import theme from '../../styles/theme.style';
-import {boxShadow, rootContainer, textHighlight, textPageHeader, textPageSubHeader} from '../../styles/common.style';
+import {boxShadow, pageContainer, rootContainer, textPageHeader} from '../../styles/common.style';
 
 export default StyleSheet.create({
 	header: {
@@ -24,10 +24,12 @@ export default StyleSheet.create({
 		overflow: 'hidden'
 	},
 	pageContainer: {
-		flexGrow: 1,
-		overflow: 'hidden'
+		...pageContainer
+	},
+	pageContentView: {
+		// ...pageContent
 	},
 	rootContainer: {
 		...rootContainer
-	}
+	},
 });

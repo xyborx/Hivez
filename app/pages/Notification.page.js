@@ -10,7 +10,7 @@ const NotificationPage = ({navigation}) => {
 
 	let notificationListDummy = [{
 		id: 'NOTIF0001',
-		date: '2020-05-02 17:43:31',
+		date: '2020-05-03 17:43:31',
 		title: 'JOIN_APPROVED',
 		detail: '',
 		source: 'GROUP',
@@ -19,7 +19,7 @@ const NotificationPage = ({navigation}) => {
 		sourceName: 'Para Lelaki Bebas Dan Fearless'
 	}, {
 		id: 'NOTIF0002',
-		date: '2020-05-02 16:43:31',
+		date: '2020-05-03 16:43:31',
 		title: 'JOIN_REJECTED',
 		detail: '',
 		source: 'GROUP',
@@ -229,10 +229,10 @@ const NotificationPage = ({navigation}) => {
 	}));
 
 	const navigateToGroup = (groupID) => {
-		// navigation.navigate('GroupDetails', {
-		// 	groupID: groupID
-		// });
-		alert(`Navigate to group: ${groupID}`);
+		navigation.navigate('GroupTab', {
+			screen: 'GroupDetail',
+			params: {groupID: groupID}
+		});
 	};
 
 	const navigateToEvent = (eventID) => {

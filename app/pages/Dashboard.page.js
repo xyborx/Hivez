@@ -213,10 +213,10 @@ const DashboardPage = ({navigation}) => {
 	const [pendingApprovalList, setPendingApprovalList] = useState(pendingApprovalListDummy);
 
 	const navigateToGroup = (groupID) => {
-		// navigation.navigate('GroupDetails', {
-		// 	groupID: groupID
-		// });
-		alert(`Navigate to group ${groupID}`);
+		navigation.navigate('GroupTab', {
+			screen: 'GroupDetail',
+			params: {groupID: groupID}
+		});
 	};
 
 	const viewTransactionDetail = (transactionID) => {

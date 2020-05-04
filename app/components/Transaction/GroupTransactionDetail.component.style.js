@@ -74,11 +74,19 @@ export default StyleSheet.create({
 	transactionDetailValue: {
 		color: theme.COLOR_SOFT_GREY
 	},
-	valueText: {
-		fontSize: theme.FONT_SIZE_SUB_HEADER,
+	transactionValueContainer: {
+		alignItems: 'center',
+		alignSelf: 'stretch',
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		marginBottom: theme.MARGIN_NARROW,
+		marginTop: theme.MARGIN_DEFAULT,
+		paddingHorizontal: theme.PADDING_DEFAULT
+	},
+	transactionValueText: {
+		fontSize: theme.FONT_SIZE_SEMI_HEADER,
 		fontWeight: theme.FONT_WEIGHT_BOLD,
-		textAlign: 'center',
-		margin: theme.MARGIN_DEFAULT
+		textAlign: 'center'
 	},
 	debit: {
 		color: theme.COLOR_DARK_RED

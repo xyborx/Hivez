@@ -7,7 +7,7 @@ const NumberField = (props) => {
 	const [displayValue, setDisplayValue] = useState(rupiahFormatting(props.value, false));
 	const [realValue, setRealValue] = useState(props.value);
 
-	onChangeValue = (value) => {
+	const onChangeValue = (value) => {
 		const formattedValue = value.replace(/\s/g, '').replace(/\./g, '');
 		if (formattedValue === '' || /^\d+$/.test(formattedValue)) {
 			props.onChangeText(formattedValue);
@@ -16,11 +16,11 @@ const NumberField = (props) => {
 		}
 	}
 
-	onFocusField = () => {
+	const onFocusField = () => {
 		setDisplayValue(realValue);
 	};
 
-	onBlurField = () => {
+	const onBlurField = () => {
 		setDisplayValue(rupiahFormatting(realValue, false));
 	};
 

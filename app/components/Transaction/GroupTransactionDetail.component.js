@@ -38,7 +38,10 @@ const CreateGroupTransaction = (props) => {
 						style={styles.groupImage}/>
 					<Text style={styles.groupName}>{groupName}</Text>
 					<View style={styles.transactionDetailContainer}>
-						<Text style={[styles.valueText, type === 'DEBIT' ? styles.debit : styles.credit]}>{value}</Text>
+						<View style={styles.transactionValueContainer}>
+							<Text style={styles.transactionDetailText}>{'IDR'}</Text>
+							<Text style={[styles.transactionValueText, type === 'DEBIT' ? styles.debit : styles.credit]}>{value}</Text>
+						</View>
 						<ViewWithValue title={props.contentText['DESCRIPTION']} value={description} />
 						<ViewWithValue title={props.contentText['TYPE']} value={props.contentText[type]} />
 						<ViewWithValue title={props.contentText['STATUS']} value={props.contentText[status.replace(' ', '_')]} />

@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
 import ImagePicker from 'react-native-image-crop-picker';
 import {LocalizationContext} from '../utils/language.utils';
-import {isGroupNameValid} from '../utils/helper.utils';
+import {isGroupNameValid} from '../utils/validator.utils';
 import CreateGroup from '../components/CreateGroup/CreateGroup.component';
 
 const CreateGroupPage = ({navigation}) => {

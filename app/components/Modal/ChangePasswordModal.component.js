@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react';
 import {Text, View} from 'react-native';
-import {isPasswordValid, isConfirmPasswordMatch, isNewPasswordValid} from '../../utils/helper.utils';
+import {isPasswordValid, isConfirmPasswordMatch, isNewPasswordValid} from '../../utils/validator.utils';
 import {LocalizationContext} from '../../utils/language.utils';
 import Button from '../Button/Button.component';
 import Modal from './Modal.component';

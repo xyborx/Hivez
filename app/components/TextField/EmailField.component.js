@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Text, TextInput, TouchableOpacity, View} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import {isEmailValid} from '../../utils/helper.utils';
+import {isEmailValid} from '../../utils/validator.utils';
 import styles from './EmailField.component.style';
 
 const EmailField = (props) => {

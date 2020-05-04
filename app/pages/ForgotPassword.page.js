@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {isEmailValid} from '../utils/helper.utils';
+import {isEmailValid} from '../utils/validator.utils';
 import {LocalizationContext} from '../utils/language.utils';
 import ForgotPassword from '../components/ForgotPassword/ForgotPassword.component';
 

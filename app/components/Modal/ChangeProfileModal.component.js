@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react';
 import {Text, View} from 'react-native';
-import {isEmailValid, isFullNameValid, isUsernameValid} from '../../utils/helper.utils';
+import {isEmailValid, isFullNameValid, isUsernameValid} from '../../utils/validator.utils';
 import {LocalizationContext} from '../../utils/language.utils';
 import Button from '../Button/Button.component';
 import EmailField from '../TextField/EmailField.component';

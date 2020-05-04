@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Text, TextInput, TouchableOpacity, View} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import styles from './PasswordField.component.style';
-import {isPasswordValid} from '../../utils/helper.utils';
+import {isPasswordValid} from '../../utils/validator.utils';
 
 const PasswordField = (props) => {
 	const [visibility, setVisibility] = useState(false);

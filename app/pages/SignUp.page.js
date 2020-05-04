@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {isEmailValid, isFullNameValid, isUsernameValid, isPasswordValid, isConfirmPasswordMatch} from '../utils/helper.utils';
+import {isEmailValid, isFullNameValid, isUsernameValid, isPasswordValid, isConfirmPasswordMatch} from '../utils/validator.utils';
 import {LocalizationContext} from '../utils/language.utils';
 import SignUp from '../components/SignUp/SignUp.component';
 

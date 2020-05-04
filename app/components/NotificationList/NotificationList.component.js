@@ -81,6 +81,7 @@ const NotificationList = (props) => {
 					onEventClick={props.onEventClick}
 					onEventTransactionClick={props.onEventTransactionClick}
 					onGroupTransactionClick={props.onGroupTransactionClick}
+					onBillClick={props.onBillClick}
 					title={item.title} />
 			);
 		})

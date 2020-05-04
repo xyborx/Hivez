@@ -7,6 +7,8 @@ import {LocalizationProvider} from '../utils/language.utils';
 
 import TabBar from '../components/TabBar/TabBar.component';
 
+import CreateGroupTransactionPage from '../pages/CreateGroupTransaction.page';
+
 import SignInPage from '../pages/SignIn.page';
 import SignUpPage from '../pages/SignUp.page';
 import ForgotPasswordPage from '../pages/ForgotPassword.page';
@@ -78,14 +80,25 @@ const AppTabs = () => {
 	);
 };
 
+const RootNavigation = createStackNavigator();
+
+const RootStack = () => {
+	return (
+		<RootNavigation.Navigator headerMode='none' initialRouteName={'MainStack'}>
+			<RootNavigation.Screen component={AppTabs} name='MainStack' />
+			<RootNavigation.Screen component={CreateGroupTransactionPage} name='CreateGroupTransaction'/>
+		</RootNavigation.Navigator>
+	);
+};
+
 export default function Router() {
-    return (
-        <NavigationContainer>
+	return (
+		<NavigationContainer>
 			<SafeAreaProvider>
 				<LocalizationProvider>
-					<AppTabs />
+					<RootStack />
 				</LocalizationProvider>
 			</SafeAreaProvider>
-        </NavigationContainer>
-    );
+		</NavigationContainer>
+	);
 }

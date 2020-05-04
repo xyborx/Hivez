@@ -16,4 +16,20 @@ export const isBetweenLastMonth = (date) => {
 
 export const getRelativeDate = (date) => {
 	return moment(date).fromNow();
+};
+
+export const createDate = (date) => {
+	return moment(date);
+};
+
+export const dateToString = (date) => {
+	return moment(date).format('dddd, D MMMM YYYY');
+};
+
+export const timeToString = (date) => {
+	return moment(date).format('HH:mm');
+};
+
+export const isAfterCurrent = (date) => {
+	return moment(date).isAfter(currentDate.clone());
 }

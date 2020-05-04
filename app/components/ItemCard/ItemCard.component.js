@@ -12,7 +12,7 @@ const ItemCard = (props) => {
 					activeOpacity={0.8}
 					style={styles.itemDataButton}
 					underlayColor={'#FFC60B'}
-					onPress={() => {props.itemData.onClick(props.itemData.id)}}>
+					onPress={() => props.itemData.onClick(props.itemData.id)}>
 					<View style={styles.itemDataContainer}>
 						<Image
 							source={props.itemData.image === '' ? require('../../assets/images/DefaultGroupImage.png') : {uri: `data:image/jpeg;base64,${props.itemData.image}`}}
@@ -39,7 +39,7 @@ const ItemCard = (props) => {
 						<IconButton
 							icon={item.icon}
 							key={index}
-							onPress={item.action}
+							onPress={() => item.action(props.itemData.id)}
 							style={styles.iconButton}
 							text={props.contentText[item.name]} />
 					);

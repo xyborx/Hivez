@@ -1,8 +1,10 @@
 import BottomTabNavigator from './en/BottomTabNavigator.translation.json';
 import CreateGroup from './en/CreateGroup.translation.json';
+import CreateGroupTransaction from './en/CreateGroupTransaction.translation.json';
 import ChangePasswordModal from './en/ChangePasswordModal.translation.json';
 import ChangeProfileModal from './en/ChangeProfileModal.translation.json';
 import ConfirmCreateGroup from './en/ConfirmCreateGroup.translation.json';
+import ConfirmCreateTransaction from './en/ConfirmCreateTransaction.translation.json';
 import ConfirmDeleteAccount from './en/ConfirmDeleteAccount.translation.json';
 import ConfirmJoinGroup from './en/ConfirmJoinGroup.translation.json';
 import ConfirmSignOut from './en/ConfirmSignOut.translation.json';
@@ -33,9 +35,11 @@ import UsernameValidation from './en/UsernameValidation.translation.json';
 module.exports = {
 	BottomTabNavigator,
 	CreateGroup,
+	CreateGroupTransaction,
 	ChangePasswordModal,
 	ChangeProfileModal,
 	ConfirmCreateGroup,
+	ConfirmCreateTransaction,
 	ConfirmDeleteAccount,
 	ConfirmJoinGroup,
 	ConfirmSignOut,

@@ -34,6 +34,40 @@ const DashboardPage = ({navigation}) => {
 		});
 	};
 
+	const createGroupTransaction = (groupID) => {
+		navigation.navigate('CreateGroupTransaction', {
+			groupID: groupID
+		});
+	};
+
+	const createEventTransaction = (eventID) => {
+		// navigation.navigate('CreateEventTransaction', {
+		// 	eventID: eventID
+		// });
+		alert(`Create event transaction: ${eventID}`);
+	};
+
+	const viewGroupBill = (groupID) => {
+		// navigation.navigate('ViewGroupBill', {
+		// 	groupID: groupID
+		// });
+		alert(`View group bill: ${groupID}`);
+	};
+
+	const viewGroupReport = (groupID) => {
+		// navigation.navigate('ViewGroupReport', {
+		// 	groupID: groupID
+		// });
+		alert(`View group report: ${groupID}`);
+	};
+
+	const viewEventReport = (eventID) => {
+		// navigation.navigate('ViewEventReport', {
+		// 	eventID: eventID
+		// });
+		alert(`View event report: ${eventID}`);
+	};
+
 	const userNameDummy = 'Difa Sanditya';
 	const favouriteItemListDummy = [{
 		id: 'GROUP0001',
@@ -46,21 +80,15 @@ const DashboardPage = ({navigation}) => {
 			{
 				icon: 'request',
 				name: 'REQUEST',
-				action: () => {
-					alert('GROUP0001 Request')
-				}
+				action: createGroupTransaction
 			}, {
 				icon: 'payBill',
 				name: 'PAY_BILL',
-				action: () => {
-					alert('GROUP0001 Pay Bill')
-				}
+				action: viewGroupBill
 			}, {
 				icon: 'viewReport',
 				name: 'VIEW_REPORT',
-				action: () => {
-					alert('GROUP0001 View Report')
-				}
+				action: viewGroupReport
 			}
 		]
 	}, {
@@ -74,15 +102,11 @@ const DashboardPage = ({navigation}) => {
 			{
 				icon: 'request',
 				name: 'REQUEST',
-				action: () => {
-					alert('GROUP0002 Request')
-				}
+				action: createEventTransaction
 			}, {
 				icon: 'viewReport',
 				name: 'VIEW_REPORT',
-				action: () => {
-					alert('GROUP0002 View Report')
-				}
+				action: viewEventReport
 			}
 		]
 	}, {
@@ -96,15 +120,11 @@ const DashboardPage = ({navigation}) => {
 			{
 				icon: 'request',
 				name: 'REQUEST',
-				action: () => {
-					alert('GROUP0003 Request')
-				}
+				action: createEventTransaction
 			}, {
 				icon: 'viewReport',
 				name: 'VIEW_REPORT',
-				action: () => {
-					alert('GROUP0003 View Report')
-				}
+				action: viewEventReport
 			}
 		]
 	}, {
@@ -118,21 +138,15 @@ const DashboardPage = ({navigation}) => {
 			{
 				icon: 'request',
 				name: 'REQUEST',
-				action: () => {
-					alert('GROUP0004 Request')
-				}
+				action: createGroupTransaction
 			}, {
 				icon: 'payBill',
 				name: 'PAY_BILL',
-				action: () => {
-					alert('GROUP0004 Pay Bill')
-				}
+				action: viewGroupBill
 			}, {
 				icon: 'viewReport',
 				name: 'VIEW_REPORT',
-				action: () => {
-					alert('GROUP0004 View Report')
-				}
+				action: viewGroupReport
 			}
 		]
 	}, {
@@ -146,21 +160,15 @@ const DashboardPage = ({navigation}) => {
 			{
 				icon: 'request',
 				name: 'REQUEST',
-				action: () => {
-					alert('GROUP0005 Request')
-				}
+				action: createGroupTransaction
 			}, {
 				icon: 'payBill',
 				name: 'PAY_BILL',
-				action: () => {
-					alert('GROUP0005 Pay Bill')
-				}
+				action: viewGroupBill
 			}, {
 				icon: 'viewReport',
 				name: 'VIEW_REPORT',
-				action: () => {
-					alert('GROUP0005 View Report')
-				}
+				action: viewGroupReport
 			}
 		]
 	}];

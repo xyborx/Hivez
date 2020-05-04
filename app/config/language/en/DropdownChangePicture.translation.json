@@ -1,8 +1,8 @@
 {
-	"SELECT_PROFILE_PICTURE": "Select profile picture",
+	"SELECT_PROFILE_PICTURE": "Select a picture",
 	"TAKE_PHOTO": "Take photo...",
 	"CHOOSE_FROM_LIBRARY": "Choose from library...",
-	"DELETE_PROFILE_PICTURE": "Delete profile picture",
+	"DELETE_PROFILE_PICTURE": "Delete picture",
 	"CANCEL": "Cancel",
 	"SAVE": "Save"
 }

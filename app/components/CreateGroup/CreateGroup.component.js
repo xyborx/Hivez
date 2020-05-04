@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, Text, TouchableHighlight, ScrollView, View} from 'react-native';
+import {Image, Text, ScrollView, View} from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import ButtonWithConfirmation from '../Button/ButtonWithConfirmation.component';
 import ButtonWithIcon from '../Button/ButtonWithIcon.component';
@@ -8,7 +8,7 @@ import FloatingBackButton from '../Button/FloatingBackButton.component';
 import TextField from '../TextField/TextField.component';
 import styles from './CreateGroup.component.style';
 
-const FindGroup = (props) => {
+const CreateGroup = (props) => {
 	return (
 		<SafeAreaView style={styles.rootContainer}>
 			<ScrollView keyboardShouldPersistTaps={'handled'} showsVerticalScrollIndicator={false} style={styles.pageContainer} contentContainerStyle={styles.pageContentView}>
@@ -58,4 +58,4 @@ const FindGroup = (props) => {
 	);
 }
 
-export default FindGroup;
+export default CreateGroup;

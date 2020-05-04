@@ -1,8 +1,8 @@
 import React, {createContext, useState} from 'react';
 import Storage from './storage.utils';
-import * as RNLocalize from "react-native-localize";
+import * as RNLocalize from 'react-native-localize';
 import LocalizedStrings from 'react-native-localization';
-import moment from "moment";
+import moment from 'moment';
 import en from '../config/language/en.language';
 import id from '../config/language/id.language';
 import languageIcons from '../config/map/FlagIcon.map.json';

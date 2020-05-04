@@ -17,6 +17,7 @@ const EmailField = (props) => {
 				<TextInput
 					autoCapitalize={'none'}
 					editable={props.editable}
+					keyboardType={'email-address'}
 					onChangeText={(value) => {
 						props.onChangeText(value);
 						if (props.validateInput) {

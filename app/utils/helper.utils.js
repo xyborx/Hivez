@@ -58,7 +58,7 @@ export const leftPadArray = (array, length, fill) => {
 	return Array(length).fill(fill).concat(array).slice(array.length);
 };
 
-export const rupiahFormatting = (value) => {
+export const rupiahFormatting = (value, withRp = true) => {
 	// https://www.malasngoding.com/membuat-format-rupiah-dengan-javascript/
 	
 	var number_string = value.toString().replace(/[^,\d]/g, '').toString(),
@@ -73,5 +73,5 @@ export const rupiahFormatting = (value) => {
 	}
 
 	rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-	return rupiah ? 'Rp ' + rupiah : '';
+	return rupiah ? (withRp ? `Rp ${rupiah}` : rupiah) : '';
 };

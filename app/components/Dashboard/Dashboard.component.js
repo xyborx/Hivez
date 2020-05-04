@@ -42,7 +42,8 @@ const Dashboard = (props) => {
 					<RecentTransaction
 						contentText={props.recentTransactionText}
 						style={styles.recentTransaction}
-						onItemClick={props.onTransactionClick}
+						onEventTransactionClick={props.onEventTransactionClick}
+						onGroupTransactionClick={props.onGroupTransactionClick}
 						transactionList={props.transactionList} />
 				</View>
 			</ScrollView>

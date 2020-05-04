@@ -65,7 +65,7 @@ const CreateGroupTransaction = (props) => {
 							<DropdownChangePicture
 								contentText={props.dropdownChangePictureContext}
 								onChange={props.onChangeImageDropdown}
-								style={styles.changePictureButton}>
+								style={props.image === '' ? styles.noMargin : styles.changePictureButton}>
 								<ButtonWithIcon
 									accessability={true}
 									icon={props.image === '' ? 'camera' : 'pen'}

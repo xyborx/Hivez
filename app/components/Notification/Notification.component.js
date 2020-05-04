@@ -12,10 +12,11 @@ const Notification = (props) => {
 				<Text style={styles.header}>{props.contentText['PAGE_TITLE']}</Text>
 				<NotificationList
 					contentText={props.contentText}
-					notificationList={props.notificationList} 
+					notificationList={props.notificationList}
 					onGroupClick={props.onGroupClick}
 					onEventClick={props.onEventClick}
-					onTransactionClick={props.onTransactionClick}
+					onEventTransactionClick={props.onEventTransactionClick}
+					onGroupTransactionClick={props.onGroupTransactionClick}
 					onBillClick={props.onBillClick}
 					/>
 			</View>

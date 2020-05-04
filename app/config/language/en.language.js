@@ -3,10 +3,12 @@ import CreateGroup from './en/CreateGroup.translation.json';
 import CreateGroupTransaction from './en/CreateGroupTransaction.translation.json';
 import ChangePasswordModal from './en/ChangePasswordModal.translation.json';
 import ChangeProfileModal from './en/ChangeProfileModal.translation.json';
+import ConfirmApproveTransaction from './en/ConfirmApproveTransaction.translation.json';
 import ConfirmCreateGroup from './en/ConfirmCreateGroup.translation.json';
 import ConfirmCreateTransaction from './en/ConfirmCreateTransaction.translation.json';
 import ConfirmDeleteAccount from './en/ConfirmDeleteAccount.translation.json';
 import ConfirmJoinGroup from './en/ConfirmJoinGroup.translation.json';
+import ConfirmRejectTransaction from './en/ConfirmRejectTransaction.translation.json';
 import ConfirmSignOut from './en/ConfirmSignOut.translation.json';
 import Dashboard from './en/Dashboard.translation.json';
 import DropdownChangePicture from './en/DropdownChangePicture.translation.json';
@@ -19,6 +21,7 @@ import FullNameValidation from './en/FullNameValidation.translation.json';
 import GroupDetail from './en/GroupDetail.translation.json';
 import GroupList from './en/GroupList.translation.json';
 import GroupNameValidation from './en/GroupNameValidation.translation.json';
+import GroupTransactionDetail from './en/GroupTransactionDetail.translation.json';
 import Language from './en/Language.translation.json';
 import Modal from './en/Modal.translation.json';
 import MyProfile from './en/MyProfile.translation.json';
@@ -38,10 +41,12 @@ module.exports = {
 	CreateGroupTransaction,
 	ChangePasswordModal,
 	ChangeProfileModal,
+	ConfirmApproveTransaction,
 	ConfirmCreateGroup,
 	ConfirmCreateTransaction,
 	ConfirmDeleteAccount,
 	ConfirmJoinGroup,
+	ConfirmRejectTransaction,
 	ConfirmSignOut,
 	Dashboard,
 	DropdownChangePicture,
@@ -54,6 +59,7 @@ module.exports = {
 	GroupDetail,
 	GroupList,
 	GroupNameValidation,
+	GroupTransactionDetail,
 	Language,
 	Modal,
 	MyProfile,

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {Image, Text, TouchableHighlight, ScrollView, Switch, View} from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -48,7 +48,7 @@ const ViewWithValue = (props) => {
 			<Text style={styles.profileSectionItemValue}>{props.value}</Text>
 		</View>
 	);
-}
+};
 
 const SignIn = (props) => {
 	return (

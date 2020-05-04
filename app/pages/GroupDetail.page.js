@@ -150,10 +150,9 @@ const GroupDetailPage = ({route, navigation}) => {
 	}
 
 	const viewTransactionDetail = (transactionID) => {
-		// navigation.navigate('TransactionDetails', {
-		// 	transactionID: transactionID
-		// });
-		alert(`Navigate to transaction detail ${transactionID}`);
+		navigation.navigate('GroupTransactionDetail', {
+			transactionID: transactionID
+		});
 	}
 
 	const goBack = () => {

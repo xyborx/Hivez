@@ -43,7 +43,7 @@ const NotificationPage = ({navigation}) => {
 		date: '2020-05-02 15:43:31',
 		title: 'REQUEST_APPROVED',
 		detail: 'Beli Mangga',
-		source: 'TRANSACTION',
+		source: 'GROUP_TRANSACTION',
 		sourceID: 'TRX0002',
 		sourceImage: imageDummy[2],
 		sourceName: 'Lelaki'
@@ -52,7 +52,7 @@ const NotificationPage = ({navigation}) => {
 		date: '2020-05-02 14:43:31',
 		title: 'REQUEST_REJECTED',
 		detail: 'Beli Semangka',
-		source: 'TRANSACTION',
+		source: 'GROUP_TRANSACTION',
 		sourceID: 'TRX0004',
 		sourceImage: imageDummy[3],
 		sourceName: 'Fearless',
@@ -142,7 +142,7 @@ const NotificationPage = ({navigation}) => {
 		date: '2020-04-23 17:43:31',
 		title: 'REQUEST_APPROVED',
 		detail: 'Beli Mangga',
-		source: 'TRANSACTION',
+		source: 'EVENT_TRANSACTION',
 		sourceID: 'TRX0002',
 		sourceImage: imageDummy[3],
 		sourceName: 'Lelaki'
@@ -151,7 +151,7 @@ const NotificationPage = ({navigation}) => {
 		date: '2020-04-22 17:43:31',
 		title: 'REQUEST_REJECTED',
 		detail: 'Beli Semangka',
-		source: 'TRANSACTION',
+		source: 'EVENT_TRANSACTION',
 		sourceID: 'TRX0004',
 		sourceImage: imageDummy[4],
 		sourceName: 'Fearless',
@@ -254,11 +254,17 @@ const NotificationPage = ({navigation}) => {
 		alert(`Navigate to event ${eventID}`);
 	};
 
-	const navigateToTransaction = (transactionID) => {
-		// navigation.navigate('TransactionDetails', {
+	const navigateToGroupTransactionDetail = (transactionID) => {
+		navigation.navigate('GroupTransactionDetail', {
+			transactionID: transactionID
+		});
+	};
+
+	const navigateToEventTransactionDetail = (transactionID) => {
+		// navigation.navigate('EventTransactionDetail', {
 		// 	transactionID: transactionID
 		// });
-		alert(`Navigate to transaction ${transactionID}`);
+		alert(`Navigate to event transaction ${transactionID}`);
 	};
 
 	const navigateToBill = (billID) => {
@@ -275,7 +281,8 @@ const NotificationPage = ({navigation}) => {
 			notificationList={notificationList}
 			onGroupClick={navigateToGroup}
 			onEventClick={navigateToEvent}
-			onTransactionClick={navigateToTransaction}
+			onEventTransactionClick={navigateToEventTransactionDetail}
+			onGroupTransactionClick={navigateToGroupTransactionDetail}
 			onBillClick={navigateToBill} />
 	);
 };

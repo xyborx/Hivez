@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, SectionList, Text, TouchableHighlight, View} from 'react-native';
+import {Image, Text, TouchableHighlight, View} from 'react-native';
 import {getRelativeDate} from '../../utils/date.utils';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import styles from './NotificationList.component.style';
@@ -10,7 +10,7 @@ const NotificationItem = (props) => {
 			accessibilityRole={'button'}
 			activeOpacity={1}
 			underlayColor={'rgba(0,0,0,0.05)'}
-			onPress={() => {if(props.clickable) props.onPress()}}>
+			onPress={() => {if(props.clickable) props.onPress(props.id)}}>
 			<View style={styles.listItem}>
 				<Image
 					source={props.image === '' ? require('../../assets/images/DefaultGroupImage.png') : {uri: `data:image/jpeg;base64,${props.image}`}}
@@ -37,20 +37,22 @@ const NotificationSection = (props) => {
 				const detail = (item.title.indexOf('REQUEST') >= 0 || item.title.indexOf('BILL') >= 0) ? `${item.sourceName} - ${item.detail}` : item.sourceName;
 				const title = props.contentText[item.title].replace('{source_name}', item.sourceName).replace('{status}', props.contentText[item.detail]);
 				const clickable = !(['JOIN_REJECTED', 'LEFT', 'REMOVED'].includes(item.title));
-				const onPress = () => {
-					if (item.source === 'GROUP') props.onGroupClick(item.sourceID);
-					else if (item.source === 'EVENT') props.onEventClick(item.sourceID);
-					else if (item.source === 'TRANSACTION') props.onTransactionClick(item.sourceID);
-					else if (item.source === 'BILL') props.onBillClick(item.sourceID);
-				};
 				return (
 					<NotificationItem
+						id={item.sourceID}
 						clickable={clickable}
 						date={date}
 						detail={detail}
 						image={item.sourceImage}
 						key={item.id}
-						onPress={onPress}
+						onPress={
+							item.source === 'GROUP' ? props.onGroupClick :
+							item.source === 'EVENT' ? props.onEventClick :
+							item.source === 'EVENT_TRANSACTION' ? props.onEventTransactionClick :
+							item.source === 'GROUP_TRANSACTION' ? props.onGroupTransactionClick :
+							item.source === 'BILL' ? props.onBillClick :
+							() => {}
+						}
 						title={title}/>
 				);
 			})}
@@ -77,8 +79,8 @@ const NotificationList = (props) => {
 					key={index}
 					onGroupClick={props.onGroupClick}
 					onEventClick={props.onEventClick}
-					onTransactionClick={props.onTransactionClick}
-					onBillClick={props.onBillClick}
+					onEventTransactionClick={props.onEventTransactionClick}
+					onGroupTransactionClick={props.onGroupTransactionClick}
 					title={item.title} />
 			);
 		})

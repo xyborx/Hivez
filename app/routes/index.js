@@ -8,6 +8,7 @@ import {LocalizationProvider} from '../utils/language.utils';
 import TabBar from '../components/TabBar/TabBar.component';
 
 import CreateGroupTransactionPage from '../pages/CreateGroupTransaction.page';
+import GroupTransactionDetailPage from '../pages/GroupTransactionDetail.page';
 
 import SignInPage from '../pages/SignIn.page';
 import SignUpPage from '../pages/SignUp.page';
@@ -87,6 +88,7 @@ const RootStack = () => {
 		<RootNavigation.Navigator headerMode='none' initialRouteName={'MainStack'}>
 			<RootNavigation.Screen component={AppTabs} name='MainStack' />
 			<RootNavigation.Screen component={CreateGroupTransactionPage} name='CreateGroupTransaction'/>
+			<RootNavigation.Screen component={GroupTransactionDetailPage} name='GroupTransactionDetail'/>
 		</RootNavigation.Navigator>
 	);
 };

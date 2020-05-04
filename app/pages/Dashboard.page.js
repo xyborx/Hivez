@@ -172,10 +172,12 @@ const DashboardPage = ({navigation}) => {
 			}
 		]
 	}];
+
 	const transactionListDummy = [{
 		id: 'TRX0001',
 		name: 'Beli Mangga',
-		groupName: 'Lelaki Fearless',
+		sourceName: 'Lelaki Fearless',
+		sourceType: 'GROUP',
 		type: 'Debit',
 		value: 150000,
 		status: 'On Progress',
@@ -183,7 +185,8 @@ const DashboardPage = ({navigation}) => {
 	}, {
 		id: 'TRX0002',
 		name: 'Beli Jambu',
-		groupName: 'Wanita Fearless',
+		sourceName: 'Wanita Fearless',
+		sourceType: 'GROUP',
 		type: 'Credit',
 		value: 50000,
 		status: 'Approved',
@@ -191,7 +194,8 @@ const DashboardPage = ({navigation}) => {
 	}, {
 		id: 'TRX0003',
 		name: 'Beli Mangga',
-		groupName: 'Lelaki Fearless',
+		sourceName: 'Lelaki Fearless',
+		sourceType: 'EVENT',
 		type: 'Debit',
 		value: 150000,
 		status: 'Declined',
@@ -199,7 +203,8 @@ const DashboardPage = ({navigation}) => {
 	}, {
 		id: 'TRX0004',
 		name: 'Beli Jambu',
-		groupName: 'Wanita Fearless',
+		sourceName: 'Wanita Fearless',
+		sourceType: 'EVENT',
 		type: 'Credit',
 		value: 50000,
 		status: 'Declined',
@@ -207,7 +212,8 @@ const DashboardPage = ({navigation}) => {
 	}, {
 		id: 'TRX0005',
 		name: 'Beli Jambu',
-		groupName: 'Fearless',
+		sourceName: 'Fearless',
+		sourceType: 'GROUP',
 		type: 'Credit',
 		value: 50000,
 		status: 'Approved',
@@ -246,11 +252,17 @@ const DashboardPage = ({navigation}) => {
 	const [transactionList, setTransactionList] = useState(transactionListDummy);
 	const [pendingApprovalList, setPendingApprovalList] = useState(pendingApprovalListDummy);
 
-	const viewTransactionDetail = (transactionID) => {
-		// navigation.navigate('TransactionDetails', {
+	const viewGroupTransactionDetail = (transactionID) => {
+		navigation.navigate('GroupTransactionDetail', {
+			transactionID: transactionID
+		});
+	};
+
+	const viewEventTransactionDetail = (transactionID) => {
+		// navigation.navigate('EventTransactionDetail', {
 		// 	transactionID: transactionID
 		// });
-		alert(`Navigate to transaction detail ${transactionID}`);
+		alert(`View event transaction detail: ${transactionID}`)
 	};
 
 	const viewPendingApprovalList = (type) => {
@@ -269,7 +281,8 @@ const DashboardPage = ({navigation}) => {
 			favouriteItemList={favouriteItemList}
 			transactionList={transactionList}
 			pendingApprovalList={pendingApprovalList}
-			onTransactionClick={viewTransactionDetail} />
+			onEventTransactionClick={viewEventTransactionDetail}
+			onGroupTransactionClick={viewGroupTransactionDetail} />
 	);
 };
 

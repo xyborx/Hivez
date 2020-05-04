@@ -5,13 +5,13 @@ import {padArray, rupiahFormatting} from '../../utils/helper.utils';
 import styles from './RecentTransaction.component.style';
 
 const TransactionItem = (props) => {
-	const {id, name, groupName, type, value, status, image} = props.item;
+	const {id, name, sourceName, sourceType, type, value, status, image} = props.item;
 	return (
 		<TouchableHighlight
 			accessibilityRole={'button'}
 			activeOpacity={1}
 			underlayColor={'rgba(0,0,0,0.05)'}
-			onPress={() => {props.onItemClick(id)}}
+			onPress={() => props.onItemClick(id)}
 			style={styles.transactionItem}>
 			<View style={styles.transactionItem}>
 				<Image
@@ -21,7 +21,7 @@ const TransactionItem = (props) => {
 					<View style={styles.transactionTitleContainer}>
 						<Text style={styles.transactionName}>{name}</Text>
 						<Text style={styles.transactionGroupName}>
-							{`${groupName} - ${props.contentText[`${status.toUpperCase().replace(' ', '_')}_TRANSACTIONS`]}`}
+							{`${sourceName} - ${props.contentText[`${status.toUpperCase().replace(' ', '_')}_TRANSACTIONS`]}`}
 						</Text>
 					</View>
 					<View style={styles.transactionValueContainer}>
@@ -110,7 +110,7 @@ const RecentTransaction = (props) => {
 							contentText={props.contentText}
 							item={item}
 							key={index}
-							onItemClick={props.onItemClick} />
+							onItemClick={item.sourceType === 'GROUP' ? props.onGroupTransactionClick : props.onEventTransactionClick} />
 					);
 				})}
 			</View>

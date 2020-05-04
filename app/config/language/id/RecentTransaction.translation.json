@@ -3,9 +3,9 @@
 	"LAST_FIVE_TRANSACTIONS": "5 transaksi terkahir",
 	"SEE_ALL_TRANSACTIONS": "Lihat semua transaksi",
 	"ALL_TRANSACTIONS": "Semua",
-	"APPROVED_TRANSACTIONS": "Disetujui",
+	"APPROVED_TRANSACTIONS": "Telah disetujui",
 	"ON_PROGRESS_TRANSACTIONS": "Sedang Berlangsung",
-	"DECLINED_TRANSACTIONS": "Ditolak",
+	"DECLINED_TRANSACTIONS": "Telah ditolak",
 	"NO_RECENT_TRANSACTION": "Tidak ada transaksi terkini",
 	"BY": "oleh"
 }

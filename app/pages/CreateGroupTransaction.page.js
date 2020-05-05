@@ -2,6 +2,7 @@ import React, {useContext, useState} from 'react';
 import ImagePicker from 'react-native-image-crop-picker';
 import {LocalizationContext} from '../utils/language.utils';
 import {createDate, currentDate} from '../utils/date.utils';
+import {isRequestDescriptionValid} from '../utils/validator.utils';
 import CreateGroupTransaction from '../components/Transaction/CreateGroupTransaction.component';
 
 const CreateGroupTransactionPage = ({route, navigation}) => {
@@ -25,8 +26,8 @@ const CreateGroupTransactionPage = ({route, navigation}) => {
 	const [image, setImage] = useState('');
 	const [nextButtonAccessbility, setNextButtonAccessbility] = useState(false);
 
-	const validateNextButton = (value, date, time) => {
-		setNextButtonAccessbility(value !== '' && date !== '' && time != '');
+	const validateNextButton = (value, date, time, description) => {
+		setNextButtonAccessbility(value !== '' && date !== '' && time != '' && isRequestDescriptionValid(description).isValid);
 	};
 
 	const onChangeType = (type) => {
@@ -35,21 +36,22 @@ const CreateGroupTransactionPage = ({route, navigation}) => {
 
 	const onChangeValue = (value) => {
 		setValue(value);
-		validateNextButton(value, date, time);
+		validateNextButton(value, date, time, description);
 	};
 
 	const onChangeDate = (date) => {
 		setDate(date);
-		validateNextButton(value, currentDate, time);
+		validateNextButton(value, date, time, description);
 	};
 
 	const onChangeTime = (time) => {
 		setTime(time);
-		validateNextButton(value, date, time);
+		validateNextButton(value, date, time, description);
 	};
 
 	const onChangeDescription = (description) => {
 		setDescription(description);
+		validateNextButton(value, date, time, description);
 	};
 
 
@@ -122,6 +124,7 @@ const CreateGroupTransactionPage = ({route, navigation}) => {
 	return (
 		<CreateGroupTransaction
 			contentText={translations['CreateGroupTransaction']}
+			descriptionText={translations['RequestDescriptionValidation']}
 			groupDetail={groupDetail}
 			type={type}
 			setType={onChangeType}
@@ -133,6 +136,7 @@ const CreateGroupTransactionPage = ({route, navigation}) => {
 			setTime={onChangeTime}
 			description={description}
 			setDescription={onChangeDescription}
+			validateDescription={isRequestDescriptionValid}
 			image={image}
 			nextButtonAccessbility={nextButtonAccessbility}
 			confirmCreateText={translations['ConfirmCreateTransaction']}

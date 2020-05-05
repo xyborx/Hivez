@@ -1,51 +1,72 @@
-import BottomTabNavigator from './id/BottomTabNavigator.translation.json';
-import CreateGroup from './id/CreateGroup.translation.json';
-import CreateGroupTransaction from './id/CreateGroupTransaction.translation.json';
-import ChangePasswordModal from './id/ChangePasswordModal.translation.json';
-import ChangeProfileModal from './id/ChangeProfileModal.translation.json';
-import ConfirmApproveTransaction from './id/ConfirmApproveTransaction.translation.json';
-import ConfirmCreateGroup from './id/ConfirmCreateGroup.translation.json';
-import ConfirmCreateTransaction from './id/ConfirmCreateTransaction.translation.json';
-import ConfirmDeleteAccount from './id/ConfirmDeleteAccount.translation.json';
-import ConfirmJoinGroup from './id/ConfirmJoinGroup.translation.json';
-import ConfirmRejectTransaction from './id/ConfirmRejectTransaction.translation.json';
-import ConfirmSignOut from './id/ConfirmSignOut.translation.json';
-import Dashboard from './id/Dashboard.translation.json';
-import DropdownChangePicture from './id/DropdownChangePicture.translation.json';
-import DropdownLanguage from './id/DropdownLanguage.translation.json';
-import EmailValidation from './id/EmailValidation.translation.json';
-import EventList from './id/EventList.translation.json';
-import FindGroup from './id/FindGroup.translation.json';
-import ForgotPassword from './id/ForgotPassword.translation.json';
-import FullNameValidation from './id/FullNameValidation.translation.json';
-import GroupDetail from './id/GroupDetail.translation.json';
-import GroupList from './id/GroupList.translation.json';
-import GroupNameValidation from './id/GroupNameValidation.translation.json';
-import GroupTransactionDetail from './id/GroupTransactionDetail.translation.json';
+import BottomTabNavigator from './id/Component/BottomTabNavigator.translation.json';
+import ChangePasswordModal from './id/Component/ChangePasswordModal.translation.json';
+import ChangeProfileModal from './id/Component/ChangeProfileModal.translation.json';
+import DropdownChangePicture from './id/Component/DropdownChangePicture.translation.json';
+import DropdownLanguage from './id/Component/DropdownLanguage.translation.json';
+import Modal from './id/Component/Modal.translation.json';
+import PrivacyPolicy from './id/Component/PrivacyPolicy.translation.json';
+import RecentBill from './id/Component/RecentBill.translation.json';
+import RecentTransaction from './id/Component/RecentTransaction.translation.json';
+import TermsAndConditions from './id/Component/TermsAndConditions.translation.json';
+
+import CreateGroup from './id/Page/CreateGroup.translation.json';
+import CreateGroupBill from './id/Page/CreateGroupBill.translation.json';
+import CreateGroupTransaction from './id/Page/CreateGroupTransaction.translation.json';
+import Dashboard from './id/Page/Dashboard.translation.json';
+import EventList from './id/Page/EventList.translation.json';
+import FindGroup from './id/Page/FindGroup.translation.json';
+import ForgotPassword from './id/Page/ForgotPassword.translation.json';
+import GroupBillApproval from './id/Page/GroupBillApproval.translation.json';
+import GroupBillDetail from './id/Page/GroupBillDetail.translation.json';
+import GroupDetail from './id/Page/GroupDetail.translation.json';
+import GroupList from './id/Page/GroupList.translation.json';
+import GroupTransactionDetail from './id/Page/GroupTransactionDetail.translation.json';
+import MyProfile from './id/Page/MyProfile.translation.json';
+import NotificationList from './id/Page/NotificationList.translation.json';
+import SignIn from './id/Page/SignIn.translation.json';
+import SignUp from './id/Page/SignUp.translation.json';
+
+import ConfirmApproveBill from './id/PopUpConfirmation/ConfirmApproveBill.translation.json';
+import ConfirmApproveBillCreation from './id/PopUpConfirmation/ConfirmApproveBillCreation.translation.json';
+import ConfirmApproveTransaction from './id/PopUpConfirmation/ConfirmApproveTransaction.translation.json';
+import ConfirmCreateBill from './id/PopUpConfirmation/ConfirmCreateBill.translation.json';
+import ConfirmCreateGroup from './id/PopUpConfirmation/ConfirmCreateGroup.translation.json';
+import ConfirmCreateTransaction from './id/PopUpConfirmation/ConfirmCreateTransaction.translation.json';
+import ConfirmDeleteAccount from './id/PopUpConfirmation/ConfirmDeleteAccount.translation.json';
+import ConfirmJoinGroup from './id/PopUpConfirmation/ConfirmJoinGroup.translation.json';
+import ConfirmRejectBill from './id/PopUpConfirmation/ConfirmRejectBill.translation.json';
+import ConfirmRejectBillCreation from './id/PopUpConfirmation/ConfirmRejectBillCreation.translation.json';
+import ConfirmRejectTransaction from './id/PopUpConfirmation/ConfirmRejectTransaction.translation.json';
+import ConfirmSignOut from './id/PopUpConfirmation/ConfirmSignOut.translation.json';
+
+import BillDescriptionValidation from './id/Validation/BillDescriptionValidation.translation.json';
+import EmailValidation from './id/Validation/EmailValidation.translation.json';
+import FullNameValidation from './id/Validation/FullNameValidation.translation.json';
+import GroupNameValidation from './id/Validation/GroupNameValidation.translation.json';
+import PasswordValidation from './id/Validation/PasswordValidation.translation.json';
+import RequestDescriptionValidation from './id/Validation/RequestDescriptionValidation.translation.json';
+import UsernameValidation from './id/Validation/UsernameValidation.translation.json';
+
 import Language from './id/Language.translation.json';
-import Modal from './id/Modal.translation.json';
-import MyProfile from './id/MyProfile.translation.json';
-import NotificationList from './id/NotificationList.translation.json';
-import PasswordValidation from './id/PasswordValidation.translation.json';
-import PrivacyPolicy from './id/PrivacyPolicy.translation.json';
-import RecentBill from './id/RecentBill.translation.json';
-import RecentTransaction from './id/RecentTransaction.translation.json';
-import SignIn from './id/SignIn.translation.json';
-import SignUp from './id/SignUp.translation.json';
-import TermsAndConditions from './id/TermsAndConditions.translation.json';
-import UsernameValidation from './id/UsernameValidation.translation.json';
 
 module.exports = {
+	BillDescriptionValidation,
 	BottomTabNavigator,
 	CreateGroup,
+	CreateGroupBill,
 	CreateGroupTransaction,
 	ChangePasswordModal,
 	ChangeProfileModal,
+	ConfirmApproveBill,
+	ConfirmApproveBillCreation,
 	ConfirmApproveTransaction,
+	ConfirmCreateBill,
 	ConfirmCreateGroup,
 	ConfirmCreateTransaction,
 	ConfirmDeleteAccount,
 	ConfirmJoinGroup,
+	ConfirmRejectBill,
+	ConfirmRejectBillCreation,
 	ConfirmRejectTransaction,
 	ConfirmSignOut,
 	Dashboard,
@@ -56,6 +77,8 @@ module.exports = {
 	FindGroup,
 	ForgotPassword,
 	FullNameValidation,
+	GroupBillApproval,
+	GroupBillDetail,
 	GroupDetail,
 	GroupList,
 	GroupNameValidation,
@@ -68,6 +91,7 @@ module.exports = {
 	PrivacyPolicy,
 	RecentBill,
 	RecentTransaction,
+	RequestDescriptionValidation,
 	SignIn,
 	SignUp,
 	TermsAndConditions,

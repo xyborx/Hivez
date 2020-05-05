@@ -61,7 +61,7 @@ const NotificationPage = ({navigation}) => {
 		date: '2020-05-02 12:43:31',
 		title: 'BILL_CREATION_APPROVED',
 		detail: 'Uang Kas Mei',
-		source: 'BILL',
+		source: 'BILL_CREATION',
 		sourceID: 'BILL0004',
 		sourceImage: imageDummy[4],
 		sourceName: 'Grup'
@@ -70,7 +70,7 @@ const NotificationPage = ({navigation}) => {
 		date: '2020-05-02 08:30:25',
 		title: 'BILL_CREATION_REJECTED',
 		detail: 'Uang Kas Mei',
-		source: 'BILL',
+		source: 'BILL_CREATION',
 		sourceID: 'BILL0003',
 		sourceImage: imageDummy[0],
 		sourceName: 'Lelaki Fearless'
@@ -160,7 +160,7 @@ const NotificationPage = ({navigation}) => {
 		date: '2020-04-21 17:43:31',
 		title: 'BILL_CREATION_APPROVED',
 		detail: 'Uang Kas Mei',
-		source: 'BILL',
+		source: 'BILL_CREATION',
 		sourceID: 'BILL0004',
 		sourceImage: imageDummy[0],
 		sourceName: 'Grup'
@@ -169,7 +169,7 @@ const NotificationPage = ({navigation}) => {
 		date: '2020-04-15 08:30:25',
 		title: 'BILL_CREATION_REJECTED',
 		detail: 'Uang Kas Mei',
-		source: 'BILL',
+		source: 'BILL_CREATION',
 		sourceID: 'BILL0003',
 		sourceImage: imageDummy[1],
 		sourceName: 'Lelaki Fearless'
@@ -268,10 +268,16 @@ const NotificationPage = ({navigation}) => {
 	};
 
 	const navigateToBill = (billID) => {
-		// navigation.navigate('BillDetails', {
-		// 	billID: billID
-		// });
-		alert(`Navigate to bill ${billID}`);
+		navigation.navigate('GroupBillDetail', {
+			billID: billID
+		});
+	};
+
+	const navigateToBillApproval = (billID) => {
+		navigation.navigate('GroupBillApproval', {
+			billID: billID
+		});
+		// alert(`Navigate to bill ${billID}`);
 	};
 
 	return (
@@ -283,6 +289,7 @@ const NotificationPage = ({navigation}) => {
 			onEventClick={navigateToEvent}
 			onEventTransactionClick={navigateToEventTransactionDetail}
 			onGroupTransactionClick={navigateToGroupTransactionDetail}
+			onBillApprovalClick={navigateToBillApproval}
 			onBillClick={navigateToBill} />
 	);
 };

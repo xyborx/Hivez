@@ -17,6 +17,7 @@ const Notification = (props) => {
 					onEventClick={props.onEventClick}
 					onEventTransactionClick={props.onEventTransactionClick}
 					onGroupTransactionClick={props.onGroupTransactionClick}
+					onBillApprovalClick={props.onBillApprovalClick}
 					onBillClick={props.onBillClick}
 					/>
 			</View>

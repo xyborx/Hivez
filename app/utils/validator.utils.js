@@ -49,3 +49,13 @@ export const isNewPasswordValid = (currentPassword, newPassword) => {
 	// if(currentPassword === newPassword) return {isValid: false, message: 'INVALID_SAME_'};
 	return {isValid: true, message: 'Success'};
 };
+
+export const isBillDescriptionValid = (description) => {
+	if (description.trim().length < 3) return {isValid: false, message: 'INVALID_MINIMUM_DESCRIPTION_LENGTH'};
+	return {isValid: true, message: 'Success'};
+};
+
+export const isRequestDescriptionValid = (description) => {
+	if (description.trim().length < 3) return {isValid: false, message: 'INVALID_MINIMUM_DESCRIPTION_LENGTH'};
+	return {isValid: true, message: 'Success'};
+};

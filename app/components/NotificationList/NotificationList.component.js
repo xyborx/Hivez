@@ -50,6 +50,7 @@ const NotificationSection = (props) => {
 							item.source === 'EVENT' ? props.onEventClick :
 							item.source === 'EVENT_TRANSACTION' ? props.onEventTransactionClick :
 							item.source === 'GROUP_TRANSACTION' ? props.onGroupTransactionClick :
+							item.source === 'BILL_CREATION' ? props.onBillApprovalClick :
 							item.source === 'BILL' ? props.onBillClick :
 							() => {}
 						}
@@ -81,6 +82,7 @@ const NotificationList = (props) => {
 					onEventClick={props.onEventClick}
 					onEventTransactionClick={props.onEventTransactionClick}
 					onGroupTransactionClick={props.onGroupTransactionClick}
+					onBillApprovalClick={props.onBillApprovalClick}
 					onBillClick={props.onBillClick}
 					title={item.title} />
 			);

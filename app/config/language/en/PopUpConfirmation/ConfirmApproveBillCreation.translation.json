@@ -1,0 +1,6 @@
+{
+	"MODAL_TITLE": "Are you sure you want to approve this bill creation?",
+	"MODAL_DETAILS": "This bill will be billed to other member.",
+	"NO": "Cancel",
+	"YES": "Approve Bill Creation"
+}

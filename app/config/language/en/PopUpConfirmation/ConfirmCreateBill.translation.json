@@ -1,0 +1,6 @@
+{
+	"MODAL_TITLE": "Are you sure you want to create this bill?",
+	"MODAL_DETAILS": "Your created bill will have to wait for approval.",
+	"NO": "Cancel",
+	"YES": "Create Bill"
+}

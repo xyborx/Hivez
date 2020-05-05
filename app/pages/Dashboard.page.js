@@ -48,17 +48,17 @@ const DashboardPage = ({navigation}) => {
 	};
 
 	const viewGroupBill = (groupID) => {
-		// navigation.navigate('ViewGroupBill', {
-		// 	groupID: groupID
-		// });
-		alert(`View group bill: ${groupID}`);
+		navigation.navigate('CreateGroupBill', {
+			groupID: groupID
+		});
+		// alert(`View group bill: ${groupID}`);
 	};
 
 	const viewGroupReport = (groupID) => {
 		// navigation.navigate('ViewGroupReport', {
 		// 	groupID: groupID
 		// });
-		alert(`View group report: ${groupID}`);
+		// alert(`View group report: ${groupID}`);
 	};
 
 	const viewEventReport = (eventID) => {

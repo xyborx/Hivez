@@ -1,0 +1,20 @@
+{
+	"PAGE_TITLE": "Bill Creation Detail",
+	"STATUS": "Status",
+	"APPROVED": "Approved",
+	"REJECTED": "Rejected",
+	"ON_PROGRESS": "On progress",
+	"CREATOR": "Bill Creator",
+	"APPROVER": "Approver",
+	"REJECTER": "Rejecter",
+	"CREATION_DATE": "Creation Date",
+	"CREATION_TIME": "Creation Time",
+	"APPROVED_DATE": "Approved Date",
+	"APPROVED_TIME": "Approved Time",
+	"REJECTED_DATE": "Rejected Date",
+	"REJECTED_TIME": "Rejected Time",
+	"DESCRIPTION": "Description",
+	"BACK": "Back",
+	"APPROVE": "Approve",
+	"REJECT": "Reject"
+}

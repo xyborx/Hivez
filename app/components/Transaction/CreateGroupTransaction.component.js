@@ -10,7 +10,7 @@ import FloatingBackButton from '../Button/FloatingBackButton.component';
 import NumberField from '../TextField/NumberField.component';
 import PreviewPicture from '../Modal/PreviewPicture.component';
 import SwitchButton from '../Button/SwitchButton.component';
-import TextFieldNoValidation from '../TextField/TextFieldNoValidation.component';
+import TextField from '../TextField/TextField.component';
 import TimePicker from '../Date/TimePicker.component';
 import styles from './CreateGroupTransaction.component.style';
 
@@ -45,11 +45,14 @@ const CreateGroupTransaction = (props) => {
 							onChange={props.setTime}
 							style={styles.textField}
 							value={props.time} />
-						<TextFieldNoValidation
+						<TextField
+							contentText={props.descriptionText}
+							customValidateInput={props.validateDescription}
 							onChangeText={props.setDescription}
 							placeholder={props.contentText['DESCRIPTION_PLACEHOLDER']}
 							style={styles.textField}
 							textIcon={'sticky-note'}
+							validateInput={true}
 							value={props.description} />
 						<View style={props.image === '' ? styles.noPreview : styles.pictureConfigContainer}>
 							<PreviewPicture

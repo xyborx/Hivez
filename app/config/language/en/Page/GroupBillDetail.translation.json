@@ -1,0 +1,22 @@
+{
+	"PAGE_TITLE": "Bill Payment Detail",
+	"STATUS": "Status",
+	"APPROVED": "Approved",
+	"REJECTED": "Rejected",
+	"ON_PROGRESS": "On progress",
+	"PAYER": "Payer",
+	"APPROVER": "Approver",
+	"REJECTER": "Rejecter",
+	"PAYMENT_DATE": "Payment Date",
+	"PAYMENT_TIME": "Payment Time",
+	"APPROVED_DATE": "Approved Date",
+	"APPROVED_TIME": "Approved Time",
+	"REJECTED_DATE": "Rejected Date",
+	"REJECTED_TIME": "Rejected Time",
+	"DESCRIPTION": "Description",
+	"VIEW_TRANSACTION_PICTURE": "View Attached Image",
+	"BACK": "Back",
+	"CLOSE": "Close",
+	"APPROVE": "Approve",
+	"REJECT": "Reject"
+}

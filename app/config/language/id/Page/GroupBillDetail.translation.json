@@ -1,0 +1,22 @@
+{
+	"PAGE_TITLE": "Detail Pembayaran Tagihan",
+	"STATUS": "Status",
+	"APPROVED": "Telah disetujui",
+	"REJECTED": "Telah ditolak",
+	"ON_PROGRESS": "Sedang berlangsung",
+	"PAYER": "Pembayar",
+	"APPROVER": "Penerima",
+	"REJECTER": "Penolak",
+	"PAYMENT_DATE": "Tanggal Pembayaran",
+	"PAYMENT_TIME": "Waktu Pembayaran",
+	"APPROVED_DATE": "Tanggal Disetujui",
+	"APPROVED_TIME": "Waktu Disetujui",
+	"REJECTED_DATE": "Tanggal Ditolak",
+	"REJECTED_TIME": "Waktu Ditolak",
+	"DESCRIPTION": "Deskripsi",
+	"VIEW_TRANSACTION_PICTURE": "Lihat Gambar Lampiran",
+	"BACK": "Kembali",
+	"CLOSE": "Tutup",
+	"APPROVE": "Setujui",
+	"REJECT": "Tolak"
+}

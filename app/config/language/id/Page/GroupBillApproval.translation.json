@@ -1,0 +1,20 @@
+{
+	"PAGE_TITLE": "Detail Pembuatan Tagihan",
+	"STATUS": "Status",
+	"APPROVED": "Telah disetujui",
+	"REJECTED": "Telah ditolak",
+	"ON_PROGRESS": "Sedang berlangsung",
+	"CREATOR": "Pembuat tagihan",
+	"APPROVER": "Penerima",
+	"REJECTER": "Penolak",
+	"CREATION_DATE": "Tanggal Pembuatan",
+	"CREATION_TIME": "Waktu Pembuatan",
+	"APPROVED_DATE": "Tanggal Disetujui",
+	"APPROVED_TIME": "Waktu Disetujui",
+	"REJECTED_DATE": "Tanggal Ditolak",
+	"REJECTED_TIME": "Waktu Ditolak",
+	"DESCRIPTION": "Deskripsi",
+	"BACK": "Kembali",
+	"APPROVE": "Setujui",
+	"REJECT": "Tolak"
+}

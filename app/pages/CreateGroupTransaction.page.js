@@ -54,7 +54,6 @@ const CreateGroupTransactionPage = ({route, navigation}) => {
 		validateNextButton(value, date, time, description);
 	};
 
-
 	const changeImage = (image) => {
 		setImage(image.data);
 		ImagePicker.clean().then(() => {

@@ -18,7 +18,8 @@ export default StyleSheet.create({
 		backgroundColor: theme.COLOR_WHITE,
 		borderRadius: theme.ROUNDNESS_DEFAULT,
 		marginHorizontal: theme.MARGIN_WIDE,
-		overflow: 'hidden'
+		overflow: 'hidden',
+		paddingVertical: theme.PADDING_DEFAULT
 	},
 	filterList: {
 		flexDirection: 'row',
@@ -48,7 +49,8 @@ export default StyleSheet.create({
 	headerSecion: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-		margin: theme.MARGIN_DEFAULT
+		margin: theme.MARGIN_DEFAULT,
+		marginTop: 0
 	},
 	headerTextContainer: {
 		flexDirection: 'column'

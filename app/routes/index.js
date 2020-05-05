@@ -8,8 +8,9 @@ import {LocalizationProvider} from '../utils/language.utils';
 import TabBar from '../components/TabBar/TabBar.component';
 
 import CreateGroupBillPage from '../pages/CreateGroupBill.page';
-import GroupBillDetailPage from '../pages/GroupBillDetail.page';
 import GroupBillApprovalPage from '../pages/GroupBillApproval.page';
+import GroupBillDetailPage from '../pages/GroupBillDetail.page';
+import GroupBillPaymentPage from '../pages/GroupBillPayment.page';
 import CreateGroupTransactionPage from '../pages/CreateGroupTransaction.page';
 import GroupTransactionDetailPage from '../pages/GroupTransactionDetail.page';
 
@@ -91,8 +92,9 @@ const RootStack = () => {
 		<RootNavigation.Navigator headerMode='none' initialRouteName={'MainStack'}>
 			<RootNavigation.Screen component={AppTabs} name='MainStack' />
 			<RootNavigation.Screen component={CreateGroupBillPage} name='CreateGroupBill'/>
-			<RootNavigation.Screen component={GroupBillDetailPage} name='GroupBillDetail'/>
 			<RootNavigation.Screen component={GroupBillApprovalPage} name='GroupBillApproval'/>
+			<RootNavigation.Screen component={GroupBillDetailPage} name='GroupBillDetail'/>
+			<RootNavigation.Screen component={GroupBillPaymentPage} name='GroupBillPayment'/>
 			<RootNavigation.Screen component={CreateGroupTransactionPage} name='CreateGroupTransaction'/>
 			<RootNavigation.Screen component={GroupTransactionDetailPage} name='GroupTransactionDetail'/>
 		</RootNavigation.Navigator>

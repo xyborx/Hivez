@@ -47,8 +47,8 @@ const GroupBillDetailPage = ({route, navigation}) => {
 		<GroupBillDetail
 			contentText={translations['GroupBillDetail']}
 			billDetail={billDetail}
-			confirmApproveText={translations['ConfirmApproveBill']}
-			confirmRejectText={translations['ConfirmRejectBill']}
+			confirmApproveText={translations['ConfirmApproveBillPayment']}
+			confirmRejectText={translations['ConfirmRejectBillPayment']}
 			approveBillPayment={approveBillPayment}
 			rejectBillPayment={rejectBillPayment}
 			goBack={goBack} />

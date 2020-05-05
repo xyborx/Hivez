@@ -79,10 +79,14 @@ export default StyleSheet.create({
 		color: theme.COLOR_GREY,
 		marginLeft: theme.MARGIN_NARROW
 	},
-	transactionGroupName: {
+	transactionDate: {
 		...textPageSubHeader,
 		fontSize: theme.FONT_SIZE_SMALL,
-		marginTop: theme.MARGIN_TINY
+		marginTop: theme.MARGIN_EXTRA_NARROW
+	},
+	transactionGroupName: {
+		...textPageSubHeader,
+		fontSize: theme.FONT_SIZE_SMALL
 	},
 	transactionImage: {
 		borderRadius: 48/2,
@@ -112,6 +116,7 @@ export default StyleSheet.create({
 		flexDirection: 'row'
 	},
 	transactionValue: {
+		color: theme.COLOR_SOFT_GREY,
 		fontSize: theme.FONT_SIZE_MEDIUM,
 		fontWeight: theme.FONT_WEIGHT_BOLD
 	},

@@ -55,6 +55,9 @@ const DashboardPage = ({navigation}) => {
 	};
 
 	const viewGroupReport = (groupID) => {
+		navigation.navigate('GroupBillPayment', {
+			billID: groupID
+		});
 		// navigation.navigate('ViewGroupReport', {
 		// 	groupID: groupID
 		// });
@@ -176,48 +179,50 @@ const DashboardPage = ({navigation}) => {
 	const transactionListDummy = [{
 		id: 'TRX0001',
 		name: 'Beli Mangga',
+		date: '2020-05-05 23:59:16',
 		sourceName: 'Lelaki Fearless',
-		sourceType: 'GROUP',
+		sourceType: 'GROUP_REQUEST',
 		type: 'Debit',
 		value: 150000,
 		status: 'On Progress',
-		image: imageDummy[0],
+		image: imageDummy[0]
 	}, {
 		id: 'TRX0002',
 		name: 'Beli Jambu',
+		date: '2020-05-02 23:59:16',
 		sourceName: 'Wanita Fearless',
-		sourceType: 'GROUP',
+		sourceType: 'GROUP_REQUEST',
 		type: 'Credit',
 		value: 50000,
 		status: 'Approved',
-		image: imageDummy[1],
+		image: imageDummy[1]
 	}, {
 		id: 'TRX0003',
 		name: 'Beli Mangga',
+		date: '2020-04-30 23:59:16',
 		sourceName: 'Lelaki Fearless',
 		sourceType: 'EVENT',
-		type: 'Debit',
 		value: 150000,
 		status: 'Declined',
-		image: imageDummy[2],
+		image: imageDummy[2]
 	}, {
 		id: 'TRX0004',
 		name: 'Beli Jambu',
+		date: '2020-04-20 23:59:16',
 		sourceName: 'Wanita Fearless',
 		sourceType: 'EVENT',
-		type: 'Credit',
 		value: 50000,
 		status: 'Declined',
-		image: imageDummy[3],
+		image: imageDummy[3]
 	}, {
-		id: 'TRX0005',
+		id: 'BILL0005',
 		name: 'Beli Jambu',
+		date: '2020-03-02 23:59:16',
 		sourceName: 'Fearless',
-		sourceType: 'GROUP',
-		type: 'Credit',
+		sourceType: 'GROUP_BILL',
 		value: 50000,
 		status: 'Approved',
-		image: imageDummy[4],
+		image: imageDummy[4]
 	}];
 
 	const pendingApprovalListDummy = [{
@@ -258,6 +263,12 @@ const DashboardPage = ({navigation}) => {
 		});
 	};
 
+	const viewGroupBillDetail = (billID) => {
+		navigation.navigate('GroupBillDetail', {
+			billID: billID
+		});
+	};
+
 	const viewEventTransactionDetail = (transactionID) => {
 		// navigation.navigate('EventTransactionDetail', {
 		// 	transactionID: transactionID
@@ -282,6 +293,7 @@ const DashboardPage = ({navigation}) => {
 			transactionList={transactionList}
 			pendingApprovalList={pendingApprovalList}
 			onEventTransactionClick={viewEventTransactionDetail}
+			onGroupBillClick={viewGroupBillDetail}
 			onGroupTransactionClick={viewGroupTransactionDetail} />
 	);
 };

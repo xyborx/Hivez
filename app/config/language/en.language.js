@@ -18,6 +18,7 @@ import FindGroup from './en/Page/FindGroup.translation.json';
 import ForgotPassword from './en/Page/ForgotPassword.translation.json';
 import GroupBillApproval from './en/Page/GroupBillApproval.translation.json';
 import GroupBillDetail from './en/Page/GroupBillDetail.translation.json';
+import GroupBillPayment from './en/Page/GroupBillPayment.translation.json';
 import GroupDetail from './en/Page/GroupDetail.translation.json';
 import GroupList from './en/Page/GroupList.translation.json';
 import GroupTransactionDetail from './en/Page/GroupTransactionDetail.translation.json';
@@ -26,16 +27,17 @@ import NotificationList from './en/Page/NotificationList.translation.json';
 import SignIn from './en/Page/SignIn.translation.json';
 import SignUp from './en/Page/SignUp.translation.json';
 
-import ConfirmApproveBill from './en/PopUpConfirmation/ConfirmApproveBill.translation.json';
+import ConfirmApproveBillPayment from './en/PopUpConfirmation/ConfirmApproveBillPayment.translation.json';
 import ConfirmApproveBillCreation from './en/PopUpConfirmation/ConfirmApproveBillCreation.translation.json';
 import ConfirmApproveTransaction from './en/PopUpConfirmation/ConfirmApproveTransaction.translation.json';
+import ConfirmBillPayment from './en/PopUpConfirmation/ConfirmBillPayment.translation.json';
 import ConfirmCreateBill from './en/PopUpConfirmation/ConfirmCreateBill.translation.json';
 import ConfirmCreateGroup from './en/PopUpConfirmation/ConfirmCreateGroup.translation.json';
 import ConfirmCreateTransaction from './en/PopUpConfirmation/ConfirmCreateTransaction.translation.json';
 import ConfirmDeleteAccount from './en/PopUpConfirmation/ConfirmDeleteAccount.translation.json';
 import ConfirmJoinGroup from './en/PopUpConfirmation/ConfirmJoinGroup.translation.json';
-import ConfirmRejectBill from './en/PopUpConfirmation/ConfirmRejectBill.translation.json';
 import ConfirmRejectBillCreation from './en/PopUpConfirmation/ConfirmRejectBillCreation.translation.json';
+import ConfirmRejectBillPayment from './en/PopUpConfirmation/ConfirmRejectBillPayment.translation.json';
 import ConfirmRejectTransaction from './en/PopUpConfirmation/ConfirmRejectTransaction.translation.json';
 import ConfirmSignOut from './en/PopUpConfirmation/ConfirmSignOut.translation.json';
 
@@ -57,16 +59,17 @@ module.exports = {
 	CreateGroupTransaction,
 	ChangePasswordModal,
 	ChangeProfileModal,
-	ConfirmApproveBill,
 	ConfirmApproveBillCreation,
+	ConfirmApproveBillPayment,
 	ConfirmApproveTransaction,
+	ConfirmBillPayment,
 	ConfirmCreateBill,
 	ConfirmCreateGroup,
 	ConfirmCreateTransaction,
 	ConfirmDeleteAccount,
 	ConfirmJoinGroup,
-	ConfirmRejectBill,
 	ConfirmRejectBillCreation,
+	ConfirmRejectBillPayment,
 	ConfirmRejectTransaction,
 	ConfirmSignOut,
 	Dashboard,
@@ -79,6 +82,7 @@ module.exports = {
 	FullNameValidation,
 	GroupBillApproval,
 	GroupBillDetail,
+	GroupBillPayment,
 	GroupDetail,
 	GroupList,
 	GroupNameValidation,

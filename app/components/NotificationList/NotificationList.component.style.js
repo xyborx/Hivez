@@ -44,12 +44,12 @@ export default StyleSheet.create({
 	},
 	listDate: {
 		...textPageSubHeader,
-		fontSize: theme.FONT_SIZE_SMALL
+		fontSize: theme.FONT_SIZE_SMALL,
+		marginTop: theme.MARGIN_EXTRA_NARROW
 	},
 	listDetail: {
 		...textPageSubHeader,
-		fontSize: theme.FONT_SIZE_SMALL,
-		marginTop: theme.MARGIN_TINY
+		fontSize: theme.FONT_SIZE_SMALL
 	},
 	listDetailContainer: {
 		flex: 1,

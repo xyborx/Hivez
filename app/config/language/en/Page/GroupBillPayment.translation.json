@@ -1,0 +1,12 @@
+{
+	"PAGE_TITLE": "Bill Payment",
+	"DATE": "Date",
+	"TIME": "Time",
+	"DESCRIPTION": "Description",
+	"VIEW_TRANSACTION_PICTURE": "View image",
+	"ADD_TRANSACTION_PICTURE": "Add image to bill",
+	"EDIT_TRANSACTION_PICTURE": "Edit image",
+	"CLOSE": "Close",
+	"BACK": "Back",
+	"PAY_BILL": "Pay Bill"
+}

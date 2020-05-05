@@ -2,10 +2,11 @@ import React, {useState} from 'react';
 import {Image, Text, TouchableHighlight, TouchableOpacity, View} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {padArray, rupiahFormatting} from '../../utils/helper.utils';
+import {getRelativeDate} from '../../utils/date.utils';
 import styles from './RecentTransaction.component.style';
 
 const TransactionItem = (props) => {
-	const {id, name, sourceName, sourceType, type, value, status, image} = props.item;
+	const {id, name, date, sourceName, sourceType, type, value, status, image} = props.item;
 	return (
 		<TouchableHighlight
 			accessibilityRole={'button'}
@@ -23,9 +24,10 @@ const TransactionItem = (props) => {
 						<Text style={styles.transactionGroupName}>
 							{`${sourceName} - ${props.contentText[`${status.toUpperCase().replace(' ', '_')}_TRANSACTIONS`]}`}
 						</Text>
+						<Text style={styles.transactionDate}>{getRelativeDate(date)}</Text>
 					</View>
 					<View style={styles.transactionValueContainer}>
-						<Text style={[type === 'Credit' ? styles.credit : styles.debit, styles.transactionValue]}>{rupiahFormatting(value)}</Text>
+						<Text style={[styles.transactionValue, sourceType === 'GROUP_REQUEST' ? (type === 'Credit' ? styles.credit : styles.debit) : {}]}>{rupiahFormatting(value)}</Text>
 						<FontAwesome5 name={'angle-right'} style={styles.transactionDetailIcon} />
 					</View>
 				</View>
@@ -110,7 +112,11 @@ const RecentTransaction = (props) => {
 							contentText={props.contentText}
 							item={item}
 							key={index}
-							onItemClick={item.sourceType === 'GROUP' ? props.onGroupTransactionClick : props.onEventTransactionClick} />
+							onItemClick={
+								item.sourceType === 'GROUP_REQUEST' ? props.onGroupTransactionClick :
+								item.sourceType === 'GROUP_BILL' ? props.onGroupBillClick :
+								props.onEventTransactionClick
+							} />
 					);
 				})}
 			</View>

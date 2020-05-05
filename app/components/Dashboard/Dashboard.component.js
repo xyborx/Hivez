@@ -43,6 +43,7 @@ const Dashboard = (props) => {
 						contentText={props.recentTransactionText}
 						style={styles.recentTransaction}
 						onEventTransactionClick={props.onEventTransactionClick}
+						onGroupBillClick={props.onGroupBillClick}
 						onGroupTransactionClick={props.onGroupTransactionClick}
 						transactionList={props.transactionList} />
 				</View>

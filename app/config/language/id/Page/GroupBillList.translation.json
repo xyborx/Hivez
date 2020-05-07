@@ -1,0 +1,12 @@
+{
+	"PAGE_TITLE": "Daftar Tagihan",
+	"NOT_COMPLETED": "Belum Selesai",
+	"COMPLETED": "Sudah Selesai",
+	"APPROVED": "Telah disetujui",
+	"DECLINED": "Telah ditolak",
+	"ON_PROGRESS": "Menunggu persetujuan",
+	"NO_PAYMENT": "Tidak ada riwayat pembayaran",
+	"SEARCH_PLACEHOLDER": "Cari tagihan",
+	"BY": "oleh",
+	"BACK": "Kembali"
+}

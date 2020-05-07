@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, ScrollView, View} from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
-import FloatingButton from '../Button/FloatingButton.component';
+import FloatingActionButton from '../Button/FloatingActionButton.component';
 import ItemList from '../ItemList/ItemList.component';
 import SearchField from '../TextField/SearchField.component';
 import styles from './EventList.component.style';
@@ -25,7 +25,7 @@ const EventList = (props) => {
 					</View>
 				</View>
 			</ScrollView>
-			<FloatingButton
+			<FloatingActionButton
 				buttonIcon={'plus'}
 				buttonIconOnFocus={'times'}
 				leftButtonIcon={'search'}

@@ -16,7 +16,7 @@ const SwitchButton = (props) => {
 				activeOpacity={0.25}
 				disabled={value === props.leftValue}
 				onPress={() => {changeValue(props.leftValue)}}
-				style={[styles.default, value === props.leftValue ? {} : styles.disabled]}
+				style={[styles.default, styles.leftFlat, value === props.leftValue ? {} : styles.disabled]}
 				underlayColor={value === props.leftValue ? '#FFC60B' : '#DEDEDE'}>
 				<Text style={[styles.text, value === props.leftValue ? {} : styles.textDisabled]}>{props.text[props.leftValue]}</Text>
 			</TouchableHighlight>
@@ -24,7 +24,7 @@ const SwitchButton = (props) => {
 				activeOpacity={0.25}
 				disabled={value === props.rightValue}
 				onPress={() => {changeValue(props.rightValue)}}
-				style={[styles.default, value === props.rightValue ? {} : styles.disabled]}
+				style={[styles.default, styles.rightFlat, value === props.rightValue ? {} : styles.disabled]}
 				underlayColor={value === props.rightValue ? '#FFC60B': '#DEDEDE'}>
 				<Text style={[styles.text, value === props.rightValue ? {} : styles.textDisabled]}>{props.text[props.rightValue]}</Text>
 			</TouchableHighlight>

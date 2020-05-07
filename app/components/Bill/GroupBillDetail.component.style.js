@@ -74,6 +74,9 @@ export default StyleSheet.create({
 	hidden: {
 		display: 'none'
 	},
+	income: {
+		color: theme.COLOR_GREEN,
+	},
 	pageContainer: {
 		...pageContainer
 	},

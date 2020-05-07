@@ -69,7 +69,8 @@ export default StyleSheet.create({
 		...rootContainer
 	},
 	switch: {
-		marginBottom: theme.MARGIN_WIDE
+		margin: theme.MARGIN_WIDE,
+		marginBottom: 0
 	},
 	textField: {
 		marginBottom: theme.MARGIN_DEFAULT

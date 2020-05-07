@@ -5,14 +5,24 @@ import {buttonDefault, buttonDisabled, textHighlight} from '../../styles/common.
 export default StyleSheet.create({
     container: {
 		...buttonDisabled,
-        flexDirection: 'row'
+		flexDirection: 'row',
+		overflow: 'hidden'
     },
 	default: {
         ...buttonDefault,
-        flex: 1
+		flex: 1,
+		borderRadius: 0
 	},
 	disabled: {
 		...buttonDisabled
+	},
+	leftFlat: {
+		borderTopRightRadius: theme.ROUNDNESS_DEFAULT,
+		borderBottomRightRadius: theme.ROUNDNESS_DEFAULT
+	},
+	rightFlat: {
+		borderTopLeftRadius: theme.ROUNDNESS_DEFAULT,
+		borderBottomLeftRadius: theme.ROUNDNESS_DEFAULT
 	},
 	text: {
 		...textHighlight,

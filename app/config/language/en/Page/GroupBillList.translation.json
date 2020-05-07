@@ -1,0 +1,12 @@
+{
+	"PAGE_TITLE": "Bill List",
+	"NOT_COMPLETED": "Not Completed",
+	"COMPLETED": "Completed",
+	"APPROVED": "Approved",
+	"DECLINED": "Declined",
+	"ON_PROGRESS": "Waiting approval",
+	"NO_PAYMENT": "No payment history",
+	"SEARCH_PLACEHOLDER": "Search bill",
+	"BY": "by",
+	"BACK": "Back"
+}

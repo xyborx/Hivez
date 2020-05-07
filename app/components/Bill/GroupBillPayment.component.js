@@ -35,7 +35,7 @@ const GroupBillPayment = (props) => {
 					<View style={styles.billDetailContainer}>
 						<View style={styles.billValueContainer}>
 							<Text style={styles.billDetailText}>{'IDR'}</Text>
-							<Text style={styles.billValueText}>{value}</Text>
+							<Text style={[styles.billValueText, styles.income]}>{value}</Text>
 						</View>
 						<ViewWithValue title={props.contentText['DESCRIPTION']} value={description} />
 						<DatePicker

@@ -48,10 +48,11 @@ const DashboardPage = ({navigation}) => {
 	};
 
 	const viewGroupBill = (groupID) => {
-		navigation.navigate('CreateGroupBill', {
-			groupID: groupID
+		navigation.navigate('GroupTab', {
+			screen: 'GroupBillList',
+			initial: true,
+			params: {groupID: groupID}
 		});
-		// alert(`View group bill: ${groupID}`);
 	};
 
 	const viewGroupReport = (groupID) => {

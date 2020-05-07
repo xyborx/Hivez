@@ -82,6 +82,9 @@ export default StyleSheet.create({
 		color: theme.COLOR_WHITE,
 		marginRight: theme.MARGIN_NARROW
 	},
+	income: {
+		color: theme.COLOR_GREEN,
+	},
 	noMargin: {
 		marginLeft: 0
 	},

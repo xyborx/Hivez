@@ -1,15 +1,17 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useRef, useState} from 'react';
+import {useScrollToTop} from '@react-navigation/native';
 import {LocalizationContext} from '../utils/language.utils';
-import {createDate, currentDate} from '../utils/date.utils';
-import {groupByDay, orderByDate, sum, where} from '../utils/query.utils';
-import GroupReport from '../components/Group/GroupReport.component';
+import {where} from '../utils/query.utils';
+import GroupBillList from '../components/Bill/GroupBillList.component';
 
-const GroupReportPage = ({route, navigation}) => {
-	const {groupID} = route.params;
-	console.log(groupID);
+const GroupBillListPage = ({route, navigation}) => {
+	const { groupID } = route.params;
 
 	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
 	initializeAppLanguage();
+
+	const scrollRef = useRef(null);
+	useScrollToTop(scrollRef);
 
 	const groupDetailDummy = {
 		id: 'GROUP0001',
@@ -17,222 +19,102 @@ const GroupReportPage = ({route, navigation}) => {
 		name: 'Lelaki Fearless'
 	};
 
-	const transactionListDummy = [{
+	const billListDummy = [{
 		id: 'BILL0001',
 		name: 'Uang kas Mei',
 		date: '2020-05-03 01:18:16',
-		requester: 'Jefebry Dale',
-		type: 'INCOME',
-		value: 150000,
-		source: 'BILL'
+		value: 50000,
+		status: '',
+		approver: ''
 	}, {
 		id: 'BILL0002',
-		name: 'Uang kas Mei',
-		date: '2020-05-03 00:59:16',
-		requester: 'Samuel Theodorus',
-		type: 'INCOME',
+		name: 'Uang kas April',
+		date: '2020-04-03 00:59:16',
 		value: 50000,
-		source: 'BILL'
+		status: 'ON_PROGRESS',
+		approver: ''
 	}, {
 		id: 'BILL0003',
-		name: 'Uang kas Mei',
-		date: '2020-05-03 18:59:16',
-		requester: 'Difa Sanditya',
-		type: 'INCOME',
+		name: 'Uang kas Maret',
+		date: '2020-03-02 23:59:16',
 		value: 50000,
-		source: 'BILL'
+		status: 'DECLINED',
+		approver: 'Jefebry Dale'
 	}, {
-		id: 'REQ0004',
-		name: 'Beli peralatan kelas',
-		date: '2020-05-03 12:43:16',
-		requester: 'Samuel Theodorus',
-		type: 'EXPENSE',
-		value: 50000,
-		source: 'REQUEST'
-	}, {
-		id: 'REQ0005',
-		name: 'Beli peralatan kelas',
-		date: '2020-05-03 10:24:16',
-		requester: 'Samuel Theodorus',
-		type: 'EXPENSE',
-		value: 50000,
-		source: 'REQUEST'
-	}, {
-		id: 'REQ0006',
-		name: 'Bayar denda telat masuk kelas',
-		date: '2020-05-03 09:19:16',
-		requester: 'Samuel Theodorus',
-		type: 'EXPENSE',
-		value: 50000,
-		source: 'REQUEST'
-	}, {
-		id: 'REQ0007',
-		name: 'Bayar denda tidak hadir rapat',
-		date: '2020-04-01 20:17:16',
-		requester: 'Jefebry Dale',
-		type: 'EXPENSE',
-		value: 50000,
-		source: 'REQUEST'
-	}, {
-		id: 'REQ0008',
-		name: 'Beli peralatan kelas',
-		date: '2020-03-30 22:59:16',
-		requester: 'Difa Sanditya',
-		type: 'EXPENSE',
-		value: 50000,
-		source: 'REQUEST'
-	}, {
-		id: 'REQ0009',
-		name: 'Beli makan malam kelas',
-		date: '2020-03-15 19:55:16',
-		requester: 'Difa Sanditya',
-		type: 'EXPENSE',
-		value: 150000,
-		source: 'REQUEST'
-	}, {
-		id: 'BILL0010',
-		name: 'Uang kas April',
-		date: '2020-04-02 17:10:16',
-		requester: 'Jefebry Dale',
-		type: 'INCOME',
-		value: 150000,
-		source: 'BILL'
-	}, {
-		id: 'BILL0011',
-		name: 'Uang kas April',
-		date: '2020-04-29 14:25:16',
-		requester: 'Difa Sanditya',
-		type: 'INCOME',
-		value: 50000,
-		source: 'BILL'
-	}, {
-		id: 'REQ0012',
-		name: 'Beli hadiah ulang tahun',
-		date: '2020-04-12 12:00:16',
-		requester: 'Difa Sanditya',
-		type: 'EXPENSE',
-		value: 50000,
-		source: 'REQUEST'
-	}, {
-		id: 'REQ0013',
-		name: 'Bayar denda tidak hadir rapat',
-		date: '2020-04-11 11:29:16',
-		requester: 'Difa Sanditya',
-		type: 'INCOME',
-		value: 150000,
-		source: 'REQUEST'
-	}, {
-		id: 'REQ0014',
-		name: 'Sumbangan pemasukan',
-		date: '2020-04-03 02:59:16',
-		requester: 'Jefebry Dale',
-		type: 'INCOME',
-		value: 50000,
-		source: 'REQUEST'
-	}, {
-		id: 'BILL0015',
-		name: 'Uang liburan',
-		date: '2020-04-02 23:59:16',
-		requester: 'Jefebry Dale',
-		type: 'INCOME',
-		value: 150000,
-		source: 'BILL'
-	}, {
-		id: 'BILL0016',
-		name: 'Uang liburan',
-		date: '2020-03-12 02:59:16',
-		requester: 'Samuel Theodorus',
-		type: 'INCOME',
-		value: 50000,
-		source: 'REQUEST'
-	}, {
-		id: 'BILL0017',
-		name: 'Uang liburan',
-		date: '2020-03-02 21:59:16',
-		requester: 'Difa Sanditya',
-		type: 'INCOME',
-		value: 150000,
-		source: 'BILL'
-	}, {
-		id: 'BILL0018',
+		id: 'BILL0004',
 		name: 'Uang kas Februari',
-		date: '2020-02-01 06:45:16',
-		requester: 'Samuel Theodorus',
-		type: 'INCOME',
+		date: '2020-02-29 23:59:16',
 		value: 50000,
-		source: 'BILL'
+		status: 'APPROVED',
+		approver: 'Jefebry Dale'
 	}, {
-		id: 'BILL0019',
-		name: 'Uang kas Februari',
-		date: '2020-02-12 12:22:16',
-		requester: 'Jefebry Dale',
-		type: 'INCOME',
+		id: 'BILL0005',
+		name: 'Uang kas Januari',
+		date: '2020-01-12 23:59:16',
 		value: 50000,
-		source: 'BILL'
+		status: 'APPROVED',
+		approver: 'Samuel Theodorus'
+	}, {
+		id: 'BILL0006',
+		name: 'Uang kas Desember',
+		date: '2019-12-11 23:59:16',
+		value: 50000,
+		status: 'APPROVED',
+		approver: 'Samuel Theodorus'
+	}, {
+		id: 'BILL0007',
+		name: 'Uang kas November',
+		date: '2019-11-03 02:59:16',
+		value: 50000,
+		status: 'APPROVED',
+		approver: 'Samuel Theodorus'
+	}, {
+		id: 'BILL0008',
+		name: 'Uang kas Oktober',
+		date: '2019-10-02 23:59:16',
+		value: 50000,
+		status: 'APPROVED',
+		approver: 'Jefebry Dale'
 	}];
 
-	const reportDetailDummy = {
-		openingBalance: 2000000,
-		inflow: 3350000,
-		outflow: 2750000,
-		endingBalance: 2600000
-	};
-
-	const transactionListFormatter = (transactionList) => {
-		return groupByDay(orderByDate(transactionList, 'date'), 'date').map(item => {
-			const income = sum(where(item.data, 'type', str => str === 'INCOME'), 'value');
-			const expense = sum(where(item.data, 'type', str => str === 'EXPENSE'), 'value');
-			return {...item, sum: income - expense};
-		});
+	const customSelectBill = (billList, status) => {
+		if (status === 'COMPLETED') return where(billList, 'status', checkItem => checkItem === 'APPROVED');
+		return where(billList, 'status', checkItem => checkItem !== 'APPROVED');
 	};
 
 	const [groupDetail, setGroupDetail] = useState(groupDetailDummy);
-	const [reportDetail, setReportDetail] = useState(reportDetailDummy);
-	const [transactionList, setTransactionList] = useState(transactionListFormatter(transactionListDummy));
-	const [startDate, setStartDate] = useState(currentDate);
-	const [endDate, setEndDate] = useState(currentDate);
-	const [showReport, setShowReport] = useState(false);
+	const [displayedBillStatus, setDisplayedBillStatus] = useState('NOT_COMPLETED');
+	const [billList, setBillList] = useState(billListDummy);
+	const [displayedBillList, setDisplayedBill] = useState(customSelectBill(billList, displayedBillStatus));
+	const [searchValue, setSearchValue] = useState('');
 
-	const onChangeStartDate = (startDate) => {
-		const formattedDate = createDate(startDate);
-		setStartDate(formattedDate);
+	const onChangeDisplayedBillStatus = (status) => {
+		setDisplayedBillStatus(status);
+		setDisplayedBill(customSelectBill(billList, status));
 	};
 
-	const onChangeEndDate = (endDate) => {
-		const formattedDate = createDate(endDate);
-		setEndDate(formattedDate);
+	const onChangeSearch = (searchQuery) => {
+		setSearchValue(searchQuery);
+		const currentList = customSelectBill(billList, displayedBillStatus);
+		if(searchQuery === '') setDisplayedBill(currentList);
+		else setDisplayedBill(where(currentList, 'name', checkItem => checkItem.toLowerCase().indexOf(searchQuery.toLowerCase()) >= 0));
 	};
 
-	const resetDate = () => {
-		const formattedStartDate = createDate(currentDate);
-		const formattedEnd = createDate(currentDate);
-		setStartDate(formattedStartDate);
-		setEndDate(formattedEnd);
-		setShowReport(false);
+	const navigateToBillPayment = (billID) => {
+		navigation.navigate('GroupBillPayment', {
+			billID: billID
+		});
 	};
 
-	const viewReport = () => {
-		const formattedStartDate = createDate(startDate);
-		const formattedEnd = createDate(endDate);
-		setShowReport(true);
-		alert(`View group report for ${groupID} with range ${formattedStartDate}-${formattedEnd}`);
-	};
-
-	const downloadReport = () => {
-		const formattedStartDate = createDate(startDate);
-		const formattedEnd = createDate(endDate);
-		alert(`Download group report for ${groupID} with range ${formattedStartDate}-${formattedEnd}`);
-	};
-
-	const viewBillDetail = (billID) => {
+	const navigateToBillDetail = (billID) => {
 		navigation.navigate('GroupBillDetail', {
 			billID: billID
 		});
 	};
 
-	const viewTransactionDetail = (transactionID) => {
-		navigation.navigate('GroupTransactionDetail', {
-			transactionID: transactionID
+	const createBill = () => {
+		navigation.navigate('CreateGroupBill', {
+			groupID: groupID
 		});
 	};
 
@@ -241,23 +123,19 @@ const GroupReportPage = ({route, navigation}) => {
 	};
 
 	return (
-		<GroupReport
-			contentText={translations['GroupReport']}
+		<GroupBillList
+			contentText={translations['GroupBillList']}
 			groupDetail={groupDetail}
-			reportDetail={reportDetail}
-			transactionList={transactionList}
-			startDate={startDate}
-			setStartDate={onChangeStartDate}
-			endDate={endDate}
-			setEndDate={onChangeEndDate}
-			showReport={showReport}
-			resetDate={resetDate}
-			viewReport={viewReport}
-			downloadReport={downloadReport}
-			viewBillDetail={viewBillDetail}
-			viewTransactionDetail={viewTransactionDetail}
+			displayedBillStatus={displayedBillStatus}
+			setDisplayedBillStatus={onChangeDisplayedBillStatus}
+			billList={displayedBillList}
+			searchValue={searchValue}
+			onChangeSearch={onChangeSearch}
+			navigateToBillPayment={navigateToBillPayment}
+			navigateToBillDetail={navigateToBillDetail}
+			createBill={createBill}
 			goBack={goBack} />
 	);
 };
 
-export default GroupReportPage;
+export default GroupBillListPage;

@@ -18,6 +18,7 @@ import FindGroup from './id/Page/FindGroup.translation.json';
 import ForgotPassword from './id/Page/ForgotPassword.translation.json';
 import GroupBillApproval from './id/Page/GroupBillApproval.translation.json';
 import GroupBillDetail from './id/Page/GroupBillDetail.translation.json';
+import GroupBillList from './id/Page/GroupBillList.translation.json';
 import GroupBillPayment from './id/Page/GroupBillPayment.translation.json';
 import GroupDetail from './id/Page/GroupDetail.translation.json';
 import GroupList from './id/Page/GroupList.translation.json';
@@ -83,6 +84,7 @@ module.exports = {
 	FullNameValidation,
 	GroupBillApproval,
 	GroupBillDetail,
+	GroupBillList,
 	GroupBillPayment,
 	GroupDetail,
 	GroupList,

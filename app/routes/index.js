@@ -13,16 +13,17 @@ import GroupBillApprovalPage from '../pages/GroupBillApproval.page';
 import GroupBillDetailPage from '../pages/GroupBillDetail.page';
 import GroupBillPaymentPage from '../pages/GroupBillPayment.page';
 import GroupTransactionDetailPage from '../pages/GroupTransactionDetail.page';
-import GroupReportPage from '../pages/GroupReport.page';
 
 import SignInPage from '../pages/SignIn.page';
 import SignUpPage from '../pages/SignUp.page';
 import ForgotPasswordPage from '../pages/ForgotPassword.page';
 
+import GroupBillListPage from '../pages/GroupBillList.page';
 import GroupListPage from '../pages/GroupList.page';
 import CreateGroupPage from '../pages/CreateGroup.page';
 import FindGroupPage from '../pages/FindGroup.page';
 import GroupDetailPage from '../pages/GroupDetail.page';
+import GroupReportPage from '../pages/GroupReport.page';
 
 import DashboardPage from '../pages/Dashboard.page';
 import EventListPage from '../pages/EventList.page';
@@ -48,6 +49,7 @@ const GroupStack = () => {
 		<GroupNavigation.Navigator initialRouteName='GroupList' headerMode='none'>
 			<GroupNavigation.Screen name='CreateGroup' component={CreateGroupPage} />
 			<GroupNavigation.Screen name='FindGroup' component={FindGroupPage} />
+			<GroupNavigation.Screen name='GroupBillList' component={GroupBillListPage} />
 			<GroupNavigation.Screen name='GroupDetail' component={GroupDetailPage} />
 			<GroupNavigation.Screen name='GroupList' component={GroupListPage} />
 			<GroupNavigation.Screen name='GroupReport' component={GroupReportPage} />

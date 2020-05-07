@@ -22,6 +22,7 @@ const CreateGroupBill = (props) => {
 						<NumberField
 							onChangeText={props.setValue}
 							style={styles.numberField}
+							textStyle={styles.income}
 							value={props.value} />
 						<TextField
 							contentText={props.descriptionText}

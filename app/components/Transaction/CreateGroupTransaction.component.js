@@ -25,14 +25,14 @@ const CreateGroupTransaction = (props) => {
 						source={props.groupDetail.image === '' ? require('../../assets/images/DefaultGroupImage.png') : {uri: `data:image/jpeg;base64,${props.groupDetail.image}`}}
 						style={styles.groupImage}/>
 					<Text style={styles.groupName}>{props.groupDetail.name}</Text>
+					<SwitchButton
+						style={styles.switch}
+						leftValue={'INCOME'}
+						rightValue={'EXPENSE'}
+						onChange={props.setType}
+						text={props.contentText}
+						value={props.type} />
 					<View style={styles.createTransactionContainer}>
-						<SwitchButton
-							style={styles.switch}
-							leftValue={'INCOME'}
-							rightValue={'EXPENSE'}
-							onChange={props.setType}
-							text={props.contentText}
-							value={props.type} />
 						<NumberField
 							onChangeText={props.setValue}
 							textStyle={props.type === 'INCOME' ? styles.income : styles.expense}

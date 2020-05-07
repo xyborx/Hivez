@@ -28,9 +28,13 @@ const DashboardPage = ({navigation}) => {
 
 	const navigateToGroup = (groupID) => {
 		navigation.navigate('GroupTab', {
-			screen: 'GroupDetail',
+			screen: 'GroupDrawer',
 			initial: true,
-			params: {groupID: groupID}
+			params: {
+				screen: 'GroupDetail',
+				initial: true,
+				params: {groupID: groupID}
+			}
 		});
 	};
 
@@ -49,17 +53,25 @@ const DashboardPage = ({navigation}) => {
 
 	const viewGroupBill = (groupID) => {
 		navigation.navigate('GroupTab', {
-			screen: 'GroupBillList',
+			screen: 'GroupDrawer',
 			initial: true,
-			params: {groupID: groupID}
+			params: {
+				screen: 'GroupBillList',
+				initial: true,
+				params: {groupID: groupID}
+			}
 		});
 	};
 
 	const viewGroupReport = (groupID) => {
 		navigation.navigate('GroupTab', {
-			screen: 'GroupReport',
+			screen: 'GroupDrawer',
 			initial: true,
-			params: {groupID: groupID}
+			params: {
+				screen: 'GroupReport',
+				initial: true,
+				params: {groupID: groupID}
+			}
 		});
 	};
 

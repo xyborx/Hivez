@@ -10,7 +10,7 @@ const TabBar = ({state, descriptors, navigation}) => {
 	return (
 		<View style={styles.buttonContainer}>
 			{state.routes.map((route, index) => {
-				const { options } = descriptors[route.key];
+				const {options} = descriptors[route.key];
 
 				const isFocused = state.index === index;
 

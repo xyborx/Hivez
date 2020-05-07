@@ -224,6 +224,10 @@ const GroupDetailPage = ({route, navigation}) => {
 		navigation.replace('GroupList');
 	};
 
+	const openDrawer = () => {
+		navigation.openDrawer();
+	};
+
 	return (
 		<GroupDetail
 			contentText={translations['GroupDetail']}
@@ -234,6 +238,7 @@ const GroupDetailPage = ({route, navigation}) => {
 			transactionList={transactionList}
 			onBillClick={viewBillDetail}
 			onTransactionClick={viewTransactionDetail}
+			openDrawer={openDrawer}
 			goBack={goBack} />
 	);
 };

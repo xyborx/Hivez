@@ -6,7 +6,7 @@ import {isRequestDescriptionValid} from '../utils/validator.utils';
 import CreateGroupTransaction from '../components/Transaction/CreateGroupTransaction.component';
 
 const CreateGroupTransactionPage = ({route, navigation}) => {
-	const { groupID } = route.params;
+	const {groupID} = route.params;
 
 	const groupDetailDummy = {
 		id: 'GROUP0001',

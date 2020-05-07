@@ -1,10 +1,12 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import {createStackNavigator} from '@react-navigation/stack';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {LocalizationProvider} from '../utils/language.utils';
 
+import Drawer from '../components/Drawer/Drawer.component';
 import TabBar from '../components/TabBar/TabBar.component';
 
 import CreateGroupBillPage from '../pages/CreateGroupBill.page';
@@ -42,6 +44,27 @@ const PreSignInStack = () => {
 	);
 };
 
+const GroupDetailNavigation = createDrawerNavigator();
+
+const GroupDrawer = () => {
+	return (
+		<GroupDetailNavigation.Navigator drawerContent={props => <Drawer {...props} />} drawerType={'slide'} initialRouteName='GroupDetail'>
+			<GroupDetailNavigation.Screen name='GroupDetail' component={GroupDetailPage} options={{
+				icon: 'users',
+				text: 'DASHBOARD'
+			}} />
+			<GroupDetailNavigation.Screen name='GroupReport' component={GroupReportPage} options={{
+				icon: 'file-invoice-dollar',
+				text: 'VIEW_REPORT'
+			}} />
+			<GroupDetailNavigation.Screen name='GroupBillList' component={GroupBillListPage} options={{
+				icon: 'receipt',
+				text: 'PAY_BILL'
+			}} />
+		</GroupDetailNavigation.Navigator>
+	);
+};
+
 const GroupNavigation = createStackNavigator();
 
 const GroupStack = () => {
@@ -49,10 +72,8 @@ const GroupStack = () => {
 		<GroupNavigation.Navigator initialRouteName='GroupList' headerMode='none'>
 			<GroupNavigation.Screen name='CreateGroup' component={CreateGroupPage} />
 			<GroupNavigation.Screen name='FindGroup' component={FindGroupPage} />
-			<GroupNavigation.Screen name='GroupBillList' component={GroupBillListPage} />
-			<GroupNavigation.Screen name='GroupDetail' component={GroupDetailPage} />
+			<GroupNavigation.Screen name='GroupDrawer' component={GroupDrawer} />
 			<GroupNavigation.Screen name='GroupList' component={GroupListPage} />
-			<GroupNavigation.Screen name='GroupReport' component={GroupReportPage} />
 		</GroupNavigation.Navigator>
 	);
 };

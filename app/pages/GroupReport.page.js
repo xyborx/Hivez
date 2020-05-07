@@ -240,6 +240,10 @@ const GroupReportPage = ({route, navigation}) => {
 		navigation.replace('GroupList');
 	};
 
+	const openDrawer = () => {
+		navigation.openDrawer();
+	};
+
 	return (
 		<GroupReport
 			contentText={translations['GroupReport']}
@@ -256,6 +260,7 @@ const GroupReportPage = ({route, navigation}) => {
 			downloadReport={downloadReport}
 			viewBillDetail={viewBillDetail}
 			viewTransactionDetail={viewTransactionDetail}
+			openDrawer={openDrawer}
 			goBack={goBack} />
 	);
 };

@@ -1,7 +1,7 @@
 {
 	"PAGE_TITLE": "Notification",
 	"JOIN_APPROVED": "You have been approved to join {source_name}",
-	"JOIN_REJECTED": "You have been reected to join {source_name}",
+	"JOIN_REJECTED": "You have been rejected to join {source_name}",
 	"REQUEST_APPROVED": "Your request has been approved",
 	"REQUEST_REJECTED": "Your request has been rejected",
 	"BILL_CREATION_APPROVED": "Your new bill creation has been approved",

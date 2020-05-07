@@ -42,7 +42,7 @@ const GroupBillList = (props) => {
 		<SafeAreaView style={styles.rootContainer}>
 			<ScrollView keyboardShouldPersistTaps={'handled'} showsVerticalScrollIndicator={false} style={styles.pageContainer} contentContainerStyle={styles.pageContentView}>
 				<FloatingBackButton action={props.goBack} backText={props.contentText['BACK']} />
-				<FloatingBurgerButton />
+				<FloatingBurgerButton action={props.openDrawer} />
 				<View style={styles.pageContentView}>
 					<Text style={styles.header}>{props.contentText['PAGE_TITLE']}</Text>
 					<Image

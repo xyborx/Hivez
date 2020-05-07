@@ -13,7 +13,7 @@ const GroupDetail = (props) => {
 			<ScrollView keyboardShouldPersistTaps={'handled'} showsVerticalScrollIndicator={false} style={styles.pageContainer} contentContainerStyle={styles.pageContentView}>
 				<View>
 					<FloatingBackButton action={props.goBack} backText={props.contentText['BACK']} />
-					<FloatingBurgerButton />
+					<FloatingBurgerButton action={props.openDrawer} />
 					<Image
 						source={image === '' ? require('../../assets/images/DefaultGroupImage.png') : {uri: `data:image/jpeg;base64,${image}`}}
 						style={styles.groupImage}/>

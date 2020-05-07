@@ -3,6 +3,7 @@ import ChangePasswordModal from './id/Component/ChangePasswordModal.translation.
 import ChangeProfileModal from './id/Component/ChangeProfileModal.translation.json';
 import DropdownChangePicture from './id/Component/DropdownChangePicture.translation.json';
 import DropdownLanguage from './id/Component/DropdownLanguage.translation.json';
+import GroupDrawerNavigator from './id/Component/GroupDrawerNavigator.translation.json';
 import Modal from './id/Component/Modal.translation.json';
 import PrivacyPolicy from './id/Component/PrivacyPolicy.translation.json';
 import RecentBill from './id/Component/RecentBill.translation.json';
@@ -86,6 +87,7 @@ module.exports = {
 	GroupBillDetail,
 	GroupBillList,
 	GroupBillPayment,
+	GroupDrawerNavigator,
 	GroupDetail,
 	GroupList,
 	GroupNameValidation,

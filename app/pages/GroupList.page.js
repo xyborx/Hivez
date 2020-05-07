@@ -158,8 +158,10 @@ const GroupListPage = ({navigation}) => {
 	}
 
 	const navigateToGroup = (groupID) => {
-		navigation.navigate('GroupDetail', {
-			groupID: groupID
+		navigation.navigate('GroupDrawer', {
+			screen: 'GroupDetail',
+			initial: true,
+			params: {groupID: groupID}
 		});
 	};
 

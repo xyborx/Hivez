@@ -122,6 +122,10 @@ const GroupBillListPage = ({route, navigation}) => {
 		navigation.replace('GroupList');
 	};
 
+	const openDrawer = () => {
+		navigation.openDrawer();
+	};
+
 	return (
 		<GroupBillList
 			contentText={translations['GroupBillList']}
@@ -134,6 +138,7 @@ const GroupBillListPage = ({route, navigation}) => {
 			navigateToBillPayment={navigateToBillPayment}
 			navigateToBillDetail={navigateToBillDetail}
 			createBill={createBill}
+			openDrawer={openDrawer}
 			goBack={goBack} />
 	);
 };

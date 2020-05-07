@@ -3,7 +3,7 @@ import {LocalizationContext} from '../utils/language.utils';
 import GroupDetail from '../components/GroupDetail/GroupDetail.component';
 
 const GroupDetailPage = ({route, navigation}) => {
-	const { groupID } = route.params;
+	const {groupID} = route.params;
 	console.log(groupID);
 
 	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
@@ -18,246 +18,190 @@ const GroupDetailPage = ({route, navigation}) => {
 
 	const billListDummy = [{
 		id: 'BILL0001',
-		name: 'Beli Mangga',
+		name: 'Uang kas Mei',
 		date: '2020-05-03 01:18:16',
-		approver: 'Difa Sanditya',
-		type: 'Debit',
-		value: 150000,
-		status: 'On Progress'
+		approver: 'Samuel Theodorus',
+		type: 'INCOME',
+		value: 50000,
+		status: 'ON_PROGRESS'
 	}, {
 		id: 'BILL0002',
-		name: 'Beli Jambu',
+		name: 'Uang kas Mei',
 		date: '2020-05-03 00:59:16',
 		approver: 'Difa Sanditya',
-		type: 'Credit',
+		type: 'INCOME',
 		value: 50000,
-		status: 'Approved'
+		status: 'APPROVED'
 	}, {
 		id: 'BILL0003',
-		name: 'Beli Mangga',
+		name: 'Uang kas Mei',
 		date: '2020-05-02 23:59:16',
-		approver: 'Samuel Theodorus',
-		type: 'Debit',
-		value: 150000,
-		status: 'On Progress'
+		approver: 'Jeffebry Dale',
+		type: 'INCOME',
+		value: 50000,
+		status: 'ON_PROGRESS'
 	}, {
 		id: 'BILL0004',
-		name: 'Beli Jambu',
+		name: 'Uang kas April',
 		date: '2020-04-29 23:59:16',
 		approver: 'Samuel Theodorus',
-		type: 'Credit',
+		type: 'INCOME',
 		value: 50000,
-		status: 'Declined'
+		status: 'APPROVED'
 	}, {
 		id: 'BILL0005',
-		name: 'Beli Jambu',
+		name: 'Uang kas April',
 		date: '2020-04-12 23:59:16',
-		approver: 'Jeffebry Dale',
-		type: 'Credit',
+		approver: 'Samuel Theodorus',
+		type: 'INCOME',
 		value: 50000,
-		status: 'On Progress'
+		status: 'DECLINED'
 	}, {
 		id: 'BILL0006',
-		name: 'Beli Mangga',
+		name: 'Uang kas April',
 		date: '2020-04-11 23:59:16',
 		approver: 'Difa Sanditya',
-		type: 'Debit',
-		value: 150000,
-		status: 'On Progress'
+		type: 'INCOME',
+		value: 50000,
+		status: 'APPROVED'
 	}, {
 		id: 'BILL0007',
-		name: 'Beli Jambu',
+		name: 'Uang kas April',
 		date: '2020-04-03 02:59:16',
-		approver: 'Difa Sanditya',
-		type: 'Credit',
+		approver: 'Jeffebry Dale',
+		type: 'INCOME',
 		value: 50000,
-		status: 'Declined'
+		status: 'ON_PROGRESS'
 	}, {
 		id: 'BILL0008',
-		name: 'Beli Mangga',
+		name: 'Uang kas April',
 		date: '2020-04-02 23:59:16',
-		approver: 'Samuel Theodorus',
-		type: 'Debit',
-		value: 150000,
-		status: 'Declined'
-	}, {
-		id: 'BILL0009',
-		name: 'Beli Jambu',
-		date: '2020-04-01 23:59:16',
-		approver: 'Samuel Theodorus',
-		type: 'Credit',
-		value: 50000,
-		status: 'Declined'
-	}, {
-		id: 'BILL0010',
-		name: 'Beli Jambu',
-		date: '2020-03-30 23:59:16',
 		approver: 'Jeffebry Dale',
-		type: 'Credit',
+		type: 'INCOME',
 		value: 50000,
-		status: 'Approved'
-	}, {
-		id: 'BILL0011',
-		name: 'Beli Mangga',
-		date: '2020-03-15 23:59:16',
-		approver: 'Difa Sanditya',
-		type: 'Debit',
-		value: 150000,
-		status: 'On Progress'
-	}, {
-		id: 'BILL0012',
-		name: 'Beli Jambu',
-		date: '2020-03-12 02:59:16',
-		approver: 'Difa Sanditya',
-		type: 'Credit',
-		value: 50000,
-		status: 'Approved'
-	}, {
-		id: 'BILL0013',
-		name: 'Beli Mangga',
-		date: '2020-03-02 23:59:16',
-		approver: 'Samuel Theodorus',
-		type: 'Debit',
-		value: 150000,
-		status: 'Declined'
-	}, {
-		id: 'BILL0014',
-		name: 'Beli Jambu',
-		date: '2020-03-01 23:59:16',
-		approver: 'Samuel Theodorus',
-		type: 'Credit',
-		value: 50000,
-		status: 'Approved'
-	}, {
-		id: 'BILL0015',
-		name: 'Beli Jambu',
-		date: '2020-02-12 23:59:16',
-		approver: 'Jeffebry Dale',
-		type: 'Credit',
-		value: 50000,
-		status: 'Approved'
+		status: 'DECLINED'
 	}];
 
 	const transactionListDummy = [{
-		id: 'TRX0001',
-		name: 'Beli Mangga',
+		id: 'REQ0001',
+		name: 'Beli peralatan kelas',
 		date: '2020-05-03 01:18:16',
 		approver: 'Difa Sanditya',
-		type: 'Debit',
+		type: 'EXPENSE',
 		value: 150000,
-		status: 'On Progress'
+		status: 'ON_PROGRESS'
 	}, {
-		id: 'TRX0002',
-		name: 'Beli Jambu',
+		id: 'REQ0002',
+		name: 'Bayar denda tidak hadir rapat',
 		date: '2020-05-03 00:59:16',
 		approver: 'Difa Sanditya',
-		type: 'Credit',
+		type: 'INCOME',
 		value: 50000,
-		status: 'Approved'
+		status: 'APPROVED'
 	}, {
-		id: 'TRX0003',
-		name: 'Beli Mangga',
+		id: 'REQ0003',
+		name: 'Beli peralatan kelas',
 		date: '2020-05-02 23:59:16',
 		approver: 'Samuel Theodorus',
-		type: 'Debit',
+		type: 'EXPENSE',
 		value: 150000,
-		status: 'On Progress'
+		status: 'ON_PROGRESS'
 	}, {
-		id: 'TRX0004',
-		name: 'Beli Jambu',
+		id: 'REQ0004',
+		name: 'Bayar denda tidak hadir rapat',
 		date: '2020-04-29 23:59:16',
 		approver: 'Samuel Theodorus',
-		type: 'Credit',
+		type: 'INCOME',
 		value: 50000,
-		status: 'Declined'
+		status: 'DECLINED'
 	}, {
-		id: 'TRX0005',
-		name: 'Beli Jambu',
+		id: 'REQ0005',
+		name: 'Bayar denda tidak hadir rapat',
 		date: '2020-04-12 23:59:16',
 		approver: 'Jeffebry Dale',
-		type: 'Credit',
+		type: 'INCOME',
 		value: 50000,
-		status: 'On Progress'
+		status: 'ON_PROGRESS'
 	}, {
-		id: 'TRX0006',
-		name: 'Beli Mangga',
+		id: 'REQ0006',
+		name: 'Beli peralatan kelas',
 		date: '2020-04-11 23:59:16',
 		approver: 'Difa Sanditya',
-		type: 'Debit',
+		type: 'EXPENSE',
 		value: 150000,
-		status: 'On Progress'
+		status: 'ON_PROGRESS'
 	}, {
-		id: 'TRX0007',
-		name: 'Beli Jambu',
+		id: 'REQ0007',
+		name: 'Bayar denda telat masuk kelas',
 		date: '2020-04-03 02:59:16',
 		approver: 'Difa Sanditya',
-		type: 'Credit',
+		type: 'INCOME',
 		value: 50000,
-		status: 'Declined'
+		status: 'DECLINED'
 	}, {
-		id: 'TRX0008',
-		name: 'Beli Mangga',
+		id: 'REQ0008',
+		name: 'Beli peralatan kelas',
 		date: '2020-04-02 23:59:16',
 		approver: 'Samuel Theodorus',
-		type: 'Debit',
+		type: 'EXPENSE',
 		value: 150000,
-		status: 'Declined'
+		status: 'DECLINED'
 	}, {
-		id: 'TRX0009',
-		name: 'Beli Jambu',
+		id: 'REQ0009',
+		name: 'Bayar denda telat masuk kelas',
 		date: '2020-04-01 23:59:16',
 		approver: 'Samuel Theodorus',
-		type: 'Credit',
+		type: 'INCOME',
 		value: 50000,
-		status: 'Declined'
+		status: 'DECLINED'
 	}, {
-		id: 'TRX0010',
-		name: 'Beli Jambu',
+		id: 'REQ0010',
+		name: 'Bayar denda telat masuk kelas',
 		date: '2020-03-30 23:59:16',
 		approver: 'Jeffebry Dale',
-		type: 'Credit',
+		type: 'INCOME',
 		value: 50000,
-		status: 'Approved'
+		status: 'APPROVED'
 	}, {
-		id: 'TRX0011',
-		name: 'Beli Mangga',
+		id: 'REQ0011',
+		name: 'Beli peralatan kelas',
 		date: '2020-03-15 23:59:16',
 		approver: 'Difa Sanditya',
-		type: 'Debit',
+		type: 'EXPENSE',
 		value: 150000,
-		status: 'On Progress'
+		status: 'ON_PROGRESS'
 	}, {
-		id: 'TRX0012',
-		name: 'Beli Jambu',
+		id: 'REQ0012',
+		name: 'Bayar denda telat masuk kelas',
 		date: '2020-03-12 02:59:16',
 		approver: 'Difa Sanditya',
-		type: 'Credit',
+		type: 'INCOME',
 		value: 50000,
-		status: 'Approved'
+		status: 'APPROVED'
 	}, {
-		id: 'TRX0013',
-		name: 'Beli Mangga',
+		id: 'REQ0013',
+		name: 'Beli peralatan kelas',
 		date: '2020-03-02 23:59:16',
 		approver: 'Samuel Theodorus',
-		type: 'Debit',
+		type: 'EXPENSE',
 		value: 150000,
-		status: 'Declined'
+		status: 'DECLINED'
 	}, {
-		id: 'TRX0014',
-		name: 'Beli Jambu',
+		id: 'REQ0014',
+		name: 'Bayar denda telat masuk kelas',
 		date: '2020-03-01 23:59:16',
 		approver: 'Samuel Theodorus',
-		type: 'Credit',
+		type: 'INCOME',
 		value: 50000,
-		status: 'Approved'
+		status: 'APPROVED'
 	}, {
-		id: 'TRX0015',
-		name: 'Beli Jambu',
+		id: 'REQ0015',
+		name: 'Bayar denda telat masuk kelas',
 		date: '2020-02-12 23:59:16',
 		approver: 'Jeffebry Dale',
-		type: 'Credit',
+		type: 'INCOME',
 		value: 50000,
-		status: 'Approved'
+		status: 'APPROVED'
 	}];
 
 	const [groupDetail, setGroupDetail] = useState(groupDetailDummy);
@@ -268,17 +212,17 @@ const GroupDetailPage = ({route, navigation}) => {
 		navigation.navigate('GroupBillDetail', {
 			billID: billID
 		});
-	}
+	};
 
 	const viewTransactionDetail = (transactionID) => {
 		navigation.navigate('GroupTransactionDetail', {
 			transactionID: transactionID
 		});
-	}
+	};
 
 	const goBack = () => {
 		navigation.replace('GroupList');
-	}
+	};
 
 	return (
 		<GroupDetail

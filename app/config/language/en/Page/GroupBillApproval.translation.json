@@ -3,7 +3,7 @@
 	"STATUS": "Status",
 	"APPROVED": "Approved",
 	"REJECTED": "Rejected",
-	"ON_PROGRESS": "On progress",
+	"ON_PROGRESS": "Waiting approval",
 	"CREATOR": "Bill Creator",
 	"APPROVER": "Approver",
 	"REJECTER": "Rejecter",

@@ -3,7 +3,7 @@
 	"STATUS": "Status",
 	"APPROVED": "Telah disetujui",
 	"REJECTED": "Telah ditolak",
-	"ON_PROGRESS": "Sedang berlangsung",
+	"ON_PROGRESS": "Menunggu persetujuan",
 	"PAYER": "Pembayar",
 	"APPROVER": "Penerima",
 	"REJECTER": "Penolak",

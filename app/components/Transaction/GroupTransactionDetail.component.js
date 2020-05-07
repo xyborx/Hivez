@@ -40,7 +40,7 @@ const GroupTransactionDetail = (props) => {
 					<View style={styles.transactionDetailContainer}>
 						<View style={styles.transactionValueContainer}>
 							<Text style={styles.transactionDetailText}>{'IDR'}</Text>
-							<Text style={[styles.transactionValueText, type === 'DEBIT' ? styles.debit : styles.credit]}>{value}</Text>
+							<Text style={[styles.transactionValueText, type === 'INCOME' ? styles.income : styles.expense]}>{value}</Text>
 						</View>
 						<ViewWithValue title={props.contentText['DESCRIPTION']} value={description} />
 						<ViewWithValue title={props.contentText['TYPE']} value={props.contentText[type]} />

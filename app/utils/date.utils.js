@@ -22,8 +22,9 @@ export const createDate = (date) => {
 	return moment(date);
 };
 
-export const dateToString = (date) => {
-	return moment(date).format('dddd, D MMMM YYYY');
+export const dateToString = (date, isShortDate) => {
+	return isShortDate ? moment(date).format('D MMMM YYYY') :
+		moment(date).format('dddd, D MMMM YYYY');
 };
 
 export const timeToString = (date) => {
@@ -32,4 +33,16 @@ export const timeToString = (date) => {
 
 export const isAfterCurrent = (date) => {
 	return moment(date).isAfter(currentDate.clone());
-}
+};
+
+export const getDay = (date) => {
+	return moment(date).format('DD');
+};
+
+export const getWeekDay = (date) => {
+	return moment(date).format('dddd');
+};
+
+export const getMonthYear = (date) => {
+	return moment(date).format('MMMM YYYY');
+};

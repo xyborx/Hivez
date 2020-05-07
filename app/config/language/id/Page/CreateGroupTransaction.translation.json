@@ -1,7 +1,7 @@
 {
 	"PAGE_TITLE": "Buat Permintaan",
-	"DEBIT": "Debit",
-	"CREDIT": "Kredit",
+	"INCOME": "Pemasukan",
+	"EXPENSE": "Pengeluaran",
 	"DATE": "Tanggal",
 	"TIME": "Waktu",
 	"DESCRIPTION": "Deskripsi",

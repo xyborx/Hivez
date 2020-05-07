@@ -8,33 +8,34 @@ export default StyleSheet.create({
 		borderColor: theme.COLOR_GREY,
 		borderWidth: theme.BORDER_MEDIUM,
 		borderRadius: theme.ROUNDNESS_DEFAULT,
+		flexDirection: 'row',
 		height: theme.HEIGHT_DEFAULT,
-		justifyContent: 'center',
-		paddingHorizontal: theme.PADDING_DEFAULT
+		overflow: 'hidden'
+		// paddingHorizontal: theme.PADDING_DEFAULT
 	},
 	disabled: {
 		...buttonDisabled
 	},
 	text: {
 		color: theme.COLOR_SOFT_GREY,
-		flex: 1,
-		flexGrow: 1,
 		fontSize: theme.FONT_SIZE_MEDIUM,
+		textAlign: 'center'
 	},
 	textDisabled: {
 		color: theme.COLOR_SOFT_GREY
 	},
 	container: {
 		alignItems: 'center',
-		flexDirection: 'row',
-		flexWrap: 'wrap',
+		flex: 1,
+		flexGrow: 1,
+		justifyContent: 'center'
 	},
 	hidden: {
 		display: 'none'
 	},
 	iconContainer: {
-		width: 18,
-		marginRight: theme.MARGIN_NARROW
+		alignSelf: 'center',
+		width: 18
 	},
 	inputIcon: {
 		...iconInline

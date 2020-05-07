@@ -7,8 +7,7 @@ import styles from './RecentTransactionDetail.component.style';
 
 const TransactionItem = (props) => {
 	const {id, name, date, approver, type, value, status} = props.item;
-	const details = props.contentText[`${status.toUpperCase().replace(' ', '_')}_TRANSACTIONS`]
-		+ (status === 'On Progress' ? '' : ` ${props.contentText['BY']} ${approver}`);
+	const details = props.contentText[`${status}_TRANSACTIONS`] + (status === 'ON_PROGRESS' ? '' : ` ${props.contentText['BY']} ${approver}`);
 	return (
 		<TouchableHighlight
 			accessibilityRole={'button'}
@@ -24,7 +23,7 @@ const TransactionItem = (props) => {
 						<Text style={styles.transactionDate}>{getRelativeDate(date)}</Text>
 					</View>
 					<View style={styles.transactionValueContainer}>
-						<Text style={[type === 'Credit' ? styles.credit : styles.debit, styles.transactionValue]}>{rupiahFormatting(value)}</Text>
+						<Text style={[type === 'INCOME' ? styles.income : styles.expense, styles.transactionValue]}>{rupiahFormatting(value)}</Text>
 						<FontAwesome5 name={'angle-right'} style={styles.transactionDetailIcon} />
 					</View>
 				</View>
@@ -52,12 +51,12 @@ const EmptyItem = () => {
 }
 
 const RecentTransactionDetail = (props) => {
-	const [filterType, setFilterType] = useState('All');
+	const [filterType, setFilterType] = useState('ALL');
 	const [transactionList, setTransactionList] = useState(padArray(props.transactionList, 5, null));
 
 	const filterData = (type) => {
 		setFilterType(type);
-		if (type === 'All') setTransactionList(padArray(props.transactionList, 5, null));
+		if (type === 'ALL') setTransactionList(padArray(props.transactionList, 5, null));
 		else setTransactionList(padArray(props.transactionList.filter((item) => {return item.status === type}), 5, null));
 	}
 
@@ -76,27 +75,27 @@ const RecentTransactionDetail = (props) => {
 			<View style={styles.filterList}>
 				<TouchableOpacity
 					accessibilityRole={'button'}
-					onPress={() => {filterData('All')}}
-					style={[styles.filterButton, filterType === 'All' ? styles.filterButtonActive : {}]}>
-					<Text style={[styles.filterText, filterType === 'All' ? styles.filterTextActive : {}]}>{props.contentText['ALL_TRANSACTIONS']}</Text>
+					onPress={() => {filterData('ALL')}}
+					style={[styles.filterButton, filterType === 'ALL' ? styles.filterButtonActive : {}]}>
+					<Text style={[styles.filterText, filterType === 'ALL' ? styles.filterTextActive : {}]}>{props.contentText['ALL_TRANSACTIONS']}</Text>
 				</TouchableOpacity>
 				<TouchableOpacity
 					accessibilityRole={'button'}
-					onPress={() => {filterData('Approved')}}
-					style={[styles.filterButton, filterType === 'Approved' ? styles.filterButtonActive : {}]}>
-					<Text style={[styles.filterText, filterType === 'Approved' ? styles.filterTextActive : {}]}>{props.contentText['APPROVED_TRANSACTIONS']}</Text>
+					onPress={() => {filterData('APPROVED')}}
+					style={[styles.filterButton, filterType === 'APPROVED' ? styles.filterButtonActive : {}]}>
+					<Text style={[styles.filterText, filterType === 'APPROVED' ? styles.filterTextActive : {}]}>{props.contentText['APPROVED_TRANSACTIONS']}</Text>
 				</TouchableOpacity>
 				<TouchableOpacity
 					accessibilityRole={'button'}
-					onPress={() => {filterData('On Progress')}}
-					style={[styles.filterButton, filterType === 'On Progress' ? styles.filterButtonActive : {}]}>
-					<Text style={[styles.filterText, filterType === 'On Progress' ? styles.filterTextActive : {}]}>{props.contentText['ON_PROGRESS_TRANSACTIONS']}</Text>
+					onPress={() => {filterData('ON_PROGRESS')}}
+					style={[styles.filterButton, filterType === 'ON_PROGRESS' ? styles.filterButtonActive : {}]}>
+					<Text style={[styles.filterText, filterType === 'ON_PROGRESS' ? styles.filterTextActive : {}]}>{props.contentText['ON_PROGRESS_TRANSACTIONS']}</Text>
 				</TouchableOpacity>
 				<TouchableOpacity
 					accessibilityRole={'button'}
-					onPress={() => {filterData('Declined')}}
-					style={[styles.filterButton, filterType === 'Declined' ? styles.filterButtonActive : {}]}>
-					<Text style={[styles.filterText, filterType === 'Declined' ? styles.filterTextActive : {}]}>{props.contentText['DECLINED_TRANSACTIONS']}</Text>
+					onPress={() => {filterData('DECLINED')}}
+					style={[styles.filterButton, filterType === 'DECLINED' ? styles.filterButtonActive : {}]}>
+					<Text style={[styles.filterText, filterType === 'DECLINED' ? styles.filterTextActive : {}]}>{props.contentText['DECLINED_TRANSACTIONS']}</Text>
 				</TouchableOpacity>
 			</View>
 			<View style={styles.transactionListContainer}>

@@ -32,8 +32,8 @@ export default StyleSheet.create({
 		backgroundColor: theme.COLOR_WHITE,
 		borderColor: theme.COLOR_GREY,
 		borderWidth: theme.BORDER_THIN,
-		marginRight: theme.MARGIN_DEFAULT,
-		padding: theme.PADDING_NARROW,
+		marginRight: theme.MARGIN_NARROW,
+		padding: 6
 	},
 	filterButtonActive: {
 		backgroundColor: theme.COLOR_PRIMARY,
@@ -131,10 +131,10 @@ export default StyleSheet.create({
 		color: theme.COLOR_SOFT_GREY,
 		marginTop: theme.MARGIN_EXTRA_NARROW
 	},
-	credit: {
+	expense: {
 		color: theme.COLOR_RED,
 	},
-	debit: {
+	income: {
 		color: theme.COLOR_GREEN,
 	},
 });

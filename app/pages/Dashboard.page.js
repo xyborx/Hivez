@@ -55,13 +55,11 @@ const DashboardPage = ({navigation}) => {
 	};
 
 	const viewGroupReport = (groupID) => {
-		navigation.navigate('GroupBillPayment', {
-			billID: groupID
+		navigation.navigate('GroupTab', {
+			screen: 'GroupReport',
+			initial: true,
+			params: {groupID: groupID}
 		});
-		// navigation.navigate('ViewGroupReport', {
-		// 	groupID: groupID
-		// });
-		// alert(`View group report: ${groupID}`);
 	};
 
 	const viewEventReport = (eventID) => {
@@ -177,51 +175,54 @@ const DashboardPage = ({navigation}) => {
 	}];
 
 	const transactionListDummy = [{
-		id: 'TRX0001',
-		name: 'Beli Mangga',
+		id: 'REQ0001',
+		name: 'Beli peralatan kelas',
 		date: '2020-05-05 23:59:16',
 		sourceName: 'Lelaki Fearless',
 		sourceType: 'GROUP_REQUEST',
-		type: 'Debit',
+		type: 'INCOME',
 		value: 150000,
-		status: 'On Progress',
+		status: 'ON_PROGRESS',
 		image: imageDummy[0]
 	}, {
-		id: 'TRX0002',
-		name: 'Beli Jambu',
+		id: 'REQ0002',
+		name: 'Pengembalian uang wisata',
 		date: '2020-05-02 23:59:16',
 		sourceName: 'Wanita Fearless',
 		sourceType: 'GROUP_REQUEST',
-		type: 'Credit',
+		type: 'INCOME',
 		value: 50000,
-		status: 'Approved',
+		status: 'APPROVED',
 		image: imageDummy[1]
 	}, {
-		id: 'TRX0003',
-		name: 'Beli Mangga',
+		id: 'REQ0003',
+		name: 'Beli peralatan',
 		date: '2020-04-30 23:59:16',
 		sourceName: 'Lelaki Fearless',
 		sourceType: 'EVENT',
+		type: 'INCOME',
 		value: 150000,
-		status: 'Declined',
+		status: 'APPROVED',
 		image: imageDummy[2]
 	}, {
-		id: 'TRX0004',
-		name: 'Beli Jambu',
+		id: 'REQ0004',
+		name: 'Beli peralatan',
 		date: '2020-04-20 23:59:16',
 		sourceName: 'Wanita Fearless',
 		sourceType: 'EVENT',
+		type: 'INCOME',
 		value: 50000,
-		status: 'Declined',
+		status: 'ON_PROGRESS',
 		image: imageDummy[3]
 	}, {
 		id: 'BILL0005',
-		name: 'Beli Jambu',
+		name: 'Uang kas Maret',
 		date: '2020-03-02 23:59:16',
 		sourceName: 'Fearless',
 		sourceType: 'GROUP_BILL',
+		type: 'EXPENSE',
 		value: 50000,
-		status: 'Approved',
+		status: 'APPROVED',
 		image: imageDummy[4]
 	}];
 

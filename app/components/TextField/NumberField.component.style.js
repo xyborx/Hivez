@@ -31,6 +31,7 @@ export default StyleSheet.create({
 		flex: 1,
 		flexGrow: 1,
 		fontSize: theme.FONT_SIZE_HEADER,
+		fontWeight: theme.FONT_WEIGHT_BOLD,
 		textAlign: 'right',
 		paddingRight: 0
 	}

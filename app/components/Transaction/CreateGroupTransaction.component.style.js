@@ -93,5 +93,11 @@ export default StyleSheet.create({
 	viewImageText: {
 		...textHighlight,
 		color: theme.COLOR_WHITE
-	}
+	},
+	income: {
+		color: theme.COLOR_GREEN
+	},
+	expense: {
+		color: theme.COLOR_RED
+	},
 });

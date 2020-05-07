@@ -4,7 +4,7 @@
 	"SEE_ALL_TRANSACTIONS": "See all transactions",
 	"ALL_TRANSACTIONS": "All",
 	"APPROVED_TRANSACTIONS": "Approved",
-	"ON_PROGRESS_TRANSACTIONS": "On Progress",
+	"ON_PROGRESS_TRANSACTIONS": "Waiting approval",
 	"DECLINED_TRANSACTIONS": "Declined",
 	"NO_RECENT_TRANSACTION": "No recent transaction",
 	"BY": "by"

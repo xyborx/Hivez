@@ -21,6 +21,7 @@ import GroupBillDetail from './id/Page/GroupBillDetail.translation.json';
 import GroupBillPayment from './id/Page/GroupBillPayment.translation.json';
 import GroupDetail from './id/Page/GroupDetail.translation.json';
 import GroupList from './id/Page/GroupList.translation.json';
+import GroupReport from './id/Page/GroupReport.translation.json';
 import GroupTransactionDetail from './id/Page/GroupTransactionDetail.translation.json';
 import MyProfile from './id/Page/MyProfile.translation.json';
 import NotificationList from './id/Page/NotificationList.translation.json';
@@ -86,6 +87,7 @@ module.exports = {
 	GroupDetail,
 	GroupList,
 	GroupNameValidation,
+	GroupReport,
 	GroupTransactionDetail,
 	Language,
 	Modal,

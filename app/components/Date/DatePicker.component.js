@@ -35,7 +35,7 @@ const DatePicker = (props) => {
 					<View style={styles.iconContainer}>
 						<FontAwesome5 name={'calendar'} style={styles.inputIcon} />
 					</View>
-					<Text style={styles.text}>{dateToString(date)}</Text>
+					<Text style={styles.text}>{dateToString(date, props.shortDate)}</Text>
 				</View>
 			</TouchableHighlight>
 		</View>

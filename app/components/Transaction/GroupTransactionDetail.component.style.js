@@ -88,11 +88,11 @@ export default StyleSheet.create({
 		fontWeight: theme.FONT_WEIGHT_BOLD,
 		textAlign: 'center'
 	},
-	debit: {
-		color: theme.COLOR_DARK_RED
-	},
-	credit: {
+	income: {
 		color: theme.COLOR_GREEN
+	},
+	expense: {
+		color: theme.COLOR_RED
 	},
 	viewImageContainer: {
 		flex: 1

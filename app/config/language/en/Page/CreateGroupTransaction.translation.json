@@ -1,7 +1,7 @@
 {
 	"PAGE_TITLE": "Create Request",
-	"DEBIT": "Debit",
-	"CREDIT": "Credit",
+	"INCOME": "Income",
+	"EXPENSE": "Expense",
 	"DATE": "Date",
 	"TIME": "Time",
 	"DESCRIPTION": "Description",

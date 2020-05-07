@@ -8,11 +8,12 @@ import {LocalizationProvider} from '../utils/language.utils';
 import TabBar from '../components/TabBar/TabBar.component';
 
 import CreateGroupBillPage from '../pages/CreateGroupBill.page';
+import CreateGroupTransactionPage from '../pages/CreateGroupTransaction.page';
 import GroupBillApprovalPage from '../pages/GroupBillApproval.page';
 import GroupBillDetailPage from '../pages/GroupBillDetail.page';
 import GroupBillPaymentPage from '../pages/GroupBillPayment.page';
-import CreateGroupTransactionPage from '../pages/CreateGroupTransaction.page';
 import GroupTransactionDetailPage from '../pages/GroupTransactionDetail.page';
+import GroupReportPage from '../pages/GroupReport.page';
 
 import SignInPage from '../pages/SignIn.page';
 import SignUpPage from '../pages/SignUp.page';
@@ -45,10 +46,11 @@ const GroupNavigation = createStackNavigator();
 const GroupStack = () => {
 	return (
 		<GroupNavigation.Navigator initialRouteName='GroupList' headerMode='none'>
-			<GroupNavigation.Screen name='GroupList' component={GroupListPage} />
 			<GroupNavigation.Screen name='CreateGroup' component={CreateGroupPage} />
 			<GroupNavigation.Screen name='FindGroup' component={FindGroupPage} />
 			<GroupNavigation.Screen name='GroupDetail' component={GroupDetailPage} />
+			<GroupNavigation.Screen name='GroupList' component={GroupListPage} />
+			<GroupNavigation.Screen name='GroupReport' component={GroupReportPage} />
 		</GroupNavigation.Navigator>
 	);
 };

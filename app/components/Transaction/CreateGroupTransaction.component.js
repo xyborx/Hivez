@@ -28,13 +28,14 @@ const CreateGroupTransaction = (props) => {
 					<View style={styles.createTransactionContainer}>
 						<SwitchButton
 							style={styles.switch}
-							leftValue={'DEBIT'}
-							rightValue={'CREDIT'}
+							leftValue={'INCOME'}
+							rightValue={'EXPENSE'}
 							onChange={props.setType}
 							text={props.contentText}
 							value={props.type} />
 						<NumberField
 							onChangeText={props.setValue}
+							textStyle={props.type === 'INCOME' ? styles.income : styles.expense}
 							style={styles.numberField}
 							value={props.value} />
 						<DatePicker

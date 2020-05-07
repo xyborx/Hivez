@@ -36,7 +36,7 @@ const NumberField = (props) => {
 				onChangeText={onChangeValue}
 				onFocus={onFocusField}
 				placeholder={'0'}
-				style={styles.textInput}
+				style={[styles.textInput, props.textStyle]}
 				value={displayValue} />
 		</View>
 	);

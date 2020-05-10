@@ -4,6 +4,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import SafeAreaView from 'react-native-safe-area-view';
 import ConfirmModal from '../Modal/ConfirmModal.component';
 import FloatingBackButton from '../Button/FloatingBackButton.component';
+import FloatingBurgerButton from '../Button/FloatingBurgerButton.component';
 import SearchField from '../TextField/SearchField.component';
 import styles from './InviteGroupMember.component.style';
 
@@ -35,6 +36,7 @@ const InviteGroupMember = (props) => {
 		<SafeAreaView style={styles.rootContainer}>
 			<ScrollView keyboardShouldPersistTaps={'handled'} showsVerticalScrollIndicator={false} style={styles.pageContainer} contentContainerStyle={styles.pageContentView}>
 				<FloatingBackButton action={props.goBack} backText={props.contentText['BACK']} />
+				<FloatingBurgerButton action={props.openDrawer} />
 				<View style={styles.pageContentView}>
 					<Text style={styles.header}>{props.contentText['PAGE_TITLE']}</Text>
 					<Image

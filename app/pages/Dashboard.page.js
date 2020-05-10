@@ -39,8 +39,14 @@ const DashboardPage = ({navigation}) => {
 	};
 
 	const createGroupTransaction = (groupID) => {
-		navigation.navigate('CreateGroupTransaction', {
-			groupID: groupID
+		navigation.navigate('GroupTab', {
+			screen: 'GroupDrawer',
+			initial: true,
+			params: {
+				screen: 'CreateGroupTransaction',
+				initial: true,
+				params: {groupID: groupID}
+			}
 		});
 	};
 

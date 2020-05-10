@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import {Text, TouchableHighlight, TouchableOpacity, View} from 'react-native';
+import {Image, Text, TouchableHighlight, TouchableOpacity, View} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {getRelativeDate} from '../../utils/date.utils';
 import {padArray, rupiahFormatting} from '../../utils/helper.utils';
 import styles from './RecentTransactionDetail.component.style';
 
 const TransactionItem = (props) => {
-	const {id, name, date, approver, type, value, status} = props.item;
+	const {id, name, date, approver, image, type, value, status} = props.item;
 	const details = props.contentText[`${status}_TRANSACTIONS`] + (status === 'ON_PROGRESS' ? '' : ` ${props.contentText['BY']} ${approver}`);
 	return (
 		<TouchableHighlight
@@ -16,6 +16,9 @@ const TransactionItem = (props) => {
 			underlayColor={'rgba(0,0,0,0.05)'}
 			style={styles.transactionItem}>
 			<View style={styles.transactionItem}>
+				<Image
+					source={image === '' ? require('../../assets/images/DefaultProfileImage.png') : {uri: `data:image/jpeg;base64,${image}`}}
+					style={styles.transactionImage}/>
 				<View style={styles.transactionDescriptionContainer}>
 					<View style={styles.transactionTitleContainer}>
 						<Text style={styles.transactionName}>{name}</Text>

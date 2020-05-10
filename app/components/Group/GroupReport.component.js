@@ -11,7 +11,7 @@ import FloatingBurgerButton from '../Button/FloatingBurgerButton.component';
 import styles from './GroupReport.component.style';
 
 const TransactionItem = (props) => {
-	const {id, name, date, requester, type, value, source} = props.data;
+	const {id, name, date, requester, image, type, value, source} = props.data;
 	return (
 		<TouchableHighlight
 			accessibilityRole={'button'}
@@ -20,6 +20,9 @@ const TransactionItem = (props) => {
 			underlayColor={'rgba(0,0,0,0.05)'}
 			style={styles.transactionItem}>
 			<View style={styles.transactionItem}>
+				<Image
+					source={image === '' ? require('../../assets/images/DefaultProfileImage.png') : {uri: `data:image/jpeg;base64,${image}`}}
+					style={styles.profileImage}/>
 				<View style={styles.transactionTitleContainer}>
 					<Text style={styles.transactionName}>{name}</Text>
 					<Text style={styles.transactionDetail}>{requester}</Text>

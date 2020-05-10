@@ -78,6 +78,13 @@ export default StyleSheet.create({
 	pageContentView: {
 		// ...pageContent
 	},
+	profileImage: {
+		alignSelf: 'center',
+		borderRadius: 48/ 2,
+		height: 48,
+		marginRight: theme.MARGIN_DEFAULT,
+		width: 48
+	},
 	rootContainer: {
 		...rootContainer
 	},

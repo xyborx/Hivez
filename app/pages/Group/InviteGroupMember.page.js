@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react';
-import {LocalizationContext} from '../utils/language.utils';
-import InviteGroupMember from '../components/Group/InviteGroupMember.component';
+import {LocalizationContext} from '../../utils/language.utils';
+import InviteGroupMember from '../../components/Group/InviteGroupMember.component';
 
 const InviteGroupMemberPage = ({route, navigation}) => {
 	const {groupID} = route.params;

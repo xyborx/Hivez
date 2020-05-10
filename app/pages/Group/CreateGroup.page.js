@@ -1,8 +1,8 @@
 import React, {useContext, useState} from 'react';
 import ImagePicker from 'react-native-image-crop-picker';
-import {LocalizationContext} from '../utils/language.utils';
-import {isGroupNameValid} from '../utils/validator.utils';
-import CreateGroup from '../components/CreateGroup/CreateGroup.component';
+import {LocalizationContext} from '../../utils/language.utils';
+import {isGroupNameValid} from '../../utils/validator.utils';
+import CreateGroup from '../../components/Group/CreateGroup.component';
 
 const CreateGroupPage = ({navigation}) => {
 	const {translations, initializeAppLanguage} = useContext(LocalizationContext);

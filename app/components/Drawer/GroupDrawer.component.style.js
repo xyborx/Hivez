@@ -1,6 +1,5 @@
 import {StyleSheet} from 'react-native';
 import theme from '../../styles/theme.style';
-import {textHighlight} from '../../styles/common.style';
 
 export default StyleSheet.create({
 	button: {
@@ -29,6 +28,13 @@ export default StyleSheet.create({
 	buttonTextFocused: {
 		color: theme.COLOR_WHITE
 	},
+	groupImage: {
+		alignSelf: 'center',
+		borderRadius: 80/ 2,
+		height: 80,
+		marginBottom: theme.MARGIN_DEFAULT,
+		width: 80
+	},
 	headerContainer: {
 		backgroundColor: theme.COLOR_PRIMARY,
 		padding: theme.PADDING_WIDE
@@ -36,14 +42,15 @@ export default StyleSheet.create({
 	header: {
 		color: theme.COLOR_WHITE,
 		fontSize: theme.FONT_SIZE_SUB_HEADER,
-		fontWeight: theme.FONT_WEIGHT_BOLD
+		fontWeight: theme.FONT_WEIGHT_BOLD,
+		textAlign: 'center'
 	},
 	subHeader: {
-		color: theme.COLOR_SOFT_GREY,
+		color: theme.COLOR_WHITE,
 		fontSize: theme.FONT_SIZE_MEDIUM,
 		fontStyle: 'italic',
-		fontWeight: theme.FONT_WEIGHT_BOLD,
-		marginTop: theme.MARGIN_NARROW
+		marginTop: theme.MARGIN_EXTRA_NARROW,
+		textAlign: 'center'
 	},
 	leave: {
 		color: theme.COLOR_RED

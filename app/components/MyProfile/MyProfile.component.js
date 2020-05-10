@@ -104,20 +104,18 @@ const SignIn = (props) => {
 							dataListContext={props.languageContext}
 							languageIcons={props.languageIcons}
 							onChange={props.setLanguage}>
-							<ButtonWithIcon
-								actionIcon={'angle-right'}
-								actionName={props.contentText['CHANGE_LANGUAGE']} />
+							<ButtonWithIcon actionIcon={'globe'} actionName={props.contentText['CHANGE_LANGUAGE']} />
 						</DropdownLanguage>
 						<PrivacyPolicyModal touchableType={'highlight'} style={styles.profileSectionItem}>
 							<View style={styles.profileSectionItemContainer}>
 								<Text style={styles.profileSectionItemText}>{props.contentText['PRIVACY_POLICY']}</Text>
-								<FontAwesome5 name={'angle-right'} style={styles.profileSectionItemIcon} />
+								<FontAwesome5 name={'user-shield'} style={styles.profileSectionItemIcon} />
 							</View>
 						</PrivacyPolicyModal>
 						<TermsAndConditionsModal touchableType={'highlight'} style={styles.profileSectionItem}>
 							<View style={styles.profileSectionItemContainer}>
 								<Text style={styles.profileSectionItemText}>{props.contentText['TERM_OF_USE']}</Text>
-								<FontAwesome5 name={'angle-right'} style={styles.profileSectionItemIcon} />
+								<FontAwesome5 name={'user-lock'} style={styles.profileSectionItemIcon} />
 							</View>
 						</TermsAndConditionsModal>
 					</View>

@@ -99,7 +99,7 @@ const Drawer = ({state, descriptors, navigation}) => {
 				onPress={other}
 				text={translations['GroupDrawerNavigator']['INVITE_MEMBER']} />
 			<ConfirmModal
-				contentText={translations['ConfirmSignOut']}
+				contentText={translations['ConfirmLeaveGroup']}
 				action={() => {
 					navigation.closeDrawer();
 					leaveGroup(groupID);

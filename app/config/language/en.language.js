@@ -39,6 +39,7 @@ import ConfirmCreateGroup from './en/PopUpConfirmation/ConfirmCreateGroup.transl
 import ConfirmCreateTransaction from './en/PopUpConfirmation/ConfirmCreateTransaction.translation.json';
 import ConfirmDeleteAccount from './en/PopUpConfirmation/ConfirmDeleteAccount.translation.json';
 import ConfirmJoinGroup from './en/PopUpConfirmation/ConfirmJoinGroup.translation.json';
+import ConfirmLeaveGroup from './en/PopUpConfirmation/ConfirmLeaveGroup.translation.json';
 import ConfirmRejectBillCreation from './en/PopUpConfirmation/ConfirmRejectBillCreation.translation.json';
 import ConfirmRejectBillPayment from './en/PopUpConfirmation/ConfirmRejectBillPayment.translation.json';
 import ConfirmRejectTransaction from './en/PopUpConfirmation/ConfirmRejectTransaction.translation.json';
@@ -71,6 +72,7 @@ module.exports = {
 	ConfirmCreateTransaction,
 	ConfirmDeleteAccount,
 	ConfirmJoinGroup,
+	ConfirmLeaveGroup,
 	ConfirmRejectBillCreation,
 	ConfirmRejectBillPayment,
 	ConfirmRejectTransaction,

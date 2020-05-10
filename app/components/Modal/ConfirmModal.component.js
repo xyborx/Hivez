@@ -13,7 +13,7 @@ const ConfirmModal = (props) => {
 		<Modal
 			element={props.children}
 			style={props.style}
-			touchableType={'highlight'}
+			touchableType={props.opacityButton ? 'opacity' : 'highlight'}
 			visibility={visibility}
 			toggleModal={toggleModal}>
 				<Text style={styles.header}>{props.contentText['MODAL_TITLE']}</Text>

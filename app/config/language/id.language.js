@@ -29,6 +29,7 @@ import GroupList from './id/Page/GroupList.translation.json';
 import GroupReport from './id/Page/GroupReport.translation.json';
 import GroupSettings from './id/Page/GroupSettings.translation.json';
 import GroupTransactionDetail from './id/Page/GroupTransactionDetail.translation.json';
+import InviteGroupMember from './id/Page/InviteGroupMember.translation.json';
 import MyProfile from './id/Page/MyProfile.translation.json';
 import NotificationList from './id/Page/NotificationList.translation.json';
 import SignIn from './id/Page/SignIn.translation.json';
@@ -44,6 +45,7 @@ import ConfirmCreateGroup from './id/PopUpConfirmation/ConfirmCreateGroup.transl
 import ConfirmCreateTransaction from './id/PopUpConfirmation/ConfirmCreateTransaction.translation.json';
 import ConfirmDeleteAccount from './id/PopUpConfirmation/ConfirmDeleteAccount.translation.json';
 import ConfirmDeleteGroup from './id/PopUpConfirmation/ConfirmDeleteGroup.translation.json';
+import ConfirmInviteGroupMember from './id/PopUpConfirmation/ConfirmInviteGroupMember.translation.json';
 import ConfirmJoinGroup from './id/PopUpConfirmation/ConfirmJoinGroup.translation.json';
 import ConfirmLeaveGroup from './id/PopUpConfirmation/ConfirmLeaveGroup.translation.json';
 import ConfirmRejectBillCreation from './id/PopUpConfirmation/ConfirmRejectBillCreation.translation.json';
@@ -78,6 +80,7 @@ module.exports = {
 	ConfirmCreateTransaction,
 	ConfirmDeleteAccount,
 	ConfirmDeleteGroup,
+	ConfirmInviteGroupMember,
 	ConfirmJoinGroup,
 	ConfirmLeaveGroup,
 	ConfirmRejectBillCreation,
@@ -109,6 +112,7 @@ module.exports = {
 	GroupReport,
 	GroupSettings,
 	GroupTransactionDetail,
+	InviteGroupMember,
 	Language,
 	Modal,
 	MyProfile,

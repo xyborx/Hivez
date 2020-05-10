@@ -63,7 +63,11 @@ const EditGroupMember = (props) => {
 							style={styles.searchField}
 							value={props.searchValue} />
 						<View>
-							{props.groupMembers.map(item => {
+							{(props.groupMembers.length === 0) ? 
+								<View style={styles.emptyList}>
+									<Text style={styles.emptyListText}>{props.contentText['NO_MEMBER_FOUND']}</Text>
+								</View>
+							: props.groupMembers.map(item => {
 								return(
 									<MemberItem
 										{...props}

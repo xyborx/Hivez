@@ -21,13 +21,15 @@ import SignInPage from '../pages/SignIn.page';
 import SignUpPage from '../pages/SignUp.page';
 import ForgotPasswordPage from '../pages/ForgotPassword.page';
 
-import GroupBillListPage from '../pages/GroupBillList.page';
-import GroupListPage from '../pages/GroupList.page';
 import CreateGroupPage from '../pages/CreateGroup.page';
 import FindGroupPage from '../pages/FindGroup.page';
+import GroupListPage from '../pages/GroupList.page';
+
+import GroupBillListPage from '../pages/GroupBillList.page';
 import GroupDetailPage from '../pages/GroupDetail.page';
 import GroupReportPage from '../pages/GroupReport.page';
 import GroupSettingsPage from '../pages/GroupSettings.page';
+import InviteGroupMemberPage from '../pages/InviteGroupMember.page';
 
 import DashboardPage from '../pages/Dashboard.page';
 import EventListPage from '../pages/EventList.page';
@@ -55,13 +57,17 @@ const GroupDrawer = () => {
 				icon: 'users',
 				text: 'DASHBOARD'
 			}} />
+			<GroupDetailNavigation.Screen name='GroupBillList' component={GroupBillListPage} options={{
+				icon: 'receipt',
+				text: 'PAY_BILL'
+			}} />
 			<GroupDetailNavigation.Screen name='GroupReport' component={GroupReportPage} options={{
 				icon: 'file-invoice-dollar',
 				text: 'VIEW_REPORT'
 			}} />
-			<GroupDetailNavigation.Screen name='GroupBillList' component={GroupBillListPage} options={{
-				icon: 'receipt',
-				text: 'PAY_BILL'
+			<GroupDetailNavigation.Screen name='InviteGroupMember' component={InviteGroupMemberPage} options={{
+				icon: 'user-plus',
+				text: 'INVITE_MEMBER'
 			}} />
 			<GroupDetailNavigation.Screen name='GroupSettings' component={GroupSettingsPage} options={{
 				icon: 'cogs',

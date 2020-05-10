@@ -38,11 +38,9 @@ const Drawer = ({state, descriptors, navigation}) => {
 	const [groupID, setGroupID] = useState(state ? state.routes[state.index].params.groupID : '');
 
 	const leaveGroup = (groupID) => {
+		navigation.closeDrawer();
+		navigation.replace('GroupList');
 		alert(`Leave group: ${groupID}`);
-	};
-
-	const other = () => {
-		alert('Click unhandled menu');
 	};
 
 	return (
@@ -86,19 +84,9 @@ const Drawer = ({state, descriptors, navigation}) => {
 				navigation={navigation}
 				onPress={() => navigation.navigate('CreateGroupTransaction', {groupID: groupID})}
 				text={translations['GroupDrawerNavigator']['CREATE_REQUEST']} />
-			<DrawerItem
-				icon={'user-plus'}
-				isFocused={false}
-				navigation={navigation}
-				onPress={other}
-				text={translations['GroupDrawerNavigator']['INVITE_MEMBER']} />
 			<ConfirmModal
 				contentText={translations['ConfirmLeaveGroup']}
-				action={() => {
-					navigation.closeDrawer();
-					navigation.replace('GroupList');
-					leaveGroup(groupID);
-				}}
+				action={() => leaveGroup(groupID)}
 				style={styles.button}>
 				<View style={styles.buttonContainer}>
 					<FontAwesome5 name={'door-open'} solid style={[styles.buttonIcon, styles.leave]} />

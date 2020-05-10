@@ -5,6 +5,7 @@ import {iconButton, textHighlight} from '../../styles/common.style';
 export default StyleSheet.create({
 	modal: {
 		backgroundColor: theme.COLOR_WHITE,
+		borderRadius: theme.ROUNDNESS_DEFAULT,
 		flexDirection: 'row',
 		maxWidth: theme.CONTAINER_WIDTH
 	},
@@ -12,11 +13,12 @@ export default StyleSheet.create({
 		alignItems: 'center',
 		alignSelf: 'center',
 		backgroundColor: theme.COLOR_PRIMARY,
-		borderRadius: theme.ROUNDNESS_EXTRA_MINIMUM,
+		borderRadius: theme.ROUNDNESS_DEFAULT,
 		flexDirection: 'row',
 		justifyContent: 'center',
 		height: 40,
 		maxWidth: theme.CONTAINER_WIDTH,
+		overflow: 'hidden',
 		width: '100%',
 	},
 	modalCancelButton: {

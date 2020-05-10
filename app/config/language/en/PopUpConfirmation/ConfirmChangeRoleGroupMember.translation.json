@@ -1,0 +1,6 @@
+{
+	"MODAL_TITLE": "Are you sure you want to change this user's role?",
+	"MODAL_DETAILS": "This user's role will be changed immediately.",
+	"NO": "Cancel",
+	"YES": "Change Role"
+}

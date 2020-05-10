@@ -1,0 +1,6 @@
+{
+	"MODAL_TITLE": "Apakah kamu yakin ingin menghapus pengguna ini dari grup ini?",
+	"MODAL_DETAILS": "Pengguna tersebut akan kehilangan akses ke grup ini dan semua transaksi tertunda dari pengguna tersebut akan dibatalkan.",
+	"NO": "Batalkan",
+	"YES": "Hapus Pengguna"
+}

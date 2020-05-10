@@ -1,12 +1,8 @@
 import {StyleSheet} from 'react-native';
 import theme from '../../styles/theme.style';
-import {iconButton, textHighlight} from '../../styles/common.style';
+import {boxContainer, boxShadow, iconButton, textHighlight} from '../../styles/common.style';
 
 export default StyleSheet.create({
-	icon: {
-		...iconButton,
-		fontSize: theme.FONT_SIZE_SMALL
-	},
 	modal: {
 		backgroundColor: theme.COLOR_WHITE,
 		borderRadius: theme.ROUNDNESS_DEFAULT,
@@ -39,15 +35,16 @@ export default StyleSheet.create({
 	modalOptionContainer: {
 		flexDirection: 'row',
 		height: 28,
-		alignItems: 'center'
+		alignItems: 'center',
+		justifyContent: 'space-between'
 	},
 	modalOptionText: {
-		flex: 1,
-		padding: 20
+		flex: 1
 	},
 	modalOptionIcon: {
 		...iconButton,
-		color: theme.COLOR_PRIMARY
+		color: theme.COLOR_PRIMARY,
+		width: theme.MARGIN_DEFAULT
 	},
 	modalOptionIconHidden: {
 		display: 'none'
@@ -60,5 +57,40 @@ export default StyleSheet.create({
 	sectionTextStyle: {
 		...textHighlight,
 		color: theme.COLOR_SOFT_GREY
+	},
+	buttonContainer: {
+		flexDirection: 'row',
+		marginTop: theme.MARGIN_DEFAULT
+	},
+	button: {
+		flex: 1,
+		marginLeft: theme.MARGIN_NARROW
+	},
+	boxContainer: {
+		...boxContainer,
+		...boxShadow,
+		flex: 1,
+		maxWidth: theme.CONTAINER_WIDTH,
+		overflow: 'hidden'
+	},
+	cancelButton: {
+		backgroundColor: theme.COLOR_RED,
+		marginLeft: 0,
+		marginRight: theme.MARGIN_NARROW
+	},
+	centerContainer: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'center'
+	},
+	content: {
+		color: theme.COLOR_SOFT_GREY,
+		textAlign: 'center'
+	},
+	header: {
+		...textHighlight,
+		color: theme.COLOR_SOFT_GREY,
+		marginBottom: theme.MARGIN_DEFAULT,
+		textAlign: 'center'
 	}
 })

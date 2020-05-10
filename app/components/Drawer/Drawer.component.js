@@ -81,12 +81,6 @@ const Drawer = ({state, descriptors, navigation}) => {
 				);
 			})}
 			<DrawerItem
-				icon={'cogs'}
-				isFocused={false}
-				navigation={navigation}
-				onPress={other}
-				text={translations['GroupDrawerNavigator']['GROUP_SETTINGS']} />
-			<DrawerItem
 				icon={'hand-holding-usd'}
 				isFocused={false}
 				navigation={navigation}
@@ -102,6 +96,7 @@ const Drawer = ({state, descriptors, navigation}) => {
 				contentText={translations['ConfirmLeaveGroup']}
 				action={() => {
 					navigation.closeDrawer();
+					navigation.replace('GroupList');
 					leaveGroup(groupID);
 				}}
 				style={styles.button}>

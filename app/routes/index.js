@@ -11,6 +11,7 @@ import TabBar from '../components/TabBar/TabBar.component';
 
 import CreateGroupBillPage from '../pages/CreateGroupBill.page';
 import CreateGroupTransactionPage from '../pages/CreateGroupTransaction.page';
+import EditGroupMemberPage from '../pages/EditGroupMember.page';
 import GroupBillApprovalPage from '../pages/GroupBillApproval.page';
 import GroupBillDetailPage from '../pages/GroupBillDetail.page';
 import GroupBillPaymentPage from '../pages/GroupBillPayment.page';
@@ -26,6 +27,7 @@ import CreateGroupPage from '../pages/CreateGroup.page';
 import FindGroupPage from '../pages/FindGroup.page';
 import GroupDetailPage from '../pages/GroupDetail.page';
 import GroupReportPage from '../pages/GroupReport.page';
+import GroupSettingsPage from '../pages/GroupSettings.page';
 
 import DashboardPage from '../pages/Dashboard.page';
 import EventListPage from '../pages/EventList.page';
@@ -60,6 +62,10 @@ const GroupDrawer = () => {
 			<GroupDetailNavigation.Screen name='GroupBillList' component={GroupBillListPage} options={{
 				icon: 'receipt',
 				text: 'PAY_BILL'
+			}} />
+			<GroupDetailNavigation.Screen name='GroupSettings' component={GroupSettingsPage} options={{
+				icon: 'cogs',
+				text: 'GROUP_SETTINGS'
 			}} />
 		</GroupDetailNavigation.Navigator>
 	);
@@ -117,10 +123,11 @@ const RootStack = () => {
 		<RootNavigation.Navigator headerMode='none' initialRouteName={'MainStack'}>
 			<RootNavigation.Screen component={AppTabs} name='MainStack' />
 			<RootNavigation.Screen component={CreateGroupBillPage} name='CreateGroupBill'/>
+			<RootNavigation.Screen component={CreateGroupTransactionPage} name='CreateGroupTransaction'/>
+			<RootNavigation.Screen component={EditGroupMemberPage} name='EditGroupMember'/>
 			<RootNavigation.Screen component={GroupBillApprovalPage} name='GroupBillApproval'/>
 			<RootNavigation.Screen component={GroupBillDetailPage} name='GroupBillDetail'/>
 			<RootNavigation.Screen component={GroupBillPaymentPage} name='GroupBillPayment'/>
-			<RootNavigation.Screen component={CreateGroupTransactionPage} name='CreateGroupTransaction'/>
 			<RootNavigation.Screen component={GroupTransactionDetailPage} name='GroupTransactionDetail'/>
 		</RootNavigation.Navigator>
 	);

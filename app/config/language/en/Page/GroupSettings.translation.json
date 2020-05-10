@@ -1,0 +1,22 @@
+{
+	"PAGE_TITLE": "Group Settings",
+	"GROUP_PICTURE": "Group Picture",
+	"EDIT_GROUP_PICTURE": "Edit group picture",
+	"GROUP_DATA": "Group Data",
+	"GROUP_NAME": "Group name",
+	"GROUP_DESCRIPTION": "Group description",
+	"ALLOW_SEARCH_BY_GROUP_NAME": "Allow search by group name",
+	"EDIT_GROUP_DATA": "Edit group data",
+	"GROUP_ADMINISTRATOR": "Group Administrator",
+	"EDIT_GROUP_ADMINISTRATOR": "Edit group administrator",
+	"GROUP_MEMBER": "Group Member",
+	"LEADER": "Leader",
+	"TREASURER": "Treasurer",
+	"MEMBER": "Member",
+	"JOIN": "Joined",
+	"EDIT_GROUP_MEMBER": "Edit group member",
+	"LEAVE_GROUP": "Leave Group",
+	"DELETE_GROUP": "Delete Group",
+	"BACK": "Back",
+	"CLOSE": "Close"
+}

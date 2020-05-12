@@ -1,17 +1,18 @@
 import BottomTabNavigator from './id/Component/BottomTabNavigator.translation.json';
-import ChangeGroupDataModal from './id/Component/ChangeGroupDataModal.translation.json';
 import ChangePasswordModal from './id/Component/ChangePasswordModal.translation.json';
 import ChangeProfileModal from './id/Component/ChangeProfileModal.translation.json';
 import DropdownChangePicture from './id/Component/DropdownChangePicture.translation.json';
 import DropdownChangeRole from './id/Component/DropdownChangeRole.translation.json';
 import DropdownLanguage from './id/Component/DropdownLanguage.translation.json';
-import GroupDrawerNavigator from './id/Component/GroupDrawerNavigator.translation.json';
 import Modal from './id/Component/Modal.translation.json';
 import PrivacyPolicy from './id/Component/PrivacyPolicy.translation.json';
-import RecentBill from './id/Component/RecentBill.translation.json';
-import RecentRequest from './id/Component/RecentRequest.translation.json';
 import RecentTransaction from './id/Component/RecentTransaction.translation.json';
 import TermsAndConditions from './id/Component/TermsAndConditions.translation.json';
+
+import ChangeGroupDataModal from './id/Component/Group/ChangeGroupDataModal.translation.json';
+import RecentRequest from './id/Component/Group/RecentRequest.translation.json';
+import GroupDrawerNavigator from './id/Component/Group/GroupDrawerNavigator.translation.json';
+import RecentBill from './id/Component/Group/RecentBill.translation.json';
 
 import Dashboard from './id/Page/Dashboard.translation.json';
 import EventList from './id/Page/EventList.translation.json';

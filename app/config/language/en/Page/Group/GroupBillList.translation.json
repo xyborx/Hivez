@@ -7,6 +7,8 @@
 	"ON_PROGRESS": "Waiting approval",
 	"NO_PAYMENT": "No payment history",
 	"SEARCH_PLACEHOLDER": "Search bill",
+	"DEFAULT_TEXT": "No bill",
+	"EMPTY_SEARCH_RESULT": "No bill found",
 	"BY": "by",
 	"BACK": "Back"
 }

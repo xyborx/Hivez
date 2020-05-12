@@ -3,6 +3,16 @@ import theme from '../../styles/theme.style';
 import {boxShadow, pageContainer, rootContainer, textHighlight, textPageHeader, textPageSubHeader} from '../../styles/common.style';
 
 export default StyleSheet.create({
+	emptyList: {
+		alignItems: 'center',
+		justifyContent: 'center',
+		marginVertical: theme.MARGIN_NARROW
+	},
+	emptyListText: {
+		...textHighlight,
+		fontSize: theme.FONT_SIZE_MEDIUM,
+		color: theme.COLOR_GREY
+	},
 	expense: {
 		color: theme.COLOR_RED,
 	},

@@ -326,6 +326,13 @@ interface IModalSelectorProps<TOption> {
    * Default is `''`
    */
   selectedKey?: React.Key;
+
+  /**
+   * Touchable type, highlight or opacity
+   * 
+   * Default is `highlight`
+   */
+  touchableType?: string;
 }
 
 export default class ModalSelector<TOption = IOption> extends React.Component<IModalSelectorProps<TOption>, any> {}

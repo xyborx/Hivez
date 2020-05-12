@@ -184,6 +184,10 @@ const GroupSettingsPage = ({route, navigation}) => {
 		});
 	};
 
+	const createEvent = () => {
+		alert('Unhandled event');
+	};
+
 	const leaveGroup = () => {
 		navigation.replace('GroupList');
 		alert(`Leave group ${groupID}`);
@@ -206,6 +210,7 @@ const GroupSettingsPage = ({route, navigation}) => {
 			toggleAllowSearchByName={toggleAllowSearchByName}
 			changeGroupData={changeGroupData}
 			editGroupMember={editGroupMember}
+			createEvent={createEvent}
 			leaveGroup={leaveGroup}
 			deleteGroup={deleteGroup}
 			openDrawer={openDrawer}

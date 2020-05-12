@@ -9,6 +9,7 @@ import {
     Text,
     ScrollView,
     TouchableHighlight,
+    TouchableOpacity,
     TouchableWithoutFeedback,
     Platform,
     ViewPropTypes as RNViewPropTypes,
@@ -75,6 +76,7 @@ const propTypes = {
     selectedKey:                    PropTypes.any,
     enableShortPress:               PropTypes.bool,
     enableLongPress:                PropTypes.bool,
+    touchableType:                  PropTypes.string
 };
 
 const defaultProps = {
@@ -125,6 +127,7 @@ const defaultProps = {
     selectedKey:                    '',
     enableShortPress:               true,
     enableLongPress:                false,
+    touchableType:                  'highlight'
 };
 
 export default class ModalSelector extends React.Component {
@@ -320,23 +323,36 @@ export default class ModalSelector extends React.Component {
         return (
             <View style={this.props.style} {...this.props.passThruProps}>
                 {dp}
-                {this.props.customSelector ?
-                    this.props.customSelector
-                    :
-                    <TouchableHighlight
-                        hitSlop={this.props.modalOpenerHitSlop}
-                        activeOpacity={this.props.touchableActiveOpacity}
-                        style={this.props.touchableStyle}
-                        onPress={this.open}
-                        onLongPress={() => this.open({longPress: true})}
-                        disabled={this.props.disabled}
-                        accessible={this.props.openButtonContainerAccessible}
-                        underlayColor={'rgba(0,0,0,0.05)'}
-                    >
-                        <View style={this.props.childrenContainerStyle} pointerEvents="none">
-                            {this.renderChildren()}
-                        </View>
-                    </TouchableHighlight>
+                {this.props.customSelector ? this.props.customSelector :
+                    (this.props.touchableType === 'highlight' ? 
+                        <TouchableHighlight
+                            hitSlop={this.props.modalOpenerHitSlop}
+                            activeOpacity={this.props.touchableActiveOpacity}
+                            style={this.props.touchableStyle}
+                            onPress={this.open}
+                            onLongPress={() => this.open({longPress: true})}
+                            disabled={this.props.disabled}
+                            accessible={this.props.openButtonContainerAccessible}
+                            underlayColor={'rgba(0,0,0,0.05)'}
+                        >
+                            <View style={this.props.childrenContainerStyle} pointerEvents="none">
+                                {this.renderChildren()}
+                            </View>
+                        </TouchableHighlight> :
+                        <TouchableOpacity
+                            hitSlop={this.props.modalOpenerHitSlop}
+                            activeOpacity={0.2}
+                            style={this.props.touchableStyle}
+                            onPress={this.open}
+                            onLongPress={() => this.open({longPress: true})}
+                            disabled={this.props.disabled}
+                            accessible={this.props.openButtonContainerAccessible}
+                        >
+                            <View style={this.props.childrenContainerStyle} pointerEvents="none">
+                                {this.renderChildren()}
+                            </View>
+                        </TouchableOpacity>
+                    )
                 }
             </View>
         );

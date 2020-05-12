@@ -78,6 +78,9 @@ export default StyleSheet.create({
 	pageContentView: {
 		// ...pageContent
 	},
+	redText: {
+		color: theme.COLOR_RED
+	},
 	rootContainer: {
 		...rootContainer
 	},

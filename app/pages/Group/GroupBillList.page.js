@@ -86,7 +86,9 @@ const GroupBillListPage = ({route, navigation}) => {
 
 	const onChangeDisplayedBillStatus = (status) => {
 		setDisplayedBillStatus(status);
-		setDisplayedBill(customSelectBill(billList, status));
+		const currentList = customSelectBill(billList, status);
+		if(searchValue === '') setDisplayedBill(currentList);
+		else setDisplayedBill(where(currentList, 'name', checkItem => checkItem.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0));
 	};
 
 	const onChangeSearch = (searchQuery) => {

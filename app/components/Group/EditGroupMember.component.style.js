@@ -80,6 +80,11 @@ export default StyleSheet.create({
 		paddingHorizontal: theme.PADDING_DEFAULT,
 		paddingVertical: theme.PADDING_NARROW
 	},
+	memberName: {
+		color: theme.COLOR_SOFT_GREY,
+		fontSize: theme.FONT_SIZE_MEDIUM,
+		fontWeight: theme.FONT_WEIGHT_BOLD
+	},
 	memberRole: {
 		...textPageSubHeader,
 		fontSize: theme.FONT_SIZE_SMALL

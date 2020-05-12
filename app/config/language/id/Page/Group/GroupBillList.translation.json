@@ -7,6 +7,8 @@
 	"ON_PROGRESS": "Menunggu persetujuan",
 	"NO_PAYMENT": "Tidak ada riwayat pembayaran",
 	"SEARCH_PLACEHOLDER": "Cari tagihan",
+	"DEFAULT_TEXT": "Tidak ada tagihan",
+	"EMPTY_SEARCH_RESULT": "Tagihan tidak ditemukan",
 	"BY": "oleh",
 	"BACK": "Kembali"
 }

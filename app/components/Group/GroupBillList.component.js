@@ -62,7 +62,11 @@ const GroupBillList = (props) => {
 							placeholder={props.contentText['SEARCH_PLACEHOLDER']}
 							style={styles.searchField}
 							value={props.searchValue} />
-						{props.billList.map(item => {
+						{(props.billList.length === 0) ? 
+								<View style={styles.emptyList}>
+									<Text style={styles.emptyListText}>{props.searchValue === '' ? props.contentText['DEFAULT_TEXT'] : props.contentText['EMPTY_SEARCH_RESULT']}</Text>
+								</View>
+						: props.billList.map(item => {
 							return (
 								<TransactionItem
 									contentText={props.contentText}

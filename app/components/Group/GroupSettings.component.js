@@ -48,7 +48,7 @@ const MemberItem = (props) => {
 				source={image === '' ? require('../../assets/images/DefaultProfileImage.png') : {uri: `data:image/jpeg;base64,${image}`}}
 				style={styles.memberImage}/>
 			<View style={styles.memberDetailContainer}>
-				<Text style={styles.settingsItemText}>{name}</Text>
+				<Text style={styles.settingsItemText}>{`${name}${props.isCurrentUser ? (' (' + props.contentText['YOU'] + ')') : ''}`}</Text>
 				<Text style={styles.memberRole}>{props.contentText[role]}</Text>
 				<Text style={styles.memberJoinDate}>{`${props.contentText['JOIN']} ${getRelativeDate(joinDate).toLowerCase()}`}</Text>
 			</View>
@@ -114,7 +114,7 @@ const GroupSettings = (props) => {
 					<View style={styles.sectionContainer}>
 						<Text style={styles.headerText}>{props.groupMembers.length > 0 ? `${props.contentText['GROUP_MEMBER']} (${props.groupMembers.length})` : props.contentText['GROUP_MEMBER']}</Text>
 						<View>
-							{props.groupMembers.slice(0, 5).map(item => <MemberItem contentText={props.contentText} key={item.id} memberData={item} />)}
+							{props.groupMembers.slice(0, 5).map((item, index) => <MemberItem contentText={props.contentText} isCurrentUser={index === 0} key={item.id} memberData={item} />)}
 						</View>
 						<ButtonWithIcon
 							action={props.editGroupMember}
@@ -123,16 +123,20 @@ const GroupSettings = (props) => {
 					</View>
 					<View style={styles.sectionContainer}>
 						<Text style={styles.headerText}>{props.contentText['PAGE_TITLE']}</Text>
+						<ButtonWithIcon
+							action={props.createEvent}
+							actionIcon={'calendar-plus'}
+							actionName={'Create event'} />
 						<ConfirmModal contentText={props.confirmLeaveGroupText} action={props.leaveGroup} style={styles.settingsItem}>
 							<View style={styles.settingsItemContainer}>
-								<Text style={styles.settingsItemText}>{props.contentText['LEAVE_GROUP']}</Text>
-								<FontAwesome5 name={'door-open'} style={styles.settingsItemIcon} />
+								<Text style={[styles.settingsItemText, styles.redText]}>{props.contentText['LEAVE_GROUP']}</Text>
+								<FontAwesome5 name={'door-open'} style={[styles.settingsItemIcon, styles.redText]} />
 							</View>
 						</ConfirmModal>
 						<ConfirmModal contentText={props.confirmDeleteGroupText} action={props.deleteGroup} style={styles.settingsItem}>
 							<View style={styles.settingsItemContainer}>
-								<Text style={styles.settingsItemText}>{props.contentText['DELETE_GROUP']}</Text>
-								<FontAwesome5 name={'trash'} style={styles.settingsItemIcon} />
+								<Text style={[styles.settingsItemText, styles.redText]}>{props.contentText['DELETE_GROUP']}</Text>
+								<FontAwesome5 name={'trash'} style={[styles.settingsItemIcon, styles.redText]} />
 							</View>
 						</ConfirmModal>
 					</View>

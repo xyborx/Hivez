@@ -13,7 +13,7 @@ const DropdownItem = (props) => {
 			<FontAwesome5 name={'check'} style={props.checked ? styles.modalOptionIcon : styles.modalOptionIconHidden} />
 		</View>
 	);
-}
+};
 
 const DropdownChangeRole = (props) => {
 	const [visibility, setVisibility] = useState(false);
@@ -55,13 +55,14 @@ const DropdownChangeRole = (props) => {
 			overlayStyle={styles.modalOverlay}
 			sectionTextStyle={styles.sectionTextStyle}
 			style={props.style}
-			touchableActiveOpacity={1}>
+			touchableActiveOpacity={1}
+			touchableType={'opacity'}>
 			<Modal
 				element={props.children}
 				style={props.style}
-				touchableType={'highlight'}
-				visibility={visibility}
-				toggleModal={toggleModal}>
+				toggleModal={toggleModal}
+				touchableType={props.opacityButton ? 'opacity' : 'highlight'}
+				visibility={visibility}>
 				<Text style={styles.header}>{props.confirmChangeRoleText['MODAL_TITLE']}</Text>
 				<Text style={styles.content}>{props.confirmChangeRoleText['MODAL_DETAILS']}</Text>
 				<View style={styles.buttonContainer}>
@@ -83,6 +84,6 @@ const DropdownChangeRole = (props) => {
 			</Modal>
 		</ModalSelector>
 	);
-}
+};
 
 export default DropdownChangeRole;

@@ -1,0 +1,6 @@
+{
+	"MODAL_TITLE": "Are you sure you want to leave this event?",
+	"MODAL_DETAILS": "You will lose access to this event and all of your pending transaction will be cancelled.",
+	"NO": "Cancel",
+	"YES": "Leave Event"
+}

@@ -52,22 +52,22 @@ const GroupDetail = (props) => {
 					<View style={styles.sectionContainer}>
 						<Text style={styles.sectionHeader}>{props.contentText['SHORTCUT']}</Text>
 						<View style={styles.actionButtonContainer}>
-							<ActionButton action={props.createRequest} icon={'hand-holding-usd'} text={props.contentText['CREATE_REQUEST']} />
-							<ActionButton action={props.billPayment} icon={'receipt'} text={props.contentText['PAY_BILL']} />
-							<ActionButton action={props.viewReport} icon={'file-invoice-dollar'} text={props.contentText['VIEW_REPORT']} />
-							<ActionButton action={props.inviteMember} icon={'user-plus'} text={props.contentText['INVITE_MEMBER']} />
-							<ActionButton action={props.groupSettings} icon={'cogs'} text={props.contentText['GROUP_SETTINGS']} />
+							<ActionButton action={props.navigateToCreateGroupRequest} icon={'hand-holding-usd'} text={props.contentText['CREATE_REQUEST']} />
+							<ActionButton action={props.navigateToBillPayment} icon={'receipt'} text={props.contentText['PAY_BILL']} />
+							<ActionButton action={props.navigateToViewReport} icon={'file-invoice-dollar'} text={props.contentText['VIEW_REPORT']} />
+							<ActionButton action={props.navigateToInviteMember} icon={'user-plus'} text={props.contentText['INVITE_MEMBER']} />
+							<ActionButton action={props.navigateToGroupSettings} icon={'cogs'} text={props.contentText['GROUP_SETTINGS']} />
 						</View>
 					</View>
 					<RecentTransactionDetail
 						contentText={props.recentBillText}
 						style={styles.transactionList}
-						onItemClick={props.onBillClick}
+						onItemClick={props.onBillDetailClick}
 						transactionList={props.billList} />
 					<RecentTransactionDetail
 						contentText={props.recentRequestText}
 						style={styles.transactionList}
-						onItemClick={props.onRequestClick}
+						onItemClick={props.onRequestDetailClick}
 						transactionList={props.requestList} />
 				</View>
 			</ScrollView>

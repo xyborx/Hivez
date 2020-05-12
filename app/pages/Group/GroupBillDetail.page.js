@@ -30,12 +30,12 @@ const GroupBillDetailPage = ({route, navigation}) => {
 
 	const approveBillPayment = () => {
 		navigation.pop();
-		alert(`Approve transaction: ${transactionID}`);
+		alert(`Approve bill: ${billID}`);
 	};
 
 	const rejectBillPayment = () => {
 		navigation.pop();
-		alert(`Reject transaction: ${transactionID}`);
+		alert(`Reject bill: ${billID}`);
 	};
 
 	const goBack = () => {
@@ -46,8 +46,8 @@ const GroupBillDetailPage = ({route, navigation}) => {
 		<GroupBillDetail
 			contentText={translations['GroupBillDetail']}
 			billDetail={billDetail}
-			confirmApproveText={translations['ConfirmApproveBillPayment']}
-			confirmRejectText={translations['ConfirmRejectBillPayment']}
+			confirmApproveText={translations['ConfirmApproveGroupBillPayment']}
+			confirmRejectText={translations['ConfirmRejectGroupBillPayment']}
 			approveBillPayment={approveBillPayment}
 			rejectBillPayment={rejectBillPayment}
 			goBack={goBack} />

@@ -1,6 +1,0 @@
-{
-	"MODAL_TITLE": "Are you sure you want to reject this bill payment?",
-	"MODAL_DETAILS": "This bill will not be added to the report and the bill payer have to repeat the payment.",
-	"NO": "Cancel",
-	"YES": "Reject Bill Payment"
-}

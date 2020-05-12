@@ -9,7 +9,7 @@ import GroupBillDetailPage from '../pages/Group/GroupBillDetail.page';
 import GroupBillPaymentPage from '../pages/Group/GroupBillPayment.page';
 import GroupDrawer from './GroupDrawer.route';
 import GroupListPage from '../pages/Group/GroupList.page';
-import GroupTransactionDetailPage from '../pages/Group/GroupTransactionDetail.page';
+import GroupRequestDetailPage from '../pages/Group/GroupRequestDetail.page';
 
 const GroupNavigation = createStackNavigator();
 
@@ -25,7 +25,7 @@ const GroupStack = () => {
 			<GroupNavigation.Screen component={GroupBillPaymentPage} name='GroupBillPayment'/>
 			<GroupNavigation.Screen component={GroupDrawer} name='GroupDrawer' />
 			<GroupNavigation.Screen component={GroupListPage} name='GroupList' />
-			<GroupNavigation.Screen component={GroupTransactionDetailPage} name='GroupTransactionDetail'/>
+			<GroupNavigation.Screen component={GroupRequestDetailPage} name='GroupRequestDetail'/>
 		</GroupNavigation.Navigator>
 	);
 };

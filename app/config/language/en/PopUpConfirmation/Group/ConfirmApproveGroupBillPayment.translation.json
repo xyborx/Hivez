@@ -1,0 +1,6 @@
+{
+	"MODAL_TITLE": "Are you sure you want to approve this bill payment?",
+	"MODAL_DETAILS": "This bill will be added to the group report and marked as complete to the bill payer.",
+	"NO": "Cancel",
+	"YES": "Approve Bill Payment"
+}

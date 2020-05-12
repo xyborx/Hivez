@@ -54,7 +54,7 @@ const GroupBillPayment = (props) => {
 								style={props.image === '' ? styles.hidden : styles.viewImageContainer}>
 								<View style={styles.viewImage}>
 									<FontAwesome5 name={'eye'} style={styles.icon} />
-									<Text style={styles.viewImageText}>{props.contentText['VIEW_TRANSACTION_PICTURE']}</Text>
+									<Text style={styles.viewImageText}>{props.contentText['VIEW_BILL_PICTURE']}</Text>
 								</View>
 							</PreviewPicture>
 							<DropdownChangePicture
@@ -65,7 +65,7 @@ const GroupBillPayment = (props) => {
 									accessability={true}
 									icon={props.image === '' ? 'camera' : 'pen'}
 									onPress={() => {}}
-									text={props.image === '' ? props.contentText['ADD_TRANSACTION_PICTURE'] : props.contentText['EDIT_TRANSACTION_PICTURE']} />
+									text={props.image === '' ? props.contentText['ADD_BILL_PICTURE'] : props.contentText['EDIT_BILL_PICTURE']} />
 							</DropdownChangePicture>
 						</View>
 						<ButtonWithConfirmation

@@ -11,7 +11,7 @@ import SearchField from '../TextField/SearchField.component';
 import SwitchButton from '../Button/SwitchButton.component';
 import styles from './GroupBillList.component.style';
 
-const TransactionItem = (props) => {
+const BillItem = (props) => {
 	const {id, name, date, value, status, approver} = props.data;
 	const detail = ['APPROVED', 'DECLINED'].includes(status) ? `${props.contentText[status]} ${props.contentText['BY']} ${approver}` :
 					status === 'ON_PROGRESS' ? props.contentText[status] : props.contentText['NO_PAYMENT'];
@@ -21,16 +21,16 @@ const TransactionItem = (props) => {
 			activeOpacity={1}
 			onPress={() => {props.onPress(id)}}
 			underlayColor={'rgba(0,0,0,0.05)'}
-			style={styles.transactionItem}>
-			<View style={styles.transactionItem}>
-				<View style={styles.transactionTitleContainer}>
-					<Text style={styles.transactionName}>{name}</Text>
-					<Text style={styles.transactionDetail}>{detail}</Text>
-					<Text style={styles.transactionDate}>{getRelativeDate(date)}</Text>
+			style={styles.billItem}>
+			<View style={styles.billItem}>
+				<View style={styles.billTitleContainer}>
+					<Text style={styles.billName}>{name}</Text>
+					<Text style={styles.billDetail}>{detail}</Text>
+					<Text style={styles.billDate}>{getRelativeDate(date)}</Text>
 				</View>
-				<View style={styles.transactionValueContainer}>
-					<Text style={[styles.income, styles.transactionValue]}>{rupiahFormatting(value)}</Text>
-					<FontAwesome5 name={'angle-right'} style={styles.transactionDetailIcon} />
+				<View style={styles.billValueContainer}>
+					<Text style={[styles.income, styles.billValue]}>{rupiahFormatting(value)}</Text>
+					<FontAwesome5 name={'angle-right'} style={styles.billDetailIcon} />
 				</View>
 			</View>
 		</TouchableHighlight>
@@ -68,7 +68,7 @@ const GroupBillList = (props) => {
 								</View>
 						: props.billList.map(item => {
 							return (
-								<TransactionItem
+								<BillItem
 									contentText={props.contentText}
 									data={item}
 									key={item.id}

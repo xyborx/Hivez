@@ -3,6 +3,60 @@ import theme from '../../styles/theme.style';
 import {boxShadow, pageContainer, rootContainer, textHighlight, textPageHeader, textPageSubHeader} from '../../styles/common.style';
 
 export default StyleSheet.create({
+	billDate: {
+		...textPageSubHeader,
+		fontSize: theme.FONT_SIZE_SMALL,
+		marginTop: theme.MARGIN_EXTRA_NARROW
+	},
+	billDescriptionContainer: {
+		alignItems: 'center',
+		flexDirection: 'row',
+		flexGrow: 1,
+		justifyContent: 'space-between'
+	},
+	billDetailContainer: {
+		flexDirection: 'row'
+	},
+	billDetailIcon: {
+		color: theme.COLOR_GREY,
+		marginLeft: theme.MARGIN_NARROW
+	},
+	billDetail: {
+		...textPageSubHeader,
+		fontSize: theme.FONT_SIZE_SMALL
+	},
+	billItem: {
+		alignItems: 'center',
+		flexDirection: 'row',
+		paddingHorizontal: theme.PADDING_NARROW,
+		paddingVertical: theme.PADDING_EXTRA_NARROW
+	},
+	billName: {
+		...textHighlight,
+		color: theme.COLOR_SOFT_GREY
+	},
+	billOverviewContainer: {
+		alignItems: 'center',
+		flexDirection: 'row',
+		flexGrow: 1,
+		justifyContent: 'space-between',
+		paddingVertical: theme.PADDING_DEFAULT
+	},
+	billOverviewText: {
+		...textHighlight,
+		color: theme.COLOR_SOFT_GREY
+	},
+	billTitleContainer: {
+		flex: 1
+	},
+	billValue: {
+		fontSize: theme.FONT_SIZE_MEDIUM,
+		fontWeight: theme.FONT_WEIGHT_BOLD
+	},
+	billValueContainer: {
+		alignItems: 'center',
+		flexDirection: 'row'
+	},
 	emptyList: {
 		alignItems: 'center',
 		justifyContent: 'center',
@@ -67,60 +121,6 @@ export default StyleSheet.create({
 	},
 	sectionContainerWithPadding: {
 		padding: theme.PADDING_DEFAULT
-	},
-	transactionDate: {
-		...textPageSubHeader,
-		fontSize: theme.FONT_SIZE_SMALL,
-		marginTop: theme.MARGIN_EXTRA_NARROW
-	},
-	transactionDescriptionContainer: {
-		alignItems: 'center',
-		flexDirection: 'row',
-		flexGrow: 1,
-		justifyContent: 'space-between'
-	},
-	transactionDetailContainer: {
-		flexDirection: 'row'
-	},
-	transactionDetailIcon: {
-		color: theme.COLOR_GREY,
-		marginLeft: theme.MARGIN_NARROW
-	},
-	transactionDetail: {
-		...textPageSubHeader,
-		fontSize: theme.FONT_SIZE_SMALL
-	},
-	transactionItem: {
-		alignItems: 'center',
-		flexDirection: 'row',
-		paddingHorizontal: theme.PADDING_NARROW,
-		paddingVertical: theme.PADDING_EXTRA_NARROW
-	},
-	transactionName: {
-		...textHighlight,
-		color: theme.COLOR_SOFT_GREY
-	},
-	transactionOverviewContainer: {
-		alignItems: 'center',
-		flexDirection: 'row',
-		flexGrow: 1,
-		justifyContent: 'space-between',
-		paddingVertical: theme.PADDING_DEFAULT
-	},
-	transactionOverviewText: {
-		...textHighlight,
-		color: theme.COLOR_SOFT_GREY
-	},
-	transactionTitleContainer: {
-		flex: 1
-	},
-	transactionValue: {
-		fontSize: theme.FONT_SIZE_MEDIUM,
-		fontWeight: theme.FONT_WEIGHT_BOLD
-	},
-	transactionValueContainer: {
-		alignItems: 'center',
-		flexDirection: 'row'
 	},
 	searchField: {
 		margin: theme.MARGIN_DEFAULT

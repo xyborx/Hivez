@@ -117,7 +117,7 @@ const GroupBillPaymentPage = ({route, navigation}) => {
 			nextButtonAccessbility={nextButtonAccessbility}
 			dropdownChangePictureContext={translations['DropdownChangePicture']}
 			onChangeImageDropdown={onChangeImageDropdown}
-			confirmPayText={translations['ConfirmBillPayment']}
+			confirmPayText={translations['ConfirmGroupBillPayment']}
 			payBill={payBill}
 			goBack={goBack} />
 	);

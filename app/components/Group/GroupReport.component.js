@@ -54,7 +54,7 @@ const TransactionSection = (props) => {
 						contentText={props.contentText}
 						data={item}
 						key={item.id}
-						onPress={item.source === 'BILL' ? props.viewBillDetail : props.viewTransactionDetail}/>
+						onPress={item.source === 'BILL' ? props.viewGroupBillDetail : props.viewGroupRequestDetail}/>
 				);
 			})}
 		</View>
@@ -138,8 +138,8 @@ const GroupReport = (props) => {
 									date={item.id}
 									key={index}
 									sum={item.sum}
-									viewBillDetail={props.viewBillDetail}
-									viewTransactionDetail={props.viewTransactionDetail} />
+									viewGroupBillDetail={props.viewGroupBillDetail}
+									viewGroupRequestDetail={props.viewGroupRequestDetail} />
 							);
 						})}
 					</View>

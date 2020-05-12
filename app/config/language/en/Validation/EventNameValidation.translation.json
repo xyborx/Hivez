@@ -1,0 +1,4 @@
+{
+	"INVALID_MINIMUM_EVENT_NAME_LENGTH": "Event name must be at least 3 characters",
+	"INVALID_EVENT_NAME_FORMAT": "Event name cannot contain special chatacter or number"
+}

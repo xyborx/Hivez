@@ -113,9 +113,9 @@ const RecentTransaction = (props) => {
 							item={item}
 							key={index}
 							onItemClick={
-								item.sourceType === 'GROUP_REQUEST' ? props.onGroupTransactionClick :
-								item.sourceType === 'GROUP_BILL' ? props.onGroupBillClick :
-								props.onEventTransactionClick
+								item.sourceType === 'GROUP_REQUEST' ? props.onGroupRequestDetailClick :
+								item.sourceType === 'GROUP_BILL' ? props.onGroupBillDetailClick :
+								props.onEventRequestDetailClick
 							} />
 					);
 				})}

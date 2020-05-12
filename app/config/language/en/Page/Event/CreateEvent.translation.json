@@ -1,0 +1,12 @@
+{
+    "PAGE_TITLE": "Create Event",
+	"EVENT_PICTURE": "Event Picture",
+	"ADD_EVENT_PICTURE": "Add event picture",
+	"VIEW_EVENT_PICTURE": "View picture",
+	"EDIT_EVENT_PICTURE": "Edit picture",
+	"EVENT_NAME_PLACEHOLDER": "Please enter event name",
+	"EVENT_DESCRIPTION_PLACEHOLDER": "Please enter event description",
+	"CLOSE": "Close",
+	"BACK": "Back",
+	"CREATE_EVENT": "Create Event"
+}

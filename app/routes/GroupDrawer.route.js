@@ -1,7 +1,7 @@
 import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import Drawer from '../components/Drawer/GroupDrawer.component';
-import CreateGroupTransactionPage from '../pages/Group/CreateGroupTransaction.page';
+import CreateGroupRequestPage from '../pages/Group/CreateGroupRequest.page';
 import GroupBillListPage from '../pages/Group/GroupBillList.page';
 import GroupDetailPage from '../pages/Group/GroupDetail.page';
 import GroupReportPage from '../pages/Group/GroupReport.page';
@@ -17,7 +17,7 @@ const GroupDrawer = () => {
 				icon: 'users',
 				text: 'DASHBOARD'
 			}} />
-			<GroupDetailNavigation.Screen name='CreateGroupTransaction' component={CreateGroupTransactionPage} options={{
+			<GroupDetailNavigation.Screen name='CreateGroupRequest' component={CreateGroupRequestPage} options={{
 				icon: 'hand-holding-usd',
 				text: 'CREATE_REQUEST'
 			}} />

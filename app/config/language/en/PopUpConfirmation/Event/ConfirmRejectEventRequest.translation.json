@@ -1,0 +1,6 @@
+{
+	"MODAL_TITLE": "Are you sure you want to reject this request?",
+	"MODAL_DETAILS": "This request will not be added to the event report.",
+	"NO": "Cancel",
+	"YES": "Reject Request"
+}

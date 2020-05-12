@@ -1,0 +1,6 @@
+{
+	"MODAL_TITLE": "Are you sure you want to invite this user to this event?",
+	"MODAL_DETAILS": "The selected user will become member of the event. You can change their role on Event Settings.",
+	"NO": "Cancel",
+	"YES": "Invite"
+}

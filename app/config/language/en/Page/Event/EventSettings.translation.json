@@ -1,0 +1,21 @@
+{
+	"PAGE_TITLE": "Event Settings",
+	"EVENT_PICTURE": "Event Picture",
+	"EDIT_EVENT_PICTURE": "Edit event picture",
+	"EVENT_DATA": "Event Data",
+	"EVENT_NAME": "Event name",
+	"EVENT_DESCRIPTION": "Event description",
+	"ALLOW_SEARCH_BY_EVENT_NAME": "Allow search by event name",
+	"EDIT_EVENT_DATA": "Edit event data",
+	"EVENT_MEMBER": "Event Member",
+	"YOU": "You",
+	"LEADER": "Leader",
+	"TREASURER": "Treasurer",
+	"MEMBER": "Member",
+	"JOIN": "Joined",
+	"EDIT_EVENT_MEMBER": "Edit event member",
+	"LEAVE_EVENT": "Leave Event",
+	"DELETE_EVENT": "Delete Event",
+	"BACK": "Back",
+	"CLOSE": "Close"
+}

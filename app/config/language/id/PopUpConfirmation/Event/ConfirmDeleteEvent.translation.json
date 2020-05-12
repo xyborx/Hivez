@@ -1,0 +1,6 @@
+{
+	"MODAL_TITLE": "Apakah kamu yakin ingin menghapus event ini?",
+	"MODAL_DETAILS": "Semua anggota akan kehilangan akses ke event ini dan semua transaksi tertunda akan dibatalkan.",
+	"NO": "Batalkan",
+	"YES": "Hapus Event"
+}

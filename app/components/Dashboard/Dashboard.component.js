@@ -42,9 +42,9 @@ const Dashboard = (props) => {
 					<RecentTransaction
 						contentText={props.recentTransactionText}
 						style={styles.recentTransaction}
-						onEventTransactionClick={props.onEventTransactionClick}
-						onGroupBillClick={props.onGroupBillClick}
-						onGroupTransactionClick={props.onGroupTransactionClick}
+						onEventRequestDetailClick={props.onEventRequestDetailClick}
+						onGroupBillDetailClick={props.onGroupBillDetailClick}
+						onGroupRequestDetailClick={props.onGroupRequestDetailClick}
 						transactionList={props.transactionList} />
 				</View>
 			</ScrollView>

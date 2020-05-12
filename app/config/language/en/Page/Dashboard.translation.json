@@ -12,7 +12,7 @@
 	"THIS_LIST_WAITING_YOUR_APPROVAL": "This list waiting for your approval",
 	"JOIN_GROUP": "Join group approval",
 	"JOIN_EVENT": "Join event approval",
-	"TRANSACTION": "Transaction request approval",
+	"REQUEST_PAYMENT": "Transaction request approval",
 	"BILL_PAYMENT": "Bill payment approval",
 	"BILL_CREATION": "Bill creation approval"
 }

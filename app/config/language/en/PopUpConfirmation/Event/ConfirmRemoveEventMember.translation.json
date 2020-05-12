@@ -1,0 +1,6 @@
+{
+	"MODAL_TITLE": "Are you sure you want to remove this user?",
+	"MODAL_DETAILS": "This user will lose access to this event and all of their pending transaction will be cancelled.",
+	"NO": "Cancel",
+	"YES": "Remove User"
+}

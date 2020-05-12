@@ -1,0 +1,21 @@
+{
+	"PAGE_TITLE": "Pengaturan Event",
+	"EVENT_PICTURE": "Foto Event",
+	"EDIT_EVENT_PICTURE": "Ubah foto event",
+	"EVENT_DATA": "Data Event",
+	"EVENT_NAME": "Name event",
+	"EVENT_DESCRIPTION": "Deskripsi event",
+	"ALLOW_SEARCH_BY_EVENT_NAME": "Perbolehkan pencarian dengan nama event",
+	"EDIT_EVENT_DATA": "Ubah data event",
+	"EVENT_MEMBER": "Anggota Event",
+	"YOU": "Kamu",
+	"LEADER": "Ketua",
+	"TREASURER": "Bendahara",
+	"MEMBER": "Anggota",
+	"JOIN": "Bergabung",
+	"EDIT_EVENT_MEMBER": "Ubah anggota event",
+	"LEAVE_EVENT": "Keluar Event",
+	"DELETE_EVENT": "Hapus Event",
+	"BACK": "Kembali",
+	"CLOSE": "Tutup"
+}

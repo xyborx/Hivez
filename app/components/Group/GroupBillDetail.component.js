@@ -57,7 +57,7 @@ const GroupBillDetail = (props) => {
 							touchableType={'highlight'}
 							image={billImage}
 							style={billImage === '' ? styles.hidden : styles.viewImageContainer}>
-							<ViewWithIcon icon={'camera'} title={props.contentText['VIEW_TRANSACTION_PICTURE']} />
+							<ViewWithIcon icon={'camera'} title={props.contentText['VIEW_REQUEST_PICTURE']} />
 						</PreviewPicture>
 						<View style={status === 'ON PROGRESS' ? styles.approvalContainer : styles.hidden}>
 							<ButtonWithConfirmation

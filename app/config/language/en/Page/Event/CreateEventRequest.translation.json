@@ -1,0 +1,13 @@
+{
+	"PAGE_TITLE": "Create Request",
+	"DATE": "Date",
+	"TIME": "Time",
+	"DESCRIPTION": "Description",
+	"DESCRIPTION_PLACEHOLDER": "Insert request description",
+	"VIEW_REQUEST_PICTURE": "View image",
+	"ADD_REQUEST_PICTURE": "Add image to request",
+	"EDIT_REQUEST_PICTURE": "Edit image",
+	"CLOSE": "Close",
+	"BACK": "Back",
+	"CREATE_REQUEST": "Create Request"
+}

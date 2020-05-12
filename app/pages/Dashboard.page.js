@@ -38,23 +38,23 @@ const DashboardPage = ({navigation}) => {
 		});
 	};
 
-	const createGroupTransaction = (groupID) => {
+	const createGroupRequest = (groupID) => {
 		navigation.navigate('GroupTab', {
 			screen: 'GroupDrawer',
 			initial: true,
 			params: {
-				screen: 'CreateGroupTransaction',
+				screen: 'CreateGroupRequest',
 				initial: true,
 				params: {groupID: groupID}
 			}
 		});
 	};
 
-	const createEventTransaction = (eventID) => {
-		// navigation.navigate('CreateEventTransaction', {
+	const createEventRequest = (eventID) => {
+		// navigation.navigate('CreateEventRequest', {
 		// 	eventID: eventID
 		// });
-		alert(`Create event transaction: ${eventID}`);
+		alert(`Create event request: ${eventID}`);
 	};
 
 	const viewGroupBill = (groupID) => {
@@ -100,7 +100,7 @@ const DashboardPage = ({navigation}) => {
 			{
 				icon: 'request',
 				name: 'REQUEST',
-				action: createGroupTransaction
+				action: createGroupRequest
 			}, {
 				icon: 'payBill',
 				name: 'PAY_BILL',
@@ -122,7 +122,7 @@ const DashboardPage = ({navigation}) => {
 			{
 				icon: 'request',
 				name: 'REQUEST',
-				action: createEventTransaction
+				action: createGroupRequest
 			}, {
 				icon: 'viewReport',
 				name: 'VIEW_REPORT',
@@ -140,7 +140,7 @@ const DashboardPage = ({navigation}) => {
 			{
 				icon: 'request',
 				name: 'REQUEST',
-				action: createEventTransaction
+				action: createGroupRequest
 			}, {
 				icon: 'viewReport',
 				name: 'VIEW_REPORT',
@@ -158,7 +158,7 @@ const DashboardPage = ({navigation}) => {
 			{
 				icon: 'request',
 				name: 'REQUEST',
-				action: createGroupTransaction
+				action: createGroupRequest
 			}, {
 				icon: 'payBill',
 				name: 'PAY_BILL',
@@ -180,7 +180,7 @@ const DashboardPage = ({navigation}) => {
 			{
 				icon: 'request',
 				name: 'REQUEST',
-				action: createGroupTransaction
+				action: createGroupRequest
 			}, {
 				icon: 'payBill',
 				name: 'PAY_BILL',
@@ -256,10 +256,10 @@ const DashboardPage = ({navigation}) => {
 		icon: 'calendar-plus',
 		action: () => viewPendingApprovalList('JOIN_EVENT')
 	}, {
-		type: 'TRANSACTION',
+		type: 'REQUEST_PAYMENT',
 		count: 420,
 		icon: 'tasks',
-		action: () => viewPendingApprovalList('TRANSACTION')
+		action: () => viewPendingApprovalList('REQUEST_PAYMENT')
 	}, {
 		type: 'BILL_PAYMENT',
 		count: 13,
@@ -277,9 +277,9 @@ const DashboardPage = ({navigation}) => {
 	const [transactionList, setTransactionList] = useState(transactionListDummy);
 	const [pendingApprovalList, setPendingApprovalList] = useState(pendingApprovalListDummy);
 
-	const viewGroupTransactionDetail = (transactionID) => {
-		navigation.navigate('GroupTransactionDetail', {
-			transactionID: transactionID
+	const viewGroupRequestDetail = (requestID) => {
+		navigation.navigate('GroupRequestDetail', {
+			requestID: requestID
 		});
 	};
 
@@ -289,11 +289,11 @@ const DashboardPage = ({navigation}) => {
 		});
 	};
 
-	const viewEventTransactionDetail = (transactionID) => {
-		// navigation.navigate('EventTransactionDetail', {
-		// 	transactionID: transactionID
+	const viewEventRequestDetail = (requestID) => {
+		// navigation.navigate('EventRequestDetail', {
+		// 	requestID: requestID
 		// });
-		alert(`View event transaction detail: ${transactionID}`)
+		alert(`View event request detail: ${requestID}`)
 	};
 
 	const viewPendingApprovalList = (type) => {
@@ -312,9 +312,9 @@ const DashboardPage = ({navigation}) => {
 			favouriteItemList={favouriteItemList}
 			transactionList={transactionList}
 			pendingApprovalList={pendingApprovalList}
-			onEventTransactionClick={viewEventTransactionDetail}
-			onGroupBillClick={viewGroupBillDetail}
-			onGroupTransactionClick={viewGroupTransactionDetail} />
+			onEventRequestDetailClick={viewEventRequestDetail}
+			onGroupBillDetailClick={viewGroupBillDetail}
+			onGroupRequestDetailClick={viewGroupRequestDetail} />
 	);
 };
 

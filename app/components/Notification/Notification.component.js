@@ -15,11 +15,10 @@ const Notification = (props) => {
 					notificationList={props.notificationList}
 					onGroupClick={props.onGroupClick}
 					onEventClick={props.onEventClick}
-					onEventTransactionClick={props.onEventTransactionClick}
-					onGroupTransactionClick={props.onGroupTransactionClick}
-					onBillApprovalClick={props.onBillApprovalClick}
-					onBillClick={props.onBillClick}
-					/>
+					onEventRequestDetailClick={props.onEventRequestDetailClick}
+					onGroupRequestDetailClick={props.onGroupRequestDetailClick}
+					onGroupBillApprovalClick={props.onGroupBillApprovalClick}
+					onGroupBillDetailClick={props.onGroupBillDetailClick} />
 			</View>
 		</ScrollView>
 		</SafeAreaView>

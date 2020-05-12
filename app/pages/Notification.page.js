@@ -43,7 +43,7 @@ const NotificationPage = ({navigation}) => {
 		date: '2020-05-02 15:43:31',
 		title: 'REQUEST_APPROVED',
 		detail: 'Beli Mangga',
-		source: 'GROUP_TRANSACTION',
+		source: 'GROUP_REQUEST',
 		sourceID: 'TRX0002',
 		sourceImage: imageDummy[2],
 		sourceName: 'Lelaki'
@@ -52,7 +52,7 @@ const NotificationPage = ({navigation}) => {
 		date: '2020-05-02 14:43:31',
 		title: 'REQUEST_REJECTED',
 		detail: 'Beli Semangka',
-		source: 'GROUP_TRANSACTION',
+		source: 'GROUP_REQUEST',
 		sourceID: 'TRX0004',
 		sourceImage: imageDummy[3],
 		sourceName: 'Fearless',
@@ -142,7 +142,7 @@ const NotificationPage = ({navigation}) => {
 		date: '2020-04-23 17:43:31',
 		title: 'REQUEST_APPROVED',
 		detail: 'Beli Mangga',
-		source: 'EVENT_TRANSACTION',
+		source: 'EVENT_REQUEST',
 		sourceID: 'TRX0002',
 		sourceImage: imageDummy[3],
 		sourceName: 'Lelaki'
@@ -151,7 +151,7 @@ const NotificationPage = ({navigation}) => {
 		date: '2020-04-22 17:43:31',
 		title: 'REQUEST_REJECTED',
 		detail: 'Beli Semangka',
-		source: 'EVENT_TRANSACTION',
+		source: 'EVENT_REQUEST',
 		sourceID: 'TRX0004',
 		sourceImage: imageDummy[4],
 		sourceName: 'Fearless',
@@ -254,26 +254,26 @@ const NotificationPage = ({navigation}) => {
 		alert(`Navigate to event ${eventID}`);
 	};
 
-	const navigateToGroupTransactionDetail = (transactionID) => {
-		navigation.navigate('GroupTransactionDetail', {
-			transactionID: transactionID
+	const navigateToGroupRequestDetail = (requestID) => {
+		navigation.navigate('GroupRequestDetail', {
+			requestID: requestID
 		});
 	};
 
-	const navigateToEventTransactionDetail = (transactionID) => {
-		// navigation.navigate('EventTransactionDetail', {
-		// 	transactionID: transactionID
+	const navigateToEventRequestDetail = (requestID) => {
+		// navigation.navigate('EventRequestDetail', {
+		// 	requestID: requestID
 		// });
-		alert(`Navigate to event transaction ${transactionID}`);
+		alert(`Navigate to event request ${requestID}`);
 	};
 
-	const navigateToBill = (billID) => {
+	const navigateToGroupBillDetail = (billID) => {
 		navigation.navigate('GroupBillDetail', {
 			billID: billID
 		});
 	};
 
-	const navigateToBillApproval = (billID) => {
+	const navigateToGroupBillApproval = (billID) => {
 		navigation.navigate('GroupBillApproval', {
 			billID: billID
 		});
@@ -287,10 +287,10 @@ const NotificationPage = ({navigation}) => {
 			notificationList={notificationList}
 			onGroupClick={navigateToGroup}
 			onEventClick={navigateToEvent}
-			onEventTransactionClick={navigateToEventTransactionDetail}
-			onGroupTransactionClick={navigateToGroupTransactionDetail}
-			onBillApprovalClick={navigateToBillApproval}
-			onBillClick={navigateToBill} />
+			onEventRequestDetailClick={navigateToEventRequestDetail}
+			onGroupRequestDetailClick={navigateToGroupRequestDetail}
+			onGroupBillApprovalClick={navigateToGroupBillApproval}
+			onGroupBillDetailClick={navigateToGroupBillDetail} />
 	);
 };
 

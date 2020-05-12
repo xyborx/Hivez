@@ -1,0 +1,12 @@
+{
+    "PAGE_TITLE": "Buat Event",
+	"EVENT_PICTURE": "Foto Event",
+	"ADD_EVENT_PICTURE": "Tambahkan foto event",
+	"VIEW_EVENT_PICTURE": "Lihat foto",
+	"EDIT_EVENT_PICTURE": "Ubah foto",
+	"EVENT_NAME_PLACEHOLDER": "Masukkan nama event",
+	"EVENT_DESCRIPTION_PLACEHOLDER": "Masukkan deskripsi event",
+	"CLOSE": "Tutup",
+	"BACK": "Kembali",
+	"CREATE_EVENT": "Buat Event"
+}

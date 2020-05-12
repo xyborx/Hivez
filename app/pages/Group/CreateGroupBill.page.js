@@ -57,7 +57,7 @@ const CreateGroupBillPage = ({route, navigation}) => {
 			setDescription={onChangeDescription}
 			validateDescription={isBillDescriptionValid}
 			nextButtonAccessbility={nextButtonAccessbility}
-			confirmCreateText={translations['ConfirmCreateBill']}
+			confirmCreateText={translations['ConfirmCreateGroupBill']}
 			goBack={goBack}
 			createGroupBill={createGroupBill} />
 	);

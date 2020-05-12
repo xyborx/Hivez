@@ -3,9 +3,9 @@
 	"DATE": "Tanggal",
 	"TIME": "Waktu",
 	"DESCRIPTION": "Deskripsi",
-	"VIEW_TRANSACTION_PICTURE": "Lihat gambar",
-	"ADD_TRANSACTION_PICTURE": "Tambahkan gambar ke tagihan",
-	"EDIT_TRANSACTION_PICTURE": "Ubah gambar",
+	"VIEW_BILL_PICTURE": "Lihat gambar",
+	"ADD_BILL_PICTURE": "Tambahkan gambar ke tagihan",
+	"EDIT_BILL_PICTURE": "Ubah gambar",
 	"CLOSE": "Tutup",
 	"BACK": "Kembali",
 	"PAY_BILL": "Bayar Tagihan"

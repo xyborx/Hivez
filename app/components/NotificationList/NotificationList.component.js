@@ -48,10 +48,10 @@ const NotificationSection = (props) => {
 						onPress={
 							item.source === 'GROUP' ? props.onGroupClick :
 							item.source === 'EVENT' ? props.onEventClick :
-							item.source === 'EVENT_TRANSACTION' ? props.onEventTransactionClick :
-							item.source === 'GROUP_TRANSACTION' ? props.onGroupTransactionClick :
-							item.source === 'BILL_CREATION' ? props.onBillApprovalClick :
-							item.source === 'BILL' ? props.onBillClick :
+							item.source === 'EVENT_REQUEST' ? props.onEventRequestDetailClick :
+							item.source === 'GROUP_REQUEST' ? props.onGroupRequestDetailClick :
+							item.source === 'BILL_CREATION' ? props.onGroupBillApprovalClick :
+							item.source === 'BILL' ? props.onGroupBillDetailClick :
 							() => {}
 						}
 						title={title}/>
@@ -80,10 +80,10 @@ const NotificationList = (props) => {
 					key={index}
 					onGroupClick={props.onGroupClick}
 					onEventClick={props.onEventClick}
-					onEventTransactionClick={props.onEventTransactionClick}
-					onGroupTransactionClick={props.onGroupTransactionClick}
-					onBillApprovalClick={props.onBillApprovalClick}
-					onBillClick={props.onBillClick}
+					onEventRequestDetailClick={props.onEventRequestDetailClick}
+					onGroupRequestDetailClick={props.onGroupRequestDetailClick}
+					onGroupBillApprovalClick={props.onGroupBillApprovalClick}
+					onGroupBillDetailClick={props.onGroupBillDetailClick}
 					title={item.title} />
 			);
 		})

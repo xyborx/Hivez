@@ -10,7 +10,7 @@ export default StyleSheet.create({
 		flex: 1,
 		marginLeft: theme.MARGIN_NARROW
 	},
-	createTransactionContainer: {
+	createBillContainer: {
 		...boxShadow,
 		backgroundColor: theme.COLOR_WHITE,
 		borderRadius: theme.ROUNDNESS_DEFAULT,

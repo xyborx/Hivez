@@ -18,7 +18,7 @@ const CreateGroupBill = (props) => {
 						source={props.groupDetail.image === '' ? require('../../assets/images/DefaultGroupImage.png') : {uri: `data:image/jpeg;base64,${props.groupDetail.image}`}}
 						style={styles.groupImage}/>
 					<Text style={styles.groupName}>{props.groupDetail.name}</Text>
-					<View style={styles.createTransactionContainer}>
+					<View style={styles.createBillContainer}>
 						<NumberField
 							onChangeText={props.setValue}
 							style={styles.numberField}
@@ -36,7 +36,7 @@ const CreateGroupBill = (props) => {
 						<ButtonWithConfirmation
 							accessability={props.nextButtonAccessbility}
 							confirmText={props.confirmCreateText}
-							onPress={props.createGroupTransaction}
+							onPress={props.createGroupBill}
 							style={styles.button}
 							text={props.contentText['CREATE_BILL']} />
 					</View>

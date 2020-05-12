@@ -252,15 +252,15 @@ const GroupReportPage = ({route, navigation}) => {
 		alert(`Download group report for ${groupID} with range ${formattedStartDate}-${formattedEnd}`);
 	};
 
-	const viewBillDetail = (billID) => {
+	const viewGroupBillDetail = (billID) => {
 		navigation.navigate('GroupBillDetail', {
 			billID: billID
 		});
 	};
 
-	const viewTransactionDetail = (transactionID) => {
-		navigation.navigate('GroupTransactionDetail', {
-			transactionID: transactionID
+	const viewGroupRequestDetail = (requestID) => {
+		navigation.navigate('GroupRequestDetail', {
+			requestID: requestID
 		});
 	};
 
@@ -286,8 +286,8 @@ const GroupReportPage = ({route, navigation}) => {
 			resetDate={resetDate}
 			viewReport={viewReport}
 			downloadReport={downloadReport}
-			viewBillDetail={viewBillDetail}
-			viewTransactionDetail={viewTransactionDetail}
+			viewGroupBillDetail={viewGroupBillDetail}
+			viewGroupRequestDetail={viewGroupRequestDetail}
 			openDrawer={openDrawer}
 			goBack={goBack} />
 	);

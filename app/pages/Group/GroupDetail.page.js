@@ -246,31 +246,31 @@ const GroupDetailPage = ({route, navigation}) => {
 		setShowBalance(!showBalance);
 	};
 
-	const createRequest = () => {
-		navigation.navigate('CreateGroupTransaction', {
+	const navigateToCreateGroupRequest = () => {
+		navigation.navigate('CreateGroupRequest', {
 			groupID: groupID
 		});
 	};
 
-	const billPayment = () => {
+	const navigateToBillPayment = () => {
 		navigation.navigate('GroupBillList', {
 			groupID: groupID
 		});
 	};
 
-	const viewReport = () => {
+	const navigateToViewReport = () => {
 		navigation.navigate('GroupReport', {
 			groupID: groupID
 		});
 	};
 
-	const inviteMember = () => {
+	const navigateToInviteMember = () => {
 		navigation.navigate('InviteGroupMember', {
 			groupID: groupID
 		});
 	};
 
-	const groupSettings = () => {
+	const navigateToGroupSettings = () => {
 		navigation.navigate('GroupSettings', {
 			groupID: groupID
 		});
@@ -283,7 +283,7 @@ const GroupDetailPage = ({route, navigation}) => {
 	};
 
 	const viewRequestDetail = (requestID) => {
-		navigation.navigate('GroupTransactionDetail', {
+		navigation.navigate('GroupRequestDetail', {
 			requestID: requestID
 		});
 	};
@@ -299,20 +299,20 @@ const GroupDetailPage = ({route, navigation}) => {
 	return (
 		<GroupDetail
 			contentText={translations['GroupDetail']}
-			recentBillText={translations['RecentBill']}
-			recentRequestText={translations['RecentRequest']}
+			recentBillText={translations['RecentGroupBill']}
+			recentRequestText={translations['RecentGroupRequest']}
 			groupDetail={groupDetail}
 			showBalance={showBalance}
 			toggleShowBalance={toggleShowBalance}
 			billList={billList}
 			requestList={requestList}
-			createRequest={createRequest}
-			billPayment={billPayment}
-			viewReport={viewReport}
-			inviteMember={inviteMember}
-			groupSettings={groupSettings}
-			onBillClick={viewBillDetail}
-			onRequestClick={viewRequestDetail}
+			navigateToCreateGroupRequest={navigateToCreateGroupRequest}
+			navigateToBillPayment={navigateToBillPayment}
+			navigateToViewReport={navigateToViewReport}
+			navigateToInviteMember={navigateToInviteMember}
+			navigateToGroupSettings={navigateToGroupSettings}
+			onBillDetailClick={viewBillDetail}
+			onRequestDetailClick={viewRequestDetail}
 			openDrawer={openDrawer}
 			goBack={goBack} />
 	);

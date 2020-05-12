@@ -1,0 +1,6 @@
+{
+	"MODAL_TITLE": "Are you sure you want to create this request?",
+	"MODAL_DETAILS": "Your request will have to wait for approval.",
+	"NO": "Cancel",
+	"YES": "Create Request"
+}

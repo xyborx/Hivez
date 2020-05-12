@@ -292,20 +292,26 @@ const DashboardPage = ({navigation}) => {
 	const [pendingApprovalList, setPendingApprovalList] = useState(pendingApprovalListDummy);
 
 	const viewGroupRequestDetail = (requestID) => {
-		navigation.navigate('GroupRequestDetail', {
-			requestID: requestID
+		navigation.navigate('GroupTab', {
+			screen: 'GroupBillApproval',
+			initial: true,
+			params: {billID: billID}
 		});
 	};
 
 	const viewGroupBillDetail = (billID) => {
-		navigation.navigate('GroupBillDetail', {
-			billID: billID
+		navigation.navigate('GroupTab', {
+			screen: 'GroupBillDetail',
+			initial: true,
+			params: {billID: billID}
 		});
 	};
 
 	const viewEventRequestDetail = (requestID) => {
-		navigation.navigate('EventRequestDetail', {
-			requestID: requestID
+		navigation.navigate('EventTab', {
+			screen: 'EventRequestDetail',
+			initial: true,
+			params: {requestID: requestID}
 		});
 	};
 

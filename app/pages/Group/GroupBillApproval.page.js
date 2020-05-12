@@ -27,12 +27,12 @@ const GroupBillApprovalPage = ({route, navigation}) => {
 
 	const [billDetail, setBillDetail] = useState(billDetailDummy);
 
-	const approveBill = () => {
+	const approveGroupBill = () => {
 		navigation.pop();
 		alert(`Approve bill: ${billID}`);
 	};
 
-	const rejectBill = () => {
+	const rejectGroupBill = () => {
 		navigation.pop();
 		alert(`Reject bill: ${billID}`);
 	};
@@ -45,10 +45,10 @@ const GroupBillApprovalPage = ({route, navigation}) => {
 		<GroupBillApproval
 			contentText={translations['GroupBillApproval']}
 			billDetail={billDetail}
-			confirmApproveText={translations['ConfirmApproveBillCreation']}
-			confirmRejectText={translations['ConfirmRejectBillCreation']}
-			approveBill={approveBill}
-			rejectBill={rejectBill}
+			confirmApproveText={translations['ConfirmApproveGroupBillCreation']}
+			confirmRejectText={translations['ConfirmRejectGroupBillCreation']}
+			approveGroupBill={approveGroupBill}
+			rejectGroupBill={rejectGroupBill}
 			goBack={goBack} />
 	);
 };

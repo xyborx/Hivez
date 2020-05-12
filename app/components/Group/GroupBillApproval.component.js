@@ -45,13 +45,13 @@ const GroupBillApproval = (props) => {
 							<ButtonWithConfirmation
 								accessability={true}
 								confirmText={props.confirmRejectText}
-								onPress={props.rejectBill}
+								onPress={props.rejectGroupBill}
 								style={styles.rejectButton}
 								text={props.contentText['REJECT']} />
 							<ButtonWithConfirmation
 								accessability={true}
 								confirmText={props.confirmApproveText}
-								onPress={props.approveBill}
+								onPress={props.approveGroupBill}
 								style={styles.approveButton}
 								text={props.contentText['APPROVE']} />
 						</View>

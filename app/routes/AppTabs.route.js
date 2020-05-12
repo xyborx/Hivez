@@ -23,7 +23,7 @@ const AppTabs = () => {
 				icon: 'users',
 				text: 'GROUP'
 			}} />
-			<TabNavigation.Screen component={EventStack} name='Event' options={{
+			<TabNavigation.Screen component={EventStack} name='EventTab' options={{
 				icon: 'calendar-alt',
 				text: 'EVENT'
 			}} />

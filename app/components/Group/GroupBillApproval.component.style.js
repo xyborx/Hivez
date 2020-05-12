@@ -84,7 +84,7 @@ export default StyleSheet.create({
 		paddingHorizontal: theme.PADDING_DEFAULT
 	},
 	billValueText: {
-		color: theme.COLOR_SOFT_GREY,
+		color: theme.COLOR_GREEN,
 		fontSize: theme.FONT_SIZE_SEMI_HEADER,
 		fontWeight: theme.FONT_WEIGHT_BOLD,
 		textAlign: 'center'

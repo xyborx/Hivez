@@ -97,8 +97,8 @@ const NotificationPage = ({navigation}) => {
 		date: '2020-04-30 10:53:12',
 		title: 'ROLE_CHANGED',
 		detail: 'TREASURER',
-		source: 'EVENT',
-		sourceID: 'EVENT0004',
+		source: 'GROUP',
+		sourceID: 'GROUP0004',
 		sourceImage: imageDummy[3],
 		sourceName: 'Fearless',
 	}, {
@@ -242,42 +242,58 @@ const NotificationPage = ({navigation}) => {
 
 	const navigateToGroup = (groupID) => {
 		navigation.navigate('GroupTab', {
-			screen: 'GroupDetail',
-			params: {groupID: groupID}
+			screen: 'GroupDrawer',
+			initial: true,
+			params: {
+				screen: 'GroupDetail',
+				initial: true,
+				params: {groupID: groupID}
+			}
 		});
 	};
 
 	const navigateToEvent = (eventID) => {
-		// navigation.navigate('EventDetails', {
-		// 	eventID: eventID
-		// });
-		alert(`Navigate to event ${eventID}`);
+		navigation.navigate('EventTab', {
+			screen: 'EventDrawer',
+			initial: true,
+			params: {
+				screen: 'EventDetail',
+				initial: true,
+				params: {eventID: eventID}
+			}
+		});
 	};
 
 	const navigateToGroupRequestDetail = (requestID) => {
-		navigation.navigate('GroupRequestDetail', {
-			requestID: requestID
+		navigation.navigate('GroupTab', {
+			screen: 'GroupRequestDetail',
+			initial: true,
+			params: {requestID: requestID}
 		});
 	};
 
 	const navigateToEventRequestDetail = (requestID) => {
-		// navigation.navigate('EventRequestDetail', {
-		// 	requestID: requestID
-		// });
-		alert(`Navigate to event request ${requestID}`);
+		navigation.navigate('EventTab', {
+			screen: 'EventRequestDetail',
+			initial: true,
+			params: {requestID: requestID}
+		});
 	};
 
 	const navigateToGroupBillDetail = (billID) => {
-		navigation.navigate('GroupBillDetail', {
-			billID: billID
+		navigation.navigate('GroupTab', {
+			screen: 'GroupBillDetail',
+			initial: true,
+			params: {billID: billID}
 		});
 	};
 
 	const navigateToGroupBillApproval = (billID) => {
-		navigation.navigate('GroupBillApproval', {
-			billID: billID
+		navigation.navigate('GroupTab', {
+			screen: 'GroupBillApproval',
+			initial: true,
+			params: {billID: billID}
 		});
-		// alert(`Navigate to bill ${billID}`);
 	};
 
 	return (

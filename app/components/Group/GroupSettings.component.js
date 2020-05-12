@@ -8,6 +8,7 @@ import ChangeGroupDataModal from '../Modal/ChangeGroupDataModal.component';
 import DropdownChangePicture from '../Dropdown/DropdownChangePicture.component';
 import FloatingBackButton from '../Button/FloatingBackButton.component';
 import FloatingBurgerButton from '../Button/FloatingBurgerButton.component';
+import PreviewPicture from '../Modal/PreviewPicture.component';
 import theme from '../../styles/theme.style';
 import styles from './GroupSettings.component.style';
 
@@ -72,9 +73,15 @@ const GroupSettings = (props) => {
 				<FloatingBurgerButton action={props.openDrawer} />
 				<View style={styles.pageContentView}>
 					<Text style={styles.header}>{props.contentText['PAGE_TITLE']}</Text>
-					<Image
-						source={props.groupData.image === '' ? require('../../assets/images/DefaultGroupImage.png') : {uri: `data:image/jpeg;base64,${props.groupData.image}`}}
-						style={styles.groupImage}/>
+					<PreviewPicture
+						closeText={props.contentText['CLOSE']}
+						touchableType={'none'}
+						image={props.groupData.image}
+						style={styles.groupImageContainer} >
+						<Image
+							source={props.groupData.image === '' ? require('../../assets/images/DefaultGroupImage.png') : {uri: `data:image/jpeg;base64,${props.groupData.image}`}}
+							style={styles.groupImage} />
+					</PreviewPicture>
 					<View style={styles.sectionContainer}>
 						<Text style={styles.headerText}>{props.contentText['GROUP_PICTURE']}</Text>
 						<DropdownChangePicture

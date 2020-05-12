@@ -10,6 +10,7 @@ import ConfirmWithPasswordModal from '../Modal/ConfirmWithPasswordModal.componen
 import DropdownChangePicture from '../Dropdown/DropdownChangePicture.component';
 import DropdownLanguage from '../Dropdown/DropdownLanguage.component';
 import PrivacyPolicyModal from '../Modal/PrivacyPolicy.component';
+import PreviewPicture from '../Modal/PreviewPicture.component';
 import TermsAndConditionsModal from '../Modal/TermsAndConditions.component';
 import styles from './MyProfile.component.style';
 
@@ -56,9 +57,15 @@ const SignIn = (props) => {
 			<ScrollView ref={props.scrollRef} keyboardShouldPersistTaps={'handled'} showsVerticalScrollIndicator={false} style={styles.pageContainer} contentContainerStyle={styles.pageContentView}>
 				<View style={styles.scrollViewWrapper}>
 					<Text style={styles.header}>{props.contentText['PAGE_TITLE']}</Text>
-					<Image
-						source={props.profileData.image === '' ? require('../../assets/images/DefaultProfileImage.png') : {uri: `data:image/jpeg;base64,${props.profileData.image}`}}
-						style={styles.profileImage} />
+					<PreviewPicture
+						closeText={props.contentText['CLOSE']}
+						touchableType={'none'}
+						image={props.profileData.image}
+						style={styles.profileImageContainer} >
+						<Image
+							source={props.profileData.image === '' ? require('../../assets/images/DefaultProfileImage.png') : {uri: `data:image/jpeg;base64,${props.profileData.image}`}}
+							style={styles.profileImage} />
+					</PreviewPicture>
 					<View style={styles.profileSection}>
 						<Text style={styles.sectionHeader}>{props.contentText['PROFILE_PICTURE']}</Text>
 						<DropdownChangePicture

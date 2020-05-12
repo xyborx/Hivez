@@ -9,6 +9,7 @@ import GroupDrawerNavigator from './id/Component/GroupDrawerNavigator.translatio
 import Modal from './id/Component/Modal.translation.json';
 import PrivacyPolicy from './id/Component/PrivacyPolicy.translation.json';
 import RecentBill from './id/Component/RecentBill.translation.json';
+import RecentRequest from './id/Component/RecentRequest.translation.json';
 import RecentTransaction from './id/Component/RecentTransaction.translation.json';
 import TermsAndConditions from './id/Component/TermsAndConditions.translation.json';
 
@@ -120,6 +121,7 @@ module.exports = {
 	PasswordValidation,
 	PrivacyPolicy,
 	RecentBill,
+	RecentRequest,
 	RecentTransaction,
 	RequestDescriptionValidation,
 	SignIn,

@@ -13,12 +13,17 @@ export default StyleSheet.create({
 		flex: 1,
 		marginLeft: theme.MARGIN_NARROW
 	},
-	groupImage: {
+	groupImageContainer: {
 		alignSelf: 'center',
 		borderRadius: 160/ 2,
 		height: 160,
 		marginBottom: theme.MARGIN_WIDE,
+		overflow: 'hidden',
 		width: 160
+	},
+	groupImage: {
+		height: '100%',
+		width: '100%'
 	},
 	groupName: {
 		color: theme.COLOR_SOFT_GREY,

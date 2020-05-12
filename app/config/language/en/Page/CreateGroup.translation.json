@@ -1,9 +1,12 @@
 {
     "PAGE_TITLE": "Create Group",
 	"GROUP_PICTURE": "Group Picture",
-	"EDIT_GROUP_PICTURE": "Edit group picture",
+	"ADD_GROUP_PICTURE": "Add group picture",
+	"VIEW_GROUP_PICTURE": "View picture",
+	"EDIT_GROUP_PICTURE": "Edit picture",
 	"GROUP_NAME_PLACEHOLDER": "Please enter group name",
 	"GROUP_DESCRIPTION_PLACEHOLDER": "Please enter group description",
+	"CLOSE": "Close",
 	"BACK": "Back",
 	"CREATE_GROUP": "Create Group"
 }

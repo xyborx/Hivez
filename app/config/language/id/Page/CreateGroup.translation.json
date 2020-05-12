@@ -1,9 +1,12 @@
 {
     "PAGE_TITLE": "Buat Grup",
 	"GROUP_PICTURE": "Foto Grup",
-	"EDIT_GROUP_PICTURE": "Ubah foto grup",
+	"ADD_GROUP_PICTURE": "Tambahkan foto grup",
+	"VIEW_GROUP_PICTURE": "Lihat foto",
+	"EDIT_GROUP_PICTURE": "Ubah foto",
 	"GROUP_NAME_PLACEHOLDER": "Masukkan nama grup",
 	"GROUP_DESCRIPTION_PLACEHOLDER": "Masukkan deskripsi grup",
+	"CLOSE": "Tutup",
 	"BACK": "Kembali",
 	"CREATE_GROUP": "Buat Grup"
 }

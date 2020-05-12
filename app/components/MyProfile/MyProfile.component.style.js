@@ -8,12 +8,17 @@ export default StyleSheet.create({
 		textAlign: 'center',
 		marginVertical: theme.MARGIN_EXTRA_WIDE,
 	},
-	profileImage: {
+	profileImageContainer: {
 		alignSelf: 'center',
 		borderRadius: 160/ 2,
 		height: 160,
-		marginBottom: theme.MARGIN_WIDE,
+		marginBottom: theme.MARGIN_EXTRA_WIDE,
+		overflow: 'hidden',
 		width: 160
+	},
+	profileImage: {
+		height: '100%',
+		width: '100%'
 	},
 	pageContainer: {
 		...pageContainer

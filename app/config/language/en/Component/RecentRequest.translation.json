@@ -1,11 +1,11 @@
 {
-	"TITLE": "Recent Bill Payments",
-	"LAST_FIVE_TRANSACTIONS": "Last 5 bill payments",
+	"TITLE": "Recent Request",
+	"LAST_FIVE_TRANSACTIONS": "Last 5 requests",
 	"SEE_ALL_TRANSACTIONS": "See all",
 	"ALL_TRANSACTIONS": "All",
 	"APPROVED_TRANSACTIONS": "Approved",
 	"ON_PROGRESS_TRANSACTIONS": "Waiting approval",
 	"DECLINED_TRANSACTIONS": "Declined",
-	"NO_RECENT_TRANSACTION": "No recent bill payment",
+	"NO_RECENT_TRANSACTION": "No recent request",
 	"BY": "by"
 }

@@ -41,7 +41,7 @@ export default StyleSheet.create({
 	},
 	groupImage: {
 		alignSelf: 'center',
-		borderRadius: 160/ 2,
+		borderRadius: 120/ 2,
 		height: 120,
 		marginBottom: theme.MARGIN_DEFAULT,
 		width: 120

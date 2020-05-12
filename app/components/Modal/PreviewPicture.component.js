@@ -6,7 +6,9 @@ import styles from './PreviewPicture.component.style';
 
 const PreviewPicture = (props) => {
 	const [visibility, setVisibility] = useState(false);
-	const toggleModal = () => {setVisibility(!visibility)};
+	const toggleModal = () => {
+		if (props.image !== '') setVisibility(!visibility)
+	};
 	return (
 		<View style={styles.boxContainer}>
 			{props.touchableType === 'highlight' ? (
@@ -17,6 +19,13 @@ const PreviewPicture = (props) => {
 					underlayColor={'rgba(0,0,0,0.05)'}>
 					{props.children}
 				</TouchableHighlight>
+			) : props.touchableType === 'none' ? (
+				<TouchableOpacity
+					activeOpacity={1}
+					style={props.style}
+					onPress={toggleModal}>
+					{props.children}
+				</TouchableOpacity>
 			) : (
 				<TouchableOpacity
 					style={props.style}

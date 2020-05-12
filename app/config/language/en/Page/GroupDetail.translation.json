@@ -1,3 +1,12 @@
 {
-	"BACK": "Back"
+	"BACK": "Back",
+	"GROUP_BALANCE": "Group Balance",
+	"TAP_TO_SHOW": "Tap to show",
+	"SHORTCUT": "Shortcut",
+	"CREATE_REQUEST": "Create Request",
+	"VIEW_REPORT": "View Report",
+	"PAY_BILL": "Pay Bill",
+	"INVITE_MEMBER": "Invite Member",
+	"GROUP_SETTINGS": "Group settings",
+	"CLOSE": "Close"
 }

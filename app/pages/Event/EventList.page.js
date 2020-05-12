@@ -1,7 +1,7 @@
 import React, {useContext, useRef, useState} from 'react';
 import {useScrollToTop} from '@react-navigation/native';
-import {LocalizationContext} from '../utils/language.utils';
-import EventList from '../components/EventList/EventList.component';
+import {LocalizationContext} from '../../utils/language.utils';
+import EventList from '../../components/Event/EventList.component';
 
 const EventListPage = ({navigation}) => {
 	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
@@ -42,7 +42,7 @@ const EventListPage = ({navigation}) => {
 	}, {
 		id: 'EVENT0005',
 		image: imageDummy[4],
-		name: 'Event',
+		name: 'Grup',
 		memberCount: 13
 	}, {
 		id: 'EVENT0006',
@@ -67,7 +67,7 @@ const EventListPage = ({navigation}) => {
 	}, {
 		id: 'EVENT0010',
 		image: imageDummy[2],
-		name: 'Event',
+		name: 'Grup',
 		memberCount: 13
 	}, {
 		id: 'EVENT0011',
@@ -92,7 +92,7 @@ const EventListPage = ({navigation}) => {
 	}, {
 		id: 'EVENT0015',
 		image: imageDummy[1],
-		name: 'Event',
+		name: 'Grup',
 		memberCount: 13
 	}, {
 		id: 'EVENT0016',
@@ -117,7 +117,7 @@ const EventListPage = ({navigation}) => {
 	}, {
 		id: 'EVENT0020',
 		image: imageDummy[5],
-		name: 'Event',
+		name: 'Grup',
 		memberCount: 13
 	}, {
 		id: 'EVENT0021',
@@ -142,7 +142,7 @@ const EventListPage = ({navigation}) => {
 	}, {
 		id: 'EVENT0025',
 		image: imageDummy[0],
-		name: 'Event',
+		name: 'Grup',
 		memberCount: 13
 	}];
 
@@ -158,18 +158,19 @@ const EventListPage = ({navigation}) => {
 	}
 
 	const navigateToEvent = (eventID) => {
-		// navigation.navigate('EventDetails', {
-		// 	eventID: eventID
-		// });
-		alert(`Navigate to event details ${eventID}`);
+		navigation.navigate('EventDrawer', {
+			screen: 'EventDetail',
+			initial: true,
+			params: {eventID: eventID}
+		});
 	};
 
 	const createEvent = () => {
-		alert('Create event');
+		navigation.navigate('CreateEvent');
 	}
 
 	const findEvent = () => {
-		alert('Find event');
+		navigation.navigate('FindEvent');
 	}
 
 	return (

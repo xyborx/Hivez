@@ -3,7 +3,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import TabBar from '../components/TabBar/TabBar.component';
 import DashboardPage from '../pages/Dashboard.page';
 import GroupStack from './GroupStack.route';
-import EventListPage from '../pages/EventList.page';
+import EventStack from './EventStack.route';
 import NotificationPage from '../pages/Notification.page';
 import MyProfilePage from '../pages/MyProfile.page';
 
@@ -23,7 +23,7 @@ const AppTabs = () => {
 				icon: 'users',
 				text: 'GROUP'
 			}} />
-			<TabNavigation.Screen component={EventListPage} name='Event' options={{
+			<TabNavigation.Screen component={EventStack} name='Event' options={{
 				icon: 'calendar-alt',
 				text: 'EVENT'
 			}} />

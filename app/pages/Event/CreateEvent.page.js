@@ -1,10 +1,10 @@
 import React, {useContext, useState} from 'react';
 import ImagePicker from 'react-native-image-crop-picker';
 import {LocalizationContext} from '../../utils/language.utils';
-import {isGroupNameValid} from '../../utils/validator.utils';
-import CreateGroup from '../../components/Group/CreateGroup.component';
+import {isEventNameValid} from '../../utils/validator.utils';
+import CreateEvent from '../../components/Event/CreateEvent.component';
 
-const CreateGroupPage = ({navigation}) => {
+const CreateEventPage = ({navigation}) => {
 	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
 	initializeAppLanguage();
 	
@@ -15,7 +15,7 @@ const CreateGroupPage = ({navigation}) => {
 
 	const onChangeName = (name) => {
 		setName(name);
-		setNextButtonAccessbility(isGroupNameValid(name).isValid);
+		setNextButtonAccessbility(isEventNameValid(name).isValid);
 	};
 
 	const onChangeDescription = (description) => {
@@ -25,7 +25,7 @@ const CreateGroupPage = ({navigation}) => {
 	const changeImage = (image) => {
 		setImage(image.data);
 		ImagePicker.clean().then(() => {
-			alert('Change profile picture');
+			alert('Change event picture');
 		}).catch(e => {
 			console.log(e);
 		})
@@ -82,13 +82,13 @@ const CreateGroupPage = ({navigation}) => {
 		}
 	};
 
-	const createGroup = () => {
-		navigation.navigate('GroupDrawer', {
-			screen: 'GroupDetail',
+	const createEvent = () => {
+		navigation.navigate('EventDrawer', {
+			screen: 'EventDetail',
 			initial: true,
-			params: {groupID: 'GROUP0001'}
+			params: {eventID: 'EVENT0001'}
 		});
-		alert('Create group');
+		alert('Create event');
 	};
 
 	const goBack = () => {
@@ -96,22 +96,22 @@ const CreateGroupPage = ({navigation}) => {
 	}
 
 	return (
-		<CreateGroup
-			contentText={translations['CreateGroup']}
-			groupNameText={translations['GroupNameValidation']}
+		<CreateEvent
+			contentText={translations['CreateEvent']}
+			eventNameText={translations['EventNameValidation']}
 			image={image}
 			name={name}
-			validateName={isGroupNameValid}
+			validateName={isEventNameValid}
 			setName={onChangeName}
 			description={description}
 			setDescription={onChangeDescription}
 			nextButtonAccessbility={nextButtonAccessbility}
-			confirmCreateText={translations['ConfirmCreateGroup']}
+			confirmCreateText={translations['ConfirmCreateEvent']}
 			dropdownChangePictureContext={translations['DropdownChangePicture']}
 			onChangeImageDropdown={onChangeImageDropdown}
 			goBack={goBack}
-			createGroup={createGroup} />
+			createEvent={createEvent} />
 	);
 };
 
-export default CreateGroupPage;
+export default CreateEventPage;

@@ -18,6 +18,13 @@ export const isGroupNameValid = (groupName) => {
 	return {isValid: true, message: 'Success'};
 };
 
+export const isEventNameValid = (eventName) => {
+	if (eventName.trim().length < 3) return {isValid: false, message: 'INVALID_MINIMUM_EVENT_NAME_LENGTH'};
+	const regexp = /^[a-zA-Z ]*$/
+	if (!regexp.test(eventName)) return {isValid: false, message: 'INVALID_FULL_EVENT_FORMAT'};
+	return {isValid: true, message: 'Success'};
+};
+
 export const isUsernameValid = (username) => {
 	if (username.trim().length < 6) return {isValid: false, message: 'INVALID_MINIMUM_USERNAME_LENGTH'};
 	if (username.trim().length > 20) return {isValid: false, message: 'INVALID_MAXIMUM_USERNAME_LENGTH'};

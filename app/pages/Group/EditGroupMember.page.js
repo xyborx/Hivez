@@ -29,55 +29,64 @@ const EditGroupMemberPage = ({route, navigation}) => {
 		image: imageDummy[0],
 		joinDate: '2020-01-20',
 		name: 'Bojack Horseman',
-		role: 'MEMBER'
+		role: 'MEMBER',
+		username: 'bojackh'
 	}, {
 		id: 'USER0002',
 		image: imageDummy[1],
 		joinDate: '2020-01-25',
 		name: 'Diane Nguyen',
-		role: 'TREASURER'
+		role: 'TREASURER',
+		username: 'dianenguyen'
 	}, {
 		id: 'USER0003',
 		image: imageDummy[2],
 		joinDate: '2020-04-29',
 		name: 'Todd Chavez',
-		role: 'MEMBER'
+		role: 'MEMBER',
+		username: 'todd'
 	}, {
 		id: 'USER0004',
 		image: imageDummy[3],
 		joinDate: '2020-04-12',
 		name: 'Princess Carolyn',
-		role: 'LEADER'
+		role: 'LEADER',
+		username: 'princesscarolyn'
 	}, {
 		id: 'USER0005',
 		image: imageDummy[4],
 		joinDate: '2020-05-07',
 		name: 'Mr. Peanutbutter',
-		role: 'MEMBER'
+		role: 'MEMBER',
+		username: 'mrpeanutbutter'
 	}, {
 		id: 'USER0006',
 		image: imageDummy[5],
 		joinDate: '2020-01-13',
 		name: 'Sarah Lynn',
-		role: 'MEMBER'
+		role: 'MEMBER',
+		username: 'slynn'
 	}, {
 		id: 'USER0007',
 		image: imageDummy[6],
 		joinDate: '2020-04-10',
 		name: 'Judah Mannowdog',
-		role: 'TREASURER'
+		role: 'TREASURER',
+		username: 'judah'
 	}, {
 		id: 'USER0008',
 		image: '',
 		joinDate: '2020-03-15',
 		name: 'Charley Witherspoon',
-		role: 'MEMBER'
+		role: 'MEMBER',
+		username: 'stickyfrog'
 	}, {
 		id: 'USER0009',
 		image: '',
 		joinDate: '2020-02-28',
 		name: 'Wanda Pierce',
-		role: 'MEMBER'
+		role: 'MEMBER',
+		username: 'wandahibernate'
 	}];
 
 	const [groupData, setGroupData] = useState(groupDataDummy);

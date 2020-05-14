@@ -41,7 +41,7 @@ const ButtonWithSwitch = (props) => {
 };
 
 const MemberItem = (props) => {
-	const {id, image, joinDate, name, role} = props.memberData;
+	const {id, image, joinDate, name, role, username} = props.memberData;
 	return (
 		<View style={styles.memberItemContainer}>
 			<Image
@@ -49,7 +49,7 @@ const MemberItem = (props) => {
 				style={styles.memberImage}/>
 			<View style={styles.memberDetailContainer}>
 				<Text style={styles.settingsItemText}>{`${name}${props.isCurrentUser ? (' (' + props.contentText['YOU'] + ')') : ''}`}</Text>
-				<Text style={styles.memberRole}>{props.contentText[role]}</Text>
+				<Text style={styles.memberRole}>{`@${username} - ${props.contentText[role]}`}</Text>
 				<Text style={styles.memberJoinDate}>{`${props.contentText['JOIN']} ${getRelativeDate(joinDate).toLowerCase()}`}</Text>
 			</View>
 		</View>

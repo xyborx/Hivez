@@ -1,5 +1,5 @@
-import React, {useContext} from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import React, {useContext, useEffect, useState} from 'react';
+import {Keyboard, Text, TouchableOpacity, View} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {LocalizationContext} from '../../utils/language.utils';
 import styles from './TabBar.component.style';
@@ -7,7 +7,27 @@ import styles from './TabBar.component.style';
 const TabBar = ({state, descriptors, navigation}) => {
 	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
 	initializeAppLanguage();
-	return (
+	const [showTab, setShowTab] = useState(true);
+
+	useEffect(() => {
+		Keyboard.addListener('keyboardDidShow', _keyboardDidShow);
+		Keyboard.addListener('keyboardDidHide', _keyboardDidHide);
+
+		return () => {
+			Keyboard.removeListener('keyboardDidShow', _keyboardDidShow);
+			Keyboard.removeListener('keyboardDidHide', _keyboardDidHide);
+		};
+	}, []);
+
+	const _keyboardDidShow = () => {
+		setShowTab(false);
+	};
+
+	const _keyboardDidHide = () => {
+		setShowTab(true);
+	};
+	
+	return ( showTab &&
 		<View style={styles.buttonContainer}>
 			{state.routes.map((route, index) => {
 				const {options} = descriptors[route.key];

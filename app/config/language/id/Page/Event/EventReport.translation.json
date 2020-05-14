@@ -1,12 +1,8 @@
 {
 	"PAGE_TITLE": "Laporan Event",
-	"SELECT_DATE": "Pilih Rentang Waktu",
-	"VIEW_REPORT": "Lihat Laporan",
-	"RESET": "Atur Ulang",
 	"SUMMARY": "Ringkasan",
 	"TOTAL_EXPENSES": "Total Pengeluaran",
-	"SETTLEMENT": "Penyelesaian",
-	"OWES": "Berhutang",
+	"VIEW_SETTLEMENT": "Lihat Penyelesaian Pembayaran",
 	"DOWNLOAD_REPORT": "Unduh Laporan",
 	"BACK": "Kembali"
 }

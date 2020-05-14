@@ -1,5 +1,6 @@
 import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
+import {useDimensions} from '@react-native-community/hooks'
 import Drawer from '../components/Drawer/GroupDrawer.component';
 import CreateGroupRequestPage from '../pages/Group/CreateGroupRequest.page';
 import GroupBillListPage from '../pages/Group/GroupBillList.page';
@@ -11,8 +12,12 @@ import InviteGroupMemberPage from '../pages/Group/InviteGroupMember.page';
 const GroupDetailNavigation = createDrawerNavigator();
 
 const GroupDrawer = () => {
+	const {width} = useDimensions().window;
 	return (
-		<GroupDetailNavigation.Navigator drawerContent={props => <Drawer {...props} />} drawerType={'slide'} initialRouteName='GroupDetail'>
+		<GroupDetailNavigation.Navigator
+			drawerContent={props => <Drawer {...props} />}
+			edgeWidth={width}
+			initialRouteName='GroupDetail'>
 			<GroupDetailNavigation.Screen name='GroupDetail' component={GroupDetailPage} options={{
 				icon: 'users',
 				text: 'DASHBOARD'

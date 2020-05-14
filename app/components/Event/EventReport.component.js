@@ -83,28 +83,6 @@ const EventReport = (props) => {
 						style={styles.eventImage}/>
 					<Text style={styles.eventName}>{props.eventDetail.name}</Text>
 					<View style={[styles.sectionContainer, styles.sectionContainerWithPadding]}>
-						<Text style={styles.headerText}>{props.contentText['SELECT_DATE']}</Text>
-						<DateRangePicker
-							onChangeStartDate={props.setStartDate}
-							onChangeEndDate={props.setEndDate}
-							shortDate={true}
-							startDateValue={props.startDate}
-							endDateValue={props.endDate}
-							style={styles.dateField} />
-						<View style={styles.rowColumn}>
-							<Button
-								accessability={true} 
-								onPress={props.resetDate}
-								style={[styles.rowButton, styles.rowButtonLeft]}
-								text={props.contentText['RESET']} />
-							<Button
-								accessability={true} 
-								onPress={props.viewReport}
-								style={[styles.rowButton, styles.rowButtonRight]}
-								text={props.contentText['VIEW_REPORT']} />
-						</View>
-					</View>
-					<View style={props.showReport ? [styles.sectionContainer, styles.sectionContainerWithPadding] : styles.hidden}>
 						<Text style={styles.headerText}>{props.contentText['SUMMARY']}</Text>
 						<ViewWithValue
 							title={props.contentText['TOTAL_EXPENSES']}
@@ -112,23 +90,26 @@ const EventReport = (props) => {
 							value={rupiahFormatting(props.reportDetail.totalExpense)} />
 						<Button
 							accessability={true} 
+							onPress={props.viewPaymentSettlement}
+							style={styles.button}
+							text={props.contentText['VIEW_SETTLEMENT']} />
+						<Button
+							accessability={true} 
 							onPress={props.downloadReport}
 							style={styles.button}
 							text={props.contentText['DOWNLOAD_REPORT']} />
 					</View>
-					<View style={props.showReport ? {} : styles.hidden}>
-						{props.transactionList.map((item, index) => {
-							return (
-								<TransactionSection
-									contentText={props.contentText}
-									data={item.data}
-									date={item.id}
-									key={index}
-									sum={item.sum}
-									viewEventRequestDetail={props.viewEventRequestDetail} />
-							);
-						})}
-					</View>
+					{props.transactionList.map((item, index) => {
+						return (
+							<TransactionSection
+								contentText={props.contentText}
+								data={item.data}
+								date={item.id}
+								key={index}
+								sum={item.sum}
+								viewEventRequestDetail={props.viewEventRequestDetail} />
+						);
+					})}
 				</View>
 			</ScrollView>
 		</SafeAreaView>

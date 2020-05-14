@@ -52,7 +52,7 @@ import EventRequestDetail from './en/Page/Event/EventRequestDetail.translation.j
 import EventSettings from './en/Page/Event/EventSettings.translation.json';
 import FindEvent from './en/Page/Event/FindEvent.translation.json';
 import InviteEventMember from './en/Page/Event/InviteEventMember.translation.json';
-import PaymentSettlements from './en/Page/Event/PaymentSettlements.translation.json';
+import PaymentSettlement from './en/Page/Event/PaymentSettlement.translation.json';
 import SelectRequestPayee from './en/Page/Event/SelectRequestPayee.json';
 import ViewRequestPayee from './en/Page/Event/ViewRequestPayee.json';
 
@@ -175,7 +175,7 @@ module.exports = {
 	MyProfile,
 	NotificationList,
 	PasswordValidation,
-	PaymentSettlements,
+	PaymentSettlement,
 	PrivacyPolicy,
 	RecentEventRequest,
 	RecentGroupBill,

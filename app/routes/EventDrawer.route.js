@@ -1,5 +1,6 @@
 import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
+import {useDimensions} from '@react-native-community/hooks'
 import Drawer from '../components/Drawer/EventDrawer.component';
 import CreateEventRequestPage from '../pages/Event/CreateEventRequest.page';
 import EventDetailPage from '../pages/Event/EventDetail.page';
@@ -10,8 +11,12 @@ import InviteEventMemberPage from '../pages/Event/InviteEventMember.page';
 const EventDetailNavigation = createDrawerNavigator();
 
 const EventDrawer = () => {
+	const {width} = useDimensions().window;
 	return (
-		<EventDetailNavigation.Navigator drawerContent={props => <Drawer {...props} />} drawerType={'slide'} initialRouteName='EventDetail'>
+		<EventDetailNavigation.Navigator
+			drawerContent={props => <Drawer {...props} />}
+			edgeWidth={width}
+			initialRouteName='EventDetail'>
 			<EventDetailNavigation.Screen name='EventDetail' component={EventDetailPage} options={{
 				icon: 'users',
 				text: 'DASHBOARD'

@@ -1,12 +1,8 @@
 {
 	"PAGE_TITLE": "Event Report",
-	"SELECT_DATE": "Choose Time Range",
-	"VIEW_REPORT": "View Report",
-	"RESET": "Reset",
 	"SUMMARY": "Summary",
 	"TOTAL_EXPENSES": "Total Expenses",
-	"SETTLEMENT": "Settlement",
-	"OWES": "Owes",
+	"VIEW_SETTLEMENT": "Settlement",
 	"DOWNLOAD_REPORT": "Download Report",
 	"BACK": "Back"
 }

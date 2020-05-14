@@ -60,7 +60,11 @@ const ChangeGroupDataModal = (props) => {
 					<Button
 						accessability={true}
 						customUnderlayColor={'#FF5F5F'}
-						onPress={toggleModal}
+						onPress={() => {
+							toggleModal();
+							setGroupName(props.data.name);
+							setGroupDescription(props.data.description);
+						}}
 						style={[styles.button, styles.cancelButton]}
 						text={translations['ChangeGroupDataModal']['CANCEL']} />
 					<Button

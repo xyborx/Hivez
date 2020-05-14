@@ -4,6 +4,7 @@
 	"TIME": "Waktu",
 	"DESCRIPTION": "Deskripsi",
 	"DESCRIPTION_PLACEHOLDER": "Masukkan deskripsi permintaan",
+	"SELECT_PAYEE": "Pilih Penerima Pembayaran",
 	"VIEW_REQUEST_PICTURE": "Lihat gambar",
 	"ADD_REQUEST_PICTURE": "Tambahkan gambar ke permintaan",
 	"EDIT_REQUEST_PICTURE": "Ubah gambar",

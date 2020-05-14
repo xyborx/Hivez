@@ -15,6 +15,7 @@ import GroupDrawerNavigator from './en/Component/Group/GroupDrawerNavigator.tran
 import RecentGroupBill from './en/Component/Group/RecentGroupBill.translation.json';
 
 import ChangeEventDataModal from './en/Component/Event/ChangeEventDataModal.translation.json';
+import ChangePayeeValueModal from './en/Component/Event/ChangePayeeValueModal.translation.json';
 import RecentEventRequest from './en/Component/Event/RecentEventRequest.translation.json';
 import EventDrawerNavigator from './en/Component/Event/EventDrawerNavigator.translation.json';
 
@@ -51,6 +52,8 @@ import EventRequestDetail from './en/Page/Event/EventRequestDetail.translation.j
 import EventSettings from './en/Page/Event/EventSettings.translation.json';
 import FindEvent from './en/Page/Event/FindEvent.translation.json';
 import InviteEventMember from './en/Page/Event/InviteEventMember.translation.json';
+import PaymentSettlements from './en/Page/Event/PaymentSettlements.translation.json';
+import SelectRequestPayee from './en/Page/Event/SelectRequestPayee.json';
 
 import ConfirmDeleteAccount from './en/PopUpConfirmation/ConfirmDeleteAccount.translation.json';
 import ConfirmSignOut from './en/PopUpConfirmation/ConfirmSignOut.translation.json';
@@ -100,6 +103,7 @@ module.exports = {
 	ChangeEventDataModal,
 	ChangeGroupDataModal,
 	ChangePasswordModal,
+	ChangePayeeValueModal,
 	ChangeProfileModal,
 	ConfirmApproveEventRequest,
 	ConfirmApproveGroupBillCreation,
@@ -170,12 +174,14 @@ module.exports = {
 	MyProfile,
 	NotificationList,
 	PasswordValidation,
+	PaymentSettlements,
 	PrivacyPolicy,
 	RecentEventRequest,
 	RecentGroupBill,
 	RecentGroupRequest,
 	RecentTransaction,
 	RequestDescriptionValidation,
+	SelectRequestPayee,
 	SignIn,
 	SignUp,
 	TermsAndConditions,

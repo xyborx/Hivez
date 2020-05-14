@@ -60,7 +60,11 @@ const ChangeEventDataModal = (props) => {
 					<Button
 						accessability={true}
 						customUnderlayColor={'#FF5F5F'}
-						onPress={toggleModal}
+						onPress={() => {
+							toggleModal();
+							setEventName(props.data.name);
+							setEventDescription(props.data.description);
+						}}
 						style={[styles.button, styles.cancelButton]}
 						text={translations['ChangeEventDataModal']['CANCEL']} />
 					<Button

@@ -12,7 +12,7 @@
 	"THIS_LIST_WAITING_YOUR_APPROVAL": "Daftar ini menunggu persetujuanmu",
 	"JOIN_GROUP": "Persetujuan masuk grup",
 	"JOIN_EVENT": "Persetujuan masuk event",
-	"TRANSACTION": "Persetujuan permintaan transaksi",
+	"REQUEST_PAYMENT": "Persetujuan permintaan transaksi",
 	"BILL_PAYMENT": "Persetujuan pembayaran tagihan",
 	"BILL_CREATION": "Persetujuan pembuatan tagihan"
 }

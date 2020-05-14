@@ -9,7 +9,7 @@ export const leftPadArray = (array, length, fill) => {
 export const rupiahFormatting = (value, withRp = true) => {
 	// https://www.malasngoding.com/membuat-format-rupiah-dengan-javascript/
 	
-	var number_string = value.toString().replace(/[^,\d]/g, '').toString(),
+	var number_string = Math.trunc(value).toString().replace(/[^,\d]/g, '').toString(),
 	split = number_string.split(','),
 	sisa = split[0].length % 3,
 	rupiah = split[0].substr(0, sisa),

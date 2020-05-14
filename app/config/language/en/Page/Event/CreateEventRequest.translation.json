@@ -4,6 +4,7 @@
 	"TIME": "Time",
 	"DESCRIPTION": "Description",
 	"DESCRIPTION_PLACEHOLDER": "Insert request description",
+	"SELECT_PAYEE": "Select Payee",
 	"VIEW_REQUEST_PICTURE": "View image",
 	"ADD_REQUEST_PICTURE": "Add image to request",
 	"EDIT_REQUEST_PICTURE": "Edit image",

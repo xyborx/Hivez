@@ -91,8 +91,8 @@ const ChangePasswordModal = (props) => {
 					<Button
 						accessability={saveButtonAccessbility}
 						onPress={() => {
-							toggleModal();
 							props.saveData(currentPassword, newPassword);
+							toggleModal();
 						}}
 						style={styles.button}
 						text={translations['ChangePasswordModal']['SAVE']} />

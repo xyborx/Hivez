@@ -79,7 +79,12 @@ const ChangeProfileModal = (props) => {
 					<Button
 						accessability={true}
 						customUnderlayColor={'#FF5F5F'}
-						onPress={toggleModal}
+						onPress={() => {
+							toggleModal();
+							setFullName(props.data.fullName);
+							setEmail(props.data.email);
+							setUsername(props.data.username);
+						}}
 						style={[styles.button, styles.cancelButton]}
 						text={translations['ChangeProfileModal']['CANCEL']} />
 					<Button

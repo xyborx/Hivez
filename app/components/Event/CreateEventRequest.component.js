@@ -2,6 +2,7 @@ import React from 'react';
 import {Image, Text, ScrollView, View} from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import Button from '../Button/Button.component';
 import ButtonWithConfirmation from '../Button/ButtonWithConfirmation.component';
 import ButtonWithIcon from '../Button/ButtonWithIcon.component';
 import DatePicker from '../Date/DatePicker.component';
@@ -49,6 +50,11 @@ const CreateEventRequest = (props) => {
 							textIcon={'sticky-note'}
 							validateInput={true}
 							value={props.description} />
+						<Button
+							accessability={Number(props.value) > 0}
+							style={styles.selectPayee}
+							onPress={props.selectPayee}
+							text={props.contentText['SELECT_PAYEE']} />
 						<View style={props.image === '' ? styles.noPreview : styles.pictureConfigContainer}>
 							<PreviewPicture
 								closeText={props.contentText['CLOSE']}

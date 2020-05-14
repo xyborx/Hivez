@@ -1,0 +1,16 @@
+{
+	"PAGE_TITLE": "Select Payee",
+	"SEARCH_PLACEHOLDER": "Search event member",
+	"EMPTY_SEARCH_RESULT": "No event member found",
+	"SELECT_ALL": "Select All",
+	"RESET": "Reset",
+	"ADVANCED": "Advanced",
+	"SIMPLE": "Simple",
+	"SELECT": "Select",
+	"LEADER": "Leader",
+	"TREASURER": "Treasurer",
+	"MEMBER": "Member",
+	"YOU": "You",
+	"CANCEL": "Cancel",
+	"SAVE": "Save"
+}

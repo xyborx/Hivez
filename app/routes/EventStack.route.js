@@ -6,6 +6,7 @@ import FindEventPage from '../pages/Event/FindEvent.page';
 import EventDrawer from './EventDrawer.route';
 import EventListPage from '../pages/Event/EventList.page';
 import EventRequestDetailPage from '../pages/Event/EventRequestDetail.page';
+import SelectRequestPayeePage from '../pages/Event/SelectRequestPayee.page';
 
 const EventNavigation = createStackNavigator();
 
@@ -18,6 +19,7 @@ const EventStack = () => {
 			<EventNavigation.Screen component={EventDrawer} name='EventDrawer' />
 			<EventNavigation.Screen component={EventListPage} name='EventList' />
 			<EventNavigation.Screen component={EventRequestDetailPage} name='EventRequestDetail'/>
+			<EventNavigation.Screen component={SelectRequestPayeePage} name='SelectRequestPayee'/>
 		</EventNavigation.Navigator>
 	);
 };

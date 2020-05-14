@@ -4,8 +4,8 @@ import {rupiahFormatting} from '../../utils/helper.utils';
 import styles from './NumberField.component.style';
 
 const NumberField = (props) => {
-	const [displayValue, setDisplayValue] = useState(rupiahFormatting(props.value, false));
-	const [realValue, setRealValue] = useState(props.value);
+	const [displayValue, setDisplayValue] = useState(props.value == 0 ? '' : rupiahFormatting(props.value, false));
+	const [realValue, setRealValue] = useState(props.value.toString());
 
 	const onChangeValue = (value) => {
 		const formattedValue = value.replace(/\s/g, '').replace(/\./g, '');
@@ -14,7 +14,7 @@ const NumberField = (props) => {
 			setRealValue(formattedValue);
 			setDisplayValue(formattedValue);
 		}
-	}
+	};
 
 	const onFocusField = () => {
 		setDisplayValue(realValue);

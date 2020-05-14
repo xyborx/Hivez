@@ -19,7 +19,7 @@ export default StyleSheet.create({
 	},
 	eventImage: {
 		alignSelf: 'center',
-		borderRadius: 160/ 2,
+		borderRadius: 120/ 2,
 		height: 120,
 		marginBottom: theme.MARGIN_DEFAULT,
 		width: 120
@@ -67,6 +67,9 @@ export default StyleSheet.create({
 	},
 	rootContainer: {
 		...rootContainer
+	},
+	selectPayee: {
+		marginBottom: theme.MARGIN_DEFAULT
 	},
 	switch: {
 		margin: theme.MARGIN_WIDE,

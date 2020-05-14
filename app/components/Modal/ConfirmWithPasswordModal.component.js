@@ -51,8 +51,8 @@ const ConfirmWithPasswordModal = (props) => {
 					<Button
 						accessability={saveButtonAccessbility}
 						onPress={() => {
-							toggleModal();
 							props.action(password);
+							toggleModal();
 						}}
 						style={styles.button}
 						text={props.contentText['YES']} />

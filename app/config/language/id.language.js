@@ -54,6 +54,7 @@ import FindEvent from './id/Page/Event/FindEvent.translation.json';
 import InviteEventMember from './id/Page/Event/InviteEventMember.translation.json';
 import PaymentSettlements from './id/Page/Event/PaymentSettlements.translation.json';
 import SelectRequestPayee from './id/Page/Event/SelectRequestPayee.json';
+import ViewRequestPayee from './id/Page/Event/ViewRequestPayee.json';
 
 import ConfirmDeleteAccount from './id/PopUpConfirmation/ConfirmDeleteAccount.translation.json';
 import ConfirmSignOut from './id/PopUpConfirmation/ConfirmSignOut.translation.json';
@@ -185,5 +186,6 @@ module.exports = {
 	SignIn,
 	SignUp,
 	TermsAndConditions,
-	UsernameValidation
+	UsernameValidation,
+	ViewRequestPayee
 };

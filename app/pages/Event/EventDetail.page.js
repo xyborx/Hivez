@@ -32,7 +32,6 @@ const EventDetailPage = ({route, navigation}) => {
 		date: '2020-05-03 01:18:16',
 		approver: 'Diane Nguyen',
 		image: imageDummy[0],
-		type: 'EXPENSE',
 		value: 150000,
 		status: 'ON_PROGRESS'
 	}, {
@@ -41,7 +40,6 @@ const EventDetailPage = ({route, navigation}) => {
 		date: '2020-05-03 00:59:16',
 		approver: 'Judah Mannowdog',
 		image: imageDummy[0],
-		type: 'INCOME',
 		value: 50000,
 		status: 'APPROVED'
 	}, {
@@ -50,7 +48,6 @@ const EventDetailPage = ({route, navigation}) => {
 		date: '2020-05-02 23:59:16',
 		approver: 'Judah Mannowdog',
 		image: imageDummy[2],
-		type: 'EXPENSE',
 		value: 150000,
 		status: 'ON_PROGRESS'
 	}, {
@@ -59,7 +56,6 @@ const EventDetailPage = ({route, navigation}) => {
 		date: '2020-04-29 23:59:16',
 		approver: 'Diane Nguyen',
 		image: imageDummy[2],
-		type: 'INCOME',
 		value: 50000,
 		status: 'DECLINED'
 	}, {
@@ -68,7 +64,6 @@ const EventDetailPage = ({route, navigation}) => {
 		date: '2020-04-12 23:59:16',
 		approver: 'Diane Nguyen',
 		image: imageDummy[3],
-		type: 'INCOME',
 		value: 50000,
 		status: 'ON_PROGRESS'
 	}, {
@@ -77,7 +72,6 @@ const EventDetailPage = ({route, navigation}) => {
 		date: '2020-04-11 23:59:16',
 		approver: 'Judah Mannowdog',
 		image: imageDummy[4],
-		type: 'EXPENSE',
 		value: 150000,
 		status: 'ON_PROGRESS'
 	}, {
@@ -86,7 +80,6 @@ const EventDetailPage = ({route, navigation}) => {
 		date: '2020-04-03 02:59:16',
 		approver: 'Judah Mannowdog',
 		image: imageDummy[5],
-		type: 'INCOME',
 		value: 50000,
 		status: 'DECLINED'
 	}, {
@@ -95,7 +88,6 @@ const EventDetailPage = ({route, navigation}) => {
 		date: '2020-04-02 23:59:16',
 		approver: 'Diane Nguyen',
 		image: imageDummy[4],
-		type: 'EXPENSE',
 		value: 150000,
 		status: 'DECLINED'
 	}, {
@@ -104,7 +96,6 @@ const EventDetailPage = ({route, navigation}) => {
 		date: '2020-04-01 23:59:16',
 		approver: 'Judah Mannowdog',
 		image: imageDummy[3],
-		type: 'INCOME',
 		value: 50000,
 		status: 'DECLINED'
 	}, {
@@ -113,7 +104,6 @@ const EventDetailPage = ({route, navigation}) => {
 		date: '2020-03-30 23:59:16',
 		approver: 'Judah Mannowdog',
 		image: imageDummy[2],
-		type: 'INCOME',
 		value: 50000,
 		status: 'APPROVED'
 	}, {
@@ -122,7 +112,6 @@ const EventDetailPage = ({route, navigation}) => {
 		date: '2020-03-15 23:59:16',
 		approver: 'Diane Nguyen',
 		image: imageDummy[0],
-		type: 'EXPENSE',
 		value: 150000,
 		status: 'ON_PROGRESS'
 	}, {
@@ -131,7 +120,6 @@ const EventDetailPage = ({route, navigation}) => {
 		date: '2020-03-12 02:59:16',
 		approver: 'Diane Nguyen',
 		image: imageDummy[3],
-		type: 'INCOME',
 		value: 50000,
 		status: 'APPROVED'
 	}, {
@@ -140,7 +128,6 @@ const EventDetailPage = ({route, navigation}) => {
 		date: '2020-03-02 23:59:16',
 		approver: 'Judah Mannowdog',
 		image: imageDummy[4],
-		type: 'EXPENSE',
 		value: 150000,
 		status: 'DECLINED'
 	}, {
@@ -149,7 +136,6 @@ const EventDetailPage = ({route, navigation}) => {
 		date: '2020-03-01 23:59:16',
 		approver: 'Judah Mannowdog',
 		image: imageDummy[5],
-		type: 'INCOME',
 		value: 50000,
 		status: 'APPROVED'
 	}, {
@@ -158,7 +144,6 @@ const EventDetailPage = ({route, navigation}) => {
 		date: '2020-02-12 23:59:16',
 		approver: 'Judah Mannowdog',
 		image: imageDummy[0],
-		type: 'INCOME',
 		value: 50000,
 		status: 'APPROVED'
 	}];

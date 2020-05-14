@@ -1,7 +1,8 @@
 import React from 'react';
-import {Image, ScrollView, Text, View} from 'react-native';
+import {Image, ScrollView, Text, TouchableHighlight, View} from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import {rupiahFormatting} from '../../utils/helper.utils';
 import ButtonWithConfirmation from '../Button/ButtonWithConfirmation.component';
 import FloatingBackButton from '../Button/FloatingBackButton.component';
 import PreviewPicture from '../Modal/PreviewPicture.component';
@@ -26,7 +27,7 @@ const ViewWithValue = (props) => {
 };
 
 const EventRequestDetail = (props) => {
-	const {id, eventImage, eventName, value, description, status, requester, requestDate, requestTime, approver, approvalDate, approvalTime, requestImage} = props.requestDetail;
+	const {id, eventImage, eventName, value, description, status, requester, requestDate, requestTime, approver, approvalDate, approvalTime, payee, requestImage} = props.requestDetail;
 	return (
 		<SafeAreaView style={styles.rootContainer}>
 			<ScrollView keyboardShouldPersistTaps={'handled'} showsVerticalScrollIndicator={false} style={styles.pageContainer} contentContainerStyle={styles.pageContentView}>
@@ -40,7 +41,7 @@ const EventRequestDetail = (props) => {
 					<View style={styles.requestDetailContainer}>
 						<View style={styles.requestValueContainer}>
 							<Text style={styles.requestDetailText}>{'IDR'}</Text>
-							<Text style={[styles.requestValueText, styles.expense]}>{value}</Text>
+							<Text style={[styles.requestValueText, styles.expense]}>{rupiahFormatting(value, false)}</Text>
 						</View>
 						<ViewWithValue title={props.contentText['DESCRIPTION']} value={description} />
 						<ViewWithValue title={props.contentText['STATUS']} value={props.contentText[status.replace(' ', '_')]} />
@@ -52,6 +53,9 @@ const EventRequestDetail = (props) => {
 							<ViewWithValue title={status === 'APPROVED' ? props.contentText['APPROVED_DATE'] : props.contentText['REJECTED_DATE']} value={approvalDate} />
 							<ViewWithValue title={status === 'APPROVED' ? props.contentText['APPROVED_TIME'] : props.contentText['REJECTED_TIME']} value={approvalTime} />
 						</View>
+						<TouchableHighlight activeOpacity={1} underlayColor={'rgba(0,0,0,0.05)'} onPress={props.viewPayee}>
+							<ViewWithIcon icon={'eye'} title={props.contentText['VIEW_REQUEST_PAYEE']} />
+						</TouchableHighlight>
 						<PreviewPicture
 							closeText={props.contentText['CLOSE']}
 							touchableType={'highlight'}

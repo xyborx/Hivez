@@ -25,10 +25,10 @@ export default StyleSheet.create({
 	},
 	groupImage: {
 		alignSelf: 'center',
-		borderRadius: 160/ 2,
-		height: 160,
+		borderRadius: 120/ 2,
+		height: 120,
 		marginBottom: theme.MARGIN_WIDE,
-		width: 160
+		width: 120
 	},
 	groupName: {
 		color: theme.COLOR_SOFT_GREY,

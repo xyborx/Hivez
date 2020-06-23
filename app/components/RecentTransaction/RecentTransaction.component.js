@@ -98,9 +98,9 @@ const RecentTransaction = (props) => {
 				</TouchableOpacity>
 				<TouchableOpacity
 					accessibilityRole={'button'}
-					onPress={() => {filterData('DECLINED')}}
-					style={[styles.filterButton, filterType === 'DECLINED' ? styles.filterButtonActive : {}]}>
-					<Text style={[styles.filterText, filterType === 'DECLINED' ? styles.filterTextActive : {}]}>{props.contentText['DECLINED_TRANSACTIONS']}</Text>
+					onPress={() => {filterData('REJECTED')}}
+					style={[styles.filterButton, filterType === 'REJECTED' ? styles.filterButtonActive : {}]}>
+					<Text style={[styles.filterText, filterType === 'REJECTED' ? styles.filterTextActive : {}]}>{props.contentText['REJECTED_TRANSACTIONS']}</Text>
 				</TouchableOpacity>
 			</View>
 			<View style={styles.transactionListContainer}>

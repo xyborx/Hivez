@@ -15,7 +15,8 @@ const ViewWithValue = (props) => {
 };
 
 const GroupBillApproval = (props) => {
-	const {id, groupImage, groupName, value, description, status, creator, creationDate, creationTime, approver, approvalDate, approvalTime} = props.billDetail;
+	const {id, value, description, status, creator, creationDate, creationTime, approver, approvalDate, approvalTime} = props.billDetail;
+	const {image: groupImage, name:groupName} = props.groupDetail;
 	return (
 		<SafeAreaView style={styles.rootContainer}>
 			<ScrollView keyboardShouldPersistTaps={'handled'} showsVerticalScrollIndicator={false} style={styles.pageContainer} contentContainerStyle={styles.pageContentView}>
@@ -36,12 +37,12 @@ const GroupBillApproval = (props) => {
 						<ViewWithValue title={props.contentText['CREATOR']} value={creator} />
 						<ViewWithValue title={props.contentText['CREATION_DATE']} value={creationDate} />
 						<ViewWithValue title={props.contentText['CREATION_TIME']} value={creationTime} />
-						<View style={status === 'ON PROGRESS' ? styles.hidden : {}}>
+						<View style={status === 'ON_PROGRESS' ? styles.hidden : {}}>
 							<ViewWithValue title={status === 'APPROVED' ? props.contentText['APPROVER'] : props.contentText['REJECTER']} value={approver} />
 							<ViewWithValue title={status === 'APPROVED' ? props.contentText['APPROVED_DATE'] : props.contentText['REJECTED_DATE']} value={approvalDate} />
 							<ViewWithValue title={status === 'APPROVED' ? props.contentText['APPROVED_TIME'] : props.contentText['REJECTED_TIME']} value={approvalTime} />
 						</View>
-						<View style={status === 'ON PROGRESS' ? styles.approvalContainer : styles.hidden}>
+						<View style={status === 'ON_PROGRESS' ? styles.approvalContainer : styles.hidden}>
 							<ButtonWithConfirmation
 								accessability={true}
 								confirmText={props.confirmRejectText}

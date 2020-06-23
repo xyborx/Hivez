@@ -13,7 +13,7 @@ import styles from './GroupBillList.component.style';
 
 const BillItem = (props) => {
 	const {id, name, date, value, status, approver} = props.data;
-	const detail = ['APPROVED', 'DECLINED'].includes(status) ? `${props.contentText[status]} ${props.contentText['BY']} ${approver}` :
+	const detail = ['APPROVED', 'REJECTED'].includes(status) ? `${props.contentText[status]} ${props.contentText['BY']} ${approver}` :
 					status === 'ON_PROGRESS' ? props.contentText[status] : props.contentText['NO_PAYMENT'];
 	return (
 		<TouchableHighlight

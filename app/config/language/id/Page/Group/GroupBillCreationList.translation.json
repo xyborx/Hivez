@@ -1,0 +1,13 @@
+{
+	"PAGE_TITLE": "Daftar Pembuatan Tagihan",
+	"NOT_COMPLETED": "Belum Selesai",
+	"COMPLETED": "Sudah Selesai",
+	"APPROVED": "Telah disetujui",
+	"REJECTED": "Telah ditolak",
+	"ON_PROGRESS": "Menunggu persetujuan",
+	"SEARCH_PLACEHOLDER": "Cari tagihan",
+	"DEFAULT_TEXT": "Tidak ada tagihan",
+	"EMPTY_SEARCH_RESULT": "Tagihan tidak ditemukan",
+	"REQUESTED_BY": "Dibuat oleh",
+	"BACK": "Kembali"
+}

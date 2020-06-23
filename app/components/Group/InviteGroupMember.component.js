@@ -8,8 +8,8 @@ import FloatingBurgerButton from '../Button/FloatingBurgerButton.component';
 import SearchField from '../TextField/SearchField.component';
 import styles from './InviteGroupMember.component.style';
 
-const MemberItem = (props) => {
-	const {id, image, name, username} = props.memberData;
+const UserItem = (props) => {
+	const {id, image, name, username} = props.userData;
 	return (
 		<ConfirmModal action={props.action} contentText={props.confirmInviteMemberText}>
 			<View style={styles.memberItemContainer}>
@@ -50,16 +50,16 @@ const InviteGroupMember = (props) => {
 							style={styles.searchField}
 							value={props.searchValue} />
 						<View>
-							{(props.groupMembers.length === 0) ? 
+							{(props.userList.length === 0) ? 
 								<View style={styles.emptyList}>
 									<Text style={styles.emptyListText}>{props.searchValue === '' ? props.contentText['DEFAULT_TEXT'] : props.contentText['EMPTY_SEARCH_RESULT']}</Text>
 								</View>
-							: props.groupMembers.map(item => {
+							: props.userList.map(item => {
 								return(
-									<MemberItem
+									<UserItem
 										{...props}
 										key={item.id}
-										memberData={item}
+										userData={item}
 										action={() => props.inviteGroupMember(item.id)} />
 								);
 							})}

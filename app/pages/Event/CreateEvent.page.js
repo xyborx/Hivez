@@ -3,6 +3,7 @@ import ImagePicker from 'react-native-image-crop-picker';
 import {LocalizationContext} from '../../utils/language.utils';
 import {isEventNameValid} from '../../utils/validator.utils';
 import CreateEvent from '../../components/Event/CreateEvent.component';
+import {post} from '../../utils/api.utils';
 
 const CreateEventPage = ({navigation}) => {
 	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
@@ -12,6 +13,8 @@ const CreateEventPage = ({navigation}) => {
 	const [name, setName] = useState('');
 	const [description, setDescription] = useState('');
 	const [nextButtonAccessbility, setNextButtonAccessbility] = useState(false);
+	
+	const userID = '2b1f6b98-b281-11ea-a278-3ca82aaa2b5b';
 
 	const onChangeName = (name) => {
 		setName(name);
@@ -23,9 +26,8 @@ const CreateEventPage = ({navigation}) => {
 	};
 
 	const changeImage = (image) => {
-		setImage(image.data);
 		ImagePicker.clean().then(() => {
-			alert('Change event picture');
+			setImage(image.data);
 		}).catch(e => {
 			console.log(e);
 		})
@@ -82,13 +84,24 @@ const CreateEventPage = ({navigation}) => {
 		}
 	};
 
-	const createEvent = () => {
-		navigation.navigate('EventDrawer', {
-			screen: 'EventDetail',
-			initial: true,
-			params: {eventID: 'EVENT0001'}
-		});
-		alert('Create event');
+	const createEvent = async () => {
+		try {
+			const body = {
+				'user_id': userID,
+				'event_name': name,
+				'event_description': description,
+				'event_picture': image
+			};
+			const result = await post(`/events`, body);
+			console.log(result);
+			navigation.navigate('EventDrawer', {
+				screen: 'EventDetail',
+				initial: true,
+				params: {eventID: result['output_schema']['event_id']}
+			});
+		} catch(error) {
+			console.log(error.stack);
+		};
 	};
 
 	const goBack = () => {

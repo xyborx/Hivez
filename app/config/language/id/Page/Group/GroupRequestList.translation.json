@@ -1,0 +1,13 @@
+{
+	"PAGE_TITLE": "Persetujuan Permintaan",
+	"NOT_COMPLETED": "Belum Selesai",
+	"COMPLETED": "Sudah Selesai",
+	"APPROVED": "Telah disetujui",
+	"REJECTED": "Telah ditolak",
+	"ON_PROGRESS": "Menunggu persetujuan",
+	"SEARCH_PLACEHOLDER": "Cari permintaan",
+	"DEFAULT_TEXT": "Tidak ada permintaan",
+	"EMPTY_SEARCH_RESULT": "Permintaan tidak ditemukan",
+	"By": "Oleh",
+	"BACK": "Kembali"
+}

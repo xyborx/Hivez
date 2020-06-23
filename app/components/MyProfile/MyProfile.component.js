@@ -91,7 +91,7 @@ const SignIn = (props) => {
 							switchOnChange={props.toggleAllowOthersAddByID}
 							switchValue={props.profileData.allowOthersAddByID}
 							title={props.contentText['ALLOW_OTHERS_ADD_BY_USERNAME']} />
-						<ChangeProfileModal saveData={props.changeProfileData} data={props.profileData} style={styles.profileSectionItem}>
+						<ChangeProfileModal saveData={props.changeProfileData} userID={props.userID} style={styles.profileSectionItem}>
 							<View style={styles.profileSectionItemContainer}>
 								<Text style={styles.profileSectionItemText}>{props.contentText['EDIT_PROFILE']}</Text>
 								<FontAwesome5 name={'pen'} style={styles.profileSectionItemIcon} />

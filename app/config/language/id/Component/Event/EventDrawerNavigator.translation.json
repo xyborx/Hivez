@@ -5,7 +5,9 @@
 	"MEMBER": "Anggota",
 	"DASHBOARD": "Beranda",
 	"CREATE_REQUEST": "Buat Permintaan",
+	"REQUEST_APPROVAL_LIST": "Persetujuan Permintaan",
 	"VIEW_REPORT": "Lihat Laporan",
+	"JOIN_APPROVAL_LIST": "Persetujuan Bergabung",
 	"INVITE_MEMBER": "Undang Anggota",
 	"EVENT_SETTINGS": "Pengaturan Event",
 	"LEAVE_EVENT": "Keluar Event"

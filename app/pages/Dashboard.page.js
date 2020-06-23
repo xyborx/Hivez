@@ -1,14 +1,15 @@
-import React, {useContext, useRef, useState} from 'react';
+import React, {useContext, useRef, useState, useEffect} from 'react';
 import {useScrollToTop} from '@react-navigation/native';
 import {LocalizationContext} from '../utils/language.utils';
+import {UserContext} from '../contexts/user.context';
 import Dashboard from '../components/Dashboard/Dashboard.component';
+import {get, put} from '../utils/api.utils';
 
 const DashboardPage = ({navigation}) => {
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	initializeAppLanguage();
-
 	const scrollRef = useRef(null);
 	useScrollToTop(scrollRef);
+
+	const userID = '2b1f6b98-b281-11ea-a278-3ca82aaa2b5b';
 
 	const imageDummy = [
 		'',
@@ -208,8 +209,8 @@ const DashboardPage = ({navigation}) => {
 	}];
 
 	const transactionListDummy = [{
-		id: 'REQ0001',
-		name: 'Beli peralatan kelas',
+		id: '00ba76de-b387-11ea-aca0-3ca82aaa2b5b',
+		name: 'Beli peralatan kelass',
 		date: '2020-05-05 23:59:16',
 		sourceName: 'Lelaki Fearless',
 		sourceType: 'GROUP_REQUEST',
@@ -286,16 +287,14 @@ const DashboardPage = ({navigation}) => {
 		action: () => viewPendingApprovalList('BILL_CREATION')
 	}];
 
-	const [userName, setUserName] = useState(userNameDummy);
-	const [favouriteItemList, setFavouriteItemList] = useState(favouriteItemListDummy);
-	const [transactionList, setTransactionList] = useState(transactionListDummy);
-	const [pendingApprovalList, setPendingApprovalList] = useState(pendingApprovalListDummy);
-
 	const viewGroupRequestDetail = (requestID) => {
 		navigation.navigate('GroupTab', {
-			screen: 'GroupBillApproval',
+			screen: 'GroupRequestDetail',
 			initial: true,
-			params: {billID: billID}
+			params: {
+				requestID: requestID,
+				groupID: '6800e162-b377-11ea-9f7a-3ca82aaa2b5b'
+			}
 		});
 	};
 
@@ -322,12 +321,70 @@ const DashboardPage = ({navigation}) => {
 		alert(`Navigate to pending list ${type}`);
 	};
 
+	const [profile, setProfileData] = useState({
+		id: userID,
+		image: '',
+		fullName: '',
+	});
+	const [favouriteItemList, setFavouriteItemList] = useState([]);
+	const [transactionList, setTransactionList] = useState(transactionListDummy);
+	const [pendingApprovalList, setPendingApprovalList] = useState(pendingApprovalListDummy);
+
+	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
+	const {initializeUserData} = useContext(UserContext);
+
+	initializeAppLanguage();
+	initializeUserData(userID).then(result => setProfileData(result));
+
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const requests = await get(`/users/${userID}/favourite-lists`);
+				console.log(requests);
+				setFavouriteItemList(requests['output_schema'].map(item => {
+					return {
+						id: item['id'],
+						name: item['name'],
+						description: item['description'],
+						image: item['picture'],
+						type: item['type'],
+						onClick: item['type'] === 'EVENT' ? navigateToEvent : navigateToGroup,
+						action: item['type'] === 'EVENT' ? [{
+							icon: 'request',
+							name: 'REQUEST',
+							action: createEventRequest
+						}, {
+							icon: 'viewReport',
+							name: 'VIEW_REPORT',
+							action: viewEventReport
+						}] : [{
+							icon: 'request',
+							name: 'REQUEST',
+							action: createGroupRequest
+						}, {
+							icon: 'payBill',
+							name: 'PAY_BILL',
+							action: viewGroupBill
+						}, {
+							icon: 'viewReport',
+							name: 'VIEW_REPORT',
+							action: viewGroupReport
+						}]
+					}
+				}));
+			} catch (error) {
+				console.log(error.stack);
+			};
+		};
+		fetchData();
+	}, []);
+
 	return (
 		<Dashboard
 			scrollRef={scrollRef}
 			contentText={translations['Dashboard']}
 			recentTransactionText={translations['RecentTransaction']}
-			userName={userName}
+			userName={profile.fullName}
 			favouriteItemList={favouriteItemList}
 			transactionList={transactionList}
 			pendingApprovalList={pendingApprovalList}

@@ -1,0 +1,6 @@
+{
+	"MODAL_TITLE": "Are you sure you want to reject this user to join this group?",
+	"MODAL_DETAILS": "This user will not be a member of this group.",
+	"NO": "Cancel",
+	"YES": "Reject Join"
+}

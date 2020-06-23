@@ -1,7 +1,8 @@
 import AsyncStorage from '@react-native-community/async-storage';
 
 const keys = {
-	'LANGUAGES': 'language'
+	'LANGUAGES': 'language',
+	'USER_LOGIN_DATA': 'user_login_data'
 };
 
 const set = async (storageKey, data) => {

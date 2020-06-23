@@ -5,7 +5,7 @@
 	"ALL_TRANSACTIONS": "Semua",
 	"APPROVED_TRANSACTIONS": "Telah disetujui",
 	"ON_PROGRESS_TRANSACTIONS": "Menunggu persetujuan",
-	"DECLINED_TRANSACTIONS": "Telah ditolak",
+	"REJECTED_TRANSACTIONS": "Telah ditolak",
 	"NO_RECENT_TRANSACTION": "Tidak ada permintaan terkini",
 	"BY": "oleh"
 }

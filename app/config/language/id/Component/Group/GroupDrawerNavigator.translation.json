@@ -5,8 +5,12 @@
 	"MEMBER": "Anggota",
 	"DASHBOARD": "Beranda",
 	"CREATE_REQUEST": "Buat Permintaan",
-	"VIEW_REPORT": "Lihat Laporan",
+	"REQUEST_APPROVAL_LIST": "Persetujuan Permintaan",
 	"PAY_BILL": "Bayar Tagihan",
+	"BILL_PAYMENT_APPROVAL_LIST": "Persetujuan Pembayaran Tagihan",
+	"BILL_CREATION_APPROVAL_LIST": "Persetujuan Pembuatan Tagihan",
+	"VIEW_REPORT": "Lihat Laporan",
+	"JOIN_APPROVAL_LIST": "Persetujuan Bergabung",
 	"INVITE_MEMBER": "Undang Anggota",
 	"GROUP_SETTINGS": "Pengaturan Grup",
 	"LEAVE_GROUP": "Keluar Grup"

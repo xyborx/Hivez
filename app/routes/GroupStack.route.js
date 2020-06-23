@@ -10,23 +10,26 @@ import GroupBillPaymentPage from '../pages/Group/GroupBillPayment.page';
 import GroupDrawer from './GroupDrawer.route';
 import GroupListPage from '../pages/Group/GroupList.page';
 import GroupRequestDetailPage from '../pages/Group/GroupRequestDetail.page';
+import {GroupProvider} from '../contexts/group.context';
 
 const GroupNavigation = createStackNavigator();
 
 const GroupStack = () => {
 	return (
-		<GroupNavigation.Navigator initialRouteName='GroupList' headerMode='none'>
-			<GroupNavigation.Screen component={CreateGroupPage} name='CreateGroup' />
-			<GroupNavigation.Screen component={CreateGroupBillPage} name='CreateGroupBill'/>
-			<GroupNavigation.Screen component={EditGroupMemberPage} name='EditGroupMember'/>
-			<GroupNavigation.Screen component={FindGroupPage} name='FindGroup' />
-			<GroupNavigation.Screen component={GroupBillApprovalPage} name='GroupBillApproval'/>
-			<GroupNavigation.Screen component={GroupBillDetailPage} name='GroupBillDetail'/>
-			<GroupNavigation.Screen component={GroupBillPaymentPage} name='GroupBillPayment'/>
-			<GroupNavigation.Screen component={GroupDrawer} name='GroupDrawer' />
-			<GroupNavigation.Screen component={GroupListPage} name='GroupList' />
-			<GroupNavigation.Screen component={GroupRequestDetailPage} name='GroupRequestDetail'/>
-		</GroupNavigation.Navigator>
+		<GroupProvider>
+			<GroupNavigation.Navigator initialRouteName='GroupList' headerMode='none'>
+				<GroupNavigation.Screen component={CreateGroupPage} name='CreateGroup' />
+				<GroupNavigation.Screen component={CreateGroupBillPage} name='CreateGroupBill'/>
+				<GroupNavigation.Screen component={EditGroupMemberPage} name='EditGroupMember'/>
+				<GroupNavigation.Screen component={FindGroupPage} name='FindGroup' />
+				<GroupNavigation.Screen component={GroupBillApprovalPage} name='GroupBillApproval'/>
+				<GroupNavigation.Screen component={GroupBillDetailPage} name='GroupBillDetail'/>
+				<GroupNavigation.Screen component={GroupBillPaymentPage} name='GroupBillPayment'/>
+				<GroupNavigation.Screen component={GroupDrawer} name='GroupDrawer' />
+				<GroupNavigation.Screen component={GroupListPage} name='GroupList' />
+				<GroupNavigation.Screen component={GroupRequestDetailPage} name='GroupRequestDetail'/>
+			</GroupNavigation.Navigator>
+		</GroupProvider>
 	);
 };
 

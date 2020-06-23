@@ -5,8 +5,12 @@
 	"MEMBER": "Member",
 	"DASHBOARD": "Dashboard",
 	"CREATE_REQUEST": "Create Request",
-	"VIEW_REPORT": "View Report",
+	"REQUEST_APPROVAL_LIST": "Request Approval",
 	"PAY_BILL": "Pay Bill",
+	"BILL_PAYMENT_APPROVAL_LIST": "Bill Payment Approval",
+	"BILL_CREATION_APPROVAL_LIST": "Bill Creation Approval",
+	"VIEW_REPORT": "View Report",
+	"JOIN_APPROVAL_LIST": "Join Approval",
 	"INVITE_MEMBER": "Invite Member",
 	"GROUP_SETTINGS": "Group settings",
 	"LEAVE_GROUP": "Leave Group"

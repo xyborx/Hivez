@@ -1,0 +1,13 @@
+{
+	"PAGE_TITLE": "Request Approval",
+	"NOT_COMPLETED": "Not Completed",
+	"COMPLETED": "Completed",
+	"APPROVED": "Approved",
+	"REJECTED": "Rejected",
+	"ON_PROGRESS": "Waiting approval",
+	"SEARCH_PLACEHOLDER": "Search request",
+	"DEFAULT_TEXT": "No request",
+	"EMPTY_SEARCH_RESULT": "No request found",
+	"BY": "by",
+	"BACK": "Back"
+}

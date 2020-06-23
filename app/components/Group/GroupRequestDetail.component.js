@@ -26,7 +26,8 @@ const ViewWithValue = (props) => {
 };
 
 const GroupRequestDetail = (props) => {
-	const {id, groupImage, groupName, value, description, type, status, requester, requestDate, requestTime, approver, approvalDate, approvalTime, requestImage} = props.requestDetail;
+	const {id, value, description, type, status, requester, requestDate, requestTime, approver, approvalDate, approvalTime, requestImage} = props.requestDetail;
+	const {image: groupImage, name: groupName} = props.groupDetail;
 	return (
 		<SafeAreaView style={styles.rootContainer}>
 			<ScrollView keyboardShouldPersistTaps={'handled'} showsVerticalScrollIndicator={false} style={styles.pageContainer} contentContainerStyle={styles.pageContentView}>
@@ -44,11 +45,11 @@ const GroupRequestDetail = (props) => {
 						</View>
 						<ViewWithValue title={props.contentText['DESCRIPTION']} value={description} />
 						<ViewWithValue title={props.contentText['TYPE']} value={props.contentText[type]} />
-						<ViewWithValue title={props.contentText['STATUS']} value={props.contentText[status.replace(' ', '_')]} />
+						<ViewWithValue title={props.contentText['STATUS']} value={props.contentText[status]} />
 						<ViewWithValue title={props.contentText['REQUESTER']} value={requester} />
 						<ViewWithValue title={props.contentText['REQUEST_DATE']} value={requestDate} />
 						<ViewWithValue title={props.contentText['REQUEST_TIME']} value={requestTime} />
-						<View style={status === 'ON PROGRESS' ? styles.hidden : {}}>
+						<View style={status === 'ON_PROGRESS' ? styles.hidden : {}}>
 							<ViewWithValue title={status === 'APPROVED' ? props.contentText['APPROVER'] : props.contentText['REJECTER']} value={approver} />
 							<ViewWithValue title={status === 'APPROVED' ? props.contentText['APPROVED_DATE'] : props.contentText['REJECTED_DATE']} value={approvalDate} />
 							<ViewWithValue title={status === 'APPROVED' ? props.contentText['APPROVED_TIME'] : props.contentText['REJECTED_TIME']} value={approvalTime} />
@@ -60,7 +61,7 @@ const GroupRequestDetail = (props) => {
 							style={requestImage === '' ? styles.hidden : styles.viewImageContainer}>
 							<ViewWithIcon icon={'camera'} title={props.contentText['VIEW_REQUEST_PICTURE']} />
 						</PreviewPicture>
-						<View style={status === 'ON PROGRESS' ? styles.approvalContainer : styles.hidden}>
+						<View style={status === 'ON_PROGRESS' ? styles.approvalContainer : styles.hidden}>
 							<ButtonWithConfirmation
 								accessability={true}
 								confirmText={props.confirmRejectText}

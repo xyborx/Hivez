@@ -26,7 +26,8 @@ const ViewWithValue = (props) => {
 };
 
 const GroupBillDetail = (props) => {
-	const {id, groupImage, groupName, value, description, status, payer, paymentDate, paymentTime, approver, approvalDate, approvalTime, billImage} = props.billDetail;
+	const {id, value, description, status, payer, paymentDate, paymentTime, approver, approvalDate, approvalTime, billImage} = props.billDetail;
+	const {image: groupImage, name: groupName} = props.groupDetail;
 	return (
 		<SafeAreaView style={styles.rootContainer}>
 			<ScrollView keyboardShouldPersistTaps={'handled'} showsVerticalScrollIndicator={false} style={styles.pageContainer} contentContainerStyle={styles.pageContentView}>
@@ -47,7 +48,7 @@ const GroupBillDetail = (props) => {
 						<ViewWithValue title={props.contentText['PAYER']} value={payer} />
 						<ViewWithValue title={props.contentText['PAYMENT_DATE']} value={paymentDate} />
 						<ViewWithValue title={props.contentText['PAYMENT_TIME']} value={paymentTime} />
-						<View style={status === 'ON PROGRESS' ? styles.hidden : {}}>
+						<View style={status === 'ON_PROGRESS' ? styles.hidden : {}}>
 							<ViewWithValue title={status === 'APPROVED' ? props.contentText['APPROVER'] : props.contentText['REJECTER']} value={approver} />
 							<ViewWithValue title={status === 'APPROVED' ? props.contentText['APPROVED_DATE'] : props.contentText['REJECTED_DATE']} value={approvalDate} />
 							<ViewWithValue title={status === 'APPROVED' ? props.contentText['APPROVED_TIME'] : props.contentText['REJECTED_TIME']} value={approvalTime} />
@@ -59,7 +60,7 @@ const GroupBillDetail = (props) => {
 							style={billImage === '' ? styles.hidden : styles.viewImageContainer}>
 							<ViewWithIcon icon={'camera'} title={props.contentText['VIEW_REQUEST_PICTURE']} />
 						</PreviewPicture>
-						<View style={status === 'ON PROGRESS' ? styles.approvalContainer : styles.hidden}>
+						<View style={status === 'ON_PROGRESS' ? styles.approvalContainer : styles.hidden}>
 							<ButtonWithConfirmation
 								accessability={true}
 								confirmText={props.confirmRejectText}

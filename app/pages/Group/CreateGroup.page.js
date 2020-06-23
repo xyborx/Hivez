@@ -3,6 +3,7 @@ import ImagePicker from 'react-native-image-crop-picker';
 import {LocalizationContext} from '../../utils/language.utils';
 import {isGroupNameValid} from '../../utils/validator.utils';
 import CreateGroup from '../../components/Group/CreateGroup.component';
+import {post} from '../../utils/api.utils';
 
 const CreateGroupPage = ({navigation}) => {
 	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
@@ -12,6 +13,8 @@ const CreateGroupPage = ({navigation}) => {
 	const [name, setName] = useState('');
 	const [description, setDescription] = useState('');
 	const [nextButtonAccessbility, setNextButtonAccessbility] = useState(false);
+	
+	const userID = '2b1f6b98-b281-11ea-a278-3ca82aaa2b5b';
 
 	const onChangeName = (name) => {
 		setName(name);
@@ -23,9 +26,8 @@ const CreateGroupPage = ({navigation}) => {
 	};
 
 	const changeImage = (image) => {
-		setImage(image.data);
 		ImagePicker.clean().then(() => {
-			alert('Change profile picture');
+			setImage(image.data);
 		}).catch(e => {
 			console.log(e);
 		})
@@ -82,13 +84,24 @@ const CreateGroupPage = ({navigation}) => {
 		}
 	};
 
-	const createGroup = () => {
-		navigation.navigate('GroupDrawer', {
-			screen: 'GroupDetail',
-			initial: true,
-			params: {groupID: 'GROUP0001'}
-		});
-		alert('Create group');
+	const createGroup = async () => {
+		try {
+			const body = {
+				'user_id': userID,
+				'group_name': name,
+				'group_description': description,
+				'group_picture': image
+			};
+			const result = await post(`/groups`, body);
+			console.log(result);
+			navigation.navigate('GroupDrawer', {
+				screen: 'GroupDetail',
+				initial: true,
+				params: {groupID: result['output_schema']['group_id']}
+			});
+		} catch(error) {
+			console.log(error.stack);
+		};
 	};
 
 	const goBack = () => {

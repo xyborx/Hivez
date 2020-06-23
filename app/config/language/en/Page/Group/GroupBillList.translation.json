@@ -3,7 +3,7 @@
 	"NOT_COMPLETED": "Not Completed",
 	"COMPLETED": "Completed",
 	"APPROVED": "Approved",
-	"DECLINED": "Declined",
+	"REJECTED": "Rejected",
 	"ON_PROGRESS": "Waiting approval",
 	"NO_PAYMENT": "No payment history",
 	"SEARCH_PLACEHOLDER": "Search bill",

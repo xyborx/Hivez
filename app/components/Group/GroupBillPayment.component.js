@@ -21,7 +21,8 @@ const ViewWithValue = (props) => {
 };
 
 const GroupBillPayment = (props) => {
-	const {id, groupImage, groupName, value, description} = props.billDetail;
+	const {id, value, description} = props.billDetail;
+	const {image: groupImage, name: groupName} = props.groupDetail;
 	return (
 		<SafeAreaView style={styles.rootContainer}>
 			<ScrollView keyboardShouldPersistTaps={'handled'} showsVerticalScrollIndicator={false} style={styles.pageContainer} contentContainerStyle={styles.pageContentView}>

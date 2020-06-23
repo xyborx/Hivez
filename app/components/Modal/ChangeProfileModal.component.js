@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import {Text, View} from 'react-native';
 import {isEmailValid, isFullNameValid, isUsernameValid} from '../../utils/validator.utils';
 import {LocalizationContext} from '../../utils/language.utils';
@@ -7,6 +7,7 @@ import EmailField from '../TextField/EmailField.component';
 import Modal from './Modal.component';
 import TextField from '../TextField/TextField.component';
 import styles from './ChangeProfileModal.component.style';
+import {get} from '../../utils/api.utils';
 
 const ChangeProfileModal = (props) => {
 	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
@@ -15,9 +16,19 @@ const ChangeProfileModal = (props) => {
 	const [visibility, setVisibility] = useState(false);
 	const toggleModal = () => {setVisibility(!visibility)};
 
-	const [fullName, setFullName] = useState(props.data.fullName);
-	const [email, setEmail] = useState(props.data.email);
-	const [username, setUsername] = useState(props.data.username);
+	const [fullName, setFullName] = useState('');
+	const [email, setEmail] = useState('');
+	const [username, setUsername] = useState('');
+
+	useEffect(() => {
+		const fetchData = async () => {
+			const result = await get(`/users/${props.userID}/profile`);
+			setFullName(result['output_schema']['full_name']);
+			setEmail(result['output_schema']['email']);
+			setUsername(result['output_schema']['user_name']);
+		};
+		fetchData();
+	}, []);
 
 	const [saveButtonAccessbility, setSaveButtonAccessbility] = useState(true);
 
@@ -81,9 +92,9 @@ const ChangeProfileModal = (props) => {
 						customUnderlayColor={'#FF5F5F'}
 						onPress={() => {
 							toggleModal();
-							setFullName(props.data.fullName);
-							setEmail(props.data.email);
-							setUsername(props.data.username);
+							// setFullName(props.data.fullName);
+							// setEmail(props.data.email);
+							// setUsername(props.data.username);
 						}}
 						style={[styles.button, styles.cancelButton]}
 						text={translations['ChangeProfileModal']['CANCEL']} />

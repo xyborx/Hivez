@@ -1,0 +1,13 @@
+{
+	"PAGE_TITLE": "Bill Creation List",
+	"NOT_COMPLETED": "Not Completed",
+	"COMPLETED": "Completed",
+	"APPROVED": "Approved",
+	"REJECTED": "Rejected",
+	"ON_PROGRESS": "Waiting approval",
+	"SEARCH_PLACEHOLDER": "Search bill",
+	"DEFAULT_TEXT": "No bill",
+	"EMPTY_SEARCH_RESULT": "No bill found",
+	"REQUESTED_BY": "Requested by",
+	"BACK": "Back"
+}

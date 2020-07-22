@@ -1,15 +1,14 @@
 import React, {useContext, useState} from 'react';
 import {Text, View} from 'react-native';
 import {isEventNameValid} from '../../utils/validator.utils';
-import {LocalizationContext} from '../../utils/language.utils';
+import {LocalizationContext} from '../../contexts/language.context';
 import Button from '../Button/Button.component';
 import Modal from './Modal.component';
 import TextField from '../TextField/TextField.component';
 import styles from './ChangeEventDataModal.component.style';
 
 const ChangeEventDataModal = (props) => {
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	initializeAppLanguage();
+	const {translations} = useContext(LocalizationContext);
 
 	const [visibility, setVisibility] = useState(false);
 	const toggleModal = () => {setVisibility(!visibility)};

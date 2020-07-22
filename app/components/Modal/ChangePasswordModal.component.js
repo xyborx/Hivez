@@ -1,15 +1,15 @@
 import React, {useContext, useState} from 'react';
 import {Text, View} from 'react-native';
 import {isPasswordValid, isConfirmPasswordMatch, isNewPasswordValid} from '../../utils/validator.utils';
-import {LocalizationContext} from '../../utils/language.utils';
+import {LocalizationContext} from '../../contexts/language.context';
 import Button from '../Button/Button.component';
 import Modal from './Modal.component';
 import PasswordField from '../TextField/PasswordField.component';
 import styles from './ChangePasswordModal.component.style';
 
 const ChangePasswordModal = (props) => {
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	initializeAppLanguage();
+	const {translations} = useContext(LocalizationContext);
+	
 
 	const [currentPassword, setCurrentPassword] = useState('');
 	const [newPassword, setNewPassword] = useState('');

@@ -1,29 +1,40 @@
-import React, {useContext, useState} from 'react';
-import {LocalizationContext} from '../../utils/language.utils';
+import React, {useContext, useState, useCallback} from 'react';
+import {useFocusEffect} from '@react-navigation/native';
 import {GroupContext} from '../../contexts/group.context';
+import {LocalizationContext} from '../../contexts/language.context';
+import {PopUpContext} from '../../contexts/popup.context';
+import {SpinnerContext} from '../../contexts/spinner.context';
+import {UserContext} from '../../contexts/user.context';
 import {isBillDescriptionValid} from '../../utils/validator.utils';
 import CreateGroupBill from '../../components/Group/CreateGroupBill.component';
 import {post} from '../../utils/api.utils';
 
 const CreateGroupBillPage = ({route, navigation}) => {
 	const {groupID} = route.params;
-	
-	const userID = '2b1f6b98-b281-11ea-a278-3ca82aaa2b5b';
 
-	const [groupDetail, setGroupDetail] = useState({
-		id: groupID,
-		image: '',
-		name: ''
-	});
+	const {groupData, initializeGroupData} = useContext(GroupContext);
+	const {appLanguage, translations} = useContext(LocalizationContext);
+	const {showPopUp} = useContext(PopUpContext);
+	const {showSpinner, hideSpinner} = useContext(SpinnerContext);
+	const {userData} = useContext(UserContext);
+
 	const [value, setValue] = useState('');
 	const [description, setDescription] = useState('');
 	const [nextButtonAccessbility, setNextButtonAccessbility] = useState(false);
 
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	const {initializeGroupData} = useContext(GroupContext);
-
-	initializeAppLanguage();
-	initializeGroupData(groupID).then(result => setGroupDetail(result));
+	useFocusEffect(
+		useCallback(() => {
+			const fetchData = async () => {
+				try {
+					await initializeGroupData(groupID, userData.id);
+				} catch (error) {
+					console.log(error.stack);
+				};
+				hideSpinner();
+			};
+			fetchData();
+		}, [])
+	);
 
 	const validateNextButton = (value, description) => {
 		setNextButtonAccessbility(value !== '' && isBillDescriptionValid(description).isValid);
@@ -40,6 +51,7 @@ const CreateGroupBillPage = ({route, navigation}) => {
 	};
 
 	const createGroupBill = async () => {
+		showSpinner();
 		try {
 			const body = {
 				'creator_user_id': userID,
@@ -48,11 +60,15 @@ const CreateGroupBillPage = ({route, navigation}) => {
 				'bill_amount': value
 			};
 			const result = await post(`/bills`, body);
-			console.log(result);
-			navigation.pop();
+			if (result === null) showPopUp('No Connection');
+			else {
+				if (result['error_schema']['error_code'] === 'HIVEZ-000-0000') navigation.navigate('GroupDetail');
+				showPopUp(result['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
+			};
 		} catch(error) {
 			console.log(error.stack);
 		};
+		hideSpinner();
 	};
 
 	const goBack = () => {
@@ -63,7 +79,7 @@ const CreateGroupBillPage = ({route, navigation}) => {
 		<CreateGroupBill
 			contentText={translations['CreateGroupBill']}
 			descriptionText={translations['BillDescriptionValidation']}
-			groupDetail={groupDetail}
+			groupDetail={groupData}
 			value={value}
 			setValue={onChangeValue}
 			description={description}

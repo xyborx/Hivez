@@ -1,20 +1,23 @@
 import React, {useContext, useState} from 'react';
 import ImagePicker from 'react-native-image-crop-picker';
-import {LocalizationContext} from '../../utils/language.utils';
+import {LocalizationContext} from '../../contexts/language.context';
+import {PopUpContext} from '../../contexts/popup.context';
+import {SpinnerContext} from '../../contexts/spinner.context';
+import {UserContext} from '../../contexts/user.context';
 import {isGroupNameValid} from '../../utils/validator.utils';
 import CreateGroup from '../../components/Group/CreateGroup.component';
 import {post} from '../../utils/api.utils';
 
 const CreateGroupPage = ({navigation}) => {
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	initializeAppLanguage();
+	const {appLanguage, translations} = useContext(LocalizationContext);
+	const {showPopUp} = useContext(PopUpContext);
+	const {showSpinner, hideSpinner} = useContext(SpinnerContext);
+	const {userData} = useContext(UserContext);
 	
 	const [image, setImage] = useState('');
 	const [name, setName] = useState('');
 	const [description, setDescription] = useState('');
 	const [nextButtonAccessbility, setNextButtonAccessbility] = useState(false);
-	
-	const userID = '2b1f6b98-b281-11ea-a278-3ca82aaa2b5b';
 
 	const onChangeName = (name) => {
 		setName(name);
@@ -85,23 +88,29 @@ const CreateGroupPage = ({navigation}) => {
 	};
 
 	const createGroup = async () => {
+		showSpinner();
 		try {
 			const body = {
-				'user_id': userID,
+				'user_id': userData.id,
 				'group_name': name,
 				'group_description': description,
 				'group_picture': image
 			};
 			const result = await post(`/groups`, body);
-			console.log(result);
-			navigation.navigate('GroupDrawer', {
-				screen: 'GroupDetail',
-				initial: true,
-				params: {groupID: result['output_schema']['group_id']}
-			});
+			if (result === null) showPopUp('No Connection');
+			else {
+				if (result['error_schema']['error_code'] === 'HIVEZ-000-0000')
+					navigation.navigate('GroupDrawer', {
+						screen: 'GroupDetail',
+						initial: true,
+						params: {groupID: result['output_schema']['group_id']}
+					});
+				showPopUp(result['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
+			};
 		} catch(error) {
 			console.log(error.stack);
 		};
+		hideSpinner();
 	};
 
 	const goBack = () => {

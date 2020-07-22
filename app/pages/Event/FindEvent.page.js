@@ -1,10 +1,10 @@
 import React, {useContext, useState} from 'react';
-import {LocalizationContext} from '../../utils/language.utils';
+import {LocalizationContext} from '../../contexts/language.context';
 import FindEvent from '../../components/Event/FindEvent.component';
 
 const FindEventPage = ({navigation}) => {
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	initializeAppLanguage();
+	const {translations} = useContext(LocalizationContext);
+	
 
 	const imageDummy = [
 		'',

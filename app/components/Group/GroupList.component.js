@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, ScrollView, View} from 'react-native';
+import {Text, ScrollView, View, RefreshControl} from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import FloatingActionButton from '../Button/FloatingActionButton.component';
 import ItemList from '../ItemList/ItemList.component';
@@ -9,7 +9,13 @@ import styles from './GroupList.component.style';
 const GroupList = (props) => {
 	return (
 		<SafeAreaView style={styles.rootContainer}>
-			<ScrollView ref={props.scrollRef} keyboardShouldPersistTaps={'handled'} showsVerticalScrollIndicator={false} style={styles.pageContainer} contentContainerStyle={styles.pageContentView}>
+			<ScrollView
+				ref={props.scrollRef}
+				refreshControl={<RefreshControl refreshing={props.refreshing} onRefresh={props.onRefresh} />}
+				keyboardShouldPersistTaps={'handled'}
+				showsVerticalScrollIndicator={false}
+				style={styles.pageContainer}
+				contentContainerStyle={styles.pageContentView}>
 				<View style={styles.pageContentView}>
 					<Text style={styles.header}>{props.contentText['PAGE_TITLE']}</Text>
 					<View style={styles.groupListContainer}>

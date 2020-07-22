@@ -58,11 +58,11 @@ const EventDetail = (props) => {
 							<ActionButton action={props.navigateToEventSettings} icon={'cogs'} text={props.contentText['EVENT_SETTINGS']} />
 						</View>
 					</View>
-					<RecentTransactionDetail
+					{/* <RecentTransactionDetail
 						contentText={props.recentRequestText}
 						style={styles.transactionList}
 						onItemClick={props.onRequestDetailClick}
-						transactionList={props.requestList} />
+						transactionList={props.requestList} /> */}
 				</View>
 			</ScrollView>
 		</SafeAreaView>

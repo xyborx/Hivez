@@ -23,7 +23,7 @@ export const selectSpecificColumn = (array, column) => {
 };
 
 export const sum = (array, column) => {
-	return Enumerable.from(array).sum(item => item[column]);
+	return Enumerable.from(array).sum(item => Number(item[column]));
 };
 
 export const where = (array, checkItem, checker) => {

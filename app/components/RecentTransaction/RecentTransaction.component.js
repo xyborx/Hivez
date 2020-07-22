@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Image, Text, TouchableHighlight, TouchableOpacity, View} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import {padArray, rupiahFormatting} from '../../utils/helper.utils';
+import {rupiahFormatting} from '../../utils/helper.utils';
 import {getRelativeDate} from '../../utils/date.utils';
 import styles from './RecentTransaction.component.style';
 
@@ -57,13 +57,11 @@ const EmptyItem = () => {
 
 const RecentTransaction = (props) => {
 	const [filterType, setFilterType] = useState('ALL');
-	const [transactionList, setTransactionList] = useState(padArray(props.transactionList, 5, null));
 
 	const filterData = (type) => {
+		props.filterTransaction(type);
 		setFilterType(type);
-		if (type === 'ALL') setTransactionList(padArray(props.transactionList, 5, null));
-		else setTransactionList(padArray(props.transactionList.filter((item) => {return item.status === type}), 5, null));
-	}
+	};
 
 	return (
 		<View style={[styles.container, props.style]}>
@@ -104,8 +102,8 @@ const RecentTransaction = (props) => {
 				</TouchableOpacity>
 			</View>
 			<View style={styles.transactionListContainer}>
-				<Text style={transactionList.length ? styles.hidden : styles.noRecentTransaction}>{props.contentText['NO_RECENT_TRANSACTION']}</Text>
-				{transactionList.slice(0, 5).map((item, index) => {
+				<Text style={props.transactionList.length ? styles.hidden : styles.noRecentTransaction}>{props.contentText['NO_RECENT_TRANSACTION']}</Text>
+				{props.transactionList.slice(0, 5).map((item, index) => {
 					if (item === null) return (<EmptyItem key={index} />);
 					return (
 						<TransactionItem

@@ -1,11 +1,11 @@
 import React, {useContext, useState} from 'react';
 import {isEmailValid} from '../utils/validator.utils';
-import {LocalizationContext} from '../utils/language.utils';
+import {LocalizationContext} from '../contexts/language.context';
 import ForgotPassword from '../components/ForgotPassword/ForgotPassword.component';
 
 const ForgotPasswordPage = ({navigation}) => {
-	const {translations, appLanguage, setAppLanguage, initializeAppLanguage, languageIcons} = useContext(LocalizationContext);
-	initializeAppLanguage();
+	const {translations, appLanguage, setAppLanguage, languageIcons} = useContext(LocalizationContext);
+	
 
 	const [email, setEmail] = useState('');
 	const [secondPhase, setSecondPhase] = useState(false);

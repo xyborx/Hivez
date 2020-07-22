@@ -1,6 +1,9 @@
-import React, {useContext, useState, useEffect} from 'react';
-import {LocalizationContext} from '../../utils/language.utils';
+import React, {useContext, useState, useCallback} from 'react';
+import {useFocusEffect} from '@react-navigation/native';
 import {GroupContext} from '../../contexts/group.context';
+import {LocalizationContext} from '../../contexts/language.context';
+import {SpinnerContext} from '../../contexts/spinner.context';
+import {UserContext} from '../../contexts/user.context';
 import {dateToString, timeToString} from '../../utils/date.utils';
 import {rupiahFormatting} from '../../utils/helper.utils';
 import GroupBillApproval from '../../components/Group/GroupBillApproval.component';
@@ -9,11 +12,11 @@ import {get, put} from '../../utils/api.utils';
 const GroupBillApprovalPage = ({route, navigation}) => {
 	const {billID, groupID} = route.params;
 
-	const [groupDetail, setGroupDetail] = useState({
-		id: groupID,
-		image: '',
-		name: ''
-	});
+	const {groupData, initializeGroupData} = useContext(GroupContext);
+	const {appLanguage, translations} = useContext(LocalizationContext);
+	const {showSpinner, hideSpinner} = useContext(SpinnerContext);
+	const {userData} = useContext(UserContext);
+
 	const [billDetail, setBillDetail] = useState({
 		id: '',
 		value: 0,
@@ -27,55 +30,58 @@ const GroupBillApprovalPage = ({route, navigation}) => {
 		approvalTime: ''
 	});
 
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	const {initializeGroupData} = useContext(GroupContext);
-
-	initializeAppLanguage();
-	initializeGroupData(groupID).then(result => setGroupDetail(result));
-
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const billData = await get(`/bills/${billID}/detail`);
-				console.log(billData);
-				setBillDetail({
-					id: billData['output_schema']['bill_id'],
-					value: rupiahFormatting(billData['output_schema']['bill_amount']),
-					description: billData['output_schema']['bill_description'],
-					status: billData['output_schema']['approval_status'] === '' ? 'ON_PROGRESS' : billData['output_schema']['approval_status'],
-					creator: billData['output_schema']['creator_name'],
-					creationDate: dateToString(billData['output_schema']['creation_date']),
-					creationTime: timeToString(billData['output_schema']['creation_date']),
-					approver: billData['output_schema']['approver_name'],
-					approvalDate: dateToString(billData['output_schema']['approval_date']),
-					approvalTime: timeToString(billData['output_schema']['approval_date']),
-				});
-			} catch (error) {
-				console.log(error.stack);
+	useFocusEffect(
+		useCallback(() => {
+			const fetchData = async () => {
+				try {
+					await initializeGroupData(groupID, userData.id);
+					const billData = await get(`/bills/${billID}/detail`);
+					console.log(billData);
+					setBillDetail({
+						id: billData['output_schema']['bill_id'],
+						value: rupiahFormatting(billData['output_schema']['bill_amount']),
+						description: billData['output_schema']['bill_description'],
+						status: billData['output_schema']['approval_status'] === '' ? 'ON_PROGRESS' : billData['output_schema']['approval_status'],
+						creator: billData['output_schema']['creator_name'],
+						creationDate: dateToString(billData['output_schema']['creation_date']),
+						creationTime: timeToString(billData['output_schema']['creation_date']),
+						approver: billData['output_schema']['approver_name'],
+						approvalDate: dateToString(billData['output_schema']['approval_date']),
+						approvalTime: timeToString(billData['output_schema']['approval_date']),
+					});
+				} catch (error) {
+					console.log(error.stack);
+				};
 			};
-		};
-		fetchData();
-	}, []);
+			fetchData();
+		}, [])
+	);
 
 	const updateBillCreationApproval = async (approvalStatus) => {
+		showSpinner();
 		try {
 			const body = {
-				'approver_user_id': '2b1f6b98-b281-11ea-a278-3ca82aaa2b5b',
+				'approver_user_id': userData.id,
 				'approval_status': approvalStatus
 			};
 			const result = await put(`/bills/${billID}/approval`, body);
-			console.log(result);
+			if (result === null) showPopUp('No Connection');
+			else {
+				if (result['error_schema']['error_code'] === 'HIVEZ-000-0000') navigation.replace('GroupDetail');
+				showPopUp(result['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
+			};
 		} catch(error) {
 			console.log(error.stack);
 		};
+		hideSpinner();
 	};
 
 	const approveGroupBill = () => {
-		updateBillCreationApproval('APPROVED').then(() => navigation.replace('GroupDetail'));
+		updateBillCreationApproval('APPROVED');
 	};
 
 	const rejectGroupBill = () => {
-		updateBillCreationApproval('REJECTED').then(() => navigation.replace('GroupDetail'));
+		updateBillCreationApproval('REJECTED');
 	};
 
 	const goBack = () => {
@@ -85,7 +91,7 @@ const GroupBillApprovalPage = ({route, navigation}) => {
 	return (
 		<GroupBillApproval
 			contentText={translations['GroupBillApproval']}
-			groupDetail={groupDetail}
+			groupDetail={groupData}
 			billDetail={billDetail}
 			confirmApproveText={translations['ConfirmApproveGroupBillCreation']}
 			confirmRejectText={translations['ConfirmRejectGroupBillCreation']}

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, TouchableOpacity, ScrollView, View} from 'react-native';
+import {Text, TouchableOpacity, ScrollView, View, RefreshControl} from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import FavouriteItem from '../FavouriteItem/FavouriteItem.component';
@@ -10,7 +10,13 @@ import styles from './Dashboard.component.style';
 const Dashboard = (props) => {
 	return (
 		<SafeAreaView style={styles.rootContainer}>
-			<ScrollView ref={props.scrollRef} keyboardShouldPersistTaps={'handled'} showsVerticalScrollIndicator={false} style={styles.pageContainer} contentContainerStyle={styles.pageContentView}>
+			<ScrollView
+				refreshControl={<RefreshControl refreshing={props.refreshing} onRefresh={props.onRefresh} />}
+				ref={props.scrollRef}
+				keyboardShouldPersistTaps={'handled'}
+				showsVerticalScrollIndicator={false}
+				style={styles.pageContainer}
+				contentContainerStyle={styles.pageContentView}>
 				<View style={styles.scrollViewWrapper}>
 					<View style={styles.indentSection}>
 						<Text style={styles.header}>
@@ -41,10 +47,11 @@ const Dashboard = (props) => {
 						style={props.pendingApprovalList.length === 0 ? styles.hidden : styles.groupApprovalCard} />
 					<RecentTransaction
 						contentText={props.recentTransactionText}
-						style={styles.recentTransaction}
+						filterTransaction={props.filterTransaction}
 						onEventRequestDetailClick={props.onEventRequestDetailClick}
 						onGroupBillDetailClick={props.onGroupBillDetailClick}
 						onGroupRequestDetailClick={props.onGroupRequestDetailClick}
+						style={styles.recentTransaction}
 						transactionList={props.transactionList} />
 				</View>
 			</ScrollView>

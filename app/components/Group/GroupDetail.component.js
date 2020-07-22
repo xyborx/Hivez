@@ -63,14 +63,12 @@ const GroupDetail = (props) => {
 						contentText={props.recentBillText}
 						style={styles.transactionList}
 						onItemClick={props.onBillDetailClick}
-						sourceID={id}
-						transactionType={'BILL'} />
+						transactions={props.requestList} />
 					<RecentTransactionDetail
 						contentText={props.recentRequestText}
 						style={styles.transactionList}
 						onItemClick={props.onRequestDetailClick}
-						sourceID={id}
-						transactionType={'REQUEST'} />
+						transactions={props.billList} />
 				</View>
 			</ScrollView>
 		</SafeAreaView>

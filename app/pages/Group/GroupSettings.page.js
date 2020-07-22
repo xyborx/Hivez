@@ -1,6 +1,9 @@
-import React, {useContext, useState, useEffect} from 'react';
-import {LocalizationContext} from '../../utils/language.utils';
+import React, {useContext, useState, useCallback} from 'react';
+import {useFocusEffect} from '@react-navigation/native';
 import {GroupContext} from '../../contexts/group.context';
+import {LocalizationContext} from '../../contexts/language.context';
+import {SpinnerContext} from '../../contexts/spinner.context';
+import {UserContext} from '../../contexts/user.context';
 import ImagePicker from 'react-native-image-crop-picker';
 import GroupSettings from '../../components/Group/GroupSettings.component';
 import {get, put, del} from '../../utils/api.utils';
@@ -8,24 +11,18 @@ import {get, put, del} from '../../utils/api.utils';
 const GroupSettingsPage = ({route, navigation}) => {
 	const {groupID} = route.params;
 
-	const [groupDetail, setGroupDetail] = useState({
-		id: groupID,
-		image: '',
-		name: '',
-		description: '',
-		allowSearchByName: false
-	});
+	const {groupData, initializeGroupData} = useContext(GroupContext);
+	const {appLanguage, translations} = useContext(LocalizationContext);
+	const {showSpinner, hideSpinner} = useContext(SpinnerContext);
+	const {userData} = useContext(UserContext);
+
 	const [groupMembers, setGroupMembers] = useState([]);
 
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	const {initializeGroupData, setGroupData} = useContext(GroupContext);
-
-	initializeAppLanguage();
-	initializeGroupData(groupID).then(result => setGroupDetail(result));
-
-	useEffect(() => {
+	useFocusEffect(useCallback(() => {
 		const fetchData = async () => {
+			showSpinner();
 			try {
+				await initializeGroupData(groupID, userData.id);
 				const members = await get(`/groups/${groupID}/members`);
 				setGroupMembers(members['output_schema'].map(item => {
 					return {
@@ -40,9 +37,10 @@ const GroupSettingsPage = ({route, navigation}) => {
 			} catch (error) {
 				console.log(error.stack);
 			};
+			hideSpinner();
 		};
 		fetchData();
-	}, []);
+	}, []));
 
 	const updateGroupData = (updatedGroupData) => {
 		setGroupDetail(updatedGroupData);
@@ -50,54 +48,73 @@ const GroupSettingsPage = ({route, navigation}) => {
 	};
 
 	const changeGroupData = async (groupName, groupDescription) => {
+		showSpinner();
 		try {
 			const body = {
 				'group_name': groupName,
 				'group_description': groupDescription
 			};
 			const result = await put(`/groups/${groupID}/detail`, body);
-			console.log(result);
-			updateGroupData({
-				...groupDetail,
-				name: groupName,
-				description: groupDescription
-			});
+			if (result === null) showPopUp('No Connection');
+			else {
+				if (result['error_schema']['error_code'] === 'HIVEZ-000-0000')
+					updateGroupData({
+						...groupDetail,
+						name: groupName,
+						description: groupDescription
+					});
+				showPopUp(result['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
+			}
 		} catch(error) {
 			console.log(error.stack);
 		};
+		hideSpinner();
 	};
 
 	const changeGroupPicture = async (image) => {
+		showSpinner();
 		try {
 			const body = {
 				'group_picture': image.data
 			};
 			const result = await put(`/groups/${groupID}/picture`, body);
-			console.log(result);
-			await ImagePicker.clean();
-			updateGroupData({
-				...groupDetail,
-				image: image.data
-			});
+			if (result === null) showPopUp('No Connection');
+			else {
+				if (result['error_schema']['error_code'] === 'HIVEZ-000-0000') {
+					await ImagePicker.clean();
+					updateGroupData({
+						...groupDetail,
+						image: image.data
+					});
+				}
+				showPopUp(result['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
+			}
 		} catch(error) {
 			console.log(error.stack);
 		};
+		hideSpinner();
 	};
 
 	const deleteProfilePicture = async () => {
+		showSpinner();
 		try {
 			const body = {
 				'group_picture': ''
 			};
 			const result = await put(`/groups/${groupID}/picture`, body);
-			console.log(result);
-			updateGroupData({
-				...groupDetail,
-				image: ''
-			});
+			if (result === null) showPopUp('No Connection');
+			else {
+				if (result['error_schema']['error_code'] === 'HIVEZ-000-0000')
+					updateGroupData({
+						...groupDetail,
+						image: ''
+					});
+				showPopUp(result['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
+			}
 		} catch(error) {
 			console.log(error.stack);
 		};
+		hideSpinner();
 	};
 
 	const pickerOption = {
@@ -148,20 +165,26 @@ const GroupSettingsPage = ({route, navigation}) => {
 	};
 
 	const toggleAllowSearchByName = async () => {
+		showSpinner();
 		try {
 			const currentState = groupDetail.allowSearchByName;
-			updateGroupData({
-				...groupDetail,
-				allowSearchByName: !currentState
-			});
 			const body = {
 				'is_searchable': currentState ? 'N' : 'Y'
 			};
 			const result = await put(`/groups/${groupID}/searchable`, body);
-			console.log(result);
+			if (result === null) showPopUp('No Connection');
+			else {
+				if (result['error_schema']['error_code'] === 'HIVEZ-000-0000')
+					updateGroupData({
+						...groupDetail,
+						allowSearchByName: !currentState
+					});
+				showPopUp(result['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
+			}
 		} catch(error) {
 			console.log(error.stack);
 		};
+		hideSpinner();
 	};
 
 	const goBack = () => {
@@ -201,7 +224,7 @@ const GroupSettingsPage = ({route, navigation}) => {
 			confirmLeaveGroupText={translations['ConfirmLeaveGroup']}
 			confirmDeleteGroupText={translations['ConfirmDeleteGroup']}
 			dropdownChangePictureText={translations['DropdownChangePicture']}
-			groupData={groupDetail}
+			groupData={groupData}
 			groupMembers={groupMembers}
 			onChangeGroupPictureDropdown={onChangeGroupPictureDropdown}
 			toggleAllowSearchByName={toggleAllowSearchByName}

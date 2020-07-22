@@ -1,14 +1,14 @@
 import React, {useContext, useState} from 'react';
 import {Text, View} from 'react-native';
-import {LocalizationContext} from '../../utils/language.utils';
+import {LocalizationContext} from '../../contexts/language.context';
 import Button from '../Button/Button.component';
 import Modal from './Modal.component';
 import NumberField from '../TextField/NumberField.component';
 import styles from './ChangePayeeValueModal.component.style';
 
 const ChangePayeeValueModal = (props) => {
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	initializeAppLanguage();
+	const {translations} = useContext(LocalizationContext);
+	
 
 	const [visibility, setVisibility] = useState(false);
 	const [value, setValue] = useState(Number(props.value) > 0 ? Number(props.value) : '');

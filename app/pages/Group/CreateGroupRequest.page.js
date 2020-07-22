@@ -1,7 +1,11 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useContext, useState, useCallback} from 'react';
+import {useFocusEffect} from '@react-navigation/native';
 import ImagePicker from 'react-native-image-crop-picker';
-import {LocalizationContext} from '../../utils/language.utils';
 import {GroupContext} from '../../contexts/group.context';
+import {LocalizationContext} from '../../contexts/language.context';
+import {PopUpContext} from '../../contexts/popup.context';
+import {SpinnerContext} from '../../contexts/spinner.context';
+import {UserContext} from '../../contexts/user.context';
 import {createDate, currentDate} from '../../utils/date.utils';
 import {isRequestDescriptionValid} from '../../utils/validator.utils';
 import CreateGroupRequest from '../../components/Group/CreateGroupRequest.component';
@@ -9,14 +13,13 @@ import {post} from '../../utils/api.utils';
 
 const CreateGroupRequestPage = ({route, navigation}) => {
 	const {groupID} = route.params;
-	
-	const userID = '2b1f6b98-b281-11ea-a278-3ca82aaa2b5b';
 
-	const [groupDetail, setGroupDetail] = useState({
-		id: groupID,
-		image: '',
-		name: ''
-	});
+	const {groupData, initializeGroupData} = useContext(GroupContext);
+	const {appLanguage, translations} = useContext(LocalizationContext);
+	const {showPopUp} = useContext(PopUpContext);
+	const {showSpinner, hideSpinner} = useContext(SpinnerContext);
+	const {userData} = useContext(UserContext);
+
 	const [type, setType] = useState('EXPENSE');
 	const [value, setValue] = useState('');
 	const [date, setDate] = useState(currentDate);
@@ -25,11 +28,19 @@ const CreateGroupRequestPage = ({route, navigation}) => {
 	const [image, setImage] = useState('');
 	const [nextButtonAccessbility, setNextButtonAccessbility] = useState(false);
 
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	const {initializeGroupData} = useContext(GroupContext);
-
-	initializeAppLanguage();
-	initializeGroupData(groupID).then(result => setGroupDetail(result));
+	useFocusEffect(
+		useCallback(() => {
+			const fetchData = async () => {
+				try {
+					await initializeGroupData(groupID, userData.id);
+				} catch (error) {
+					console.log(error.stack);
+				};
+				hideSpinner();
+			};
+			fetchData();
+		}, [])
+	);
 
 	const validateNextButton = (value, date, time, description) => {
 		setNextButtonAccessbility(value !== '' && date !== '' && time != '' && isRequestDescriptionValid(description).isValid);
@@ -115,9 +126,10 @@ const CreateGroupRequestPage = ({route, navigation}) => {
 	};
 
 	const createGroupRequest = async () => {
+		showSpinner();
 		try {
 			const body = {
-				'requester_user_id': userID,
+				'requester_user_id': userData.id,
 				'source_id': groupID,
 				'source_type': 'GROUP',
 				'request_description': description,
@@ -127,12 +139,15 @@ const CreateGroupRequestPage = ({route, navigation}) => {
 				'request_date': `${createDate(date).format('YYYY-MM-DD')} ${createDate(time).format('HH:mm:ss.SSSZ')}`
 			};
 			const result = await post(`/requests`, body);
-			console.log(result);
-			alert('Success');
-			navigation.navigate('GroupDetail');
+			if (result === null) showPopUp('No Connection');
+			else {
+				if (result['error_schema']['error_code'] === 'HIVEZ-000-0000') navigation.navigate('GroupDetail');
+				showPopUp(result['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
+			};
 		} catch(error) {
 			console.log(error.stack);
 		};
+		hideSpinner();
 	};
 
 	const openDrawer = () => {
@@ -147,7 +162,7 @@ const CreateGroupRequestPage = ({route, navigation}) => {
 		<CreateGroupRequest
 			contentText={translations['CreateGroupRequest']}
 			descriptionText={translations['RequestDescriptionValidation']}
-			groupDetail={groupDetail}
+			groupDetail={groupData}
 			type={type}
 			setType={onChangeType}
 			value={value}

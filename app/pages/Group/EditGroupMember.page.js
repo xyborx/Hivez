@@ -1,48 +1,51 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useContext, useCallback} from 'react';
+import {useFocusEffect} from '@react-navigation/native';
 import EditGroupMember from '../../components/Group/EditGroupMember.component';
-import {LocalizationContext} from '../../utils/language.utils';
 import {GroupContext} from '../../contexts/group.context';
+import {LocalizationContext} from '../../contexts/language.context';
+import {PopUpContext} from '../../contexts/popup.context';
+import {SpinnerContext} from '../../contexts/spinner.context';
+import {UserContext} from '../../contexts/user.context';
 import {get, put, del} from '../../utils/api.utils';
 
 const EditGroupMemberPage = ({route, navigation}) => {
 	const {groupID} = route.params;
 
-	const [groupDetail, setGroupDetail] = useState({
-		id: groupID,
-		image: '',
-		name: ''
-	});
+	const {groupData, initializeGroupData} = useContext(GroupContext);
+	const {appLanguage, translations} = useContext(LocalizationContext);
+	const {showPopUp} = useContext(PopUpContext);
+	const {showSpinner, hideSpinner} = useContext(SpinnerContext);
+	const {userData} = useContext(UserContext);
+
 	const [groupMembers, setGroupMembers] = useState([]);
 	const [displayedGroupMembers, setDisplayedGroupMembers] = useState([]);
 	const [searchValue, setSearchValue] = useState('');
 
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	const {initializeGroupData} = useContext(GroupContext);
-	initializeAppLanguage();
-	initializeGroupData(groupID).then(result => setGroupDetail(result));
-
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const members = await get(`/groups/${groupID}/members`);
-				const memberList = members['output_schema'].map(item => {
-					return {
-						id: item['user_id'],
-						image: item['user_picture'],
-						joinDate: item['join_date'],
-						name: item['full_name'],
-						role: item['role'],
-						username: item['user_name']
-					}
-				});
-				setGroupMembers(memberList);
-				setDisplayedGroupMembers(memberList);
-			} catch (error) {
-				console.log(error.stack);
+	useFocusEffect(
+		useCallback(() => {
+			const fetchData = async () => {
+				try {
+					await initializeGroupData(groupID, userData.id);
+					const members = await get(`/groups/${groupID}/members`);
+					const memberList = members['output_schema'].map(item => {
+						return {
+							id: item['user_id'],
+							image: item['user_picture'],
+							joinDate: item['join_date'],
+							name: item['full_name'],
+							role: item['role'],
+							username: item['user_name']
+						}
+					});
+					setGroupMembers(memberList);
+					setDisplayedGroupMembers(memberList);
+				} catch (error) {
+					console.log(error.stack);
+				};
 			};
-		};
-		fetchData();
-	}, []);
+			fetchData();
+		}, [])
+	);
 
 	const onChangeSearch = (searchQuery) => {
 		setSearchValue(searchQuery);
@@ -57,32 +60,46 @@ const EditGroupMemberPage = ({route, navigation}) => {
 	};
 
 	const changeUserRole = async (userID, role) => {
+		showSpinner();
 		try {
 			const body = {
 				'role': role
 			};
 			const result = await put(`/groups/${groupID}/members/${userID}/role`, body);
-			console.log(result);
-			let currentGroupMember = groupMembers;
-			currentGroupMember[groupMembers.findIndex(member => member.id === userID)].role = role
-			setGroupMembers(currentGroupMember);
-			setDisplayedGroupMembers(currentGroupMember.filter((item) => {
-				return item.name.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0
-			}));
+			if (result === null) showPopUp('No Connection');
+			else {
+				if (result['error_schema']['error_code'] === 'HIVEZ-000-0000') {
+					let currentGroupMember = groupMembers;
+					currentGroupMember[groupMembers.findIndex(member => member.id === userID)].role = role
+					setGroupMembers(currentGroupMember);
+					setDisplayedGroupMembers(currentGroupMember.filter((item) => {
+						return item.name.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0
+					}));
+				}
+				showPopUp(result['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
+			};
 		} catch(error) {
 			console.log(error.stack);
 		};
+		hideSpinner();
 	};
 
 	const removeUser = async (userID) => {
+		showSpinner();
 		try {
 			const result = await del(`/groups/${groupID}/members/${userID}`);
-			console.log(result);
-			setGroupMembers(groupMembers.filter(member => member.id !== userID));
-			setDisplayedGroupMembers(displayedGroupMembers.filter(member => member.id !== userID));
+			if (result === null) showPopUp('No Connection');
+			else {
+				if (result['error_schema']['error_code'] === 'HIVEZ-000-0000') {
+					setGroupMembers(groupMembers.filter(member => member.id !== userID));
+					setDisplayedGroupMembers(displayedGroupMembers.filter(member => member.id !== userID));
+				}
+				showPopUp(result['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
+			};
 		} catch(error) {
 			console.log(error.stack);
 		};
+		hideSpinner();
 	};
 
 	return (
@@ -91,7 +108,7 @@ const EditGroupMemberPage = ({route, navigation}) => {
 			confirmRemoveText={translations['ConfirmRemoveGroupMember']}
 			dropdownChangeRoleText={translations['DropdownChangeRole']}
 			confirmChangeRoleText={translations['ConfirmChangeRoleGroupMember']}
-			groupData={groupDetail}
+			groupData={groupData}
 			groupMembers={displayedGroupMembers}
 			searchValue={searchValue}
 			onChangeSearch={onChangeSearch}

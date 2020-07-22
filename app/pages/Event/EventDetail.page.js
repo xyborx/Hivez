@@ -1,12 +1,12 @@
 import React, {useContext, useState, useEffect} from 'react';
-import {LocalizationContext} from '../../utils/language.utils';
+import {LocalizationContext} from '../../contexts/language.context';
 import EventDetail from '../../components/Event/EventDetail.component';
 import {get} from '../../utils/api.utils';
 
 const EventDetailPage = ({route, navigation}) => {
 	const {eventID} = route.params;
 
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
+	const {translations} = useContext(LocalizationContext);
 
 	const [eventDetail, setEventDetail] = useState({
 		id: eventID,

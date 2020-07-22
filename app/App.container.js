@@ -1,15 +1,37 @@
-import React, {Component} from 'react';
+import React, {useContext, useEffect} from 'react';
 import Router from './routes';
-import {UserProvider} from './contexts/user.context';
+import SplashScreen from 'react-native-splash-screen';
+import Spinner from 'react-native-loading-spinner-overlay';
+import {LocalizationContext} from './contexts/language.context';
+import {SpinnerContext} from './contexts/spinner.context';
+import {UserContext} from './contexts/user.context';
+import MessageModal from './components/Modal/MessageModal.component';
 
-class App extends Component {
-	render() {
-		return (
-			<UserProvider>
-				<Router />
-			</UserProvider>
-		);
-	}
-}
+export default function App() {
+	const {initializeAppLanguage} = useContext(LocalizationContext);
+	const {initializeUserData} = useContext(UserContext);
+	const {spinnerState} = useContext(SpinnerContext);
+	
+	useEffect(() => {
+		// initializeAppLanguage();
+		// initializeUserData();
+		// SplashScreen.hide();
+		const initialize = async () => {
+			initializeAppLanguage();
+			await initializeUserData();
+			SplashScreen.hide();
+		};
+		initialize();
+	}, []);
 
-export default App;
+	return (
+		<Router>
+			<Spinner
+				animation={'fade'}
+				color={'#FFC60B'}
+				overlayColor={'rgba(0,0,0,0.8)'}
+				visible={spinnerState} />
+			<MessageModal />
+		</Router>
+	);
+};

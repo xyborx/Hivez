@@ -1,13 +1,13 @@
 import React, {useContext, useState} from 'react';
 import ImagePicker from 'react-native-image-crop-picker';
-import {LocalizationContext} from '../../utils/language.utils';
+import {LocalizationContext} from '../../contexts/language.context';
 import {isEventNameValid} from '../../utils/validator.utils';
 import CreateEvent from '../../components/Event/CreateEvent.component';
 import {post} from '../../utils/api.utils';
 
 const CreateEventPage = ({navigation}) => {
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	initializeAppLanguage();
+	const {translations} = useContext(LocalizationContext);
+	
 	
 	const [image, setImage] = useState('');
 	const [name, setName] = useState('');

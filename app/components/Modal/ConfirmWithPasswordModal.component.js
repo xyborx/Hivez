@@ -1,14 +1,14 @@
 import React, {useContext, useState} from 'react';
 import {Text, View} from 'react-native';
-import {LocalizationContext} from '../../utils/language.utils';
+import {LocalizationContext} from '../../contexts/language.context';
 import Button from '../Button/Button.component';
 import Modal from './Modal.component';
 import PasswordField from '../TextField/PasswordField.component';
 import styles from './ConfirmWithPasswordModal.component.style';
 
 const ConfirmWithPasswordModal = (props) => {
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	initializeAppLanguage();
+	const {translations} = useContext(LocalizationContext);
+	
 
 	const [password, setPassword] = useState('');
 

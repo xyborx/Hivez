@@ -1,5 +1,5 @@
 import React, {useContext, useState, useEffect} from 'react';
-import {LocalizationContext} from '../../utils/language.utils';
+import {LocalizationContext} from '../../contexts/language.context';
 import ImagePicker from 'react-native-image-crop-picker';
 import EventSettings from '../../components/Event/EventSettings.component';
 import {get, put, del} from '../../utils/api.utils';
@@ -7,8 +7,8 @@ import {get, put, del} from '../../utils/api.utils';
 const EventSettingsPage = ({route, navigation}) => {
 	const {eventID} = route.params;
 
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	initializeAppLanguage();
+	const {translations} = useContext(LocalizationContext);
+	
 
 	const [eventData, setEventData] = useState({
 		id: eventID,

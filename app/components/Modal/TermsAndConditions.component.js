@@ -1,12 +1,12 @@
 import React, {useContext, useState} from 'react';
 import {Text, View} from 'react-native';
-import {LocalizationContext} from '../../utils/language.utils';
+import {LocalizationContext} from '../../contexts/language.context';
 import Modal from './Modal.component';
 import styles from './TermsAndConditions.component.style';
 
 const TermsAndConditionsModal = (props) => {
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	initializeAppLanguage();
+	const {translations} = useContext(LocalizationContext);
+	
 
 	const [visibility, setVisibility] = useState(false);
 	const toggleModal = () => {setVisibility(!visibility)};

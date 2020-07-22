@@ -23,6 +23,14 @@ const get = async (storageKey) => {
 	}
 };
 
+const remove = async (storageKey) => {
+	try {
+		await AsyncStorage.removeItem(storageKey);
+	} catch (e) {
+		console.log(e);
+	}
+};
+
 const clear = async () => {
 	try {
 		for (var key in keys) {
@@ -39,5 +47,6 @@ module.exports = {
 	keys,
 	set,
 	get,
+	remove,
 	clear
 };

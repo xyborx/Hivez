@@ -1,13 +1,13 @@
 import React, {useContext, useState} from 'react';
 import {Modal, ScrollView, TouchableHighlight, TouchableOpacity, View} from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
-import {LocalizationContext} from '../../utils/language.utils';
+import {LocalizationContext} from '../../contexts/language.context';
 import Button from '../Button/Button.component';
 import styles from './Modal.component.style';
 
 const BasicModal = (props) => {
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	initializeAppLanguage();
+	const {translations} = useContext(LocalizationContext);
+	
 	return (
 		<View>
 			{props.touchableType === 'highlight' ? (

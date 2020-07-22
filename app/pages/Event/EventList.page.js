@@ -1,12 +1,12 @@
 import React, {useContext, useRef, useState, useEffect} from 'react';
 import {useScrollToTop} from '@react-navigation/native';
-import {LocalizationContext} from '../../utils/language.utils';
+import {LocalizationContext} from '../../contexts/language.context';
 import EventList from '../../components/Event/EventList.component';
 import {get} from '../../utils/api.utils';
 
 const EventListPage = ({navigation}) => {
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	initializeAppLanguage();
+	const {translations} = useContext(LocalizationContext);
+	
 
 	const scrollRef = useRef(null);
 	useScrollToTop(scrollRef);

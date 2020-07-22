@@ -1,23 +1,29 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useContext, useState, useCallback} from 'react';
+import {useFocusEffect} from '@react-navigation/native';
 import {PermissionsAndroid} from 'react-native';
-import {LocalizationContext} from '../../utils/language.utils';
 import {GroupContext} from '../../contexts/group.context';
+import {LocalizationContext} from '../../contexts/language.context';
+import {SpinnerContext} from '../../contexts/spinner.context';
+import {UserContext} from '../../contexts/user.context';
 import {createDate, currentDate} from '../../utils/date.utils';
 import {groupByDay, orderByDate, sum, where} from '../../utils/query.utils';
+import {rupiahFormatting} from '../../utils/helper.utils';
 import GroupReport from '../../components/Group/GroupReport.component';
 import RNHTMLtoPDF from 'react-native-html-to-pdf';
+// import RNFetchBlob from 'rn-fetch-blob';
+import Share from "react-native-share";
 import {get} from '../../utils/api.utils';
 
 const GroupReportPage = ({route, navigation}) => {
 	const {groupID} = route.params;
+	console.log(`group report received from dashboard: ${groupID}`)
 
-	const [groupDetail, setGroupDetail] = useState({
-		id: groupID,
-		image: '',
-		name: '',
-		description: '',
-		allowSearchByName: false
-	});
+	const {groupData, initializeGroupData} = useContext(GroupContext);
+	console.log(`current in groupData: ${groupData.id}`)
+	const {appLanguage, translations} = useContext(LocalizationContext);
+	const {showSpinner, hideSpinner} = useContext(SpinnerContext);
+	const {userData} = useContext(UserContext);
+
 	const [reportDetail, setReportDetail] = useState({
 		openingBalance: 0,
 		inflow: 0,
@@ -29,11 +35,20 @@ const GroupReportPage = ({route, navigation}) => {
 	const [endDate, setEndDate] = useState(currentDate);
 	const [showReport, setShowReport] = useState(false);
 
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	const {initializeGroupData} = useContext(GroupContext);
-
-	initializeAppLanguage();
-	initializeGroupData(groupID).then(result => setGroupDetail(result));
+	useFocusEffect(
+		useCallback(() => {
+			const fetchData = async () => {
+				showSpinner();
+				try {
+					await initializeGroupData(groupID, userData.id);
+				} catch (error) {
+					console.log(error.stack);
+				};
+				hideSpinner();
+			};
+			fetchData();
+		}, [groupID])
+	);
 
 	const transactionListFormatter = (transactionList) => {
 		return groupByDay(orderByDate(transactionList, 'date'), 'date').map(item => {
@@ -65,10 +80,10 @@ const GroupReportPage = ({route, navigation}) => {
 		try {
 			const transactions = await get(`groups/${groupID}/report?start-date=${createDate(startDate).format('YYYY-MM-DD')}&end-date=${createDate(endDate).format('YYYY-MM-DD')}`);
 			setReportDetail({
-				openingBalance: transactions['output_schema']['report_detail']['opening_balance'],
-				inflow: transactions['output_schema']['report_detail']['inflow'],
-				outflow: transactions['output_schema']['report_detail']['outflow'],
-				endingBalance: transactions['output_schema']['report_detail']['ending_balance']
+				openingBalance: transactions['output_schema']['opening_balance'],
+				inflow: transactions['output_schema']['inflow'],
+				outflow: transactions['output_schema']['outflow'],
+				endingBalance: transactions['output_schema']['ending_balance']
 			});
 			setTransactionList(
 				transactionListFormatter(
@@ -81,7 +96,8 @@ const GroupReportPage = ({route, navigation}) => {
 							image: transaction['requester_picture'],
 							type: transaction['type'],
 							value: transaction['amount'],
-							source: transaction['source']
+							source: transaction['source'],
+							approver: ''
 						}
 					})
 				)
@@ -92,17 +108,65 @@ const GroupReportPage = ({route, navigation}) => {
 		}
 	};
 
-	// TODO: Add logic
 	const downloadReport = async () => {
 		const isGranted = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE);
-		if (isGranted) {	
+		if (isGranted) {
+			const style =
+			`<style>
+				table, th, td {border: 1px solid black;}
+			</style>`;
+
+			const header =
+			`<h1>Group Report ${groupData.name}</h1>
+			<p>Periode</p>
+			<p>${createDate(startDate).format('DD-MM-YYYY')} - ${createDate(endDate).format('DD-MM-YYYY')}<p>`;
+
+			const table =
+			`<table style='width:100%'>
+				<tr>
+					<th>Tanggal</th>
+					<th>Deskripsi</th>
+					<th>Pemasukan</th>
+					<th>Pengeluaran</th>
+					<th>Pengaju</th>
+					<th>Penyetuju</th>
+				<tr>
+				${transactionList.map(transactions => {
+					return `<tr>
+						<td rowspan='${transactions.data.length}'>${createDate(transactions.id).format('DD-MM-YYYY')}</td>
+						<td>${transactions.data[0].name}</td>
+						${transactions.data[0].type === 'INCOME' ?
+							`<td>${rupiahFormatting(transactions.data[0].value)}</td><td></td>` :
+							`<td></td><td>${rupiahFormatting(transactions.data[0].value)}</td>`}
+						<td>${transactions.data[0].requester}</td>
+						<td></td>
+					</tr>
+					${transactions.data.length > 1 ? transactions.data.slice(1).map(transactionDetail => {
+						return `<tr>
+							<td>${transactionDetail.name}</td>
+							${transactionDetail.type === 'INCOME' ?
+								`<td>${rupiahFormatting(transactionDetail.value)}</td><td></td>` :
+								`<td></td><td>${rupiahFormatting(transactionDetail.value)}</td>`}
+							<td>${transactionDetail.requester}</td>
+							<td></td>
+						</tr>`
+					}).join('') : ''}
+				`}).join('')}
+			</table>`;
+
 			let options = {
-				html: '<h1>Group Report </h1>',
-				fileName: 'test',
-				directory: 'Documents',
+				html: `${style}${header}${table}`,
+				fileName: 'Report'
 			};
 		
 			let file = await RNHTMLtoPDF.convert(options);
+
+			const shareOptions = {
+				message: 'message',
+				title: 'title',
+				url: `file://${file.filePath}`
+			};
+			Share.open(shareOptions).then(res => console.log(res)).catch(err => console.log(err));
 		}
 	};
 
@@ -131,7 +195,7 @@ const GroupReportPage = ({route, navigation}) => {
 	return (
 		<GroupReport
 			contentText={translations['GroupReport']}
-			groupDetail={groupDetail}
+			groupDetail={groupData}
 			reportDetail={reportDetail}
 			transactionList={transactionList}
 			startDate={startDate}

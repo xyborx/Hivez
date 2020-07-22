@@ -1,30 +1,64 @@
-import React, {useContext, useState} from 'react';
-import {LocalizationContext} from '../../utils/language.utils';
-import {GroupContext} from '../../contexts/group.context';
-import GroupDetail from '../../components/Group/GroupDetail.component';
+import React, {useCallback, useContext, useState} from 'react';
 import {useFocusEffect} from '@react-navigation/native';
+import {GroupContext} from '../../contexts/group.context';
+import {LocalizationContext} from '../../contexts/language.context';
+import {SpinnerContext} from '../../contexts/spinner.context';
+import {UserContext} from '../../contexts/user.context';
+import GroupDetail from '../../components/Group/GroupDetail.component';
+import {get} from '../../utils/api.utils';
 
 const GroupDetailPage = ({route, navigation}) => {
 	const {groupID} = route.params;
 
-	const [groupDetail, setGroupDetail] = useState({
-		id: groupID,
-		image: '',
-		name: '',
-		description: '',
-		balance: 0
-	});
+	const {groupData, initializeGroupData} = useContext(GroupContext);
+	const {appLanguage, translations} = useContext(LocalizationContext);
+	const {showSpinner, hideSpinner} = useContext(SpinnerContext);
+	const {userData} = useContext(UserContext);
+
 	const [showBalance, setShowBalance] = useState(false);
+	const [requestList, setRequestList] = useState([]);
+	const [billList, setBillList] = useState([]);
 
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	const {initializeGroupData} = useContext(GroupContext);
-
-	initializeAppLanguage();
-	initializeGroupData(groupID).then(result => setGroupDetail(result));
-
-	useFocusEffect(() => {
-		// 
-	});
+	useFocusEffect(useCallback(() => {
+		const fetchData = async () => {
+			showSpinner();
+			try {
+				await initializeGroupData(groupID, userData.id);
+				const requests = await get(`/requests/${groupID}/lists`);
+				const requestLists = requests['output_schema'].map(item => {
+					return {
+						id: item[`request_id`],
+						name: item[`request_description`],
+						date: item[`created_date`],
+						approver: item[`approver_name`],
+						image: item[`requester_picture`],
+						type: item[`request_type`],
+						value: item[`request_amount`],
+						status: item[`approval_status`] === '' ? 'ON_PROGRESS' : item[`approval_status`]
+					}
+				});
+				const bills = await get(`/bills/${groupID}/lists`);
+				const billLists = bills['output_schema'].map(item => {
+					return {
+						id: item[`bill_payment_id`],
+						name: item[`bill_description`],
+						date: item[`created_date`],
+						approver: item[`approver_name`],
+						image: item[`requester_picture`],
+						type: item[`bill_type`],
+						value: item[`bill_amount`],
+						status: item[`approval_status`] === '' ? 'ON_PROGRESS' : item[`approval_status`]
+					}
+				});
+				setRequestList(requestLists);
+				setBillList(billLists);
+			} catch (error) {
+				console.log(error.stack);
+			};
+			hideSpinner();
+		};
+		fetchData();
+	}, []));
 
 	const toggleShowBalance = () => {
 		setShowBalance(!showBalance);
@@ -88,8 +122,10 @@ const GroupDetailPage = ({route, navigation}) => {
 			contentText={translations['GroupDetail']}
 			recentBillText={translations['RecentGroupBill']}
 			recentRequestText={translations['RecentGroupRequest']}
-			groupDetail={groupDetail}
+			groupDetail={groupData}
 			showBalance={showBalance}
+			requestList={requestList}
+			billList={billList}
 			toggleShowBalance={toggleShowBalance}
 			navigateToCreateGroupRequest={navigateToCreateGroupRequest}
 			navigateToBillPayment={navigateToBillPayment}

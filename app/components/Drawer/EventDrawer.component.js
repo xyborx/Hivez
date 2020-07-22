@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {Image, ScrollView, Text, TouchableHighlight, View} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import {LocalizationContext} from '../../utils/language.utils';
+import {LocalizationContext} from '../../contexts/language.context';
 import ConfirmModal from '../Modal/ConfirmModal.component';
 import styles from './EventDrawer.component.style';
 
@@ -25,8 +25,7 @@ const DrawerItem = (props) => {
 };
 
 const EventDrawer = ({state, descriptors, navigation}) => {
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	initializeAppLanguage();
+	const {translations} = useContext(LocalizationContext);
 
 	const eventID = state ? state.routes[state.index].params.eventID : '';
 

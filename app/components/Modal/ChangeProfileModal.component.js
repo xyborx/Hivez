@@ -1,33 +1,27 @@
 import React, {useContext, useState, useEffect} from 'react';
 import {Text, View} from 'react-native';
 import {isEmailValid, isFullNameValid, isUsernameValid} from '../../utils/validator.utils';
-import {LocalizationContext} from '../../utils/language.utils';
+import {LocalizationContext} from '../../contexts/language.context';
 import Button from '../Button/Button.component';
 import EmailField from '../TextField/EmailField.component';
 import Modal from './Modal.component';
 import TextField from '../TextField/TextField.component';
 import styles from './ChangeProfileModal.component.style';
-import {get} from '../../utils/api.utils';
 
 const ChangeProfileModal = (props) => {
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	initializeAppLanguage();
+	const {translations} = useContext(LocalizationContext);
 
 	const [visibility, setVisibility] = useState(false);
 	const toggleModal = () => {setVisibility(!visibility)};
 
-	const [fullName, setFullName] = useState('');
-	const [email, setEmail] = useState('');
-	const [username, setUsername] = useState('');
+	const [fullName, setFullName] = useState(props.profileData.fullName);
+	const [email, setEmail] = useState(props.profileData.email);
+	const [username, setUsername] = useState(props.profileData.username);
 
 	useEffect(() => {
-		const fetchData = async () => {
-			const result = await get(`/users/${props.userID}/profile`);
-			setFullName(result['output_schema']['full_name']);
-			setEmail(result['output_schema']['email']);
-			setUsername(result['output_schema']['user_name']);
-		};
-		fetchData();
+		setFullName(props.profileData.fullName);
+		setEmail(props.profileData.email);
+		setUsername(props.profileData.username);
 	}, []);
 
 	const [saveButtonAccessbility, setSaveButtonAccessbility] = useState(true);

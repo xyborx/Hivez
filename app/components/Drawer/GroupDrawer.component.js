@@ -1,10 +1,11 @@
-import React, {useState, useContext} from 'react';
+import React, {useContext} from 'react';
 import {Image, ScrollView, Text, TouchableHighlight, View} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import {LocalizationContext} from '../../utils/language.utils';
+import {GroupContext} from '../../contexts/group.context';
+import {LocalizationContext} from '../../contexts/language.context';
+import {UserContext} from '../../contexts/user.context';
 import ConfirmModal from '../Modal/ConfirmModal.component';
 import styles from './GroupDrawer.component.style';
-import {GroupContext} from '../../contexts/group.context';
 
 const DrawerItem = (props) => {
 	return (
@@ -26,41 +27,26 @@ const DrawerItem = (props) => {
 };
 
 const GroupDrawer = ({state, descriptors, navigation}) => {
+	const {translations} = useContext(LocalizationContext);
+	const {groupData} = useContext(GroupContext);
+	const {userData} = useContext(UserContext);
+
 	const groupID = state ? state.routes[state.index].params.groupID : '';
-	const [groupDetail, setGroupDetail] = useState({
-		id: groupID,
-		image: '',
-		name: ''
-	});
-
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	const {initializeGroupData} = useContext(GroupContext);
-	initializeAppLanguage();
-
-	initializeGroupData(groupID).then(result => setGroupDetail(result));
-
-	const profileDetailDummy = {
-		id: 'USER0001',
-		name: 'Difa Sanditya',
-		role: 'TREASURER'
-	};
-
-	const profileDetail = profileDetailDummy;
 
 	const leaveGroup = (groupID) => {
 		navigation.closeDrawer();
 		navigation.replace('GroupList');
-		alert(`User ${profileDetail.id} leave group: ${groupID}`);
+		alert(`User ${userData['id']} leave group: ${groupID}`);
 	};
-
+	
 	return (
 		<ScrollView showsVerticalScrollIndicator={false} >
 			<View style={styles.headerContainer}>
 				<Image
-					source={groupDetail.image === '' ? require('../../assets/images/DefaultGroupImage.png') : {uri: `data:image/jpeg;base64,${groupDetail.image}`}}
+					source={groupData.image === '' ? require('../../assets/images/DefaultGroupImage.png') : {uri: `data:image/jpeg;base64,${groupData.image}`}}
 					style={styles.groupImage}/>
-				<Text style={styles.header}>{groupDetail.name}</Text>
-				<Text style={styles.subHeader}>{`${translations['GroupDrawerNavigator'][profileDetail.role]}`}</Text>
+				<Text style={styles.header}>{groupData.name}</Text>
+				<Text style={styles.subHeader}>{`${translations['GroupDrawerNavigator'][groupData.role]}`}</Text>
 			</View>
 			{state.routes.map((route, index) => {
 				const {options} = descriptors[route.key];
@@ -102,6 +88,8 @@ const GroupDrawer = ({state, descriptors, navigation}) => {
 			</ConfirmModal>
 		</ScrollView>
 	);
+
+	
 };
 
 export default GroupDrawer;

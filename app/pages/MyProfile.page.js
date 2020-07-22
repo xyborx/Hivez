@@ -1,83 +1,100 @@
-import React, {useContext, useRef, useState, useEffect} from 'react';
+import React, {useContext, useRef, useState} from 'react';
+import publicIP from 'react-native-public-ip';
 import {useScrollToTop} from '@react-navigation/native';
 import ImagePicker from 'react-native-image-crop-picker';
-import {LocalizationContext} from '../utils/language.utils';
+import {LocalizationContext} from '../contexts/language.context';
+import {PopUpContext} from '../contexts/popup.context';
+import {SpinnerContext} from '../contexts/spinner.context';
 import {UserContext} from '../contexts/user.context';
 import MyProfile from '../components/MyProfile/MyProfile.component';
-import {get, put} from '../utils/api.utils';
+import {get, put, del} from '../utils/api.utils';
 
 const MyProfilePage = ({navigation}) => {
 	const scrollRef = useRef(null);
 	useScrollToTop(scrollRef);
 
-	const [profileData, setProfileData] = useState({
-		id: userID,
-		image: '',
-		fullName: '',
-		email: '',
-		username: '',
-		allowOthersAddByID: false
-	});
-	
-	const userID = '2b1f6b98-b281-11ea-a278-3ca82aaa2b5b';
+	const {translations, appLanguage, setAppLanguage, languageIcons} = useContext(LocalizationContext);
+	const {showPopUp} = useContext(PopUpContext);
+	const {showSpinner, hideSpinner} = useContext(SpinnerContext);
+	const {userData, updateUserData, clearUserData} = useContext(UserContext);
 
-	const {translations, appLanguage, setAppLanguage, initializeAppLanguage, languageIcons} = useContext(LocalizationContext);
-	const {initializeUserData} = useContext(UserContext);
+	const [profileData, setProfileData] = useState(userData);
 
-	initializeAppLanguage();
-	initializeUserData(userID).then(result => setProfileData(result));
+	const updateProfile = data => {
+		setProfileData(data);
+		updateUserData(data);
+	};
 
 	const changeProfileData = async (fullName, email, username) => {
+		showSpinner();
 		try {
 			const body = {
 				'full_name': fullName,
 				'email': email,
 				'user_name': username
 			};
-			const result = await put(`/users/${userID}/profile`, body);
-			console.log(result);
-			setProfileData({
-				...profileData,
-				fullName: fullName,
-				email: email,
-				username: username
-			});
+			const result = await put(`/users/${profileData.id}/profile`, body);
+			if (result === null) showPopUp('No Connection');
+			else {
+				if (result['error_schema']['error_code'] === 'HIVEZ-000-0000')
+					updateProfile({
+						...profileData,
+						fullName: fullName,
+						email: email,
+						username: username
+					});
+				showPopUp(result['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
+			};
 		} catch(error) {
 			console.log(error.stack);
 		};
+		hideSpinner();
 	};
 
 	const changeProfilePicture = async (image) => {
+		showSpinner();
 		try {
 			const body = {
 				'user_picture': image.data
 			};
-			const result = await put(`/users/${userID}/picture`, body);
-			console.log(result);
-			await ImagePicker.clean();
-			setProfileData({
-				...profileData,
-				image: image.data
-			});
+			const result = await put(`/users/${profileData.id}/picture`, body);
+			if (result === null) showPopUp('No Connection');
+			else {
+				if (result['error_schema']['error_code'] === 'HIVEZ-000-0000') {
+					await ImagePicker.clean();
+					updateProfile({
+						...profileData,
+						image: image.data
+					});
+				}
+				showPopUp(result['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
+			};
 		} catch(error) {
 			console.log(error.stack);
 		};
+		hideSpinner();
 	};
 
 	const deleteProfilePicture = async () => {
+		showSpinner();
 		try {
 			const body = {
 				'user_picture': ''
 			};
-			const result = await put(`/users/${userID}/picture`, body);
-			console.log(result);
-			setProfileData({
-				...profileData,
-				image: ''
-			});
+			const result = await put(`/users/${profileData.id}/picture`, body);
+			if (result === null) showPopUp('No Connection');
+			else {
+				if (result['error_schema']['error_code'] === 'HIVEZ-000-0000')
+					updateProfile({
+						...profileData,
+						image: ''
+					});
+				showPopUp(result['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
+			};
 		} catch(error) {
 			console.log(error.stack);
 		};
+		hideSpinner();
 	};
 
 	const pickerOption = {
@@ -128,19 +145,25 @@ const MyProfilePage = ({navigation}) => {
 	};
 
 	const toggleAllowOthersAddByID = async () => {
+		showSpinner();
 		try {
 			const body = {
 				'is_searchable': profileData.allowOthersAddByID ? 'N' : 'Y'
 			};
-			const result = await put(`/users/${userID}/searchable`, body);
-			console.log(result);
-			setProfileData({
-				...profileData,
-				allowOthersAddByID: !profileData.allowOthersAddByID
-			});
+			const result = await put(`/users/${profileData.id}/searchable`, body);
+			if (result === null) showPopUp('No Connection');
+			else {
+				if (result['error_schema']['error_code'] === 'HIVEZ-000-0000')
+					updateProfile({
+						...profileData,
+						allowOthersAddByID: !profileData.allowOthersAddByID
+					});
+				showPopUp(result['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
+			};
 		} catch(error) {
 			console.log(error.stack);
 		};
+		hideSpinner();
 	};
 
 	// const appSettingsDummy = {
@@ -160,50 +183,56 @@ const MyProfilePage = ({navigation}) => {
 	// TODO: fix this
 	const changePassword = async (currentPassword, newPassword) => {
 		try {
-			const body = {
-				'is_searchable': profileData.allowOthersAddByID ? 'N' : 'Y'
-			};
-			const result = await put(`/users/${userID}/searchable`, body);
-			console.log(result);
-			setProfileData({
-				...profileData,
-				allowOthersAddByID: !profileData.allowOthersAddByID
-			});
+			// const body = {
+			// 	'is_searchable': profileData.allowOthersAddByID ? 'N' : 'Y'
+			// };
+			// const result = await put(`/users/${profileData.id}/searchable`, body);
+			// console.log(result);
+			// setProfileData({
+			// 	...profileData,
+			// 	allowOthersAddByID: !profileData.allowOthersAddByID
+			// });
 		} catch(error) {
 			console.log(error.stack);
 		};
 		alert(`Change password, current password: ${currentPassword} ; new password: ${newPassword}`);
 	};
 
-	// TODO: fix this
 	const signOut = async () => {
+		showSpinner();
 		try {
-			const body = {
-				'is_searchable': profileData.allowOthersAddByID ? 'N' : 'Y'
+			const ipAddress = await publicIP();
+			const result = await del(`/users/${profileData.id}/login-token?ip-address=${ipAddress}`);
+			if (result === null) showPopUp('No Connection');
+			else {
+				if (result['error_schema']['error_code'] === 'HIVEZ-000-0000') {
+					navigation.reset({
+						index: 0,
+						routes: [{name: 'Dashboard'}],
+					});
+					clearUserData();
+				};
+				showPopUp(result['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
 			};
-			const result = await put(`/users/${userID}/searchable`, body);
-			console.log(result);
-			setProfileData({
-				...profileData,
-				allowOthersAddByID: !profileData.allowOthersAddByID
-			});
 		} catch(error) {
 			console.log(error.stack);
 		};
+		hideSpinner();
 	};
 
 	// TODO: fix this
 	const deleteAccount = async (password) => {
 		try {
-			const body = {
-				'is_searchable': profileData.allowOthersAddByID ? 'N' : 'Y'
-			};
-			const result = await put(`/users/${userID}/searchable`, body);
-			console.log(result);
-			setProfileData({
-				...profileData,
-				allowOthersAddByID: !profileData.allowOthersAddByID
-			});
+			clearUserData();
+			// const body = {
+			// 	'is_searchable': profileData.allowOthersAddByID ? 'N' : 'Y'
+			// };
+			// const result = await put(`/users/${profileData.id}/searchable`, body);
+			// console.log(result);
+			// setProfileData({
+			// 	...profileData,
+			// 	allowOthersAddByID: !profileData.allowOthersAddByID
+			// });
 		} catch(error) {
 			console.log(error.stack);
 		};
@@ -212,7 +241,6 @@ const MyProfilePage = ({navigation}) => {
 	return (
 		<MyProfile
 			scrollRef={scrollRef}
-			userID={userID}
 			contentText={translations['MyProfile']}
 			confirmSignOutText={translations['ConfirmSignOut']}
 			confirmDeleteAccountText={translations['ConfirmDeleteAccount']}

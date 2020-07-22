@@ -1,32 +1,30 @@
-import React, {useContext, useState, useEffect} from 'react';
-import {LocalizationContext} from '../../utils/language.utils';
+import React, {useContext, useState, useCallback} from 'react';
+import {useFocusEffect} from '@react-navigation/native';
 import {GroupContext} from '../../contexts/group.context';
+import {LocalizationContext} from '../../contexts/language.context';
+import {SpinnerContext} from '../../contexts/spinner.context';
+import {UserContext} from '../../contexts/user.context';
 import JoinGroupApprovalList from '../../components/Group/JoinGroupApprovalList.component';
 import {get, put} from '../../utils/api.utils';
 
 const JoinGroupApprovalListPage = ({route, navigation}) => {
 	const {groupID} = route.params;
 
-	const [groupDetail, setGroupDetail] = useState({
-		id: groupID,
-		image: '',
-		name: ''
-	});
+	const {groupData, initializeGroupData} = useContext(GroupContext);
+	const {appLanguage, translations} = useContext(LocalizationContext);
+	const {showSpinner, hideSpinner} = useContext(SpinnerContext);
+	const {userData} = useContext(UserContext);
+
 	const [userList, setUserList] = useState([]);
 	const [displayedUserList, setDisplayedUserList] = useState([]);
 	const [searchValue, setSearchValue] = useState('');
 
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	const {initializeGroupData} = useContext(GroupContext);
-
-	initializeAppLanguage();
-	initializeGroupData(groupID).then(result => setGroupDetail(result));
-
-	useEffect(() => {
+	useFocusEffect(useCallback(() => {
 		const fetchData = async () => {
+			showSpinner();
 			try {
+				await initializeGroupData(groupID, userData.id);
 				const users = await get(`/groups/${groupID}/join-request`);
-				console.log(users);
 				const userList = users['output_schema'].map(item => {
 					return {
 						id: item['user_join_request_id'],
@@ -40,9 +38,10 @@ const JoinGroupApprovalListPage = ({route, navigation}) => {
 			} catch (error) {
 				console.log(error.stack);
 			};
+			hideSpinner();
 		};
 		fetchData();
-	}, []);
+	}, []));
 
 	const onChangeSearch = (searchQuery) => {
 		setSearchValue(searchQuery);
@@ -61,24 +60,27 @@ const JoinGroupApprovalListPage = ({route, navigation}) => {
 	};
 
 	const updateJoinGroupApproval = async (userID, approvalStatus) => {
+		showSpinner();
 		try {
 			const body = {
-				'approver_user_id': '2b1f6b98-b281-11ea-a278-3ca82aaa2b5b',
+				'approver_user_id': userData.id,
 				'approval_status': approvalStatus
 			};
 			const result = await put(`/groups/join-request/${userID}/approval`, body);
-			console.log(result);
+			if (result === null) showPopUp('No Connection');
+			else showPopUp(result['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
 		} catch(error) {
 			console.log(error.stack);
 		};
+		hideSpinner();
 	};
 
-	const approveJoin = (userID) => {
-		updateJoinGroupApproval(userID, 'APPROVED').then(() => {});
+	const approveJoin = () => {
+		updateJoinGroupApproval('APPROVED');
 	};
 
-	const rejectJoin = (userID) => {
-		updateJoinGroupApproval(userID, 'REJECTED').then(() => {});
+	const rejectJoin = () => {
+		updateJoinGroupApproval('REJECTED');
 	};
 
 	return (
@@ -86,7 +88,7 @@ const JoinGroupApprovalListPage = ({route, navigation}) => {
 			contentText={translations['JoinGroupApprovalList']}
 			confirmApproveJoinText={translations['ConfirmApproveJoinGroup']}
 			confirmRejectJoinText={translations['ConfirmRejectJoinGroup']}
-			groupData={groupDetail}
+			groupData={groupData}
 			userList={displayedUserList}
 			searchValue={searchValue}
 			onChangeSearch={onChangeSearch}

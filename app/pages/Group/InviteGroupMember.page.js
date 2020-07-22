@@ -1,32 +1,30 @@
-import React, {useContext, useState, useEffect} from 'react';
-import {LocalizationContext} from '../../utils/language.utils';
+import React, {useContext, useState, useCallback} from 'react';
+import {useFocusEffect} from '@react-navigation/native';
 import {GroupContext} from '../../contexts/group.context';
+import {LocalizationContext} from '../../contexts/language.context';
+import {SpinnerContext} from '../../contexts/spinner.context';
+import {UserContext} from '../../contexts/user.context';
 import InviteGroupMember from '../../components/Group/InviteGroupMember.component';
 import {get, post} from '../../utils/api.utils';
 
 const InviteGroupMemberPage = ({route, navigation}) => {
 	const {groupID} = route.params;
 
-	const [groupDetail, setGroupDetail] = useState({
-		id: groupID,
-		image: '',
-		name: ''
-	});
+	const {groupData, initializeGroupData} = useContext(GroupContext);
+	const {appLanguage, translations} = useContext(LocalizationContext);
+	const {showSpinner, hideSpinner} = useContext(SpinnerContext);
+	const {userData} = useContext(UserContext);
+
 	const [userList, setUserList] = useState([]);
 	const [displayedUserList, setDisplayedUserList] = useState([]);
 	const [searchValue, setSearchValue] = useState('');
 
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	const {initializeGroupData} = useContext(GroupContext);
-
-	initializeAppLanguage();
-	initializeGroupData(groupID).then(result => setGroupDetail(result));
-
-	useEffect(() => {
+	useFocusEffect(useCallback(() => {
 		const fetchData = async () => {
+			showSpinner();
 			try {
+				await initializeGroupData(groupID, userData.id);
 				const users = await get(`/groups/${groupID}/users/inviteable`);
-				console.log(users);
 				const userList = users['output_schema'].map(item => {
 					return {
 						id: item['user_id'],
@@ -36,13 +34,13 @@ const InviteGroupMemberPage = ({route, navigation}) => {
 					}
 				});
 				setUserList(userList);
-				setDisplayedUserList(userList);
 			} catch (error) {
 				console.log(error.stack);
 			};
+			hideSpinner();
 		};
 		fetchData();
-	}, []);
+	}, []));
 
 	const onChangeSearch = (searchQuery) => {
 		setSearchValue(searchQuery);
@@ -61,24 +59,27 @@ const InviteGroupMemberPage = ({route, navigation}) => {
 	};
 
 	const inviteGroupMember = async (userID) => {
+		showSpinner();
 		try {
 			const body = {
-				'inviter_user_id': '2b1f6b98-b281-11ea-a278-3ca82aaa2b5b',
+				'inviter_user_id': userData.id,
 				'invited_user_id': userID,
 				'invited_source_id': groupID
 			};
 			const result = await post(`/groups/invitations`, body);
-			console.log(result);
+			if (result === null) showPopUp('No Connection');
+			else showPopUp(result['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
 		} catch(error) {
 			console.log(error.stack);
 		};
+		hideSpinner();
 	};
 
 	return (
 		<InviteGroupMember
 			contentText={translations['InviteGroupMember']}
 			confirmInviteMemberText={translations['ConfirmInviteGroupMember']}
-			groupData={groupDetail}
+			groupData={groupData}
 			userList={displayedUserList}
 			searchValue={searchValue}
 			onChangeSearch={onChangeSearch}

@@ -1,13 +1,13 @@
 import React, {useContext, useState} from 'react';
 import {Text, View} from 'react-native';
-import {LocalizationContext} from '../../utils/language.utils';
+import {LocalizationContext} from '../../contexts/language.context';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Modal from './Modal.component';
 import styles from './PrivacyPolicy.component.style';
 
 const PrivacyPolicyModal = (props) => {
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	initializeAppLanguage();
+	const {translations} = useContext(LocalizationContext);
+	
 
 	const [visibility, setVisibility] = useState(false);
 	const toggleModal = () => {setVisibility(!visibility)};

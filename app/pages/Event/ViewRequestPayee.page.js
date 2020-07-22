@@ -1,12 +1,12 @@
 import React, {useContext, useState} from 'react';
-import {LocalizationContext} from '../../utils/language.utils';
+import {LocalizationContext} from '../../contexts/language.context';
 import ViewRequestPayee from '../../components/Event/ViewRequestPayee.component';
 
 const ViewRequestPayeePage = ({route, navigation}) => {
 	const {eventID, payeeList} = route.params;
 
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	initializeAppLanguage();
+	const {translations} = useContext(LocalizationContext);
+	
 
 	const eventDataDummy = {
 		id: eventID,

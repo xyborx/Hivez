@@ -1,6 +1,9 @@
-import React, {useContext, useState, useEffect} from 'react';
-import {LocalizationContext} from '../../utils/language.utils';
+import React, {useContext, useState, useCallback} from 'react';
+import {useFocusEffect} from '@react-navigation/native';
 import {GroupContext} from '../../contexts/group.context';
+import {LocalizationContext} from '../../contexts/language.context';
+import {SpinnerContext} from '../../contexts/spinner.context';
+import {UserContext} from '../../contexts/user.context';
 import {where} from '../../utils/query.utils';
 import GroupRequestList from '../../components/Group/GroupRequestList.component';
 import {get} from '../../utils/api.utils';
@@ -8,52 +11,50 @@ import {get} from '../../utils/api.utils';
 const GroupRequestListPage = ({route, navigation}) => {
 	const {groupID} = route.params;
 
-	const [groupDetail, setGroupDetail] = useState({
-		id: groupID,
-		image: '',
-		name: ''
-	});
+	const {groupData, initializeGroupData} = useContext(GroupContext);
+	const {appLanguage, translations} = useContext(LocalizationContext);
+	const {showSpinner, hideSpinner} = useContext(SpinnerContext);
+	const {userData} = useContext(UserContext);
+
 	const [displayedRequestStatus, setDisplayedRequestStatus] = useState('NOT_COMPLETED');
 	const [requestList, setRequestList] = useState([]);
 	const [displayedRequestList, setDisplayedRequest] = useState([]);
 	const [searchValue, setSearchValue] = useState('');
-
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	const {initializeGroupData} = useContext(GroupContext);
-
-	initializeAppLanguage();
-	initializeGroupData(groupID).then(result => setGroupDetail(result));
 
 	const customSelectRequest = (requestList, status) => {
 		if (status === 'COMPLETED') return where(requestList, 'status', checkItem => checkItem !== 'ON_PROGRESS');
 		return where(requestList, 'status', checkItem => checkItem === 'ON_PROGRESS');
 	};
 
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const requests = await get(`/requests/${groupID}/lists`);
-				console.log(requests);
-				const requestLists = requests['output_schema'].map(item => {
-					return {
-						id: item['request_id'],
-						name: item['request_description'],
-						date: item['created_date'],
-						value: item['request_amount'],
-						approver: item['approver_name'],
-						type: item['requester_type'],
-						status: item['approval_status'] === '' ? 'ON_PROGRESS' : item['approval_status'],
-						image: item['requester_picture']
-					}
-				});
-				setRequestList(requestLists);
-				setDisplayedRequest(customSelectRequest(requestLists, displayedRequestStatus));
-			} catch (error) {
-				console.log(error.stack);
+	useFocusEffect(
+		useCallback(() => {
+			const fetchData = async () => {
+				showSpinner();
+				try {
+					await initializeGroupData(groupID, userData.id);
+					const requests = await get(`/requests/${groupID}/lists`);
+					const requestLists = requests['output_schema'].map(item => {
+						return {
+							id: item['request_id'],
+							name: item['request_description'],
+							date: item['created_date'],
+							value: item['request_amount'],
+							approver: item['approver_name'],
+							type: item['requester_type'],
+							status: item['approval_status'] === '' ? 'ON_PROGRESS' : item['approval_status'],
+							image: item['requester_picture']
+						}
+					});
+					setRequestList(requestLists);
+					setDisplayedRequest(customSelectRequest(requestLists, displayedRequestStatus));
+				} catch (error) {
+					console.log(error.stack);
+				};
+				hideSpinner();
 			};
-		};
-		fetchData();
-	}, []);
+			fetchData();
+		}, [])
+	);
 
 	const onChangeDisplayedRequestStatus = (status) => {
 		setDisplayedRequestStatus(status);
@@ -87,7 +88,7 @@ const GroupRequestListPage = ({route, navigation}) => {
 	return (
 		<GroupRequestList
 			contentText={translations['GroupRequestList']}
-			groupDetail={groupDetail}
+			groupDetail={groupData}
 			displayedRequestStatus={displayedRequestStatus}
 			setDisplayedRequestStatus={onChangeDisplayedRequestStatus}
 			requestList={displayedRequestList}

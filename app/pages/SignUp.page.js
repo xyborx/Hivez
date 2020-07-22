@@ -1,11 +1,18 @@
 import React, {useContext, useState} from 'react';
+import publicIP from 'react-native-public-ip';
 import {isEmailValid, isFullNameValid, isUsernameValid, isPasswordValid, isConfirmPasswordMatch} from '../utils/validator.utils';
-import {LocalizationContext} from '../utils/language.utils';
+import {LocalizationContext} from '../contexts/language.context';
+import {PopUpContext} from '../contexts/popup.context';
+import {SpinnerContext} from '../contexts/spinner.context';
+import {UserContext} from '../contexts/user.context';
 import SignUp from '../components/SignUp/SignUp.component';
+import {get, post} from '../utils/api.utils';
 
 const SignUpPage = ({navigation}) => {
-	const {translations, appLanguage, setAppLanguage, initializeAppLanguage, languageIcons} = useContext(LocalizationContext);
-	initializeAppLanguage();
+	const {translations, appLanguage, setAppLanguage, languageIcons} = useContext(LocalizationContext);
+	const {showPopUp} = useContext(PopUpContext);
+	const {showSpinner, hideSpinner} = useContext(SpinnerContext);
+	const {updateUserData} = useContext(UserContext);
 	
 	const [email, setEmail] = useState('');
 	const [secondPhase, setSecondPhase] = useState(false);
@@ -57,14 +64,50 @@ const SignUpPage = ({navigation}) => {
 		setConfirmPassword(confirmPassword);
 		validateNextButton(username, fullName, password, confirmPassword);
 	};
-	
-	const signUp = (email, username, fullName, password) => {
-		alert(`Sign up!`);
+
+	const signUp = async (email, username, fullName, password) => {
+		showSpinner();
+		const ipAddress = await publicIP();
+		const body = {
+			'email': email,
+			'user_name': username,
+			'full_name': fullName,
+			'password': password,
+			'ip_address': ipAddress
+		};
+		const userLoginData = await post(`/users`, body);
+		if (userLoginData === null) {
+			showPopUp('No Connection');
+			return;
+		} else if (userLoginData['error_schema']['error_code'] !== 'HIVEZ-000-0000') { 
+			showPopUp(userLoginData['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
+			return;
+		};
+		updateUserData({
+			'id': userLoginData['output_schema']['user_id'],
+			'loginId': userLoginData['output_schema']['loginId'],
+			'loginToken': userLoginData['output_schema']['loginToken'],
+			'fullName': fullName,
+			'email': email,
+			'username': username,
+			'allowOthersAddByID': true,
+			'image': ''
+		});
+		hideSpinner();
 	};
 
-	const onPressNextButton = () => {
-		if(!secondPhase) togglePhase();
-		else signUp(email, username, fullName, password);
+	const onPressNextButton = async () => {
+		if(!secondPhase) {
+			showSpinner();
+			const result = await get(`/users/email/${email}`);
+			if (result === null) showPopUp('No Connection');
+			else if (result['error_schema']['error_code'] === 'HIVEZ-000-0000') togglePhase();
+			else showPopUp(result['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
+			hideSpinner();
+		}
+		else {
+			signUp(email, username, fullName, password);
+		}
 	};
 
 	const forgotPassword = () => {

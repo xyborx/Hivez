@@ -4,7 +4,6 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {getRelativeDate} from '../../utils/date.utils';
 import {padArray, rupiahFormatting} from '../../utils/helper.utils';
 import styles from './RecentTransactionDetail.component.style';
-import {get} from '../../utils/api.utils';
 
 const TransactionItem = (props) => {
 	const {id, name, date, approver, image, type, value, status} = props.item;
@@ -56,43 +55,19 @@ const EmptyItem = () => {
 
 const RecentTransactionDetail = (props) => {
 	const [filterType, setFilterType] = useState('ALL');
-	const [transactionList, setTransactionList] = useState([]);
-	const [displayedTransactionList, setDisplayedTransactionList] = useState([]);
-	
-	const transactionType = props.transactionType.toLowerCase();
+	const [displayedTransactionList, setDisplayedTransactionList] = useState(props.transactions);
 
 	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const transactions = await get(`/${transactionType}s/${props.sourceID}/lists`);
-				const transactionLists = transactions['output_schema'].map(item => {
-					return {
-						id: item[`${transactionType === 'request' ? 'request' : 'bill_payment' }_id`],
-						name: item[`${transactionType}_description`],
-						date: item[`created_date`],
-						approver: item[`approver_name`],
-						image: item[`requester_picture`],
-						type: item[`${transactionType}_type`],
-						value: item[`${transactionType}_amount`],
-						status: item[`approval_status`] === '' ? 'ON_PROGRESS' : item[`approval_status`]
-					}
-				});
-				setTransactionList(transactionLists);
-				setDisplayedTransactionList(transactionLists);
-			} catch (error) {
-				console.log(error.stack);
-			};
-		};
-		fetchData();
-	}, []);
+		setDisplayedTransactionList(props.transactions)
+	}, [props.transactions]);
 
 	const filterData = (type) => {
 		setFilterType(type);
-		if (type === 'ALL') setDisplayedTransactionList(padArray(transactionList, transactionList.length > 5 ? 5 : transactionList.length, null));
+		if (type === 'ALL') setDisplayedTransactionList(padArray(props.transactions, props.transactions.length > 5 ? 5 : props.transactions.length, null));
 		else {
-			const filteredTransaction = transactionList.filter((item) => {return item.status === type});
+			const filteredTransaction = props.transactions.filter((item) => {return item.status === type});
 			if (filteredTransaction.length < 1) setDisplayedTransactionList([]);
-			else setDisplayedTransactionList(padArray(filteredTransaction, transactionList.length > 5 ? 5 : transactionList.length, null));
+			else setDisplayedTransactionList(padArray(filteredTransaction, props.transactions.length > 5 ? 5 : props.transactions.length, null));
 		}
 	};
 

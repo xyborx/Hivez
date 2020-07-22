@@ -1,6 +1,9 @@
-import React, {useContext, useState, useEffect} from 'react';
-import {LocalizationContext} from '../../utils/language.utils';
+import React, {useContext, useState, useCallback} from 'react';
+import {useFocusEffect} from '@react-navigation/native';
 import {GroupContext} from '../../contexts/group.context';
+import {LocalizationContext} from '../../contexts/language.context';
+import {SpinnerContext} from '../../contexts/spinner.context';
+import {UserContext} from '../../contexts/user.context';
 import {where} from '../../utils/query.utils';
 import GroupBillCreationList from '../../components/Group/GroupBillCreationList.component';
 import {get} from '../../utils/api.utils';
@@ -8,51 +11,49 @@ import {get} from '../../utils/api.utils';
 const GroupBillCreationListPage = ({route, navigation}) => {
 	const {groupID} = route.params;
 
-	const [groupDetail, setGroupDetail] = useState({
-		id: groupID,
-		image: '',
-		name: ''
-	});
+	const {groupData, initializeGroupData} = useContext(GroupContext);
+	const {appLanguage, translations} = useContext(LocalizationContext);
+	const {showSpinner, hideSpinner} = useContext(SpinnerContext);
+	const {userData} = useContext(UserContext);
+
 	const [displayedBillStatus, setDisplayedBillStatus] = useState('NOT_COMPLETED');
 	const [billList, setBillList] = useState([]);
 	const [displayedBillList, setDisplayedBill] = useState([]);
 	const [searchValue, setSearchValue] = useState('');
-
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	const {initializeGroupData} = useContext(GroupContext);
-
-	initializeAppLanguage();
-	initializeGroupData(groupID).then(result => setGroupDetail(result));
 
 	const customSelectBill = (billList, status) => {
 		if (status === 'COMPLETED') return where(billList, 'status', checkItem => checkItem === 'APPROVED');
 		return where(billList, 'status', checkItem => checkItem !== 'APPROVED');
 	};
 
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const bills = await get(`/bills/groups/${groupID}/pending/lists`);
-				console.log(bills);
-				const billLists = bills['output_schema'].map(item => {
-					return {
-						id: item['bill_id'],
-						name: item['bill_description'],
-						date: item['creation_date'],
-						value: item['bill_amount'],
-						requester: item['creator_name'],
-						status: item['approval_status'],
-						image: item['creator_picture']
-					}
-				});
-				setBillList(billLists);
-				setDisplayedBill(customSelectBill(billLists, displayedBillStatus));
-			} catch (error) {
-				console.log(error.stack);
+	useFocusEffect(
+		useCallback(() => {
+			const fetchData = async () => {
+				showSpinner();
+				try {
+					await initializeGroupData(groupID, userData.id);
+					const bills = await get(`/bills/groups/${groupID}/pending/lists`);
+					const billLists = bills['output_schema'].map(item => {
+						return {
+							id: item['bill_id'],
+							name: item['bill_description'],
+							date: item['creation_date'],
+							value: item['bill_amount'],
+							requester: item['creator_name'],
+							status: item['approval_status'],
+							image: item['creator_picture']
+						}
+					});
+					setBillList(billLists);
+					setDisplayedBill(customSelectBill(billLists, displayedBillStatus));
+				} catch (error) {
+					console.log(error.stack);
+				};
+				hideSpinner();
 			};
-		};
-		fetchData();
-	}, []);
+			fetchData();
+		}, [])
+	);
 
 	const onChangeDisplayedBillStatus = (status) => {
 		setDisplayedBillStatus(status);
@@ -86,7 +87,7 @@ const GroupBillCreationListPage = ({route, navigation}) => {
 	return (
 		<GroupBillCreationList
 			contentText={translations['GroupBillCreationList']}
-			groupDetail={groupDetail}
+			groupDetail={groupData}
 			displayedBillStatus={displayedBillStatus}
 			setDisplayedBillStatus={onChangeDisplayedBillStatus}
 			billList={displayedBillList}

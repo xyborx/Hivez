@@ -1,25 +1,28 @@
-import React, {useContext, useState, useEffect} from 'react';
-import {LocalizationContext} from '../../utils/language.utils';
+import React, {useContext, useState, useCallback} from 'react';
+import {useFocusEffect} from '@react-navigation/native';
+import {LocalizationContext} from '../../contexts/language.context';
+import {PopUpContext} from '../../contexts/popup.context';
+import {SpinnerContext} from '../../contexts/spinner.context';
+import {UserContext} from '../../contexts/user.context';
 import FindGroup from '../../components/Group/FindGroup.component';
 import {get, post} from '../../utils/api.utils';
 
 const FindGroupPage = ({navigation}) => {
-	const userID = '2b1f6b98-b281-11ea-a278-3ca82aaa2b5b';
-	
 	const [groupList, setGroupList] = useState([]);
 	const [displayedGroupList, setDisplayedGroupList] = useState([]);
 	const [searchValue, setSearchValue] = useState('');
 
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
+	const {appLanguage, translations} = useContext(LocalizationContext);
+	const {showPopUp} = useContext(PopUpContext);
+	const {showSpinner, hideSpinner} = useContext(SpinnerContext);
+	const {userData} = useContext(UserContext);
 
-	initializeAppLanguage();
-
-	useEffect(() => {
+	useFocusEffect(useCallback(() => {
 		const fetchData = async () => {
+			showSpinner();
 			try {
-				const users = await get(`/groups/${userID}/joinable`);
-				console.log(users);
-				const userList = users['output_schema'].map(item => {
+				const groups = await get(`/groups/${userData.id}/joinable`);
+				const groupList = groups['output_schema'].map(item => {
 					return {
 						id: item['group_id'],
 						image: item['group_picture'],
@@ -28,13 +31,14 @@ const FindGroupPage = ({navigation}) => {
 						memberCount: item['member_count']
 					}
 				});
-				setGroupList(userList);
+				setGroupList(groupList);
 			} catch (error) {
 				console.log(error.stack);
 			};
+			hideSpinner();
 		};
 		fetchData();
-	}, []);
+	}, []));
 
 	const onChangeSearch = (searchQuery) => {
 		setSearchValue(searchQuery);
@@ -45,16 +49,19 @@ const FindGroupPage = ({navigation}) => {
 	};
 
 	const requestJoinGroup = async (groupID) => {
+		showSpinner();
 		try {
 			const body = {
 				'source_id': groupID,
-				'requester_user_id': '2b1f6b98-b281-11ea-a278-3ca82aaa2b5b'
+				'requester_user_id': userData.id
 			};
 			const result = await post(`/groups/join-request`, body);
-			console.log(result);
+			if (result === null) showPopUp('No Connection');
+			else showPopUp(result['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
 		} catch(error) {
 			console.log(error.stack);
 		};
+		hideSpinner();
 	};
 
 	const goBack = () => {

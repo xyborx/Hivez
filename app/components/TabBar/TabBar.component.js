@@ -1,12 +1,12 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {Keyboard, Text, TouchableOpacity, View} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import {LocalizationContext} from '../../utils/language.utils';
+import {LocalizationContext} from '../../contexts/language.context';
 import styles from './TabBar.component.style';
 
 const TabBar = ({state, descriptors, navigation}) => {
-	const {translations, initializeAppLanguage} = useContext(LocalizationContext);
-	initializeAppLanguage();
+	const {translations} = useContext(LocalizationContext);
+	
 	const [showTab, setShowTab] = useState(true);
 
 	useEffect(() => {

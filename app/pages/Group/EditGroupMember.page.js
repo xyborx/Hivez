@@ -1,4 +1,4 @@
-import React, {useContext, useCallback} from 'react';
+import React, {useContext, useState, useCallback} from 'react';
 import {useFocusEffect} from '@react-navigation/native';
 import EditGroupMember from '../../components/Group/EditGroupMember.component';
 import {GroupContext} from '../../contexts/group.context';
@@ -110,6 +110,7 @@ const EditGroupMemberPage = ({route, navigation}) => {
 			confirmChangeRoleText={translations['ConfirmChangeRoleGroupMember']}
 			groupData={groupData}
 			groupMembers={displayedGroupMembers}
+			currentUser={userData.id}
 			searchValue={searchValue}
 			onChangeSearch={onChangeSearch}
 			changeUserRole={changeUserRole}

@@ -39,7 +39,7 @@ const CreateGroupRequestPage = ({route, navigation}) => {
 				hideSpinner();
 			};
 			fetchData();
-		}, [])
+		}, [groupID])
 	);
 
 	const validateNextButton = (value, date, time, description) => {
@@ -141,7 +141,16 @@ const CreateGroupRequestPage = ({route, navigation}) => {
 			const result = await post(`/requests`, body);
 			if (result === null) showPopUp('No Connection');
 			else {
-				if (result['error_schema']['error_code'] === 'HIVEZ-000-0000') navigation.navigate('GroupDetail');
+				if (result['error_schema']['error_code'] === 'HIVEZ-000-0000') {
+					setType('EXPENSE');
+					setValue('');
+					setDate(currentDate);
+					setTime(currentDate);
+					setDescription('');
+					setImage('');
+					setNextButtonAccessbility(false);
+					navigation.navigate('GroupDetail');
+				};
 				showPopUp(result['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
 			};
 		} catch(error) {

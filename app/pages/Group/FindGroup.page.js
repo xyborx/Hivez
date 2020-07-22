@@ -8,14 +8,14 @@ import FindGroup from '../../components/Group/FindGroup.component';
 import {get, post} from '../../utils/api.utils';
 
 const FindGroupPage = ({navigation}) => {
-	const [groupList, setGroupList] = useState([]);
-	const [displayedGroupList, setDisplayedGroupList] = useState([]);
-	const [searchValue, setSearchValue] = useState('');
-
 	const {appLanguage, translations} = useContext(LocalizationContext);
 	const {showPopUp} = useContext(PopUpContext);
 	const {showSpinner, hideSpinner} = useContext(SpinnerContext);
 	const {userData} = useContext(UserContext);
+
+	const [groupList, setGroupList] = useState([]);
+	const [displayedGroupList, setDisplayedGroupList] = useState([]);
+	const [searchValue, setSearchValue] = useState('');
 
 	useFocusEffect(useCallback(() => {
 		const fetchData = async () => {

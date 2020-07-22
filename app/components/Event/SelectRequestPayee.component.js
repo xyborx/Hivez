@@ -88,7 +88,7 @@ const SelectRequestPayee = (props) => {
 								</View>
 							: props.eventMember.map((item, index) => {
 								return(
-									<MemberItem {...props} key={item.id} isCurrentUser={index === 0} memberData={item} />
+									<MemberItem {...props} key={item.id} isCurrentUser={item.id === props.currentUser} memberData={item} />
 								);
 							})}
 						</View>

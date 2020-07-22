@@ -11,7 +11,7 @@ const Dashboard = (props) => {
 	return (
 		<SafeAreaView style={styles.rootContainer}>
 			<ScrollView
-				refreshControl={<RefreshControl refreshing={props.refreshing} onRefresh={props.onRefresh} />}
+				refreshControl={<RefreshControl refreshing={false} onRefresh={props.onRefresh} />}
 				ref={props.scrollRef}
 				keyboardShouldPersistTaps={'handled'}
 				showsVerticalScrollIndicator={false}

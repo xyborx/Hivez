@@ -9,22 +9,25 @@ import EventRequestDetailPage from '../pages/Event/EventRequestDetail.page';
 import PaymentSettlementPage from '../pages/Event/PaymentSettlement.page';
 import SelectRequestPayeePage from '../pages/Event/SelectRequestPayee.page';
 import ViewRequestPayeePage from '../pages/Event/ViewRequestPayee.page';
+import {EventProvider} from '../contexts/event.context';
 
 const EventNavigation = createStackNavigator();
 
 const EventStack = () => {
 	return (
-		<EventNavigation.Navigator initialRouteName='EventList' headerMode='none'>
-			<EventNavigation.Screen component={CreateEventPage} name='CreateEvent' />
-			<EventNavigation.Screen component={EditEventMemberPage} name='EditEventMember'/>
-			<EventNavigation.Screen component={FindEventPage} name='FindEvent' />
-			<EventNavigation.Screen component={EventDrawer} name='EventDrawer' />
-			<EventNavigation.Screen component={EventListPage} name='EventList' />
-			<EventNavigation.Screen component={EventRequestDetailPage} name='EventRequestDetail'/>
-			<EventNavigation.Screen component={PaymentSettlementPage} name='PaymentSettlement'/>
-			<EventNavigation.Screen component={SelectRequestPayeePage} name='SelectRequestPayee'/>
-			<EventNavigation.Screen component={ViewRequestPayeePage} name='ViewRequestPayee'/>
-		</EventNavigation.Navigator>
+		<EventProvider>
+			<EventNavigation.Navigator initialRouteName='EventList' headerMode='none'>
+				<EventNavigation.Screen component={CreateEventPage} name='CreateEvent' />
+				<EventNavigation.Screen component={EditEventMemberPage} name='EditEventMember'/>
+				<EventNavigation.Screen component={FindEventPage} name='FindEvent' />
+				<EventNavigation.Screen component={EventDrawer} name='EventDrawer' />
+				<EventNavigation.Screen component={EventListPage} name='EventList' />
+				<EventNavigation.Screen component={EventRequestDetailPage} name='EventRequestDetail'/>
+				<EventNavigation.Screen component={PaymentSettlementPage} name='PaymentSettlement'/>
+				<EventNavigation.Screen component={SelectRequestPayeePage} name='SelectRequestPayee'/>
+				<EventNavigation.Screen component={ViewRequestPayeePage} name='ViewRequestPayee'/>
+			</EventNavigation.Navigator>
+		</EventProvider>
 	);
 };
 

@@ -27,7 +27,8 @@ const ViewWithValue = (props) => {
 };
 
 const EventRequestDetail = (props) => {
-	const {id, eventImage, eventName, value, description, status, requester, requestDate, requestTime, approver, approvalDate, approvalTime, payee, requestImage} = props.requestDetail;
+	const {id, value, description, status, requester, requestDate, requestTime, approver, approvalDate, approvalTime, requestImage, payee} = props.requestDetail;
+	const {image: eventImage, name: eventName} = props.eventDetail;
 	return (
 		<SafeAreaView style={styles.rootContainer}>
 			<ScrollView keyboardShouldPersistTaps={'handled'} showsVerticalScrollIndicator={false} style={styles.pageContainer} contentContainerStyle={styles.pageContentView}>
@@ -41,14 +42,14 @@ const EventRequestDetail = (props) => {
 					<View style={styles.requestDetailContainer}>
 						<View style={styles.requestValueContainer}>
 							<Text style={styles.requestDetailText}>{'IDR'}</Text>
-							<Text style={[styles.requestValueText, styles.expense]}>{rupiahFormatting(value, false)}</Text>
+							<Text style={[styles.requestValueText, styles.expense]}>{value}</Text>
 						</View>
 						<ViewWithValue title={props.contentText['DESCRIPTION']} value={description} />
 						<ViewWithValue title={props.contentText['STATUS']} value={props.contentText[status.replace(' ', '_')]} />
 						<ViewWithValue title={props.contentText['REQUESTER']} value={requester} />
 						<ViewWithValue title={props.contentText['REQUEST_DATE']} value={requestDate} />
 						<ViewWithValue title={props.contentText['REQUEST_TIME']} value={requestTime} />
-						<View style={status === 'ON PROGRESS' ? styles.hidden : {}}>
+						<View style={status === 'ON_PROGRESS' ? styles.hidden : {}}>
 							<ViewWithValue title={status === 'APPROVED' ? props.contentText['APPROVER'] : props.contentText['REJECTER']} value={approver} />
 							<ViewWithValue title={status === 'APPROVED' ? props.contentText['APPROVED_DATE'] : props.contentText['REJECTED_DATE']} value={approvalDate} />
 							<ViewWithValue title={status === 'APPROVED' ? props.contentText['APPROVED_TIME'] : props.contentText['REJECTED_TIME']} value={approvalTime} />
@@ -63,7 +64,7 @@ const EventRequestDetail = (props) => {
 							style={requestImage === '' ? styles.hidden : styles.viewImageContainer}>
 							<ViewWithIcon icon={'camera'} title={props.contentText['VIEW_REQUEST_PICTURE']} />
 						</PreviewPicture>
-						<View style={status === 'ON PROGRESS' ? styles.approvalContainer : styles.hidden}>
+						<View style={status === 'ON_PROGRESS' ? styles.approvalContainer : styles.hidden}>
 							<ButtonWithConfirmation
 								accessability={true}
 								confirmText={props.confirmRejectText}

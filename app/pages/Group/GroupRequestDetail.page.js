@@ -2,6 +2,7 @@ import React, {useContext, useState, useCallback} from 'react';
 import {useFocusEffect} from '@react-navigation/native';
 import {GroupContext} from '../../contexts/group.context';
 import {LocalizationContext} from '../../contexts/language.context';
+import {PopUpContext} from '../../contexts/popup.context';
 import {SpinnerContext} from '../../contexts/spinner.context';
 import {UserContext} from '../../contexts/user.context';
 import {dateToString, timeToString} from '../../utils/date.utils';
@@ -14,6 +15,7 @@ const GroupRequestDetailPage = ({route, navigation}) => {
 
 	const {groupData, initializeGroupData} = useContext(GroupContext);
 	const {appLanguage, translations} = useContext(LocalizationContext);
+	const {showPopUp} = useContext(PopUpContext);
 	const {showSpinner, hideSpinner} = useContext(SpinnerContext);
 	const {userData} = useContext(UserContext);
 

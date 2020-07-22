@@ -1,5 +1,10 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useCallback, useContext, useState} from 'react';
+import {useFocusEffect} from '@react-navigation/native';
+import {EventContext} from '../../contexts/event.context';
 import {LocalizationContext} from '../../contexts/language.context';
+import {PopUpContext} from '../../contexts/popup.context';
+import {SpinnerContext} from '../../contexts/spinner.context';
+import {UserContext} from '../../contexts/user.context';
 import ImagePicker from 'react-native-image-crop-picker';
 import EventSettings from '../../components/Event/EventSettings.component';
 import {get, put, del} from '../../utils/api.utils';
@@ -7,30 +12,19 @@ import {get, put, del} from '../../utils/api.utils';
 const EventSettingsPage = ({route, navigation}) => {
 	const {eventID} = route.params;
 
-	const {translations} = useContext(LocalizationContext);
-	
+	const {eventData, initializeEventData, updateEventData} = useContext(EventContext);
+	const {appLanguage, translations} = useContext(LocalizationContext);
+	const {showPopUp} = useContext(PopUpContext);
+	const {showSpinner, hideSpinner} = useContext(SpinnerContext);
+	const {userData} = useContext(UserContext);
 
-	const [eventData, setEventData] = useState({
-		id: eventID,
-		image: '',
-		name: '',
-		description: '',
-		allowSearchByName: false
-	});
 	const [eventMembers, setEventMembers] = useState([]);
 
-	useEffect(() => {
+	useFocusEffect(useCallback(() => {
 		const fetchData = async () => {
+			showSpinner();
 			try {
-				const data = await get(`/events/${eventID}/detail`);
-				const image = await get(`/events/${eventID}/picture`);
-				setEventData({
-					id: eventID,
-					image: image['output_schema']['event_picture'],
-					name: data['output_schema']['event_name'],
-					description: data['output_schema']['event_description'],
-					allowSearchByName: data['output_schema']['is_searchable'] === 'Y' ? true : false
-				});
+				await initializeEventData(eventID, userData.id);
 				const members = await get(`/events/${eventID}/members`);
 				setEventMembers(members['output_schema'].map(item => {
 					return {
@@ -45,59 +39,79 @@ const EventSettingsPage = ({route, navigation}) => {
 			} catch (error) {
 				console.log(error.stack);
 			};
+			hideSpinner();
 		};
 		fetchData();
-	}, []);
+	}, []));
 
 	const changeEventData = async (eventName, eventDescription) => {
+		showSpinner();
 		try {
 			const body = {
 				'event_name': eventName,
 				'event_description': eventDescription
 			};
 			const result = await put(`/events/${eventID}/detail`, body);
-			console.log(result);
-			setEventData({
-				...eventData,
-				name: eventName,
-				description: eventDescription
-			});
+			if (result === null) showPopUp('No Connection');
+			else {
+				if (result['error_schema']['error_code'] === 'HIVEZ-000-0000')
+					updateEventData({
+						...eventData,
+						name: eventName,
+						description: eventDescription
+					});
+				showPopUp(result['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
+			}
 		} catch(error) {
 			console.log(error.stack);
 		};
+		hideSpinner();
 	};
 
 	const changeEventPicture = async (image) => {
+		showSpinner();
 		try {
 			const body = {
 				'event_picture': image.data
 			};
 			const result = await put(`/events/${eventID}/picture`, body);
-			console.log(result);
-			await ImagePicker.clean();
-			setEventData({
-				...eventData,
-				image: image.data
-			});
+			if (result === null) showPopUp('No Connection');
+			else {
+				if (result['error_schema']['error_code'] === 'HIVEZ-000-0000') {
+					await ImagePicker.clean();
+					updateEventData({
+						...eventData,
+						image: image.data
+					});
+				}
+				showPopUp(result['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
+			}
 		} catch(error) {
 			console.log(error.stack);
 		};
+		hideSpinner();
 	};
 
 	const deleteProfilePicture = async () => {
+		showSpinner();
 		try {
 			const body = {
 				'event_picture': ''
 			};
 			const result = await put(`/events/${eventID}/picture`, body);
-			console.log(result);
-			setEventData({
-				...eventData,
-				image: ''
-			});
+			if (result === null) showPopUp('No Connection');
+			else {
+				if (result['error_schema']['error_code'] === 'HIVEZ-000-0000')
+					updateEventData({
+						...eventData,
+						image: ''
+					});
+				showPopUp(result['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
+			}
 		} catch(error) {
 			console.log(error.stack);
 		};
+		hideSpinner();
 	};
 
 	const pickerOption = {
@@ -148,19 +162,26 @@ const EventSettingsPage = ({route, navigation}) => {
 	};
 
 	const toggleAllowSearchByName = async () => {
+		showSpinner();
 		try {
+			const currentState = eventData.allowSearchByName;
 			const body = {
-				'is_searchable': eventData.allowSearchByName ? 'N' : 'Y'
+				'is_searchable': currentState ? 'N' : 'Y'
 			};
 			const result = await put(`/events/${eventID}/searchable`, body);
-			console.log(result);
-			setEventData({
-				...eventData,
-				allowOthersAddByID: !eventData.allowSearchByName
-			});
+			if (result === null) showPopUp('No Connection');
+			else {
+				if (result['error_schema']['error_code'] === 'HIVEZ-000-0000')
+					updateEventData({
+						...eventData,
+						allowSearchByName: !currentState
+					});
+				showPopUp(result['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
+			}
 		} catch(error) {
 			console.log(error.stack);
 		};
+		hideSpinner();
 	};
 
 	const goBack = () => {

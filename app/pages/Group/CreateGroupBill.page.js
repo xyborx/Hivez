@@ -62,7 +62,11 @@ const CreateGroupBillPage = ({route, navigation}) => {
 			const result = await post(`/bills`, body);
 			if (result === null) showPopUp('No Connection');
 			else {
-				if (result['error_schema']['error_code'] === 'HIVEZ-000-0000') navigation.navigate('GroupDetail');
+				if (result['error_schema']['error_code'] === 'HIVEZ-000-0000') {
+					setValue('');
+					setDescription('');
+					navigation.navigate('GroupDetail');
+				}
 				showPopUp(result['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
 			};
 		} catch(error) {

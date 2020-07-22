@@ -14,7 +14,6 @@ const GroupListPage = ({navigation}) => {
 	const {showSpinner, hideSpinner} = useContext(SpinnerContext);
 	const {userData} = useContext(UserContext);
 
-	const [refreshing, setRefreshing] = useState(false);
 	const [groupList, setGroupList] = useState([]);
 	const [displayedGroupList, setDisplayedGroupList] = useState([]);
 	const [searchValue, setSearchValue] = useState('');
@@ -60,7 +59,7 @@ const GroupListPage = ({navigation}) => {
 			setDisplayedGroupList(result);
 			hideSpinner();
 		});
-	}, [refreshing]);
+	}, []);
 
 	const onChangeSearch = (searchQuery) => {
 		setSearchValue(searchQuery);
@@ -90,7 +89,6 @@ const GroupListPage = ({navigation}) => {
 	return (
 		<GroupList
 			scrollRef={scrollRef}
-			refreshing={refreshing}
 			onRefresh={onRefresh}
 			contentText={translations['GroupList']}
 			groupList={displayedGroupList}

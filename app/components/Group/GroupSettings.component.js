@@ -114,7 +114,7 @@ const GroupSettings = (props) => {
 					<View style={styles.sectionContainer}>
 						<Text style={styles.headerText}>{props.groupMembers.length > 0 ? `${props.contentText['GROUP_MEMBER']} (${props.groupMembers.length})` : props.contentText['GROUP_MEMBER']}</Text>
 						<View>
-							{props.groupMembers.slice(0, 5).map((item, index) => <MemberItem contentText={props.contentText} isCurrentUser={index === 0} key={item.id} memberData={item} />)}
+							{props.groupMembers.slice(0, 5).map((item, index) => <MemberItem contentText={props.contentText} isCurrentUser={item.id === props.currentUser} key={item.id} memberData={item} />)}
 						</View>
 						<ButtonWithIcon
 							action={props.editGroupMember}

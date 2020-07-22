@@ -3,7 +3,6 @@ import {Image, ScrollView, Text, View} from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import {rupiahFormatting} from '../../utils/helper.utils';
 import FloatingBackButton from '../Button/FloatingBackButton.component';
-import NumberField from '../TextField/NumberField.component';
 import SearchField from '../TextField/SearchField.component';
 import styles from './ViewRequestPayee.component.style';
 
@@ -49,7 +48,7 @@ const SelectRequestPayee = (props) => {
 								</View>
 							: props.eventMember.map((item, index) => {
 								return(
-									<MemberItem {...props} key={item.id} isCurrentUser={index === 0} memberData={item}/>
+									<MemberItem {...props} key={item.id} isCurrentUser={item.id === props.currentUser} memberData={item}/>
 								);
 							})}
 						</View>

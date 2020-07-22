@@ -36,11 +36,15 @@ export const GroupProvider = ({children}) => {
 		}
 	};
 
+	const updateGroupData = data => {
+		setGroupData(data);
+	};
+
 	return (
 		<GroupContext.Provider
 			value = {{
 				groupData,
-				setGroupData,
+				updateGroupData,
 				initializeGroupData
 			}}>
 			{children}

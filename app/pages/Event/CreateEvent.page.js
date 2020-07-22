@@ -1,20 +1,23 @@
 import React, {useContext, useState} from 'react';
 import ImagePicker from 'react-native-image-crop-picker';
 import {LocalizationContext} from '../../contexts/language.context';
+import {PopUpContext} from '../../contexts/popup.context';
+import {SpinnerContext} from '../../contexts/spinner.context';
+import {UserContext} from '../../contexts/user.context';
 import {isEventNameValid} from '../../utils/validator.utils';
 import CreateEvent from '../../components/Event/CreateEvent.component';
 import {post} from '../../utils/api.utils';
 
 const CreateEventPage = ({navigation}) => {
-	const {translations} = useContext(LocalizationContext);
-	
+	const {appLanguage, translations} = useContext(LocalizationContext);
+	const {showPopUp} = useContext(PopUpContext);
+	const {showSpinner, hideSpinner} = useContext(SpinnerContext);
+	const {userData} = useContext(UserContext);
 	
 	const [image, setImage] = useState('');
 	const [name, setName] = useState('');
 	const [description, setDescription] = useState('');
 	const [nextButtonAccessbility, setNextButtonAccessbility] = useState(false);
-	
-	const userID = '2b1f6b98-b281-11ea-a278-3ca82aaa2b5b';
 
 	const onChangeName = (name) => {
 		setName(name);
@@ -85,23 +88,29 @@ const CreateEventPage = ({navigation}) => {
 	};
 
 	const createEvent = async () => {
+		showSpinner();
 		try {
 			const body = {
-				'user_id': userID,
+				'user_id': userData.id,
 				'event_name': name,
 				'event_description': description,
 				'event_picture': image
 			};
 			const result = await post(`/events`, body);
-			console.log(result);
-			navigation.navigate('EventDrawer', {
-				screen: 'EventDetail',
-				initial: true,
-				params: {eventID: result['output_schema']['event_id']}
-			});
+			if (result === null) showPopUp('No Connection');
+			else {
+				if (result['error_schema']['error_code'] === 'HIVEZ-000-0000')
+					navigation.navigate('EventDrawer', {
+						screen: 'EventDetail',
+						initial: true,
+						params: {eventID: result['output_schema']['event_id']}
+					});
+				showPopUp(result['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
+			};
 		} catch(error) {
 			console.log(error.stack);
 		};
+		hideSpinner();
 	};
 
 	const goBack = () => {

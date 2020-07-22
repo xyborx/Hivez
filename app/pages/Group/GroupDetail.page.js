@@ -25,7 +25,7 @@ const GroupDetailPage = ({route, navigation}) => {
 			try {
 				await initializeGroupData(groupID, userData.id);
 				const requests = await get(`/requests/${groupID}/lists`);
-				const requestLists = requests['output_schema'].map(item => {
+				setRequestList(requests['output_schema'].map(item => {
 					return {
 						id: item[`request_id`],
 						name: item[`request_description`],
@@ -36,9 +36,9 @@ const GroupDetailPage = ({route, navigation}) => {
 						value: item[`request_amount`],
 						status: item[`approval_status`] === '' ? 'ON_PROGRESS' : item[`approval_status`]
 					}
-				});
+				}));
 				const bills = await get(`/bills/${groupID}/lists`);
-				const billLists = bills['output_schema'].map(item => {
+				setBillList(bills['output_schema'].map(item => {
 					return {
 						id: item[`bill_payment_id`],
 						name: item[`bill_description`],
@@ -49,9 +49,7 @@ const GroupDetailPage = ({route, navigation}) => {
 						value: item[`bill_amount`],
 						status: item[`approval_status`] === '' ? 'ON_PROGRESS' : item[`approval_status`]
 					}
-				});
-				setRequestList(requestLists);
-				setBillList(billLists);
+				}));
 			} catch (error) {
 				console.log(error.stack);
 			};

@@ -2,6 +2,7 @@ import React, {useContext, useState, useCallback} from 'react';
 import {useFocusEffect} from '@react-navigation/native';
 import {GroupContext} from '../../contexts/group.context';
 import {LocalizationContext} from '../../contexts/language.context';
+import {PopUpContext} from '../../contexts/popup.context';
 import {SpinnerContext} from '../../contexts/spinner.context';
 import {UserContext} from '../../contexts/user.context';
 import ImagePicker from 'react-native-image-crop-picker';
@@ -11,8 +12,9 @@ import {get, put, del} from '../../utils/api.utils';
 const GroupSettingsPage = ({route, navigation}) => {
 	const {groupID} = route.params;
 
-	const {groupData, initializeGroupData} = useContext(GroupContext);
+	const {groupData, initializeGroupData, updateGroupData} = useContext(GroupContext);
 	const {appLanguage, translations} = useContext(LocalizationContext);
+	const {showPopUp} = useContext(PopUpContext);
 	const {showSpinner, hideSpinner} = useContext(SpinnerContext);
 	const {userData} = useContext(UserContext);
 
@@ -42,11 +44,6 @@ const GroupSettingsPage = ({route, navigation}) => {
 		fetchData();
 	}, []));
 
-	const updateGroupData = (updatedGroupData) => {
-		setGroupDetail(updatedGroupData);
-		setGroupData(updatedGroupData);
-	};
-
 	const changeGroupData = async (groupName, groupDescription) => {
 		showSpinner();
 		try {
@@ -59,7 +56,7 @@ const GroupSettingsPage = ({route, navigation}) => {
 			else {
 				if (result['error_schema']['error_code'] === 'HIVEZ-000-0000')
 					updateGroupData({
-						...groupDetail,
+						...groupData,
 						name: groupName,
 						description: groupDescription
 					});
@@ -83,7 +80,7 @@ const GroupSettingsPage = ({route, navigation}) => {
 				if (result['error_schema']['error_code'] === 'HIVEZ-000-0000') {
 					await ImagePicker.clean();
 					updateGroupData({
-						...groupDetail,
+						...groupData,
 						image: image.data
 					});
 				}
@@ -106,7 +103,7 @@ const GroupSettingsPage = ({route, navigation}) => {
 			else {
 				if (result['error_schema']['error_code'] === 'HIVEZ-000-0000')
 					updateGroupData({
-						...groupDetail,
+						...groupData,
 						image: ''
 					});
 				showPopUp(result['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
@@ -167,7 +164,7 @@ const GroupSettingsPage = ({route, navigation}) => {
 	const toggleAllowSearchByName = async () => {
 		showSpinner();
 		try {
-			const currentState = groupDetail.allowSearchByName;
+			const currentState = groupData.allowSearchByName;
 			const body = {
 				'is_searchable': currentState ? 'N' : 'Y'
 			};
@@ -176,7 +173,7 @@ const GroupSettingsPage = ({route, navigation}) => {
 			else {
 				if (result['error_schema']['error_code'] === 'HIVEZ-000-0000')
 					updateGroupData({
-						...groupDetail,
+						...groupData,
 						allowSearchByName: !currentState
 					});
 				showPopUp(result['error_schema']['error_message'][appLanguage === 'en' ? 'english' : 'indonesian']);
@@ -226,6 +223,7 @@ const GroupSettingsPage = ({route, navigation}) => {
 			dropdownChangePictureText={translations['DropdownChangePicture']}
 			groupData={groupData}
 			groupMembers={groupMembers}
+			currentUser={userData.id}
 			onChangeGroupPictureDropdown={onChangeGroupPictureDropdown}
 			toggleAllowSearchByName={toggleAllowSearchByName}
 			changeGroupData={changeGroupData}

@@ -11,7 +11,7 @@ const GroupList = (props) => {
 		<SafeAreaView style={styles.rootContainer}>
 			<ScrollView
 				ref={props.scrollRef}
-				refreshControl={<RefreshControl refreshing={props.refreshing} onRefresh={props.onRefresh} />}
+				refreshControl={<RefreshControl refreshing={false} onRefresh={props.onRefresh} />}
 				keyboardShouldPersistTaps={'handled'}
 				showsVerticalScrollIndicator={false}
 				style={styles.pageContainer}

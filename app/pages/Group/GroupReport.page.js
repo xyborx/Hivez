@@ -16,10 +16,8 @@ import {get} from '../../utils/api.utils';
 
 const GroupReportPage = ({route, navigation}) => {
 	const {groupID} = route.params;
-	console.log(`group report received from dashboard: ${groupID}`)
 
 	const {groupData, initializeGroupData} = useContext(GroupContext);
-	console.log(`current in groupData: ${groupData.id}`)
 	const {appLanguage, translations} = useContext(LocalizationContext);
 	const {showSpinner, hideSpinner} = useContext(SpinnerContext);
 	const {userData} = useContext(UserContext);

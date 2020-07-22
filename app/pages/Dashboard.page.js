@@ -230,7 +230,6 @@ const DashboardPage = ({navigation}) => {
 		});
 	};
 
-	const [refreshing, setRefreshing] = useState(false);
 	const [favouriteItemList, setFavouriteItemList] = useState([]);
 	const [pendingApprovalList, setPendingApprovalList] = useState(pendingApprovalListDummy);
 	const [transactionList, setTransactionList] = useState([]);
@@ -261,12 +260,11 @@ const DashboardPage = ({navigation}) => {
 			setDisplayedTransactionList(padArray(result['transactions'], 5, null));
 			hideSpinner();
 		});
-	}, [refreshing]);
+	}, []);
 
 	return (
 		<Dashboard
 			scrollRef={scrollRef}
-			refreshing={refreshing}
 			onRefresh={onRefresh}
 			contentText={translations['Dashboard']}
 			recentTransactionText={translations['RecentTransaction']}

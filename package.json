@@ -23,7 +23,7 @@
 		"jsonwebtoken": "^8.5.1",
 		"jwt-decode": "^2.2.0",
 		"linq": "^3.2.2",
-		"moment": "^2.27.0",
+		"moment": "^2.29.2",
 		"node-jose": "^1.1.4",
 		"react": "16.9.0",
 		"react-native": "^0.62.2",
